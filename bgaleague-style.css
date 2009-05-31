@@ -1,0 +1,69 @@
+a.memb:active {
+	color: #D53B3B;
+}
+a.memb:link {
+	color: #D53B3B;
+}
+a.memb:visited {
+	color: #D53B3B;
+}
+a:active {
+	color: black;
+}
+a:link {
+	color: black;
+}
+a:visited {
+	color: black;
+}
+h1 {
+	text-align: center;
+	color: #B38F7D;
+}
+h2 {
+	color: #B38F7D;
+}
+h3 {
+	color: #B38F7D;
+}
+body {
+	margin-right: 0.25in;
+	margin-left: 0.25in;
+	background-color: #FFFFB3;
+	color: #000000;
+	text-align: justify;
+}
+body.nomarg {
+	background-color: #FFFFB3;
+	color: #000000;
+	text-align: justify;
+}
+p.note {
+	text-align: center;
+	font-size: 8pt;
+}
+p.forms {
+	text-indent: 1.5cm;
+	line-height: 1.5cm;
+}
+p.forms2 {
+	line-height: .5cm;
+	text-indent: 1.5cm;
+}
+span.drawn {
+	color: #0000FF;
+}
+span.lost {
+	color: #FF0000;
+}
+span.won {
+	color: #28AA28;
+}
+li.nav {
+	font-size: 8pt;
+}
+td.subind {
+	padding-left: 0.25in;
+	margin-left: 0.5in;
+	font-size: small;
+}
