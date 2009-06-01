@@ -48,6 +48,14 @@ class Player  {
 		return "${prefix}first='$qf' and ${prefix}last='$ql'";
 	}
 	
+	public function queryfirst() {
+		return mysql_real_escape_string($this->First);
+	}
+	
+	public function querylast() {
+		return mysql_real_escape_string($this->Last);
+	}
+	
 	public function urlof() {
 		$f = urlencode($this->First);
 		$l = urlencode($this->Last);
