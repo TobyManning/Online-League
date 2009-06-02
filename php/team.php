@@ -99,6 +99,30 @@ class Team  {
 		mysql_query("update team set description='$qdescr',division=$qdiv,captfirst='$qcfirst',captlast='$qclast' where {$this->queryof()}");
 	}
 	
+	public function divopt() {
+		print "<select name=\"division\">\n";
+		for ($d = 1;  $d < 7;  $d++)  {
+			if ($d == $this->Division)
+				print "<option selected>$d</option>\n";
+			else
+				print "<option>$d</option>\n";
+		}
+		print "</select>\n";
+	}
+	
+	public function captainopt() {
+		$plist = list_players();
+		print "<select name=\"captain\">\n";
+		foreach ($plist as $p) {
+			$v = $p->selof();
+			if ($p->is_same($this->Captain))
+				print "<option value=\"$v\" selected>{$p->display_name()}</option>\n";
+			else
+				print "<option value=\"$v\">{$p->display_name()}</option>\n";
+		}
+		print "</select>\n";
+	}
+	
 	// public function won_matches() {
 	//}
 	

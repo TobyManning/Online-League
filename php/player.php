@@ -62,6 +62,12 @@ class Player  {
 		return "f=$f&l=$l";
 	}
 	
+	public function selof() {
+		$f = $this->First;
+		$l = $this->Last;
+		return "$f:$l";
+	}
+	
 	public function fetchdets() {
 		$q = $this->queryof();
 		$ret = mysql_query("select rank,club,email,kgs,igs,admin,user from player where $q");
