@@ -28,7 +28,7 @@ function checkname($newteam) {
 }
 
 $action = substr($_POST["subm"], 0, 1);
-$teamname = $_POST["teamame"];
+$teamname = $_POST["teamname"];
 $teamdescr = $_POST["teamdescr"];
 $teamdiv = $_POST["division"];
 $teamcapt = $_POST["captain"];
