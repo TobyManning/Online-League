@@ -26,9 +26,9 @@ class Team  {
 			throw new TeamException("Null post name field"); 
 	}				
 	
-	public function queryof() {
+	public function queryof($colname = "name") {
 		$qn = mysql_real_escape_string($this->Name);
-		return "name='$qn'";
+		return "$colname='$qn'";
 	}
 	
 	public function urlof() {
@@ -86,8 +86,10 @@ class Team  {
 	}
 	
 	public function updatename($newt) {
-		$qname = $newt->Name;
+		$qname = mysql_real_escape_string($newt->Name);
 		mysql_query("update team set name='$qname' where {$this->queryof()}");
+		// Need to change team in teammemb as well
+		mysql_query("update teammemb set teamname='$qname' where {$this->queryof('teamname')}");
 		$this->Name = $newt->Name;
 	}
 	
