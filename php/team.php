@@ -44,8 +44,8 @@ class Team  {
 		if (mysql_num_rows($ret) == 0)
 			throw new TeamException("Cannot find team");
 		$row = mysql_fetch_assoc($ret);
-		$this->Description = new Rank($row["description"]);
-		$this->Division = new Club($row["divnum"]);
+		$this->Description = $row["description"];
+		$this->Division = $row["divnum"];
 		try {
 			$this->Captain = new Player($row["captfirst"], $row["captlast"]);
 			$this->Captain->fetchdets();

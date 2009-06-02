@@ -50,9 +50,10 @@ print <<<EOT
 {$team->save_hidden()}
 <p>
 Team Name:
-<input type="text" name="teamname" value="{$team->display_name()}" length=20>
+<input type="text" name="teamname" value="{$team->display_name()}" size=20>
 Full Name:
-<input type="text" name="teamdescr" value="{$team->display_description()}" length=40>
+<input type="text" name="teamdescr" value="{$team->display_description()}" size=40>
+</p><p>
 Division:
 EOT;
 $team->divopt();
