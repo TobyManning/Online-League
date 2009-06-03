@@ -17,6 +17,7 @@ include 'php/head.php';
 $teamlist = list_teams();
 $countteams = count($teamlist);
 $rows = ($countteams + 3) / 4;
+print "ct=$countteams, rows=$rows\n";
 for ($row = 0; $row < $rows; $row++) {
 	print "<tr>\n";
 	for ($col = 0; $col < 4;  $col++)  {

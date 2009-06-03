@@ -90,7 +90,7 @@ print <<<EOT
 EOT;
 ?>
 <p>
-Click <a href="teamupd.php" target="_top">here</a> to return to the team update menu.
+Click <a href="teamsupd.php" target="_top">here</a> to return to the team update menu.
 </p>
 </body>
 </html>
