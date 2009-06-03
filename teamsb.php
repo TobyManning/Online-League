@@ -29,6 +29,7 @@ foreach ($teamlist as $team) {
 <tr>
 	<td>{$team->display_name()}</td>
 	<td>{$team->display_description()}</td>
+	<td>{$team->display_division()}</td>
 	<td>{$team->display_captain()}</td>
 	<td>{$team->count_members()}</td>
 </tr>

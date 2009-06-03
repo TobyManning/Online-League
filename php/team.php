@@ -67,6 +67,12 @@ class Team  {
 		return htmlspecialchars($this->Description);
 	}
 	
+	// Trivial but room for expansion
+	
+	public function display_divison() {
+		return $this->Division;
+	}
+	
 	public function display_captain() {
 		return $this->Captain->display_name();
 	}
