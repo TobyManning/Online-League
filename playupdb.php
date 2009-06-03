@@ -16,7 +16,7 @@ include 'php/head.php';
 <?php
 $playerlist = list_players();
 $countplayers = count($playerlist);
-$rows = ($countplayers + 3) / 4;
+$rows = floor(($countplayers + 3) / 4);
 for ($row = 0; $row < $rows; $row++) {
 	print "<tr>\n";
 	for ($col = 0; $col < 4;  $col++)  {
