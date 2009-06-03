@@ -137,7 +137,15 @@ class Team  {
 	//}
 	
 	// public function played_matches() {
-	//}		 	
+	//}
+	
+	public function count_members() {
+		$ret = mysql_query("select count(*) from teammemb where {$this->queryof('teamname')}");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return 0;
+		$row = mysql_fetch_array($ret);
+		return $row[0];
+	}
 }
 
 function list_teams($order = "name") {

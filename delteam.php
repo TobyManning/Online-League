@@ -29,6 +29,8 @@ if ($nrows == 0) {
 	include 'php/dataerror.php';
 	exit(0);
 }
+//  Next is no error if nothing gets deleted.
+mysql_query("delete from teammemb where {$team->queryof('teamname')}");
 $Title = "Deletion of {$team->display_name()} complete";
 include 'php/head.php';
 print <<<EOT
