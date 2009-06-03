@@ -69,7 +69,7 @@ class Team  {
 	
 	// Trivial but room for expansion
 	
-	public function display_divison() {
+	public function display_division() {
 		return $this->Division;
 	}
 	
