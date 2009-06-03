@@ -214,8 +214,8 @@ class Player  {
 	}
 	
 	public function updatename($newp) {
-		$qfirst = $newp->First;
-		$qlast = $newp->Last;
+		$qfirst = mysql_real_escape_string($newp->First);
+		$qlast = mysql_real_escape_string($newp->Last);
 		mysql_query("update player set first='$qfirst',last='$qlast' where {$this->queryof()}");
 		$this->First = $newp->First;
 		$this->Last = $newp->Last;

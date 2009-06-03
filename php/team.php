@@ -82,7 +82,8 @@ class Team  {
 		$qcfirst = $this->Captain->queryfirst();
 		$qclast = $this->Captain->querylast();
 		$qdiv = $this->Division;
-		mysql_query("insert into team (name,description,division,captfirst,captlast) values ('$qname','$qdescr',$qdiv,'$qcfirst','$qclast')");
+		if (!mysql_query("insert into team (name,description,division,captfirst,captlast) values ('$qname','$qdescr',$qdiv,'$qcfirst','$qclast')"))
+			throw new TeamException(mysql_error());
 	}
 	
 	public function updatename($newt) {
@@ -98,7 +99,8 @@ class Team  {
 		$qcfirst = $this->Captain->queryfirst();
 		$qclast = $this->Captain->querylast();
 		$qdiv = $this->Division;
-		mysql_query("update team set description='$qdescr',division=$qdiv,captfirst='$qcfirst',captlast='$qclast' where {$this->queryof()}");
+		if (!mysql_query("update team set description='$qdescr',division=$qdiv,captfirst='$qcfirst',captlast='$qclast' where {$this->queryof()}"))
+			throw new TeamException(mysql_error());
 	}
 	
 	public function divopt() {
