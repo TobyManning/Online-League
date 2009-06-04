@@ -100,6 +100,14 @@ class Player  {
 		return $this->First == $pl->First && $this->Last == $pl->Last;
 	}
 	
+	public function display_first() {
+		return htmlspecialchars($this->First);
+	}
+
+	public function display_last() {
+		return htmlspecialchars($this->Last);
+	}
+	
 	public function display_name() {
 		$f = $this->First;
 		$l = $this->Last;

@@ -152,6 +152,17 @@ class Team  {
 		$row = mysql_fetch_array($ret);
 		return $row[0];
 	}
+	
+	public function list_members($order = "rank desc,tmlast,tmfirst") {
+		$ret = mysql_query("select tmfirst,tmlast from teammemb where {$this->queryof('teamname')} order by $order");
+		$result = array();
+		if ($ret) {
+			while ($row = mysql_fetch_array($ret)) {
+				array_push($result, new TeamMemb($this, $row[0], $row[1]);
+			}
+		}
+		return $result;			
+	}
 }
 
 function list_teams($order = "name") {
