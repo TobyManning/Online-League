@@ -158,7 +158,7 @@ class Team  {
 		$result = array();
 		if ($ret) {
 			while ($row = mysql_fetch_array($ret)) {
-				array_push($result, new TeamMemb($this, $row[0], $row[1]);
+				array_push($result, new TeamMemb($this, $row[0], $row[1]));
 			}
 		}
 		return $result;			
