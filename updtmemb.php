@@ -30,14 +30,14 @@ foreach ($Playerlist as $player) {
 	$player->fetchdets();
 	print <<<EOT
 playerlist.push({first:"{$player->display_first()}", last:"{$player->display_last()}",
-rank:"{$player->display_rank()}", club:"{$player->display_club()}"});
+rank:"{$player->display_rank()}", club:"{$player->Club->display_name()}"});
 EOT;
 }
 foreach ($Elist as $ep) {
 	$ep->fetchdets();
 	print <<<EOT
 currteam.push({first:"{$ep->display_first()}", last:"{$ep->display_last()}",
-rank:"{$ep->display_rank()}", club:"{$ep->display_club()}"});
+rank:"{$ep->display_rank()}", club:"{$ep->Club->display_name()}"});
 EOT;
 }
 print <<<EOT
