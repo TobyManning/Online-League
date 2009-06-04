@@ -42,7 +42,7 @@ class Team  {
 		if (!$ret)
 			throw new TeamException("Cannot read database for team $q");
 		if (mysql_num_rows($ret) == 0)
-			throw new TeamException("Cannot find team");
+			throw new TeamException("Cannot find team {$this->Name}");
 		$row = mysql_fetch_assoc($ret);
 		$this->Description = $row["description"];
 		$this->Division = $row["divnum"];
