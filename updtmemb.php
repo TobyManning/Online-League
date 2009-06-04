@@ -28,16 +28,20 @@ var currteam = new Array();
 EOT;
 foreach ($Playerlist as $player) {
 	$player->fetchdets();
+	$player->fetchclub();
 	print <<<EOT
 playerlist.push({first:"{$player->display_first()}", last:"{$player->display_last()}",
 rank:"{$player->display_rank()}", club:"{$player->Club->display_name()}"});
+
 EOT;
 }
 foreach ($Elist as $ep) {
 	$ep->fetchdets();
+	$ep->fetchclub();
 	print <<<EOT
 currteam.push({first:"{$ep->display_first()}", last:"{$ep->display_last()}",
 rank:"{$ep->display_rank()}", club:"{$ep->Club->display_name()}"});
+
 EOT;
 }
 print <<<EOT
