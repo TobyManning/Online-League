@@ -61,7 +61,7 @@ del against the player.
 </thead>
 <tbody id="membbody">
 <?php
-forech ($Elist as $ep) {
+foreach ($Elist as $ep) {
 	print <<<EOT
 <tr>
 <td>{$ep->display_name()}</td>
