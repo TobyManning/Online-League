@@ -6,15 +6,15 @@ include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
-try {
+//try {
 	$team = new Team();
 	$team->fromget();
 	$team->fetchdets();
-}
-catch (TeamException $e) {
-	include 'php/wrongentry.php';
-	exit(0);
-}
+//}
+//catch (TeamException $e) {
+//	include 'php/wrongentry.php';
+//	exit(0);
+//}
 $Title = "Update Team {$team->display_name()}";
 include 'php/head.php';
 print <<<EOT
