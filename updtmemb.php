@@ -40,9 +40,11 @@ currteam.push({first:"{$ep->display_first()}", last:"{$ep->display_last()}",
 rank:"{$ep->display_rank()}", club:"{$ep->display_club()}"});
 EOT;
 }
+print <<<EOT
 var changes = 0;
 </script>
 <h1>Update Team Members for {$team->display_name()}</h1>
+EOT;
 ?>
 <p>
 This is the current team. To add a player to the team click here. To remove a player click
