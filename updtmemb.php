@@ -66,7 +66,7 @@ foreach ($Elist as $ep) {
 <tr>
 <td>{$ep->display_name()}</td>
 <td>{$ep->display_rank()}</td>
-<td>{$ep->display_club()}</td>
+<td>{$ep->Club->display_name()}</td>
 <td>del</td>
 </tr>
 EOT;
