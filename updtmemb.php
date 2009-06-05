@@ -61,8 +61,7 @@ function set_changes() {
 }
 
 function addmembs() {
-	var w = window.open("membpick.html", "Select Team Member", "width=350,height=400,resizeable=yes,scrollbars=yes");
-	set_changes(); // Temp to test
+	window.open("membpick.html", "Select Team Member", "width=450,height=400,resizeable=yes,scrollbars=yes");
 }
 
 </script>

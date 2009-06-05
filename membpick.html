@@ -4,7 +4,7 @@
 <title>Choose player for team</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="John M Collins">
-<meta name="date" content="2009-06-05T11:56:31+0100">
+<meta name="date" content="2009-06-05T12:56:38+0100">
 <meta name="copyright" content="Free Software GPL3">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
@@ -19,7 +19,10 @@ function filltab() {
 		var rownode = tbod.insertRow(i);
 		var cellnode = rownode.insertCell(0);
 		var text = document.createTextNode(pl.first + " " + pl.last);
-		cellnode.appendChild(text);
+		var anch = document.createElement('a');
+		anch.href = "javascript:clickplayer(" + i + ")";
+		anch.appendChild(text);
+		cellnode.appendChild(anch);
 		cellnode = rownode.insertCell(1);
 		text = document.createTextNode(pl.rank);
 		cellnode.appendChild(text);
@@ -27,6 +30,41 @@ function filltab() {
 		text = document.createTextNode(pl.club);
 		cellnode.appendChild(text);
 	}
+}
+function clickplayer(pn) {
+	var plist = opener.playerlist;
+	var pl = plist[pn];
+	var elist = opener.currteam;
+	// Actually the way it's coded (see "push" below) we can probably compare elements
+	// but this is to be defensive.
+	for (var i = 0; i < elist.length; i++)  {
+		var ei = elist[i]; 
+		if (ei.first == pl.first && ei.last == pl.last)
+			return;
+	}
+	elist.push(pl);
+	opener.set_changes();
+	var ttbod = opener.document.getElementById('membbody');
+	var rownum = ttbod.rows.length;
+	var rownode - ttbod.insertRow(rownum);
+	var cellnode = rownode.insertCell(0);
+	var text = opener.document.createTextNode(pl.first + " " + pl.last);
+	cellnode.appendChild(text);
+
+	cellnode = rownode.insertCell(1);
+	text = opener.document.createTextNode(pl.rank);
+	cellnode.appendChild(text);
+
+	cellnode = rownode.insertCell(2);
+	text = opener.document.createTextNode(pl.club);
+	cellnode.appendChild(text);
+
+	cellnode = rownode.insertCell(3);
+	text = opener.document.createTextNode("del");
+	var anch = opener.document.createElement('a');
+	anch.href = "javascript:delmembrow(" + rownum + ")";
+	anch.appendChild(text);
+	cellnode.appendChild(anch);
 }
 </script>
 </head>
