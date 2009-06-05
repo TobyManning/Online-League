@@ -43,9 +43,11 @@ foreach ($Elist as $ep) {
 currteam.push({first:"{$ep->display_first()}", last:"{$ep->display_last()}",
 rank:"{$ep->display_rank()}", club:"{$ep->Club->display_name()}"});
 
-var teamurl = "{$team->urlof()}";
 EOT;
 }
+print <<<EOT
+var teamurl = "{$team->urlof()}";
+EOT;
 ?>
 var changes = 0;
 var createwind = null;
