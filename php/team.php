@@ -79,7 +79,7 @@ class Team  {
 	
 	public function save_hidden($prefix = "") {
 		$f = $this->Name;
-		return "<input type=\"hidden\" name=\"${prefix}tm\" value=\"$f\">";
+		return "<input type=\"hidden\" name=\"${prefix}tn\" value=\"$f\">";
 	}
 	
 	public function create() {
