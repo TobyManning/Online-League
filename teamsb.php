@@ -27,7 +27,7 @@ foreach ($teamlist as $team) {
 	$team->fetchdets();
 	print <<<EOT
 <tr>
-	<td>{$team->display_name()}</td>
+	<td><a href="teamdisp.php?{$team->urlof()}">{$team->display_name()}</a></td>
 	<td>{$team->display_description()}</td>
 	<td>{$team->display_division()}</td>
 	<td>{$team->display_captain()}</td>
