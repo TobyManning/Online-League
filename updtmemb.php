@@ -45,14 +45,31 @@ rank:"{$ep->display_rank()}", club:"{$ep->Club->display_name()}"});
 
 EOT;
 }
-print <<<EOT
+?>
 var changes = 0;
+
+function set_changes() {
+	var par = document.getElementById('changepara');
+	var newtext = document.createTextNode("There are changes to save");
+	var kids = par.childNodes;
+	par.replaceChild(newtext, kids[0]);
+}
+
+function addmembs() {
+	var w = window.open("membpick.html", "Select Team Member", "width=350,height=400,resizeable=yes,scrollbars=yes");
+	set_changes(); // Temp to test
+}
+
 </script>
+<?php
+print <<<EOT
 <h1>Update Team Members for {$team->display_name()}</h1>
 EOT;
 ?>
 <p>
-This is the current team. To add a player to the team click here. To remove a player click
+This is the current team. To add a player to the team
+<a href="javascript:addmembs()">click here</a>.
+To remove a player click
 del against the player.
 </p>
 <table cellpadding="2" cellspacing="2" border="0">
@@ -66,15 +83,17 @@ del against the player.
 </thead>
 <tbody id="membbody">
 <?php
+$cnt=0;
 foreach ($Elist as $ep) {
 	print <<<EOT
 <tr>
 <td>{$ep->display_name()}</td>
 <td>{$ep->display_rank()}</td>
 <td>{$ep->Club->display_name()}</td>
-<td>del</td>
+<td><a href="javascript:delmembrow($cnt)">del</a></td>
 </tr>
 EOT;
+$cnt++;
 }
 ?>
 </tbody>
