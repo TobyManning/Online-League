@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Choose player for team</title>
+<meta name="generator" content="Bluefish 1.0.7">
+<meta name="author" content="John M Collins">
+<meta name="date" content="2009-06-05T11:54:25+0100">
+<meta name="copyright" content="Free Software GPL3">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<link href="bgaleague-style.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+function filltab() {
+	tbod = document.getElementById('psbody');
+	plist = opener.document.playerlist;
+	for (var i = 0; i < plist.length; i++) {
+		var pl = plist[i];
+		var rownode = tbod.insertRow(i);
+		var cellnode = rownode.insertCell(0);
+		var text = document.createTextNode(pl.first + " " + pl.last);
+		cellnode.appendChild(text);
+		cellnode = rownode.insertCell(1);
+		text = document.createTextNode(pl.rank);
+		cellnode.appendChild(text);
+		cellnode = rownode.insertCell(2);
+		text = document.createTextNode(pl.club);
+		cellnode.appendChild(text);
+	}
+}
+</script>
+</head>
+<body onload="javascript:filltab()">
+<h1>Players to select for team</h1>
+<table cellpadding="2" cellspacing="2" border="0" id="pstab">
+<thead>
+<tr>
+<th>Name</th>
+<th>Rank</th>
+<th>Club</th>
+</tr>
+</thead>
+<tbody id="psbody">
+</tbody>
+</table>
+<p>Click <a href="javascript:self.close()">here</a> to close this window.</p>
+</body>
+</html>

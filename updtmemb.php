@@ -48,11 +48,16 @@ EOT;
 ?>
 var changes = 0;
 
+// Replace message in final paragraph to warn users that there are
+// changes to save
+
 function set_changes() {
 	var par = document.getElementById('changepara');
 	var newtext = document.createTextNode("There are changes to save");
+	var btext = document.createElement("b");
+	btext.appendChild(newtext);
 	var kids = par.childNodes;
-	par.replaceChild(newtext, kids[0]);
+	par.replaceChild(btext, kids[0]);
 }
 
 function addmembs() {
