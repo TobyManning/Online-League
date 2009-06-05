@@ -48,6 +48,14 @@ EOT;
 }
 ?>
 var changes = 0;
+var createwind = null;
+
+function killwind() {
+	if (createwind) {
+		createwind.close();
+		createwind = null;
+	}
+}
 
 // Replace message in final paragraph to warn users that there are
 // changes to save
@@ -63,7 +71,7 @@ function set_changes() {
 }
 
 function addmembs() {
-	window.open("membpick.html", "Select Team Member", "width=450,height=400,resizeable=yes,scrollbars=yes");
+	createwind = window.open("membpick.html", "Select Team Member", "width=450,height=400,resizeable=yes,scrollbars=yes");
 }
 
 function insertmemb(pl) {
@@ -95,6 +103,7 @@ function delmembrow(rownum) {
 	ttbod.deleteRow(rownum);
 	currteam.splice(rownum,1);
 	set_changes();
+	killwind();
 }
 
 function loadtab() {
