@@ -3,6 +3,9 @@
 //  REMEMBER TO HACK THIS - Live requires username/password etc
 //  ***********************************************************
 
+//  ALSO MAKE SURE that magic_quotes_gpc is turned off in you php init!!!!
+//  **********************************************************************
+
 if  (!mysql_connect("localhost", "apache")  ||  !mysql_select_db("bgaleague")) {
 
 	$mess = mysql_error();

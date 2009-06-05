@@ -12,6 +12,7 @@ try {
 	$player->fetchclub();
 }
 catch (PlayerException $e) {
+	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);
 }

@@ -13,6 +13,7 @@ try {
 	$team->fetchdets();
 }
 catch (TeamException $e) {
+	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);
 }

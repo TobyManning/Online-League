@@ -13,6 +13,7 @@ try {
 	$player->fetchdets();
 }
 catch (PlayerException $e) {
+	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);
 }

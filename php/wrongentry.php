@@ -8,5 +8,15 @@
 <p>
 This page has not been entered correctly. Please try again from a standard page.
 </p>
+<?php
+if (strlen($mess) != 0)  {
+	$qmess = htmlspecialchars($mess);
+	print <<<EOT
+<p>
+The actual error message was $qmess.
+</p>
+EOT;
+}
+?>
 </body>
 </html>
