@@ -100,8 +100,10 @@ function insertmemb(pl) {
 
 function delmembrow(rownum) {
 	var ttbod = document.getElementById('membbody');
-	ttbod.deleteRow(rownum);
+	while (ttbod.rows.length != 0)
+		ttbod.deleteRow(0);
 	currteam.splice(rownum,1);
+	loadtab();
 	set_changes();
 	killwind();
 }
