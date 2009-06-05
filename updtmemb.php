@@ -22,7 +22,8 @@ $Elist = $team->list_members();
 $Title = "Update Team Members for {$team->display_name()}";
 include 'php/head.php';
 print <<<EOT
-<body>
+<body onload="javascript:loadtab()">
+
 <script language="javascript">
 var playerlist = new Array();
 var currteam = new Array();
@@ -52,6 +53,7 @@ var changes = 0;
 // changes to save
 
 function set_changes() {
+	changes++;
 	var par = document.getElementById('changepara');
 	var newtext = document.createTextNode("There are changes to save");
 	var btext = document.createElement("b");
@@ -62,6 +64,35 @@ function set_changes() {
 
 function addmembs() {
 	window.open("membpick.html", "Select Team Member", "width=450,height=400,resizeable=yes,scrollbars=yes");
+}
+
+function insertmemb(pl) {
+	var ttbod = document.getElementById('membbody');
+	var rownum = ttbod.rows.length;
+	var rownode = ttbod.insertRow(rownum);
+	var cellnode = rownode.insertCell(0);
+	var text = document.createTextNode(pl.first + " " + pl.last);
+	cellnode.appendChild(text);
+
+	cellnode = rownode.insertCell(1);
+	text = document.createTextNode(pl.rank);
+	cellnode.appendChild(text);
+
+	cellnode = rownode.insertCell(2);
+	text = document.createTextNode(pl.club);
+	cellnode.appendChild(text);
+
+	cellnode = rownode.insertCell(3);
+	text = document.createTextNode("del");
+	var anch = document.createElement('a');
+	anch.href = "javascript:delmembrow(" + rownum + ")";
+	anch.appendChild(text);
+	cellnode.appendChild(anch);
+}
+
+function loadtab() {
+	for (var i = 0;  i < currteam.length;  i++)
+		insertmemb(currteam[i]);
 }
 
 </script>
@@ -86,20 +117,6 @@ del against the player.
 </tr>
 </thead>
 <tbody id="membbody">
-<?php
-$cnt=0;
-foreach ($Elist as $ep) {
-	print <<<EOT
-<tr>
-<td>{$ep->display_name()}</td>
-<td>{$ep->display_rank()}</td>
-<td>{$ep->Club->display_name()}</td>
-<td><a href="javascript:delmembrow($cnt)">del</a></td>
-</tr>
-EOT;
-$cnt++;
-}
-?>
 </tbody>
 </table>
 <p>When done click here.</p>
