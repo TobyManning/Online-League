@@ -4,7 +4,7 @@
 <title>Choose player for team</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="John M Collins">
-<meta name="date" content="2009-06-05T12:56:38+0100">
+<meta name="date" content="2009-06-05T12:58:30+0100">
 <meta name="copyright" content="Free Software GPL3">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
@@ -46,7 +46,7 @@ function clickplayer(pn) {
 	opener.set_changes();
 	var ttbod = opener.document.getElementById('membbody');
 	var rownum = ttbod.rows.length;
-	var rownode - ttbod.insertRow(rownum);
+	var rownode = ttbod.insertRow(rownum);
 	var cellnode = rownode.insertCell(0);
 	var text = opener.document.createTextNode(pl.first + " " + pl.last);
 	cellnode.appendChild(text);
