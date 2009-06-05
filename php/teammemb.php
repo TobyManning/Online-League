@@ -17,6 +17,7 @@ class TeamMemb extends Player  {
 }
 
 function del_team_membs($team) {
-	mysql_query("delete from teammemb where {$this->Team->queryof('teamname')}");
+	if  (!mysql_query("delete from teammemb where {$this->Team->queryof('teamname')}"))
+		throw new TeamMembException(mysql_error());
 }
 ?>

@@ -28,9 +28,13 @@ class Player  {
 			}
 	}
 	
-	public function fromget() {
-		$this->First = $_GET["f"];
-		$this->Last = $_GET["l"];
+	public function fromget($prefix = "", $htd = false) {
+		$this->First = $_GET["${prefix}f"];
+		$this->Last = $_GET["${prefix}l"];
+		if ($htd) {
+			$this->First = htmlspecialchars_decode($this->First);
+			$this->Last = htmlspecialchars_decode($this->Last);
+		}
 		if (strlen($this->First) == 0 || strlen($this->Last) == 0)
 			throw new PlayerException("Null name field"); 
 	}
