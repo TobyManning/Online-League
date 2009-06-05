@@ -47,7 +47,7 @@ foreach ($membs as $m) {
 <tr>
 	<td>{$m->display_name()}</td>
 	<td>{$m->display_rank()}</td>
-	<td>{$m->display_club()}</td>
+	<td>{$m->Club->display_name()}</td>
 </tr>
 EOT;
 }
