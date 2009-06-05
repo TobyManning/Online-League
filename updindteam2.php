@@ -44,6 +44,7 @@ $captlast = $matches[2];
 switch ($action) {
 case 'A':
 	if (strlen($teamname) == 0)  {
+		$mess = "No team name?";
 		include 'php/wrongentry.php';
 		exit(0);
 	}
@@ -62,6 +63,7 @@ default:
 		$origteam->fetchdets();
 	}
 	catch (TeamException $e) {
+		$mess = $e->getMessage();
 		include 'php/wrongentry.php';
 		exit(0);
 	}
