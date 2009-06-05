@@ -83,11 +83,18 @@ function insertmemb(pl) {
 	cellnode.appendChild(text);
 
 	cellnode = rownode.insertCell(3);
-	text = document.createTextNode("del");
+	text = document.createTextNode("Del");
 	var anch = document.createElement('a');
 	anch.href = "javascript:delmembrow(" + rownum + ")";
 	anch.appendChild(text);
 	cellnode.appendChild(anch);
+}
+
+function delmembrow(rownum) {
+	var ttbod = document.getElementById('membbody');
+	ttbod.deleteRow(rownum);
+	currteam.splice(rownum,1);
+	set_changes();
 }
 
 function loadtab() {
