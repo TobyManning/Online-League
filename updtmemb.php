@@ -123,8 +123,9 @@ function savemembs() {
 	args.push(teamurl);
 	for (var i = 0; i < currteam.length; i++)  {
 		var pl = currteam[i];
-		args.push("tm" + i + "f=" + urlencode(htmlspecialchars_decode(pl.first)));
-		args.push("tm" + i + "l=" + urlencode(htmlspecialchars_decode(pl.last)));
+		// Remember that we may need to htmlspecialchars_decode the results from these.
+		args.push("tm" + i + "f=" + encodeURI(pl.first));
+		args.push("tm" + i + "l=" + encodeURI(pl.last));
 	}
 	var arglist = args.join("&");
 	var newloc = "updmembs.php?" + arglist;
