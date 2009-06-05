@@ -22,8 +22,7 @@ $Elist = $team->list_members();
 $Title = "Update Team Members for {$team->display_name()}";
 include 'php/head.php';
 print <<<EOT
-<body onload="javascript:loadtab()">
-
+<body onload="javascript:loadtab()" onunload="javascript:killwind()">
 <script language="javascript">
 var playerlist = new Array();
 var currteam = new Array();
@@ -44,6 +43,7 @@ foreach ($Elist as $ep) {
 currteam.push({first:"{$ep->display_first()}", last:"{$ep->display_last()}",
 rank:"{$ep->display_rank()}", club:"{$ep->Club->display_name()}"});
 
+var teamurl = "{$team->urlof()}";
 EOT;
 }
 ?>
@@ -71,6 +71,7 @@ function set_changes() {
 }
 
 function addmembs() {
+	killwind();
 	createwind = window.open("membpick.html", "Select Team Member", "width=450,height=400,resizeable=yes,scrollbars=yes");
 }
 
@@ -113,6 +114,21 @@ function loadtab() {
 		insertmemb(currteam[i]);
 }
 
+function savemembs() {
+	if (changes == 0)
+		return;
+	var args = new Array();
+	args.push(teamurl);
+	for (var i = 0; i < currteam.length; i++)  {
+		var pl = currteam[i];
+		args.push("tm" + i + "f=" + urlencode(htmlspecialchars_decode(pl.first)));
+		args.push("tm" + i + "l=" + urlencode(htmlspecialchars_decode(pl.last)));
+	}
+	var arglist = args.join("&");
+	var newloc = "updmembs.php?" + arglist;
+	document.location = newloc; 
+}
+
 </script>
 <?php
 print <<<EOT
@@ -137,7 +153,8 @@ del against the player.
 <tbody id="membbody">
 </tbody>
 </table>
-<p>When done click here.</p>
+<p>When done <a href="javascript:savemembs()">click here</a> or to forget the changes
+click somewhere else.</p>
 <p id="changepara">There are no changes at present.</p>
 </body>
 </html>
