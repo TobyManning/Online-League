@@ -78,7 +78,7 @@ default:
 	
 	$origteam->Description = $teamdescr;
 	$origteam->Division = $teamdiv;
-	$origteam->Captain = new Team($captfirst, $captlast);
+	$origteam->Captain = new Player($captfirst, $captlast);
 	$origteam->update();
 	$Title = "Team {$origteam->display_name()} updated OK";
 	break;
