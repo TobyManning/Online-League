@@ -54,7 +54,7 @@ print <<<EOT
 <body>
 <h1>Update of {$team->display_name()} complete</h1>
 <p>
-Updating team members for {$team->description()} is complete.
+Updating team members for {$team->display_description()} is complete.
 </p>
 EOT;
 ?>
