@@ -178,7 +178,7 @@ function list_teams($order = "name") {
 }
 
 function max_division() {
-	$ret = mysql_queury("select max(divnum) from team");
+	$ret = mysql_query("select max(divnum) from team");
 	if ($ret && mysql_num_rows($ret) > 0) {
 		$row = mysql_fetch_array($ret);
 		return $row[0];
