@@ -28,7 +28,7 @@ foreach ($teamlist as $team) {
 	if ($team->Division != $lastdiv) {
 		$lastdiv = $team->Division;
 		print <<<EOT
-<tr><th colspan="4">Division {$team->display_division()}</th></tr>
+<tr><th colspan="4" align="center">Division {$team->display_division()}</th></tr>
 EOT;
 	}
 	print <<<EOT
