@@ -178,7 +178,33 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
+INSERT INTO `team` VALUES ('Team1','The Winners',NULL,1,'John','Collins'),('Team2','The Losers',NULL,6,'Alan','Thornton'),('Joss\' Team','The Academics Who Don\'t Actually Play Much',NULL,5,'Joss','Wright'),('John\'s Test','The Real Losers',NULL,6,'Huw','Talliss');
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teammemb`
+--
+
+DROP TABLE IF EXISTS `teammemb`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `teammemb` (
+  `tmfirst` tinytext,
+  `tmlast` tinytext,
+  `teamname` tinytext,
+  `rank` tinyint(4) default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `teammemb`
+--
+
+LOCK TABLES `teammemb` WRITE;
+/*!40000 ALTER TABLE `teammemb` DISABLE KEYS */;
+INSERT INTO `teammemb` VALUES ('Chris','Williams','Team1',-18),('John','Collins','Team1',-14),('Richard','Mullens','Team1',-7),('Alan','Thornton','Team1',1),('Paul','Taylor','Team1',1),('Michael','Charles','Team1',1);
+/*!40000 ALTER TABLE `teammemb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -190,4 +216,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2009-06-01 10:23:38
+-- Dump completed on 2009-06-05 19:29:29

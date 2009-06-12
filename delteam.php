@@ -6,7 +6,7 @@ include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
 ?>
-<html>pla
+<html>
 <?php
 try {
 	$team = new Team();
@@ -41,7 +41,7 @@ Deletion of team {$team->display_name()} was successful.</p>
 EOT;
 ?>
 <p>
-Click <a href="teamupd.php" target="_top">here</a> to return to the team update menu.
+Click <a href="teamsupdb.php">here</a> to return to the team update menu.
 </p>
 </body>
 </html>
