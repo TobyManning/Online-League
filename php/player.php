@@ -274,6 +274,14 @@ class Player  {
 			return 0;
 		$row = mysql_fetch_array($ret);
 		return $row[0];
+	}
+	
+	public function count_teams() {
+		$ret = mysql_query("select count(*) from teammemb where {$this->queryof('tm')}");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return 0;
+		$row = mysql_fetch_array($ret);
+		return $row[0];	
 	}		 	
 }
 

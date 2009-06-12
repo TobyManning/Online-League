@@ -32,7 +32,8 @@ foreach ($Playerlist as $player) {
 	$player->fetchclub();
 	print <<<EOT
 playerlist.push({first:"{$player->display_first()}", last:"{$player->display_last()}",
-rank:"{$player->display_rank()}", club:"{$player->Club->display_name()}"});
+rank:"{$player->display_rank()}", club:"{$player->Club->display_name()}"
+ncurr:"{$player->count_teams()}"});
 
 EOT;
 }

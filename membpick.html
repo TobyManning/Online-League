@@ -4,7 +4,7 @@
 <title>Choose player for team</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="John M Collins">
-<meta name="date" content="2009-06-05T14:52:37+0100">
+<meta name="date" content="2009-06-12T13:30:35+0100">
 <meta name="copyright" content="Free Software GPL3">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
@@ -28,6 +28,9 @@ function filltab() {
 		cellnode.appendChild(text);
 		cellnode = rownode.insertCell(2);
 		text = document.createTextNode(pl.club);
+		cellnode.appendChild(text);
+		cellnode = rownode.insertCell(3);
+		text = document.createTextNode(pl.ncurr);
 		cellnode.appendChild(text);
 	}
 }
