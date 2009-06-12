@@ -25,11 +25,12 @@ $teamlist = list_teams("divnum,name");
 $lastdiv = -199;
 foreach ($teamlist as $team) {
 	$team->fetchdets();
-	if ($team->Division != $lastdiv) }
+	if ($team->Division != $lastdiv) {
 		$lastdiv = $team->Division;
 		print <<<EOT
 <tr><th colspan="4">Division {$team->display_division()}</th></tr>
 EOT;
+	}
 	print <<<EOT
 <tr>
 	<td><a href="teamdisp.php?{$team->urlof()}">{$team->display_name()}</a></td>
