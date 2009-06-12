@@ -17,19 +17,23 @@ include 'php/head.php';
 <tr>
 	<th>Name</th>
 	<th>Full Name</th>
-	<th>Division</th>
 	<th>Captain</th>
 	<th>Members</th>
 </tr>
 <?php
-$teamlist = list_teams();
+$teamlist = list_teams("divnum,name");
+$lastdiv = -199;
 foreach ($teamlist as $team) {
 	$team->fetchdets();
+	if ($team->Division != $lastdiv) }
+		$lastdiv = $team->Division;
+		print <<<EOT
+<tr><th colspan="4">Division {$team->display_division()}</th></tr>
+EOT;
 	print <<<EOT
 <tr>
 	<td><a href="teamdisp.php?{$team->urlof()}">{$team->display_name()}</a></td>
 	<td>{$team->display_description()}</td>
-	<td>{$team->display_division()}</td>
 	<td>{$team->display_captain()}</td>
 	<td>{$team->count_members()}</td>
 </tr>
