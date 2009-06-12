@@ -111,7 +111,8 @@ class Team  {
 	
 	public function divopt() {
 		print "<select name=\"division\">\n";
-		for ($d = 1;  $d < 7;  $d++)  {
+		$maxt = max_division();
+		for ($d = 1;  $d <= $maxt;  $d++)  {
 			if ($d == $this->Division)
 				print "<option selected>$d</option>\n";
 			else
@@ -174,5 +175,14 @@ function list_teams($order = "name") {
 		}
 	}
 	return $result;
+}
+
+function max_division() {
+	$ret = mysql_queury("select max(divnum) from team");
+	if ($ret && mysql_num_rows($ret) > 0) {
+		$row = mysql_fetch_array($ret);
+		return $row[0];
+	}
+	return 1;	
 }	
 ?>
