@@ -56,8 +56,8 @@ class Match {
 			throw new MatchException("Cannot find match record {$this->Ind}");
 		$row = mysql_fetch_assoc($ret);
 		$this->Division = $row["divnum"];
-		$this->Hteam = new Team($row["hteam"];
-		$this->Ateam = new Team($row["ateam"];
+		$this->Hteam = new Team($row["hteam"]);
+		$this->Ateam = new Team($row["ateam"]);
 		$this->Date->fromtabrow($row);
 		$this->Slackdays = $row["slackdays"];
 		$this->Hscore = $row["hscore"];
