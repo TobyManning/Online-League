@@ -25,7 +25,7 @@ class Gameres {
 	public $Home;
 	public $Away;
 	
-	public __construct($h, $a) {
+	public function __construct($h, $a) {
 		$this->Home = $h;
 		$this->Away = $a;
 	}
