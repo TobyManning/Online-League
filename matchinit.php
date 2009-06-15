@@ -103,7 +103,7 @@ class MatchData {
 	public function permute() {
 		$this->Selected[0] = 1;
 		array_push($this->Pending, 0);
-		for (at = 1; $at < $this->Nteams; $at++)  {
+		for ($at = 1; $at < $this->Nteams; $at++)  {
 			if ($this->Played[0][$at])
 				continue;
 			$this->Selected[$at] = 1;
