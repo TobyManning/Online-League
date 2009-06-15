@@ -148,7 +148,8 @@ else  {
 		print "<h2>Month $cnt</h2>\n";
 		foreach ($rm as $rim) {
 			print "<p>{$teams[$rim->Home]->display_name()} -v- {$teams[$rim->Away]->display_name()}</p>\n";
-		}	
+		}
+		$cnt++;	
 	}		 
 }?>
 </body>
