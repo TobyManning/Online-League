@@ -111,7 +111,7 @@ class Team  {
 	
 	public function divopt() {
 		print "<select name=\"division\">\n";
-		$maxt = max_division();
+		$maxt = max_division() + 1; // Allow for 1 more than number of existing
 		for ($d = 1;  $d <= $maxt;  $d++)  {
 			if ($d == $this->Division)
 				print "<option selected>$d</option>\n";
