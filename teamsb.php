@@ -21,7 +21,7 @@ include 'php/head.php';
 	<th>Members</th>
 </tr>
 <?php
-$teamlist = list_teams("divnum,name");
+$teamlist = list_teams(0, "divnum,name");
 $lastdiv = -199;
 foreach ($teamlist as $team) {
 	$team->fetchdets();

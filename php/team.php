@@ -166,8 +166,9 @@ class Team  {
 	}
 }
 
-function list_teams($order = "name") {
-	$ret = mysql_query("select name from team order by $order");
+function list_teams($div = 0, $order = "name") {
+	$divsel = $div == 0? "": " where divnum=$div";
+	$ret = mysql_query("select name from team$divsel order by $order");
 	$result = array();
 	if ($ret) {
 		while ($row = mysql_fetch_array($ret)) {

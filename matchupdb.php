@@ -15,7 +15,7 @@ include 'php/head.php';
 <body>
 <h1>Update Matches</h1>
 <p>
-Use this screen to allocate matches and assign players. 
+Use this page to allocate matches and assign players. 
 </p>
 <?php
 $maxdiv = max_division();
