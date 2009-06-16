@@ -15,7 +15,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Matches</h1>
-<table>
+<table cellpadding="2" cellspacing="1" border="0">
 <tr>
 <th>Date</th>
 <th>Team A</th>
@@ -31,7 +31,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		$mtch->fetchdets();
 		if ($mtch->Division != $lastdiv)  {
 			$lastdiv = $mtch->Division;
-			print "<tr><th colspan=3>Division $lastdiv</th></tr>\n";
+			print "<tr><th colspan=\"3\" align=\"center\">Division $lastdiv</th></tr>\n";
 		}
 		print <<<EOT
 <tr>
@@ -54,7 +54,7 @@ EOT;
 	}
 }
 else {
-	print "<tr><td colspan=3>No matches yet</td></tr>\n";
+	print "<tr><td colspan=\"3\" align=\"center\">No matches yet</td></tr>\n";
 }
 ?>
 </table>
