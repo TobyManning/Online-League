@@ -70,7 +70,7 @@ class Match {
 		$qaway = $this->Ateam->queryname();
 		$qdate = $this->Date->queryof();
 		$qres = mysql_real_escape_string($this->Result);
-		$ret = mysql_query("insert into lgmatch (divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays) values ({$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres'.{$this->Slackdays})");
+		$ret = mysql_query("insert into lgmatch (divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays) values ({$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres',{$this->Slackdays})");
 		if (!$ret)
 			throw new MatchException(mysql_error());
 		$ret = mysql_query("select last_insert_id()");
