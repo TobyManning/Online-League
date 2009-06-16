@@ -14,8 +14,8 @@ class Match {
 	public  $Result;		// N (not played) P (part played) D Draw H Home Win A Away win
 	public  $Games;		// Array of game objects
 	
-	public function __construct($d = 1) {
-		$this->Ind = 0;
+	public function __construct($in = 0, $d = 1) {
+		$this->Ind = $in;
 		$this->Division = $d;
 		$this->Hteam = new Team();
 		$this->Ateam = new Team();
@@ -47,8 +47,8 @@ class Match {
 		return "$mi={$this->Ind}";
 	}
 	
-	public function queryof() {
-		return "ind={$this->Ind}";
+	public function queryof($prefix="") {
+		return "{$prefix}ind={$this->Ind}";
 	}
 	
 	public function fetchdets() {
@@ -67,6 +67,14 @@ class Match {
 		$this->Hscore = $row["hscore"];
 		$this->Ascore = $row["ascore"];
 		$this->Result = $row["result"];
+	}
+	
+	public function teamalloc()  {
+		$ret = mysql_query("select count(*) from game where {$this->queryof('match')}");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return false;
+		$row = mysql_fetch_array($ret);
+		return $row[0] != 0;
 	}
 	
 	public function create() {

@@ -150,7 +150,7 @@ else  {
 		print "<h2>{$dat->display_month()}</h2>\n";
 		foreach ($rm as $rim) {
 			print "<p>{$teams[$rim->Home]->display_name()} -v- {$teams[$rim->Away]->display_name()}</p>\n";
-			$mtch = new Match($div);
+			$mtch = new Match(0, $div);
 			$mtch->Hteam = $teams[$rim->Home];
 			$mtch->Ateam = $teams[$rim->Away];
 			$mtch->Date = $dat;

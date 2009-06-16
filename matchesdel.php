@@ -1,12 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 include 'php/opendatabase.php';
-include 'php/club.php';
-include 'php/rank.php';
-include 'php/player.php';
-include 'php/team.php';
-include 'php/match.php';
-include 'php/matchdate.php';
 $div = $_GET["div"];
 if (strlen($div) == 0) {
 	include 'php/wrongentry.php';
@@ -20,7 +14,8 @@ mysql_query("delete from game where divnum=$div and result='N'");
 $Title = "Delete Matches complete";
 include 'php/head.php';
 ?>
-<body onload="javascript:opener.location.reload()">
+<body>
+
 <h1>Delete Matches Completed</h1>
 <?php
 print <<<EOT
