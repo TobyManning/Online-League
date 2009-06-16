@@ -7,11 +7,13 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
 include 'php/matchdate.php';
-$div = $_GET["div"];
+$div = $_POST["div"];
 if (strlen($div) == 0) {
 	include 'php/wrongentry.php';
 	exit(0);
 }
+$dat = new Matchdate();
+$dat->frompost();
 ?>
 <html>
 <?php
@@ -144,15 +146,15 @@ else  {
 	}
 	$md = new MatchData($nteams);
 	$md->permute();
-	$cnt = 1;
 	foreach ($md->Resmatch as $rm)  {
-		print "<h2>Month $cnt</h2>\n";
+		print "<h2>{$dat->display_month()}</h2>\n";
 		foreach ($rm as $rim) {
 			print "<p>{$teams[$rim->Home]->display_name()} -v- {$teams[$rim->Away]->display_name()}</p>\n";
 		}
-		$cnt++;	
+		$dat->next_month();	
 	}		 
-}?>
-<p>Click <a href="matchupdb.php">here</a> to go back to match updates.</p>
+}
+?>
+<p>Click <a href="javascript:self.close()">here</a> to close this window.</p>
 </body>
 </html>

@@ -24,7 +24,7 @@ EOT;
 $md->dateopt('Starting date');
 ?>
 <p>
-<button name="Generate" value="Generate Matches" type="submit"></button>
+<input type="submit" value="Generate Matches">
 </p>
 </form>
 <p>Click <a href="javascript:self.close()">here</a> to close this window.</p>

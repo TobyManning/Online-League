@@ -38,6 +38,10 @@ class Matchdate {
 		return date("D j M Y", $this->timestamp);
 	}
 	
+	public function display_month() {
+		return date("M Y", $this->timestamp);
+	}
+	
 	public function urlof() {
 		$u = date("Y-m-d", $this->timestamp);
 		return "md=$u";
