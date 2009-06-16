@@ -151,8 +151,8 @@ else  {
 		foreach ($rm as $rim) {
 			print "<p>{$teams[$rim->Home]->display_name()} -v- {$teams[$rim->Away]->display_name()}</p>\n";
 			$mtch = new Match($div);
-			$mtch->Hteam = new Team($teams[$rim->Home]);
-			$mtch->Ateam = new Team($teams[$rim->Away]);
+			$mtch->Hteam = $teams[$rim->Home];
+			$mtch->Ateam = $teams[$rim->Away];
 			$mtch->create();
 		}
 		$dat->next_month();	
