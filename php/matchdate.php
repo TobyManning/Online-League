@@ -62,11 +62,32 @@ class Matchdate {
 		$now = mktime(12,0,0,$dat["mon"], $dat["mday"], $dat["year"]);
 		return $now < $this->timestamp;
 	}
+	
+	public function set_season($startmon = 9) {
+		$times = getdate($this->timestamp);
+		$yr = $times["year"];
+		$mon = $times["mon"];
+		if ($mon < $startmon)
+			$mon = $startmon;
+		$this->timestamp = mktime(12,0,0,$mon, 1, $yr);
+	}
+	
+	public function next_month() {
+		$times = getdate($this->timestamp);
+		$yr = $times["year"];
+		$mon = $times["mon"];
+		$mon++;
+		if ($mon > 12) {
+			$mon = 1;
+			$yr++;
+		}
+		$this->timestamp = mktime(12,0,0,$mon, 1, $yr);		
+	}
 		
-	public function season()  {
+	public function season($startmon = 9)  {
 		$times = getdate($this->timestamp);
 		$y = $times["year"];
-		$sstart = mktime(12, 0, 0, 9, 1, $y);
+		$sstart = mktime(12, 0, 0, $startmon, 1, $y);
 		if  ($sstart <= $this->timestamp)
 			$y++;
 		return  $y;	
