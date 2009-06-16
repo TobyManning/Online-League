@@ -32,6 +32,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		if ($mtch->Division != $lastdiv)  {
 			$lastdiv = $mtch->Division;
 			print "<tr><th colspan=3>Division $lastdiv</th></tr>\n";
+		}
 		print <<<EOT
 <tr>
 <td>{$mtch->Date->display()}</td>
