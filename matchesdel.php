@@ -22,7 +22,11 @@ include 'php/head.php';
 ?>
 <body onload="javascript:opener.location.reload()">
 <h1>Delete Matches Completed</h1>
+<?php
+print <<<EOT
 <p>Finished deleting matches for Division $div</p>
-<p>Click <a href="javascript:self.close()">here</a> to close this window.</p>
+EOT;
+?>
+<p>Click <a href="matchupdb.php">here</a> to return to the match editing page.</p>
 </body>
 </html>
