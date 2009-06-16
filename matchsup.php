@@ -9,7 +9,7 @@ if (strlen($div) == 0) {
 ?>
 <html>
 <?php
-$Title = "Initialise Matches for division $div";
+$Title = "Initialise Matches for Division $div";
 include 'php/head.php';
 $md = new Matchdate();
 //  Initialise to start of season which we say is September

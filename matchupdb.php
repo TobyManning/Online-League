@@ -27,6 +27,12 @@ function initmatches(div) {
 	killwind();
 	miwind = window.open("matchsup.php?div="+div, "Initialise Matches", "width=450,height=400,resizeable=yes,scrollbars=yes");
 }
+
+function okdel(div) {
+	killwind();
+	if (confirm("OK to delete matches for Division " + div))
+		location = "matchesdel.php?div=" + div;
+}
 </script>
 <h1>Update Matches</h1>
 <p>
@@ -49,7 +55,7 @@ EOT;
 	else  {
 		print <<<EOT
 <p>Click <a href="matchupd.php?div=$div">here</a> to allocate/update team members for matches in division $div.</p>
-<p>Click here to delete the matches for division $div.</p>
+<p>Click <a href="javascript:okdel($div)">here</a> to delete the matches for division $div.</p>
 <p>Click here to consign played matches to history.</p>
 EOT;
 	}

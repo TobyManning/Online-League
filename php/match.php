@@ -27,6 +27,10 @@ class Match {
 		$this->Games = array();
 	}
 	
+	public function query_ind() {
+		return $this->Ind;
+	}
+
 	public function set_hometeam($h) {
 		$this->Hteam = new Team($h);
 	}

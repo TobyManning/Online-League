@@ -20,7 +20,7 @@ $dat->frompost();
 $Title = "Initialise Matches";
 include 'php/head.php';
 ?>
-<body>
+<body onload="javascript:opener.location.reload()">
 <h1>Initialise Matches</h1>
 <?php
 
@@ -153,6 +153,7 @@ else  {
 			$mtch = new Match($div);
 			$mtch->Hteam = $teams[$rim->Home];
 			$mtch->Ateam = $teams[$rim->Away];
+			$mtch->Date = $dat;
 			$mtch->create();
 		}
 		$dat->next_month();	

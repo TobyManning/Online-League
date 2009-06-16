@@ -39,7 +39,7 @@ class Matchdate {
 	}
 	
 	public function display_month() {
-		return date("M Y", $this->timestamp);
+		return date("F Y", $this->timestamp);
 	}
 	
 	public function urlof() {
