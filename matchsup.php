@@ -19,10 +19,14 @@ print <<<EOT
 <h1>Initialise Matches for division $div</h1>
 <form action="matchinit.php" method="post" enctype="application/x-www-form-urlencoded">
 <input type="hidden" name="div" value="$div">
+<p>
 {$md->dateopt('Starting date')}
+</p>
 EOT;
 ?>
+<p>
 <button name="Generate" value="Generate Matches" type="submit"></button>
+</p>
 </form>
 <p>Click <a href="javascript:self.close()">here</a> to close this window.</p>
 </body>
