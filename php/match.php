@@ -66,8 +66,8 @@ class Match {
 	}
 	
 	public function create() {
-		$qhome = $this->Hteam->query_name();
-		$qaway = $this->Ateam->query_name();
+		$qhome = $this->Hteam->queryname();
+		$qaway = $this->Ateam->queryname();
 		$qdate = $this->Date->queryof();
 		$qres = mysql_real_escape_string($this->Result);
 		$ret = mysql_query("insert into lgmatch (divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays) values ({$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres'.{$this->Slackdays})");
