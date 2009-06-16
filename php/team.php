@@ -31,6 +31,10 @@ class Team  {
 		return "$colname='$qn'";
 	}
 	
+	public function queryname() {
+		return mysql_real_escape_string($this->Name);
+	}
+	
 	public function urlof() {
 		$n = urlencode($this->Name);
 		return "tn=$n";

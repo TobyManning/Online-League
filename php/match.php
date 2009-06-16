@@ -64,6 +64,21 @@ class Match {
 		$this->Ascore = $row["ascore"];
 		$this->Result = $row["result"];
 	}
+	
+	public function create() {
+		$qhome = $this->Hteam->query_name();
+		$qaway = $this->Ateam->query_name();
+		$qdate = $this->Date->queryof();
+		$qres = mysql_real_escape_string($this->Result);
+		$ret = mysql_query("insert into lgmatch (divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays) values ({$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres'.{$this->Slackdays})");
+		if (!$ret)
+			throw new MatchException("Cannot create match record");
+		$ret = mysql_query("select last_insert_id()");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			throw new MatchException("Cannot locate match record id");
+		$row = mysql_fetch_array($ret);
+		$this->Ind = $row[0];
+	}
 }
 
 function count_matches_for($divnum) {
