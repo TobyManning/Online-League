@@ -36,7 +36,7 @@ class Match {
 	}
 	
 	public function fromget() {
-			$this->Ind = intval($_GET["mi"]);
+		$this->Ind = intval($_GET["mi"]);
 	}
 	
 	public function urlof() {

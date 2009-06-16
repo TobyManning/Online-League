@@ -6,6 +6,7 @@ include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
+include 'php/matchdate.php';
 $div = $_GET["div"];
 if (strlen($div) == 0) {
 	include 'php/wrongentry.php';
@@ -123,7 +124,7 @@ if ($nteams <= 2)  {
 <p>
 Sorry but not enough teams in Division $div for a match yet.
 </p>
-<p>Click <a href="matchupdb.php">here</a> to go back to match updates.</p>
+
 EOT;
 }
 else  {
@@ -152,5 +153,6 @@ else  {
 		$cnt++;	
 	}		 
 }?>
+<p>Click <a href="matchupdb.php">here</a> to go back to match updates.</p>
 </body>
 </html>

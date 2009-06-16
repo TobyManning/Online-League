@@ -81,7 +81,7 @@ class Matchdate {
 		$dat = getdate($this->timestamp);
 		$yrsel = $dat["year"];
 		print "<select name=\"year\">\n";	
-		for ($i = 2008;  $i <= 2011;  $i++) {
+		for ($i = 2009;  $i <= 2012;  $i++) {
 			if ($i == $yrsel)
 				print "<option selected>$i</option>\n";
 			else
@@ -121,9 +121,9 @@ class Matchdate {
 		print "</select>\n";
 	}
 
-	public function dateopt()
+	public function dateopt($msg = "Date")
 	{
-		print "Date:";
+		print "$msg:";
 		$this->dayopt();
 		$this->monopt();
 		$this->yropt();

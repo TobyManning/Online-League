@@ -13,6 +13,21 @@ $Title = "Update Matches";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript">
+var miwind = null;
+
+function killwind() {
+	if (miwind) {
+		miwind.close();
+		miwind = null;
+	}
+}
+
+function initmatches(div) {
+	killwind();
+	miwind = window.open("matchsup.php?div="+div, "Initialise Matches", "width=450,height=400,resizeable=yes,scrollbars=yes");
+}
+</script>
 <h1>Update Matches</h1>
 <p>
 Use this page to allocate matches and assign players. 
@@ -27,7 +42,7 @@ EOT;
 	if ($nm == 0)  {
 		print <<<EOT
 <p>
-Click <a href="matchinit.php?div=$div">here</a> to set up matches for division $div.
+Click <a href="javascript:initmatches($div)">here</a> to set up matches for division $div.
 </p>
 EOT;
 	}
