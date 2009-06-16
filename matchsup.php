@@ -20,6 +20,7 @@ print <<<EOT
 <form action="matchinit.php" method="post" enctype="application/x-www-form-urlencoded">
 <input type="hidden" name="div" value="$div">
 {$md->dateopt('Starting date')}
+EOT;
 ?>
 <button name="Generate" value="Generate Matches" type="submit"></button>
 </form>
