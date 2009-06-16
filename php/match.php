@@ -72,7 +72,7 @@ class Match {
 		$qres = mysql_real_escape_string($this->Result);
 		$ret = mysql_query("insert into lgmatch (divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays) values ({$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres'.{$this->Slackdays})");
 		if (!$ret)
-			throw new MatchException("Cannot create match record");
+			throw new MatchException(mysql_error());
 		$ret = mysql_query("select last_insert_id()");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			throw new MatchException("Cannot locate match record id");
