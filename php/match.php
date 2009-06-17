@@ -44,7 +44,7 @@ class Match {
 	}
 	
 	public function urlof() {
-		return "$mi={$this->Ind}";
+		return "mi={$this->Ind}";
 	}
 	
 	public function queryof($prefix="") {
