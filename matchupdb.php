@@ -12,7 +12,8 @@ include 'php/match.php';
 $Title = "Update Matches";
 include 'php/head.php';
 ?>
-<body>
+<body onunload="javascript:killwind()">
+
 <script language="javascript">
 var miwind = null;
 
@@ -32,6 +33,11 @@ function okdel(div) {
 	killwind();
 	if (confirm("OK to delete matches for Division " + div))
 		location = "matchesdel.php?div=" + div;
+}
+
+function archive(div) {
+	killwind();
+	alert("Sorry not written archive bit yet as nothing yet to archive");
 }
 </script>
 <h1>Update Matches</h1>
@@ -54,9 +60,9 @@ EOT;
 	}
 	else  {
 		print <<<EOT
-<p>Click <a href="matchupd.php?div=$div">here</a> to allocate/update team members for matches in division $div.</p>
+<p>Click <a href="matchtmupd.php?div=$div">here</a> to allocate/update team members for matches in division $div.</p>
 <p>Click <a href="javascript:okdel($div)">here</a> to delete the matches for division $div.</p>
-<p>Click here to consign played matches to history.</p>
+<p>Click <a href="javascript:archive(div)">here</a> to consign played matches to history.</p>
 EOT;
 	}
 }
