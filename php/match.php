@@ -43,6 +43,17 @@ class Match {
 		$this->Ind = intval($_GET["mi"]);
 	}
 	
+	public function frompost($prefix = "") {
+		$this->Ind = $_POST["${prefix}mi"];
+		if ($this->Ind == 0)
+			throw new MatchException("Null post ind field"); 
+	}
+
+	public function save_hidden($prefix = "") {
+		$f = $this->Ind;
+		return "<input type=\"hidden\" name=\"${prefix}mi\" value=\"$f\">";
+	}
+	
 	public function urlof() {
 		return "mi={$this->Ind}";
 	}
@@ -69,6 +80,34 @@ class Match {
 		$this->Result = $row["result"];
 	}
 	
+	public function fetchteams() {
+		try  {
+			$this->Hteam->fetchdets();
+			$this->Ateam->fetchdets();
+		}
+		catch (TeamException $e) {
+			throw new MatchException($e->getMessage());
+		}
+	}
+	
+	public function fetchgames() {
+		$ret = mysql_query("select ind from game where {$this->queryof('match')} order by wrank desc,brank desc,wlast,blast,wfirst,bfirst");
+		if (!$ret)
+			throw new MatchException("Game read fail " . mysql_error());
+		$result = array();
+		try  {
+			while ($row = mysql_fetch_array($ret))  {
+				$g = new Game($row[0]);
+				$g->fetchdets();
+				$g->Matchind = $this->Ind;
+			}
+		}
+		catch (GameException $e) {
+			throw new MatchException($e->getMessage());
+		}
+		$this->Games = $result;
+	}
+	
 	public function teamalloc()  {
 		$ret = mysql_query("select count(*) from game where {$this->queryof('match')}");
 		if (!$ret || mysql_num_rows($ret) == 0)
@@ -90,6 +129,18 @@ class Match {
 			throw new MatchException("Cannot locate match record id");
 		$row = mysql_fetch_array($ret);
 		$this->Ind = $row[0];
+	}
+	
+	public function slackdopt()
+	{
+		print "<select name=\"slackd\">\n";
+		for ($i = 1;  $i <= 21; $i++) {
+			if ($i == $this->Slackdays)
+				print "<option selected>$i</option>\n";
+			else
+				print "<option>$i</option>\n";
+		}
+		print "</select>\n";
 	}
 }
 

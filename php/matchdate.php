@@ -87,6 +87,12 @@ class Matchdate {
 		}
 		$this->timestamp = mktime(12,0,0,$mon, 1, $yr);		
 	}
+	
+	public function next_day($ndays = 1) {
+		$times = getdate($this->timestamp);
+		$day = $times["mday"];
+		$this->timestamp = mktime(12,0,0,$times["mon"], $day+$ndays,$times["year"]);
+	}
 		
 	public function season($startmon = 9)  {
 		$times = getdate($this->timestamp);

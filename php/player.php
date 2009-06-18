@@ -12,6 +12,11 @@ class Player  {
 	public $IGS;
 	public $Admin;
 	public $Userid;
+	private $Gotrecs;
+	private $Played;
+	private $Won;
+	private $Drawn;
+	private $Lost;
 	
 	public function __construct($f = "", $l = "") {
 		if (strlen($f) != 0)  {
@@ -26,6 +31,7 @@ class Player  {
 			else
 				throw new PlayerException("Cannot parse name");
 			}
+			$Gotrecs = false;
 	}
 	
 	public function fromget($prefix = "", $htd = false) {
@@ -244,36 +250,43 @@ class Player  {
 		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',kgs='$qkgs',igs='$qigs',rank=$r where {$this->queryof()}");
 	}
 	
-	public function won_games() {
-		$ret = mysql_query("select count(*) from game where ({$this->queryof('w')} and result='W') or ({$this->queryof('b')} and result='B')");
-		if (!$ret || mysql_num_rows($ret) == 0)
-			return 0;
+	private function get_grec($query) {
+		$ret = mysql_query("select count(*) from game where $query");
+		if  (!$ret || mysql_num_rows($ret) == 0)
+			return  0;
 		$row = mysql_fetch_array($ret);
 		return $row[0];
+	}
+	
+	private function get_grecs()  {
+		if  ($this->Gotrecs)
+			return;
+		$this->Gotrecs = true;
+		// Get SQL to do all the work
+		$this->Played = $this->get_grec("result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
+		$this->Won = $this->get_grec("({$this->queryof('w')} and result='W') or ({$this->queryof('b')} and result='B')");
+		$this->Drawn = $this->get_grec("result='J' and ({$this->queryof('w')} or {$this->queryof('b')})");
+		$this->Lost = $this->get_grec("({$this->queryof('w')} and result='B') or ({$this->queryof('b')} and result='W')");
+	}
+	
+	public function won_games() {
+		$this->get_grecs();
+		return  $this->Won;
 	}
 	
 	public function lost_games() {
-		$ret = mysql_query("select count(*) from game where ({$this->queryof('w')} and result='B') or ({$this->queryof('b')} and result='W')");
-		if (!$ret || mysql_num_rows($ret) == 0)
-			return 0;
-		$row = mysql_fetch_array($ret);
-		return $row[0];
+		$this->get_grecs();
+		return  $this->Lost;
 	}
 
 	public function drawn_games() {
-		$ret = mysql_query("select count(*) from game where result='J' and ({$this->queryof('w')} or {$this->queryof('b')})");
-		if (!$ret || mysql_num_rows($ret) == 0)
-			return 0;
-		$row = mysql_fetch_array($ret);
-		return $row[0];
+		$this->get_grecs();
+		return  $this->Drawn;
 	}
 	
 	public function played_games() {
-		$ret = mysql_query("select count(*) from game where result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
-		if (!$ret || mysql_num_rows($ret) == 0)
-			return 0;
-		$row = mysql_fetch_array($ret);
-		return $row[0];
+		$this->get_grecs();
+		return  $this->Played;
 	}
 	
 	public function count_teams() {

@@ -14,7 +14,7 @@ $Title = "Adjust Matches";
 include 'php/head.php';
 ?>
 <body>
-<h1>Matches</h1>
+<h1>Update Matches</h1>
 <table cellpadding="2" cellspacing="1" border="0">
 <tr>
 <th>Date</th>
