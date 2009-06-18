@@ -63,7 +63,7 @@ print <<<EOT
 This match is between
 {$mtch->Hteam->display_name()} ({$mtch->Hteam->display_description()})
 and
-{$mtch->Hteam->display_name()} ({$mtch->Hteam->display_description()}).
+{$mtch->Ateam->display_name()} ({$mtch->Ateam->display_description()}).
 </p>
 <form action="updmatchdate.php" method="post" enctype="application/x-www-form-urlencoded">
 {$mtch->save_hidden()}
@@ -73,6 +73,8 @@ $mtch->Date->dateopt("Date set for");
 print "with";
 $mtch->slackdopt();
 print <<<EOT
+days to play the games.
+</p>
 <p>
 To change date adjust and
 <input type="submit" value="Click here">
