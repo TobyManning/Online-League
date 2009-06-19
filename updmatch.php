@@ -38,7 +38,7 @@ function checkteamsvalid() {
 		aplayers[n] = opt[el.selectedIndex].value;
 	}
 	for (var p1 = 0;  p1 < 2; p1++)  {
-		for (var p2 = p1+1; p2 < 3; p2++) {
+		for (var p2 = p1 + 1; p2 < 3; p2++) {
 			if (hplayers[p1] == hplayers[p2])  {
 				alert("Team 1 players " + (p1+1) + " and " + (p2+1) + " are the same");
 				return false;
