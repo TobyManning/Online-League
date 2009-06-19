@@ -83,7 +83,7 @@ EOT;
 		if ($matchm && $matchm->is_same($memb))
 			print <<<EOT
 <option value="$val" selected>
-EOT
+EOT;
 		else
 			print <<<EOT
 <option value="$val">
