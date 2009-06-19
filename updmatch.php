@@ -17,7 +17,7 @@ include 'php/head.php';
 ?>
 <body>
 <script language="javascript">
-function checkteamvalid() {
+function checkteamsvalid() {
 	var 	form = document.matchform;
 	var	hplayers = new Array(3);
 	var	aplayers = new Array(3);
