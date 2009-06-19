@@ -16,6 +16,42 @@ $Title = "Edit Match";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript">
+function checkteamvalid() {
+	var 	form = document.matchform;
+	var	hplayers = new Array(3);
+	var	aplayers = new Array(3);
+	for (var n = 0;  n < 3;  n++)  {
+		var el = form["htm" + n];
+		if (el.selectedIndex <= 0)  {
+			alert("No team 1 player " + (n+1) + " selected");
+			return false;
+		}
+		var opt = el.options;
+		hplayers[n] = opt[el.selectedIndex].value;
+		el = form["atm" + n];
+		if (el.selectedIndex <= 0)  {
+			alert("No team 2 player " + n + " selected");
+			return false;
+		}
+		opt = el.options;
+		aplayers[n] = opt[el.selectedIndex].value;
+	}
+	for (var p1 = 0;  p1 < 2; p1++)  {
+		for (var p2 = p+1; p2 < 3; p2++) {
+			if (hplayers[p1] == hplayers[p2])  {
+				alert("Team 1 players " + (p1+1) + " and " + (p2+1) + " are the same");
+				return false;
+			}
+			if (aplayers[p1] == aplayers[p2])  {
+				alert("Team 2 players " + (p1+1) + " and " + (p2+1) + " are the same");
+				return false;
+			}
+		}
+	}
+	return true;		
+}
+</script>
 <h1>Edit Match</h1>
 <?php
 
@@ -77,6 +113,7 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 	print <<<EOT
 <td>
 <select name="$ha$n" size="0">
+<option value="-">-</option>
 EOT;
 	foreach ($membs as $memb) {
 		$val = $memb->selof();
@@ -107,7 +144,7 @@ This match is between
 and
 {$mtch->Ateam->display_name()} ({$mtch->Ateam->display_description()}).
 </p>
-<form action="updmatchdate.php" method="post" enctype="application/x-www-form-urlencoded">
+<form name="matchform" action="updmatchdate.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:checkteamsvalid()">
 {$mtch->save_hidden()}
 <p>
 EOT;
@@ -121,8 +158,8 @@ days to play the games.</p>
 <?php
 print <<<EOT
 <tr>
-<th collspan="2" align="center">{$mtch->Hteam->display_name()}</th>
-<th collspan="2" align="center">{$mtch->Ateam->display_name()}</th>
+<th colspan="2" align="center">{$mtch->Hteam->display_name()}</th>
+<th colspan="2" align="center">{$mtch->Ateam->display_name()}</th>
 </tr>
 EOT;
 for ($row = 0; $row < 3; $row++)  {
