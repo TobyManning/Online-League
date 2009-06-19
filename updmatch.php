@@ -31,14 +31,14 @@ function checkteamsvalid() {
 		hplayers[n] = opt[el.selectedIndex].value;
 		el = form["atm" + n];
 		if (el.selectedIndex <= 0)  {
-			alert("No team 2 player " + n + " selected");
+			alert("No team 2 player " + (n+1) + " selected");
 			return false;
 		}
 		opt = el.options;
 		aplayers[n] = opt[el.selectedIndex].value;
 	}
 	for (var p1 = 0;  p1 < 2; p1++)  {
-		for (var p2 = p+1; p2 < 3; p2++) {
+		for (var p2 = p1+1; p2 < 3; p2++) {
 			if (hplayers[p1] == hplayers[p2])  {
 				alert("Team 1 players " + (p1+1) + " and " + (p2+1) + " are the same");
 				return false;
@@ -144,7 +144,7 @@ This match is between
 and
 {$mtch->Ateam->display_name()} ({$mtch->Ateam->display_description()}).
 </p>
-<form name="matchform" action="updmatchdate.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:checkteamsvalid()">
+<form name="matchform" action="updmatch2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkteamsvalid()">
 {$mtch->save_hidden()}
 <p>
 EOT;
