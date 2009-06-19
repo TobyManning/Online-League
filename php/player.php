@@ -247,6 +247,7 @@ class Player  {
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
 		$r = $this->Rank->Rankvalue;
+		// FIXME We need to reset rank in team members and unplayed games if it has changed
 		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',kgs='$qkgs',igs='$qigs',rank=$r where {$this->queryof()}");
 	}
 	

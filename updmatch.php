@@ -58,6 +58,48 @@ catch (MatchException $e) {
 $Htmemb = checkteam($mtch->Hteam);
 $Atmemb = checkteam($mtch->Ateam);
 
+// Output select team member and if recorded display W or B
+
+function selectmemb($ha, $n, $mch, $team, $membs) {
+	$colour = "-";
+	$matchm = false;
+	if (count($mch->Games) > $n)  {
+		$g = $mch->Games[$n];
+		if ($g->Wteam->is_same($team))  {
+			$matchm = $g->Wplayer;
+			$colour = "White";
+		}
+		else  {
+			$matchm = $g->Bplayer;
+			$colour = "Black";
+		}
+	}
+	print <<<EOT
+<td>
+<select name="$ha$n" size="0">
+EOT;
+	foreach ($membs as $memb) {
+		$val = $memb->selof();
+		if ($matchm && $matchm->is_same($memb))
+			print <<<EOT
+<option value="$val" selected>
+EOT
+		else
+			print <<<EOT
+<option value="$val">
+EOT;
+		print <<<EOT
+{$memb->display_name()} ({$memb->display_rank()})
+</option>
+EOT;
+	}
+	print <<<EOT
+</select>
+</td>
+<td>$colour</td>
+EOT;
+}
+
 print <<<EOT
 <p>
 This match is between
@@ -72,18 +114,29 @@ EOT;
 $mtch->Date->dateopt("Date set for");
 print "with";
 $mtch->slackdopt();
+?>
+days to play the games.</p>
+<table>
+<tr><th colspan="4" align="center">Player assignments</th></tr>
+<?php
 print <<<EOT
-days to play the games.
-</p>
+<tr>
+<th collspan="2" align="center">{$mtch->Hteam->display_name()}</th>
+<th collspan="2" align="center">{$mtch->Ateam->display_name()}</th>
+</tr>
+EOT;
+for ($row = 0; $row < 3; $row++)  {
+	print "<tr>\n";
+	selectmemb("htm", $row, $mtch, $mtch->Hteam, $Htmemb);
+	selectmemb("atm", $row, $mtch, $mtch->Ateam, $Atmemb);		
+	print "</tr>\n";
+}
+?>
+</table>
 <p>
-To change date adjust and
+Make any adjustments and
 <input type="submit" value="Click here">
 </p>
-EOT;
-//if (count($mtch->Games) != 0)  {
-//
-//}
-?>
 </form>
 </body>
 </html>
