@@ -218,7 +218,7 @@ for ($row = 0; $row < 3; $row++)  {
 </table>
 <p>
 Make any adjustments and
-<input type="submit" value="Click here">
+<input type="submit" value="Click here"> or <input type="reset" value="Reset form">
 </p>
 </form>
 </body>
