@@ -9,6 +9,18 @@ include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
+$mtch = new Match();
+try  {
+	$mtch->fromget();
+	$mtch->fetchdets();
+	$mtch->fetchteams();
+	$mtch->fetchgames();
+}
+catch (MatchException $e) {
+	$mess = $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);	
+}
 ?>
 <html>
 <?php
@@ -51,8 +63,6 @@ function checkteamsvalid() {
 	}
 	return true;		
 }
-</script>
-<h1>Edit Match</h1>
 <?php
 
 // Load members of team and at the same time check we've got enough
@@ -61,6 +71,8 @@ function checkteam($team) {
 	$result = $team->list_members();
 	if (count($result) < 3)  {
 		print <<<EOT
+</script>
+<h1>Edit Match</h1>
 <p>
 Sorry but there are not enough members in {$team->display_name()} yet to
 make up a match with.
@@ -78,22 +90,48 @@ EOT;
 	return $result;
 }
 
-$mtch = new Match();
-try  {
-	$mtch->fromget();
-	$mtch->fetchdets();
-	$mtch->fetchteams();
-	$mtch->fetchgames();
-}
-catch (MatchException $e) {
-	$mess = $e->getMessage();
-	include 'php/wrongentry.php';
-	exit(0);	
-}
-
 $Htmemb = checkteam($mtch->Hteam);
 $Atmemb = checkteam($mtch->Ateam);
 
+print <<<EOT
+var hplayranks = new Array();
+var aplayranks = new Array();
+EOT;
+
+foreach ($Htmemb as $ht) {
+	print "hplayranks.push({$ht->Rank->Rankvalue});\n";
+}
+foreach ($Atmemb as $at) {
+	print "aplayranks.push({$at->Rank->Rankvalue});\n";
+}
+
+//  This is still Javascript we're creating in case anyone's confused
+//  This function is called when a team member is selected and possibly
+//  update white-black or black-white when ranks differ.
+//  We might want to revisit this code and think about handicap stones
+//  which shouldn't be too difficult
+
+?>
+
+function tmselect(n) {
+	var 	form = document.matchform;
+	var hel = form["htm" + n].selectedIndex;
+	var ael = form["atm" + n].selectedIndex;
+	var cel = form["colours" + n];
+	if  (hel <= 0  ||  ael <= 0)
+		return;
+	var hrnk = hplayranks[hel-1];
+	var arnk = aplayranks[ael-1];
+	var csel = 0;
+	if  (hrnk > arnk)
+		csel = 1;
+	else if (hrnk < arnk)
+		csel = 2;
+	cel.selectedIndex = csel;
+}
+</script>
+<h1>Edit Match</h1>
+<?php
 // Output select team member and if recorded display W or B
 
 function selectmemb($ha, $n, $mch, $team, $membs) {
@@ -112,7 +150,7 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 	}
 	print <<<EOT
 <td>
-<select name="$ha$n" size="0">
+<select name="$ha$n" onchange="javascript:tmselect($n)">
 <option value="-">-</option>
 EOT;
 	foreach ($membs as $memb) {
@@ -167,7 +205,7 @@ $cols = array("Nigiri", "White-Black", "Black-White");
 for ($row = 0; $row < 3; $row++)  {
 	print "<tr>\n";
 	$col = selectmemb("htm", $row, $mtch, $mtch->Hteam, $Htmemb);
-	print "<td><select name=\"colours\">\n";
+	print "<td><select name=\"colours$row\">\n";
 	for ($c = 0;  $c < 3;  $c++)  {
 		$s = $c == $col? " selected": "";
 		print "<option$s value=$c>$cols[$c]</option>\n";
