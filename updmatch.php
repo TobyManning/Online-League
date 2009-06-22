@@ -191,7 +191,7 @@ print "with";
 $mtch->slackdopt();
 ?>
 days to play the games.</p>
-<table>
+<table cellpadding="2" cellspacing="3" border="0">
 <tr><th colspan="3" align="center">Player assignments</th></tr>
 <?php
 print <<<EOT
