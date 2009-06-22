@@ -97,17 +97,17 @@ $Atmemb = checkteam($mtch->Ateam);
 // Output select team member and if recorded display W or B
 
 function selectmemb($ha, $n, $mch, $team, $membs) {
-	$colour = "-";
+	$colour = 0;
 	$matchm = false;
 	if (count($mch->Games) > $n)  {
 		$g = $mch->Games[$n];
 		if ($g->Wteam->is_same($team))  {
 			$matchm = $g->Wplayer;
-			$colour = "White";
+			$colour = 1;
 		}
 		else  {
 			$matchm = $g->Bplayer;
-			$colour = "Black";
+			$colour = 2;
 		}
 	}
 	print <<<EOT
@@ -133,8 +133,8 @@ EOT;
 	print <<<EOT
 </select>
 </td>
-<td>$colour</td>
 EOT;
+	return $colour;	// 0 nigiri 1 white 2 black
 }
 
 print <<<EOT
@@ -154,17 +154,25 @@ $mtch->slackdopt();
 ?>
 days to play the games.</p>
 <table>
-<tr><th colspan="4" align="center">Player assignments</th></tr>
+<tr><th colspan="3" align="center">Player assignments</th></tr>
 <?php
 print <<<EOT
 <tr>
-<th colspan="2" align="center">{$mtch->Hteam->display_name()}</th>
-<th colspan="2" align="center">{$mtch->Ateam->display_name()}</th>
+<th align="center">{$mtch->Hteam->display_name()}</th>
+<th align="center">Colours</th>
+<th align="center">{$mtch->Ateam->display_name()}</th>
 </tr>
 EOT;
+$cols = array("Nigiri", "White-Black", "Black-White");
 for ($row = 0; $row < 3; $row++)  {
 	print "<tr>\n";
-	selectmemb("htm", $row, $mtch, $mtch->Hteam, $Htmemb);
+	$col = selectmemb("htm", $row, $mtch, $mtch->Hteam, $Htmemb);
+	print "<td><select name=\"colours\">\n";
+	for ($c = 0;  $c < 3;  $c++)  {
+		$s = $c == $col? " selected": "";
+		print "<option$s value=$c>$cols[$c]</option>\n";
+	}
+	print "</select></td>\n";
 	selectmemb("atm", $row, $mtch, $mtch->Ateam, $Atmemb);		
 	print "</tr>\n";
 }
