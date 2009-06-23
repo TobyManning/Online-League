@@ -73,7 +73,7 @@ class Game {
 		$qbrank = $this->Bplayer->Rank->Rankvalue;
 		$qdate = $this->Date->queryof();
 		// These are always going to be 'N' and null but let's be consistent.
-		$qres = $this->Result->queryof();
+		$qres = mysql_real_escape_string($this->Result);
 		$qresdat = mysql_real_escape_string($this->Resultdet);
 		$qsgf = mysql_real_escape_string($this->Sgf);
 		$qmi = $this->Matchind;
