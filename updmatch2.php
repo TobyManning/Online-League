@@ -75,7 +75,7 @@ if ($newdate->unequal($mtch->Date) || $newslack != $mtch->Slackdays)  {
  
 $gnum = $mtch->ngames();
 
-for ($gm = 0;  $gm < $gnum;  $gm++)  {
+for ($gm = 0;  $gm < 3;  $gm++)  {
 	if  ($gm < $gnum)  {
 		$g = $mtch->Games[$gm];
 		// Don't try to change any played games
