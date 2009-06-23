@@ -77,7 +77,7 @@ class Game {
 		$qresdat = mysql_real_escape_string($this->Resultdet);
 		$qsgf = mysql_real_escape_string($this->Sgf);
 		$qmi = $this->Matchind;
-		if (!mysql_query("insert into game (matchdate,wfirst,wlast,wteam,wrank,bfirst,blast,bteam,brank,result,reshow,sgf,matchind,divnum) values ('$qdate','$qwfirst','$qwlast','$qwteam',$qwrank,'$qbfirst','$qblast','$qbteam',$qbrank,'$qres','$qresdat','$qsgf',{$this->Matchind},{$this->Division}"))
+		if (!mysql_query("insert into game (matchdate,wfirst,wlast,wteam,wrank,bfirst,blast,bteam,brank,result,reshow,sgf,matchind,divnum) values ('$qdate','$qwfirst','$qwlast','$qwteam',$qwrank,'$qbfirst','$qblast','$qbteam',$qbrank,'$qres','$qresdat','$qsgf',{$this->Matchind},{$this->Division})"))
 			throw new GameException(mysql_error());
 		$ret = mysql_query("select last_insert_id()");
 		if (!$ret || mysql_num_rows($ret) == 0)
