@@ -28,7 +28,7 @@ if ($fn['error'] == UPLOAD_ERR_OK  &&  preg_match('/.*\.sgf$/i', $fn['name']) &&
 if ($date_played->unequal($g->Date))
 	$g->resetdate($date_played);
 $g->set_result($_POST["result"], $_POST["resulttype"]);
-if (length($sgfdata) != 0)
+if (strlen($sgfdata) != 0)
 	$g->set_sgf($sgfdata);
 ?>
 <html>
