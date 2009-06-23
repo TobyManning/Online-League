@@ -191,6 +191,14 @@ class Game {
 		mysql_query("update game set result='$qres',reshow='$qrest' where {$this->queryof()}");		
 	}
 	
+	public function get_sgf() {
+		$ret = mysql_query("select sgf from game where {$this->queryof()}");
+		if (!$ret  ||  mysql_num_rows($ret) == 0)
+			return;
+		$row = mysql_fetch_array($ret);
+		$this->Sgf = $row[0];
+	}
+	
 	public function set_sgf($sgfdata) {
 		$qsgfdata = mysql_real_escape_string($sgfdata);
 		mysql_query("update game set sgf='$qsgfdata' where {$this->queryof()}");

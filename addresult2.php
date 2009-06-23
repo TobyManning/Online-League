@@ -51,6 +51,5 @@ print <<<EOT
 </p>
 EOT;
 ?>
-<p><a href="javascript:history.go(-2)">Click here</a> to go back to where you were.</p>
 </body>
 </html>
