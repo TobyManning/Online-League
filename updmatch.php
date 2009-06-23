@@ -151,7 +151,7 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 	}
 	print "<td>\n";
 	if ($readonly)
-		print {$matchm->display_name()};
+		print $matchm->display_name();
 	else  {
 		print <<<EOT
 <select name="$ha$n" onchange="javascript:tmselect($n)">
