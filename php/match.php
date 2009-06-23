@@ -111,6 +111,7 @@ class Match {
 	public function newgame() {
 		$g = new Game($this->Ind, $this->Division);
 		$g->Date = $this->Date;
+		array_push($this->Games, $g);
 		return $g;
 	}
 	
