@@ -142,5 +142,56 @@ class Game {
 			$res = "<a href=\"downloadsgf.php?{$this->urlof()}\">$res</a>";
 		return $res;
 	}
+	
+	public function reset_date($dat) {
+		$this->Date = $dat;
+		mysql_query("update game set matchdate='{$dat->queryof()}' where {$this->queryof()}"); 
+	}
+	
+	public function adj_match($mtch, $mult) {
+		switch ($this->Result) {
+		default:
+			return;
+		case 'J':
+			$mtch->Hscore += 0.5 * $mult;
+			$mtch->Ascore += 0.5 * $mult;
+			return;
+		case 'W':	
+			if ($this->Wteam->is_same($mtch->Hteam))
+				$mtch->Hscore += $mult;
+			else
+				$mtch->Ascore += $mult;
+			return;
+		case 'B':
+			if ($this->Wteam->is_same($mtch->Hteam))
+				$mtch->Ascore += $mult;
+			else
+				$mtch->Hscore += $mult;
+			return;
+		}
+	}
+	
+	public function set_result($res, $restype) {
+		if ($res != 'J')
+			$restype = "$res+$restype";
+		else
+			$restype = "";
+		$this->Resultdet = $restype;
+		$mtch = new Match($this->Matchind);
+		$mtch->fetchdets();
+		$this->adj_match($mtch, -1);
+		$this->Result = $res;
+		$this->adj_match($mtch, 1);
+		$mtch->updscore();
+		$qres = mysql_real_escape_string($res);
+		$qrest = mysql_real_escape_string($restype);
+		mysql_query("update game set result='$qres',resshow='$qrest' where {$this->queryof()}");		
+	}
+	
+	public function set_sgf($sgfdata) {
+		$qsgfdata = mysql_real_escape_string($sgfdata);
+		mysql_query("update game set sgf='$qsgfdata' where {$this->queryof()}");
+		$this->Sgf = $sgfdata;
+	}
 }
 ?>

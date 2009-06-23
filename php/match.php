@@ -153,6 +153,19 @@ class Match {
 				$g->Date = $this->Date;
 		}
 	}
+	
+	public function updscore() {
+		$tot = $this->Hscore + $this->Ascore;
+		if ($tot < 3)
+			$this->Result = 'P';
+		else if ($this->Hscore == $this->Ascore)
+			$this->Result = 'D';
+		else if ($this->Hscore < $this->Ascore)
+			$this->Result = 'A';
+		else
+			$this->Result = 'H';
+		mysql_query("update lgmatch set result='{$this->Result}',hscore={$this->Hscore},ascore={$this->Ascore} where {$this->queryof()}");
+	}					
 		
 	public function slackdopt()
 	{

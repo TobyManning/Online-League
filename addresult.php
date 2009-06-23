@@ -65,7 +65,8 @@ for ($v = 0; $v < 50; $v++)
 </select>
 </p>
 <p>
-If you can please browse for an SGF file to upload <input type=file name=sgffile>
+If you can please browse on your computer for an SGF file of the game to
+upload <input type=file name=sgffile>
 </p>
 <p>When done, press this:
 <input type="submit" value="Add result">
