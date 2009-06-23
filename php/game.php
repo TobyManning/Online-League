@@ -113,7 +113,8 @@ class Game {
 	}
 	
 	private function has_sgf() {
-		if  (!mysql_query("select length(sgf) from game where {$this->queryof()}"))
+		$ret = mysql_query("select length(sgf) from game where {$this->queryof()}");
+		if (!$ret)
 			return false;
 		$row = mysql_fetch_array($ret);
 		return $row[0] != 0;
@@ -172,6 +173,8 @@ class Game {
 	}
 	
 	public function set_result($res, $restype) {
+		if (preg_match('/\d+/', $restype))
+			$restype .= '.5';
 		if ($res != 'J')
 			$restype = "$res+$restype";
 		else
