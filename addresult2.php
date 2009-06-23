@@ -49,6 +49,8 @@ print <<<EOT
 ({$g->Bplayer->display_rank()}) of
 {$g->Bteam->display_name()} as Black as {$g->display_result}.
 </p>
+EOT;
+?>
 <p><a href="javascript:history.go(-2)">Click here</a> to go back to where you were.</p>
 </body>
 </html>
