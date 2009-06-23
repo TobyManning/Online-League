@@ -15,8 +15,8 @@ class Game {
 	public  $Sgf;			// Sgf file
 	public  $Matchind;	// Ind in match table
 	
-	public function __construct($min = 0, $d = 1) {
-		$this->Ind = 0;
+	public function __construct($in = 0, $min = 0, $d = 1) {
+		$this->Ind = $in;
 		$this->Division = $d;
 		$this->Date = new Matchdate();
 		$this->Wteam = new Team();

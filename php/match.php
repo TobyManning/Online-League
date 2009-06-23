@@ -97,9 +97,8 @@ class Match {
 		$result = array();
 		try  {
 			while ($row = mysql_fetch_array($ret))  {
-				$g = new Game($row[0]);
+				$g = new Game($row[0], $this->Ind, $this->Division);
 				$g->fetchdets();
-				$g->Matchind = $this->Ind;
 			}
 		}
 		catch (GameException $e) {
@@ -109,7 +108,7 @@ class Match {
 	}
 	
 	public function newgame() {
-		$g = new Game($this->Ind, $this->Division);
+		$g = new Game(0, $this->Ind, $this->Division);
 		$g->Date = $this->Date;
 		array_push($this->Games, $g);
 		return $g;
