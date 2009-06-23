@@ -71,7 +71,7 @@ class Game {
 		$this->Wplayer->fetchdets();
 		$this->Bplayer->fetchdets();
 		$this->Result = $row["result"];
-		$this->Resultdet = $row["resshow"];
+		$this->Resultdet = $row["reshow"];
 		$this->Matchind = $row["matchind"];
 	}
 	
