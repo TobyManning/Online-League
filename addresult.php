@@ -41,7 +41,9 @@ print <<<EOT
 <form action="addresult2.php" method="post" enctype="multipart/form-data">
 {$g->save_hidden()}
 <p>
-{$g->Date->dateopt("Game was played on")}
+EOT;
+$g->Date->dateopt("Game was played on");
+print <<<EOT
 </p>
 <p>
 Result was
@@ -61,7 +63,11 @@ for ($v = 0; $v < 50; $v++)
 ?>
 <option value="H">Over 50</option>
 </select>
-Please give an SGF file <input type=file name=sgffile>
+</p>
+<p>
+If you can please browse for an SGF file to upload <input type=file name=sgffile>
+</p>
+<p>When done, press this:
 <input type="submit" value="Add result">
 </p>
 </form>
