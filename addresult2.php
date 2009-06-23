@@ -47,7 +47,7 @@ print <<<EOT
 {$g->Wteam->display_name()} as White and
 <b>{$g->Bplayer->display_name()}</b>
 ({$g->Bplayer->display_rank()}) of
-{$g->Bteam->display_name()} as Black as {$g->display_result}.
+{$g->Bteam->display_name()} as Black was {$g->display_result()}.
 </p>
 EOT;
 ?>

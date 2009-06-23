@@ -185,7 +185,7 @@ class Game {
 		$mtch->updscore();
 		$qres = mysql_real_escape_string($res);
 		$qrest = mysql_real_escape_string($restype);
-		mysql_query("update game set result='$qres',resshow='$qrest' where {$this->queryof()}");		
+		mysql_query("update game set result='$qres',reshow='$qrest' where {$this->queryof()}");		
 	}
 	
 	public function set_sgf($sgfdata) {
