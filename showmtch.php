@@ -48,20 +48,6 @@ and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
 <tr><th>Player</th><th>Rank</th><th>Team</th><th>Player</th><th>Rank</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
-	switch ($g->Result) {
-	default:
-		$res = '&nbsp;';
-		break;
-	case 'W':
-		$res = "White Win";
-		break;
-	case 'J':
-		$res = "Jigo";
-		break;
-	case 'B':
-		$res = "Black Win";
-		break;
-	}
 	print <<<EOT
 <tr>
 <td>{$g->Wplayer->display_name()}</td>
@@ -70,7 +56,7 @@ foreach ($mtch->Games as $g) {
 <td>{$g->Bplayer->display_name()}</td>
 <td>{$g->Bplayer->display_rank()}</td>
 <td>{$g->Bteam->display_name()}</td>
-<td>$res</td>
+<td>{$g->display_result(true)}</td>
 </tr>
 EOT;
 }

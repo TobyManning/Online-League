@@ -100,5 +100,36 @@ class Game {
 		if (!mysql_query("update game set wfirst='$qwfirst',wlast='$qwlast',bfirst='$qbfirst',blast='$qblast',wteam='$qwteam',bteam='$qbteam',wrank=$qwrank,brank=$qbrank where {$this->queryof()}"))
 			throw new GameException(mysql_error()); 
 	}
+	
+	private function has_sgf() {
+		if  (!mysql_query("select length(sgf) from game where {$this->queryof()}"))
+			return false;
+		$row = mysql_fetch_array($ret);
+		return $row[0] != 0;
+	}
+	
+	public function display_result($addunpl = false) {
+		if ($this->Result == 'N')  {
+			if  ($addunpl)
+				return  "<a href=\"addresult.php?{$this->urlof()}\">Add Result</a>";
+			return  "Not played";
+		}
+		if (strlen($this->Resultdet) != 0)
+			$res = htmlspecialchars($this->Resultdet);
+		else  switch  ($this->Result) {
+		case 'W':
+			$res = "White Win";
+			break;
+		case 'B':
+			$res = "Black Win";
+			break;
+		case 'J':
+			$res = "Jigo";
+			break;
+		}
+		if ($this->has_sgf())
+			$res = "<a href=\"downloadsgf.php?{$this->urlof()}\">$res</a>";
+		return $res;
+	}
 }
 ?>
