@@ -74,7 +74,7 @@ class Game {
 		$qdate = $this->Date->queryof();
 		// These are always going to be 'N' and null but let's be consistent.
 		$qres = $this->Result->queryof();
-		$qresdat = mysql_real_escape_string($this->Resultdet)
+		$qresdat = mysql_real_escape_string($this->Resultdet);
 		$qsgf = mysql_real_escape_string($this->Sgf);
 		$qmi = $this->Matchind;
 		if (!mysql_query("insert into game (matchdate,wfirst,wlast,wteam,wrank,bfirst,blast,bteam,brank,result,reshow,sgf,matchind,divnum) values ('$qdate','$qwfirst','$qwlast','$qwteam',$qwrank,'$qbfirst','$qblast','$qbteam',$qbrank,'$qres','$qresdat','$qsgf',{$this->Matchind},{$this->Division}"))
