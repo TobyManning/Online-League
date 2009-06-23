@@ -127,7 +127,7 @@ EOT;
 foreach ($mtch->Games as $g) {
 	switch ($g->Result) {
 	default:
-		$res = '&nbsp;'
+		$res = '&nbsp;';
 		break;
 	case 'W':
 		$res = "White Win";
