@@ -21,8 +21,6 @@ catch (GameException $e) {
 }
 $date_played = new Matchdate();
 $date_played->frompost();
-$result = $_POST["result"];
-$restype = ;
 $sgfdata = "";
 $fn = $_FILES["sgffile"];
 if ($fn['error'] == UPLOAD_ERR_OK  &&  preg_match('/.*\.sgf$/i', $fn['name']) && $fn['size'] > 0)
