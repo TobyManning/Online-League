@@ -57,6 +57,8 @@ class Game {
 		$this->Bteam = new Team($row["bteam"]);
 		$this->Wplayer = new Player($row["wfirst"], $row["wlast"]);
 		$this->Bplayer = new Player($row["bfirst"], $row["blast"]);
+		$this->Wplayer->fetchdets();
+		$this->Bplayer->fetchdets();
 		$this->Result = $row["result"];
 		$this->Resultdet = $row["resshow"];
 		$this->Matchind = $row["matchind"];
