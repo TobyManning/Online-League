@@ -19,9 +19,6 @@ catch (GameException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
-?>
-Content-Type: application/x-go-sgf
-
-<?php
+header("content-type: application/x-go-sgf");
 print $g->Sgf;
 ?>
