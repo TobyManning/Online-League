@@ -26,8 +26,8 @@ function getgdets($m, $n, &$wplay, &$bplay, &$wteam, &$bteam)  {
 	// Assume "home" player is white.
 	$wplay = new Player();
 	$bplay = new Player();
-	$wplay->fromsel($_POST["htm$n"];
-	$bplay->fromsel($_POST["atm$n"];
+	$wplay->fromsel($_POST["htm$n"]);
+	$bplay->fromsel($_POST["atm$n"]);
 	$wteam = $m->Hteam;
 	$bteam = $m->Ateam;
 	$col = $_POST["colours$n"];
