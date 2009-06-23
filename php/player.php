@@ -78,6 +78,13 @@ class Player  {
 		return "$f:$l";
 	}
 	
+	public function fromsel($pl) {
+		if  (!preg_match("/(.*):(.*)/", $pl, $matches))
+			throw new PlayerException("Invalid player selection");
+		$this->First = $matches[1];
+		$this->Last = $matches[2];
+	}
+	
 	public function fetchdets() {
 		$q = $this->queryof();
 		$ret = mysql_query("select rank,club,email,kgs,igs,admin,user from player where $q");

@@ -147,31 +147,36 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 			$matchm = $g->Bplayer;
 			$colour = 2;
 		}
+		$readonly = $g->Result != 'N';
 	}
-	print <<<EOT
-<td>
+	print "<td>\n";
+	if ($readonly)
+		print {$matchm->display_name()};
+	else  {
+		print <<<EOT
 <select name="$ha$n" onchange="javascript:tmselect($n)">
 <option value="-">-</option>
 EOT;
-	foreach ($membs as $memb) {
-		$val = $memb->selof();
-		if ($matchm && $matchm->is_same($memb))
-			print <<<EOT
+		foreach ($membs as $memb) {
+			$val = $memb->selof();
+			if ($matchm && $matchm->is_same($memb))
+				print <<<EOT
 <option value="$val" selected>
 EOT;
-		else
-			print <<<EOT
+			else
+				print <<<EOT
 <option value="$val">
 EOT;
-		print <<<EOT
+			print <<<EOT
 {$memb->display_name()} ({$memb->display_rank()})
 </option>
 EOT;
-	}
-	print <<<EOT
+		}
+		print <<<EOT
 </select>
-</td>
 EOT;
+	}
+	print "</td>\n";
 	return $colour;	// 0 nigiri 1 white 2 black
 }
 

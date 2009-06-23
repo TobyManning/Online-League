@@ -108,6 +108,16 @@ class Match {
 		$this->Games = $result;
 	}
 	
+	public function newgame() {
+		$g = new Game($this->Ind, $this->Division);
+		$g->Date = $this->Date;
+		return $g;
+	}
+	
+	public function ngames()  {
+		return count($this->Games);
+	}
+	
 	public function teamalloc()  {
 		$ret = mysql_query("select count(*) from game where {$this->queryof('match')}");
 		if (!$ret || mysql_num_rows($ret) == 0)
@@ -131,6 +141,18 @@ class Match {
 		$this->Ind = $row[0];
 	}
 	
+	public function dateupdate() {
+		$qdate = $this->Date->queryof();
+		$ret = mysql_query("update lgmatch set matchdate='$qdate',slackdays={$this->Slackdays} where {$this->queryof()}");
+		if (!$ret)
+			throw new MatchException(mysql_error());
+		mysql_query("update game set matchdate='$qdate' where matchind={$this->Ind} and result='N'");
+		foreach ($this->Games as $g) {
+			if ($g->Result == 'N')
+				$g->Date = $this->Date;
+		}
+	}
+		
 	public function slackdopt()
 	{
 		print "<select name=\"slackd\">\n";
