@@ -99,6 +99,7 @@ class Match {
 			while ($row = mysql_fetch_array($ret))  {
 				$g = new Game($row[0], $this->Ind, $this->Division);
 				$g->fetchdets();
+				array_push($result, $g);
 			}
 		}
 		catch (GameException $e) {

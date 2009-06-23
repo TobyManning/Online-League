@@ -122,7 +122,7 @@ and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
 <p>Player assignments are as follows:</p>
 <table>
 <tr><th colspan="3" align="center">White</th><th colspan="3" align="center">Black</th><th>Result</th></tr>
-<tr><th>Player</th><th>Rank</th><th>Team</th></tr>
+<tr><th>Player</th><th>Rank</th><th>Team</th><th>Player</th><th>Rank</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
 	switch ($g->Result) {
