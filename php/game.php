@@ -35,12 +35,23 @@ class Game {
 		$this->Ind = intval($_GET["gn"]);
 	}
 	
+	public function frompost($prefix = "") {
+		$this->Ind = $_POST["${prefix}gn"];
+		if ($this->Ind == 0)
+			throw new GameException("Null post ind field"); 
+	}
+	
 	public function urlof() {
 		return "gn={$this->Ind}";
 	}
 	
 	public function queryof($prefix="") {
 		return "{$prefix}ind={$this->Ind}";
+	}
+	
+	public function save_hidden($prefix = "") {
+		$f = $this->Ind;
+		return "<input type=\"hidden\" name=\"${prefix}gn\" value=\"$f\">";
 	}
 	
 	public function fetchdets() {
