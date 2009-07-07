@@ -62,6 +62,6 @@ EOT;
 }
 ?>
 </table>
-<p>Click <a href="matchesb.php">here</a> to view some other match.</p>
+<p>Click <a href="javascript:history.back()">here</a> to view some other match.</p>
 </body>
 </html>
