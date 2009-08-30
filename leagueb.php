@@ -15,7 +15,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Current League Standings</h1>
-<table>
+<table class="league">
 <tr>
 <th>Team</th>
 <th>P</th>
