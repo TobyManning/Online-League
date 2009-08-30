@@ -24,8 +24,13 @@ include 'php/head.php';
 <?php
 $div = $_GET['div'];
 $crit = "";
-if (strlen($div) != 0)
+if (strlen($div) != 0)  {
+	print <<<EOT
+<tr>
+<td colspan=3><a href="addmatch.php?div=$div">Add a match for division $div</a></td>
+</tr>
 	$crit = " where divnum=$div";
+}
 $ret = mysql_query("select ind from lgmatch$crit order by divnum,matchdate,hteam,ateam");
 if ($ret && mysql_num_rows($ret) > 0)  {
 	$lastdiv = -99;
@@ -42,9 +47,13 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 <td>{$mtch->Date->display()}</td>
 EOT;
 		if ($mtch->Result == 'N' || $mtch->Result == 'P') {
-print <<<EOT
+			print <<<EOT
 <td><a href="updmatch.php?{$mtch->urlof()}">{$mtch->Hteam->display_name()}</a></td>
 <td><a href="updmatch.php?{$mtch->urlof()}">{$mtch->Ateam->display_name()}</a></td>
+EOT;
+			if ($mtch->Result == 'N')
+			print <<<EOT
+<td><a href="delmatch.php?{$mtch->urlof()}">Delete match</a></td>
 EOT;
 		}
 		else {
