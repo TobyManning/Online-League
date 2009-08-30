@@ -153,14 +153,14 @@ class Team  {
 	}
 	
 	public function get_scores() {
-		$this->Played = get_n_from_matches("result!='N' and result!='P' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
-		$this->Won = get_n_from_matches("({$this->queryof('hteam')} and result='H') or ({$this->queryof('ateam')} and result='A')");
-		$this->Lost = get_n_from_matches("({$this->queryof('hteam')} and result='A') or ({$this->queryof('ateam')} and result='H')");
-		$this->Drawn = get_n_from_matches("result='D' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
-		$this->Scoref = get_n_from_matches("{$this->queryof('hteam')}", "sum(hscore)") +
-							 get_n_from_matches("{$this->queryof('ateam')}", "sum(ascore)");
-		$this->Scorea = get_n_from_matches("{$this->queryof('hteam')}", "sum(ascore)") +
-							 get_n_from_matches("{$this->queryof('ateam')}", "sum(hscore)");
+		$this->Played = $this->get_n_from_matches("result!='N' and result!='P' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
+		$this->Won = $this->get_n_from_matches("({$this->queryof('hteam')} and result='H') or ({$this->queryof('ateam')} and result='A')");
+		$this->Lost = $this->get_n_from_matches("({$this->queryof('hteam')} and result='A') or ({$this->queryof('ateam')} and result='H')");
+		$this->Drawn = $this->get_n_from_matches("result='D' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
+		$this->Scoref = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(hscore)") +
+							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(ascore)");
+		$this->Scorea = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(ascore)") +
+							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hscore)");
 	}
 	
 	public function count_members() {
