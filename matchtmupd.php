@@ -23,7 +23,7 @@ include 'php/head.php';
 </tr>
 <?php
 $div = $_GET['div'];
-$crit = ""
+$crit = "";
 if (strlen($div) != 0)
 	$crit = " where divnum=$div";
 $ret = mysql_query("select ind from lgmatch order by divnum,matchdate,hteam,ateam$crit");
