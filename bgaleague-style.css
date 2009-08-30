@@ -118,7 +118,7 @@ table.plupd {
 table.resultsb {
 	border: 0px;
 	padding: 2px;
-	border-spacing: 1px;
+	border-spacing: 3px;
 	empty-cells: show;
 }
 table.teamdisp {
