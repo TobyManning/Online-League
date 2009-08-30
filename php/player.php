@@ -254,8 +254,13 @@ class Player  {
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
 		$r = $this->Rank->Rankvalue;
-		// FIXME We need to reset rank in team members and unplayed games if it has changed
 		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',kgs='$qkgs',igs='$qigs',rank=$r where {$this->queryof()}");
+		// Fix rank in teams that this player is a member of
+		mysql_query("update teammemb set rank=$r where {$this->queryof('tm')}");
+		// Fix rank in unplayed games where this player is black
+		mysql_query("update game set brank=$r where result='N' and {$this->queryof('b')}");
+		// Ditto for where this player is white
+		mysql_query("update game set wrank=$r where result='N' and {$this->queryof('w')}");
 	}
 	
 	private function get_grec($query) {

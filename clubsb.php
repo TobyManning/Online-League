@@ -7,7 +7,7 @@ include 'php/club.php';
 ?>
 <body>
 <h1>Clubs</h1>
-<table cellpadding="2" cellspacing="5" border="0">
+<table border="0">
 <tr>
 <th>Abbrev</th>
 <th>Name</th>
@@ -27,13 +27,13 @@ if ($ret && mysql_num_rows($ret)) {
 		$p->fetchdets();
 		print <<<EOT
 <tr>
-<td>{$p->display_code()}</td>
-<td>{$p->display_name()}</td>
-<td>{$p->display_contact()}</td>
-<td>{$p->display_contphone()}</td>
-<td>{$p->display_contemail()}</td>
-<td>{$p->display_website()}</td>
-<td>{$p->display_night()}</td>
+<td class="clublist">{$p->display_code()}</td>
+<td class="clublist">{$p->display_name()}</td>
+<td class="clublist">{$p->display_contact()}</td>
+<td class="clublist">{$p->display_contphone()}</td>
+<td class="clublist">{$p->display_contemail()}</td>
+<td class="clublist">{$p->display_website()}</td>
+<td class="clublist">{$p->display_night()}</td>
 </tr>
 EOT;
 	}
