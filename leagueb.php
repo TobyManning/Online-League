@@ -23,7 +23,7 @@ include 'php/head.php';
 <th>D</th>
 <th>L</th>
 <th>For</th>
-<th>Against</th>
+<th>Ag</th>
 </tr>
 <?php
 $ml = max_division();
