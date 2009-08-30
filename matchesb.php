@@ -22,10 +22,7 @@ include 'php/head.php';
 <th>Team B</th>
 </tr>
 <?php
-$div = $_GET['div'];
-if (strlen($div) != 0)
-	$crit = " where divnum=$div";
-$ret = mysql_query("select ind from lgmatch order by divnum,matchdate,hteam,ateam$crit");
+$ret = mysql_query("select ind from lgmatch order by divnum,matchdate,hteam,ateam");
 if ($ret && mysql_num_rows($ret) > 0)  {
 	$lastdiv = -99;
 	while ($row = mysql_fetch_array($ret))  {
