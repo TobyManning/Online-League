@@ -83,9 +83,9 @@ table.matchesd {
 	padding: 2px;
 }
 table.matchesupd {
+	padding: 4px;
+	border-spacing: 5px;
 	empty-cells: show;
-	border-spacing: 1px;
-	padding: 2px;
 }
 table.membpick {
 	empty-cells: show;

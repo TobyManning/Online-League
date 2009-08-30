@@ -15,7 +15,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Update Matches</h1>
-<table class="matchupd">
+<table class="matchesupd">
 <tr>
 <th>Date</th>
 <th>Team A</th>
