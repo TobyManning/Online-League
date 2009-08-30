@@ -15,6 +15,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Current League Standings</h1>
+<div align="center">
 <table class="league">
 <tr>
 <th>Team</th>
@@ -54,5 +55,6 @@ EOT;
 }
 ?>
 </table>
+</div>
 </body>
 </html>

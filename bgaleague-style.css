@@ -145,11 +145,13 @@ table.showmatch {
 	empty-cells: show;
 }
 table.league {
-	border: solid;
-	border-width: 1px;
-	padding: 4px;
-	border-color: #000000;
-	empty-cells: show;
-	border-spacing: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
 	border-style: solid;
+	border-spacing: 5px;
+	empty-cells: show;
+	border-color: #000000;
+	padding: 4px;
+	border-width: 1px;
+	border: solid;
 }
