@@ -7,6 +7,12 @@ class Team  {
 	public $Name;			// Team short name
 	public $Description;	// Team full name
 	public $Division;		// League division
+	public $Played;		// Played matches
+	public $Won;			// Won matches
+	public $Drawn;			// Drawn matches
+	public $Lost;			// Lost matches
+	public $Scoref;		// Scores for
+	public $Scorea;		// Scores against
 	
 	public function __construct($n = "") {
 		if (strlen($n) != 0)
@@ -138,17 +144,24 @@ class Team  {
 		print "</select>\n";
 	}
 	
-	// public function won_matches() {
-	//}
+	public function get_n_from_matches($crit, $wot="count(*)") {
+		$ret = mysql_query("select $wot from lgmatch where $crit");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return 0;
+		$row = mysql_fetch_array($ret);
+		return $row[0];
+	}
 	
-	// public function lost_matches() {
-	//}
-
-	// public function drawn_matches() {
-	//}
-	
-	// public function played_matches() {
-	//}
+	public function get_scores() {
+		$this->Played = get_n_from_matches("result!='N' and result!='P' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
+		$this->Won = get_n_from_matches("({$this->queryof('hteam')} and result='H') or ({$this->queryof('ateam')} and result='A')");
+		$this->Lost = get_n_from_matches("({$this->queryof('hteam')} and result='A') or ({$this->queryof('ateam')} and result='H')");
+		$this->Drawn = get_n_from_matches("result='D' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
+		$this->Scoref = get_n_from_matches("{$this->queryof('hteam')}", "sum(hscore)") +
+							 get_n_from_matches("{$this->queryof('ateam')}", "sum(ascore)");
+		$this->Scorea = get_n_from_matches("{$this->queryof('hteam')}", "sum(ascore)") +
+							 get_n_from_matches("{$this->queryof('ateam')}", "sum(hscore)");
+	}
 	
 	public function count_members() {
 		$ret = mysql_query("select count(*) from teammemb where {$this->queryof('teamname')}");
@@ -189,5 +202,15 @@ function max_division() {
 		return $row[0];
 	}
 	return 1;	
+}
+
+function score_compare($teama, $teamb) {
+	if ($teama->Won != $teamb->Won)
+		return $teama->Won > $teamb->Won? -1: 1;
+	$sa = $teama->Scoref - $teama->Scorea;
+	$sb = $teamb->Scoref - $teamb->Scorea;
+	if ($sa == $sb)
+		return 0;
+	return $sa > $sb? -1: 1;
 }	
 ?>
