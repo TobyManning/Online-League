@@ -27,7 +27,7 @@ $crit = "";
 if (strlen($div) != 0)  {
 	print <<<EOT
 <tr>
-<td colspan=3><a href="addmatch.php?div=$div">Add a match for division $div</a></td>
+<td colspan="3" align="center"><a href="addmatch.php?div=$div">Add a match for division $div</a></td>
 </tr>
 EOT;
 	$crit = " where divnum=$div";
