@@ -28,7 +28,7 @@ include 'php/head.php';
 <?php
 $ml = max_division();
 for ($d = 1; $d < $ml; $d++) {
-	print <<<EOT;
+	print <<<EOT
 <tr>
 <th colspan="7" align="center">Division $d</th>
 </tr>
