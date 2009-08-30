@@ -36,8 +36,20 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		print <<<EOT
 <tr>
 <td>{$mtch->Date->display()}</td>
+EOT;
+		if ($mtch->Result == 'N' || $mtch->Result == 'P') {
+print <<<EOT
 <td><a href="updmatch.php?{$mtch->urlof()}">{$mtch->Hteam->display_name()}</a></td>
 <td><a href="updmatch.php?{$mtch->urlof()}">{$mtch->Ateam->display_name()}</a></td>
+EOT;
+		}
+		else {
+print <<<EOT
+<td>{$mtch->Hteam->display_name()}</td>
+<td>{$mtch->Ateam->display_name()}</td>
+EOT;
+		}
+print <<<EOT
 </tr>
 EOT;
 	}
