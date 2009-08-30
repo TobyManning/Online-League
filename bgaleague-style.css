@@ -158,8 +158,9 @@ table.showmatch {
 	empty-cells: show;
 }
 table.league {
-	border: 1px;
-	padding: 2px;
-	border-spacing: 2px;
+	border-color: #000000;
 	empty-cells: show;
+	border-spacing: 5px;
+	padding: 2px;
+	border: 1px;
 }
