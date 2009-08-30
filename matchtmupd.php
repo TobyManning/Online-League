@@ -24,14 +24,8 @@ include 'php/head.php';
 <?php
 $div = $_GET['div'];
 $crit = "";
-if (strlen($div) != 0)  {
-	print <<<EOT
-<tr>
-<td colspan="3" align="center"><a href="addmatch.php?div=$div">Add a match for division $div</a></td>
-</tr>
-EOT;
+if (strlen($div) != 0)
 	$crit = " where divnum=$div";
-}
 $ret = mysql_query("select ind from lgmatch$crit order by divnum,matchdate,hteam,ateam");
 if ($ret && mysql_num_rows($ret) > 0)  {
 	$lastdiv = -99;
@@ -71,6 +65,12 @@ EOT;
 else {
 	print "<tr><td colspan=\"3\" align=\"center\">No matches yet please create some</td></tr>\n";
 }
+if (strlen($div) != 0)
+	print <<<EOT
+<tr>
+<td colspan="3" align="center"><a href="addmatch.php?div=$div">Add a match for division $div</a></td>
+</tr>
+EOT;
 ?>
 </table>
 </body>
