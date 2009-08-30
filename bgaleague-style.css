@@ -151,3 +151,9 @@ table.updtmemb {
 	border-spacing: 2px;
 	empty-cells: show;
 }
+table.showmatch {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 2px;
+	empty-cells: show;
+}
