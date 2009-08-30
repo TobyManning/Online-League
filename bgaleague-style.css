@@ -67,7 +67,9 @@ td.subind {
 	margin-left: 0.5in;
 	font-size: small;
 }
-td.clublist {
-	border-spacing: 5;
+table.clublist {
+	border: 0;
 	padding: 2;
+	border-spacing: 5;
+	empty-cells: show;
 }
