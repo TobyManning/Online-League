@@ -32,6 +32,7 @@ class Player  {
 				throw new PlayerException("Cannot parse name");
 			}
 			$Gotrecs = false;
+			$this->Rank = new Rank();
 	}
 	
 	public function fromget($prefix = "", $htd = false) {
