@@ -68,8 +68,8 @@ td.subind {
 	font-size: small;
 }
 table.clublist {
-	border: 0;
-	padding: 2;
-	border-spacing: 5;
+	border: 0px;
+	padding: 2px;
+	border-spacing: 5px;
 	empty-cells: show;
 }
