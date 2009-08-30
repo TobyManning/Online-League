@@ -46,7 +46,7 @@ case  "clubrank":
 if (count($initials) != 0)  {
 	print <<<EOT
 <a name="Top"></a>
-<table cellpadding="2" cellspacing="0" border="0"><tr>
+<table class="plinits"><tr>
 EOT;
 	if ($byrank) {
 		foreach ($initials as $init) {
@@ -63,7 +63,7 @@ EOT;
 }
 $ref = "<a href=\"playersb.php?by=$next\">";
 print <<<EOT
-<table cellpadding="2" cellspacing="5" border="0">
+<table class="pllist">
 <tr>
 <th>${ref}Name</a></th>
 <th>${ref}Rank</a></th>

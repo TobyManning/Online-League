@@ -15,7 +15,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Matches</h1>
-<table cellpadding="2" cellspacing="1" border="0">
+<table class="matchesd">
 <tr>
 <th>Date</th>
 <th>Team A</th>

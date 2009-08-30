@@ -73,3 +73,81 @@ table.clublist {
 	border-spacing: 5px;
 	empty-cells: show;
 }
+table.clubupd {
+	border: 0px;
+	padding: 1px;
+	border-spacing: 1px;
+	empty-cells: show;
+}
+table.matchesd {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 1px;
+	empty-cells: show;
+}
+table.matchesupd {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 1px;
+	empty-cells: show;
+}
+table.membpick {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 2px;
+	empty-cells: show;
+}
+table.plinits {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 0px;
+	empty-cells: show;
+}
+table.pllist {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 5px;
+	empty-cells: show;
+}
+table.plupd {
+	border: 0px;
+	padding: 1px;
+	border-spacing: 2px;
+	empty-cells: show;
+}
+table.resultsb {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 1px;
+	empty-cells: show;
+}
+table.teamdisp {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 5px;
+	empty-cells: show;
+}
+table.teamsb {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 5px;
+	empty-cells: show;
+}
+table.teamsupdb {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 3px;
+	empty-cells: show;
+}
+table.updmatch {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 3px;
+	empty-cells: show;
+}
+table.updtmemb {
+	border: 0px;
+	padding: 2px;
+	border-spacing: 2px;
+	empty-cells: show;
+}

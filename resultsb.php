@@ -17,7 +17,7 @@ include 'php/head.php';
 <h1>Results for completed matches</h1>
 <p>The following results are available. Bold indicates the winning team. Click on any
 entry to see the individual scores and in some cases game scores.</p>
-<table cellpadding="2" cellspacing="1" border="0">
+<table class="resultsb">
 <tr>
 <th>Date</th>
 <th>Team A</th>

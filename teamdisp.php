@@ -32,7 +32,7 @@ Team {$team->display_name()} - {$team->display_description()} - division
 Team captain is {$team->display_captain()}.
 </p>
 <h3>Members</h3>
-<table cellpadding="2" cellspacing="5" border="0">
+<table class="teamdisp">
 <tr>
 	<th>Name</th>
 	<th>Rank</th>

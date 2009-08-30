@@ -13,7 +13,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Teams</h1>
-<table cellpadding="2" cellspacing="5" border="0">
+<table class="teamsb">
 <tr>
 	<th>Name</th>
 	<th>Full Name</th>

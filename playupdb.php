@@ -12,7 +12,7 @@ include 'php/head.php';
 <h1>Update Players</h1>
 <p>Please select the player to be updated from the following list.</p>
 <p>To add a new player click on one at random and just change the entries on the form.</p>
-<table cellpadding="1" cellspacing="2" border="0">
+<table class="plupd">
 <?php
 $playerlist = list_players();
 $countplayers = count($playerlist);

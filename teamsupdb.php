@@ -12,7 +12,7 @@ include 'php/head.php';
 <h1>Update Teams</h1>
 <p>Please select the team to be updated from the following list.</p>
 <p>To add a new team click on one at random and just change the entries on the form.</p>
-<table cellpadding="2" cellspacing="3" border="0">
+<table class="classupdb">
 <?php
 $teamlist = list_teams();
 $countteams = count($teamlist);

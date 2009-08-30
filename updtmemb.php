@@ -145,7 +145,7 @@ This is the current team. To add a player to the team
 To remove a player click
 del against the player.
 </p>
-<table cellpadding="2" cellspacing="2" border="0">
+<table class="updtmemb">
 <thead>
 <tr>
 <th>Name</th>
