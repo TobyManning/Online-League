@@ -11,7 +11,8 @@ include 'php/head.php';
 <body>
 <h1>Update Clubs</h1>
 <p>Please select the club to be updated from the following list.</p>
-<p>To add a club click on one at random and just change the entries on the form.</p>
+<p>To add a club click on one at random and just change the entries on the form or
+select the "new club" menu option</p>
 <table class="clubupd">
 <tr>
 <th>Abbrev</th>

@@ -39,7 +39,8 @@ function formvalid()
 details of the club.</p>
 EOT;
 ?>
-<p>To enter a new club, just fill in the fields appropriately and press the "Add club" button.
+<p>You can enter a new club by adjusting the
+fields appropriately and pressing the "Add club" button.
 </p>
 <?php
 print <<<EOT

@@ -11,7 +11,7 @@ include 'php/head.php';
 <body>
 <h1>Update Players</h1>
 <p>Please select the player to be updated from the following list.</p>
-<p>To add a new player click on one at random and just change the entries on the form.</p>
+<p>To add a new player either select the "new player" menu entry.</p>
 <table class="plupd">
 <?php
 $playerlist = list_players();

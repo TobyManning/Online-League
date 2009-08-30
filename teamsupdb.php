@@ -11,7 +11,8 @@ include 'php/head.php';
 <body>
 <h1>Update Teams</h1>
 <p>Please select the team to be updated from the following list.</p>
-<p>To add a new team click on one at random and just change the entries on the form.</p>
+<p>To add a new team select the menu entry, or you can click
+on one at random below and just change the entries on the form.</p>
 <table class="classupdb">
 <?php
 $teamlist = list_teams();

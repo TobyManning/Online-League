@@ -38,7 +38,8 @@ function formvalid()
 details of the player.</p>
 EOT;
 ?>
-<p>To enter a new player, just fill in the fields appropriately and press the "Add player" button.
+<p>To enter a new player, you can adjust the fields appropriately
+and press the "Add player" button.
 </p>
 <?php
 print <<<EOT
