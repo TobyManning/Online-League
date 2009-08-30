@@ -22,8 +22,8 @@ include 'php/head.php';
 <th>W</th>
 <th>D</th>
 <th>L</th>
-<th>For</th>
-<th>Ag</th>
+<th>F</th>
+<th>A</th>
 </tr>
 <?php
 $ml = max_division();
