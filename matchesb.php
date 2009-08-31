@@ -48,7 +48,9 @@ EOT;
 			print "<td>$ref$ht</a></td><td>$ref$at</a></td>\n";
 		}
 		else  {
-			print "<td>$ht</td><td>$at</td>\n";
+			$ref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+			$ndref = "</a>"
+			print "<td>$ref$ht$ndref</td><td>$ref$at$ndref</td>\n";
 		}
 		print "</tr>\n";
 	}
