@@ -6,7 +6,11 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Administration</h1>
-<p>This will be password-protected when I've finished but meanwhile please select
+<p>
+This menu is only intended for administration purposes.
+Team captains can assign teams and update results on the matches selection.
+</p>
+<p>Otherwise, please select
 the appropriate option on the left highlighted in red.</p>
 </body>
 </html>
