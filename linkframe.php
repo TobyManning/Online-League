@@ -1,11 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<?php
-$Title = "British Go Association League";
-include 'php/head.php';
-?>
-<body class="nomarg">
-<h2>Places</h2>
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
@@ -16,6 +8,16 @@ if (isset($_SESSION['user_id'])) {
 }
 else
 	$login = false;
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
+$Title = "British Go Association League";
+include 'php/head.php';
+?>
+<body class="nomarg">
+<h2>Places</h2>
+<?php
 $a = $_GET["abs"];
 if ($a != "")
 	$a = "/league/";
