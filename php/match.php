@@ -30,6 +30,9 @@ class Match {
 		$this->Games = array();
 	}
 	
+	// Just a few places where we need the ind but we don't want people fiddling
+	// so we make it private
+	
 	public function query_ind() {
 		return $this->Ind;
 	}
@@ -41,29 +44,45 @@ class Match {
 	public function set_awayteam($a) {
 		$this->Ateam = new Team($a);
 	}
-	
+
+	// Find out match ind from a page with ?mi=nnn
+		
 	public function fromget() {
 		$this->Ind = intval($_GET["mi"]);
 	}
-	
+
+	// For when we leave a hidden input in form telling
+	// the next page which prefix we're talking about
+		
 	public function frompost($prefix = "") {
 		$this->Ind = $_POST["${prefix}mi"];
 		if ($this->Ind == 0)
 			throw new MatchException("Null post ind field"); 
 	}
 
+	// For saving input in form
+	
 	public function save_hidden($prefix = "") {
 		$f = $this->Ind;
 		return "<input type=\"hidden\" name=\"${prefix}mi\" value=\"$f\">";
 	}
-	
+
+	// For generation of query string with match ind in
+		
 	public function urlof() {
 		return "mi={$this->Ind}";
 	}
-	
+
+	// Use for generating a database query component referring to the match
+	// $prefix is set to a non-empty string where the column name has some
+	// prefix to "ind" mostly for game where column is "matchind"
+	 
 	public function queryof($prefix="") {
 		return "{$prefix}ind={$this->Ind}";
 	}
+	
+	// Fetch the rest of the stuff relating to a match
+	// apart from the teams
 	
 	public function fetchdets() {
 		$q = $this->queryof();
@@ -83,6 +102,8 @@ class Match {
 		$this->Result = $row["result"];
 	}
 	
+	// Get the team details for a match
+	
 	public function fetchteams() {
 		try  {
 			$this->Hteam->fetchdets();
@@ -92,7 +113,9 @@ class Match {
 			throw new MatchException($e->getMessage());
 		}
 	}
-	
+
+	// Fetch the game list (not including score)
+		
 	public function fetchgames() {
 		$ret = mysql_query("select ind from game where {$this->queryof('match')} order by wrank desc,brank desc,wlast,blast,wfirst,bfirst");
 		if (!$ret)
@@ -150,7 +173,7 @@ class Match {
 		$ret = mysql_query("update lgmatch set matchdate='$qdate',slackdays={$this->Slackdays} where {$this->queryof()}");
 		if (!$ret)
 			throw new MatchException(mysql_error());
-		mysql_query("update game set matchdate='$qdate' where matchind={$this->Ind} and result='N'");
+		mysql_query("update game set matchdate='$qdate' where {$this->queryof('match')} and result='N'");
 		foreach ($this->Games as $g) {
 			if ($g->Result == 'N')
 				$g->Date = $this->Date;
@@ -163,8 +186,10 @@ class Match {
 			throw new MatchException(mysql_error());
 		//  We currently don't allow deletion of played games so this shouldn't
 		//  lose anything
-		mysql_query("delete from game where matchind={$this->Ind}");
+		mysql_query("delete from game where {$this->queryof('match')}");
 	}
+	
+	// Adjust result of match for incoming score
 	
 	public function updscore() {
 		$tot = $this->Hscore + $this->Ascore;
@@ -178,7 +203,9 @@ class Match {
 			$this->Result = 'H';
 		mysql_query("update lgmatch set result='{$this->Result}',hscore={$this->Hscore},ascore={$this->Ascore} where {$this->queryof()}");
 	}					
-		
+
+	// Push out a selection option for the number of spare days
+			
 	public function slackdopt()
 	{
 		print "<select name=\"slackd\">\n";
@@ -191,6 +218,8 @@ class Match {
 		print "</select>\n";
 	}
 }
+
+// Return the number of matches for a division
 
 function count_matches_for($divnum) {
 	$ret = mysql_query("select count(*) from lgmatch where divnum=$divnum");
