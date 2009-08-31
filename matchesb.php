@@ -34,6 +34,12 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		$ind = $row[0];
 		$mtch = new Match($ind);
 		$mtch->fetchdets();
+		try {
+			$mtch->fetchteams();
+		}
+		catch (MatchException $e) {
+			continue;
+		}
 		if ($mtch->Division != $lastdiv)  {
 			$lastdiv = $mtch->Division;
 			print "<tr><th colspan=\"3\" align=\"center\">Division $lastdiv</th></tr>\n";
