@@ -41,6 +41,12 @@ class Team  {
 		return mysql_real_escape_string($this->Name);
 	}
 	
+	public function noquote() {
+		$p = array('/"/', "/'/");
+		$r = array("", "");
+		return preg_replace($p, $r, $this->Name);
+	}
+	
 	public function urlof() {
 		$n = urlencode($this->Name);
 		return "tn=$n";

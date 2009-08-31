@@ -2,6 +2,9 @@
 
 class MatchException extends Exception {}
 
+// For convenience (and easy later extension) we have a "home team"
+// and an "away team" on each match.
+
 class Match {
 	private $Ind;			// Ind from database
 	public  $Division;	// Division number
@@ -152,6 +155,15 @@ class Match {
 			if ($g->Result == 'N')
 				$g->Date = $this->Date;
 		}
+	}
+	
+	public function delmatch() {
+		$ret = mysql_query("delete from lgmatch where {$this->queryof()}");
+		if (!$ret)
+			throw new MatchException(mysql_error());
+		//  We currently don't allow deletion of played games so this shouldn't
+		//  lose anything
+		mysql_query("delete from game where matchind={$this->Ind}");
 	}
 	
 	public function updscore() {
