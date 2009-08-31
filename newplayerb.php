@@ -38,6 +38,7 @@ $player->rankopt();
 <p>
 Email:<input type="text" name="email">
 Userid:<input type="text" name="userid">
+Password:<input type="password" name="passw">
 KGS:<input type="text" name="kgs" size="10" maxlength="10">
 IGS:<input type="text" name="igs" size="10" maxlength="10">
 </p>

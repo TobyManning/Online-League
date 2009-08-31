@@ -58,6 +58,7 @@ print <<<EOT
 <p>
 Email:<input type="text" name="email" value="{$player->display_email_nolink()}">
 Userid:<input type="text" name="userid" value="{$player->display_userid(0)}">
+Password:<input type="password" name="passw" value="{$player->disp_passwd()}">
 KGS:<input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10">
 IGS:<input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10">
 </p>

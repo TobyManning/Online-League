@@ -180,6 +180,23 @@ class Player  {
 		return htmlspecialchars($this->Userid);
 	}
 	
+	public function get_passwd() {
+		$ret = mysql_query("select password from player where {$this->queryof()}");
+		if (!$ret || mysql_num_rows($ret)) == 0)
+			return  "";
+		$row = mysql_fetch_array($ret);
+		return htmlspecialchars($row[0]);	
+	}
+	
+	public function disp_passwd() {
+		return htmlspecialchars($this->get_passwd());
+	}
+	
+	public function set_passwd($pw)  {
+		$qpw = mysql_real_escape_string($pw);
+		mysql_query("update player set password='$qpw' where {$this->queryof()}");
+	}
+	
 	public function display_email() {
 		if (strlen($this->Email) == 0)
 			return "-";

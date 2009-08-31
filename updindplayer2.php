@@ -35,6 +35,7 @@ $igs = $_POST["igs"];
 $club = $_POST["club"];
 $rank = $_POST["rank"];
 $admin = $_POST["admin"];
+$passw = $_POST["passw"];
 
 switch ($action) {
 case 'A':
@@ -55,6 +56,8 @@ case 'A':
 	$player->Admin = $admin;
 	$player->Userid = $userid;
 	$player->create();
+	if ($strlen($passw) != 0)
+		$player->set_passwd($passw);
 	$Title = "Player {$player->display_name()} created OK";
 	break;
 default:
@@ -97,6 +100,8 @@ default:
 	$origplayer->Email = $email;
 	$origplayer->Admin = $admin;
 	$origplayer->update();
+	if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
+		$origplayer->set_passwd($passw);
 	$Title = "Player {$origplayer->display_name()} updated OK";
 	break;
 }
