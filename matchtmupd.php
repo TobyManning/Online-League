@@ -14,6 +14,12 @@ $Title = "Adjust Matches";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript">
+function okdel(mi, teama, teamb, date) {
+	if (confirm("OK to delete match: " + teama + " -v- " + teamb + " on " + date))
+		location = "delmatch.php?mi=" + mi;
+}
+</script>
 <h1>Update Matches</h1>
 <table class="matchesupd">
 <tr>
@@ -48,7 +54,7 @@ EOT;
 EOT;
 			if ($mtch->Result == 'N')
 				print <<<EOT
-<td><a href="delmatch.php?{$mtch->urlof()}">Delete match</a></td>
+<td><a href="javascript:okdel({$mtch->query_ind()}, '{$mtch->Hteam->Name}','{$mtch->Ateam->Name}','{$mtch->Date->display()}')">Delete match</a></td>
 EOT;
 		}
 		else {
