@@ -182,7 +182,7 @@ class Player  {
 	
 	public function get_passwd() {
 		$ret = mysql_query("select password from player where {$this->queryof()}");
-		if (!$ret || mysql_num_rows($ret)) == 0)
+		if (!$ret || mysql_num_rows($ret) == 0)
 			return  "";
 		$row = mysql_fetch_array($ret);
 		return htmlspecialchars($row[0]);	
