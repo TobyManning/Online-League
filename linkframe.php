@@ -56,8 +56,9 @@ EOT;
 EOT;
 		}
 	}
+	$qu = htmlspecialchars($username);
 	print <<<EOT
-<tr><td><a href="${a}logout.php">Logout</a></td></tr>
+<tr><td><a href="${a}logout.php">Logout $qu</a></td></tr>
 EOT;
 }
 print "</table>\n";
@@ -66,7 +67,7 @@ if (!$login)  {
 		$userid = $_COOKIE['user_id'];
 	print <<<EOT
 <form action="${a}login.php" method="post" enctype="application/x-www-form-urlencoded">
-<p>User Id:<input type="text" name="user_id" value="$userid" size="10"></p>
+<p>Userid:<input type="text" name="user_id" value="$userid" size="10"></p>
 <p>Password:<input type="password" name="passwd" size="10"></p>
 <p><input type="submit" value="Login"></p>
 </form>
