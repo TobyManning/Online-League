@@ -68,6 +68,8 @@ if (!$login)  {
 <p><input type="password" name="passwd"></p>
 <p><input type="submit" value="Login"></p>
 </form>
+EOT;
+}
 ?>
 </body>
 </html>
