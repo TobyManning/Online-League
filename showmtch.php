@@ -1,3 +1,8 @@
+<?php
+session_start();
+$username = $_SESSION['user_name'];
+$userpriv = $_SESSION['user_priv'];
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 include 'php/opendatabase.php';
@@ -21,6 +26,7 @@ catch (MatchException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
+$editok = $userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username);
 ?>
 <html>
 <?php
@@ -56,7 +62,7 @@ foreach ($mtch->Games as $g) {
 <td>{$g->Bplayer->display_name()}</td>
 <td>{$g->Bplayer->display_rank()}</td>
 <td>{$g->Bteam->display_name()}</td>
-<td>{$g->display_result(true)}</td>
+<td>{$g->display_result($editok)}</td>
 </tr>
 EOT;
 }

@@ -1,3 +1,7 @@
+<?php
+session_start();
+$userpriv = $_SESSION['user_priv'];
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 include 'php/opendatabase.php';
@@ -53,7 +57,8 @@ case 'A':
 	$player->Email = $email;
 	$player->KGS = $kgs;
 	$player->IGS = $igs;
-	$player->Admin = $admin;
+	// Force Admin priv to N unless Super-admin
+	$player->Admin = $userpriv != 'SA'? $admin: 'N';
 	$player->Userid = $userid;
 	$player->create();
 	if ($strlen($passw) != 0)
@@ -98,7 +103,9 @@ default:
 	$origplayer->Rank = new Rank($rank);
 	$origplayer->Club = new Club($club);
 	$origplayer->Email = $email;
-	$origplayer->Admin = $admin;
+	// Leave priv alone unless super-admin
+	if ($userpriv == 'SA')
+		$origplayer->Admin = $admin;
 	$origplayer->update();
 	if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
 		$origplayer->set_passwd($passw);

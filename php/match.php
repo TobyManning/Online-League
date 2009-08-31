@@ -217,6 +217,16 @@ class Match {
 		}
 		print "</select>\n";
 	}
+	
+	public function is_captain($name) {
+		try  {
+			$possp = new Player($name);
+		}
+		catch (PlayerException $e) {
+			return false;
+		}
+		return $this->Hteam->Captain->is_same($possp) || $this->Ateam->Captain->is_same($possp);
+	}
 }
 
 // Return the number of matches for a division
