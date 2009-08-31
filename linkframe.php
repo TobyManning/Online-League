@@ -66,8 +66,8 @@ if (!$login)  {
 		$userid = $_COOKIE['user_id'];
 	print <<<EOT
 <form action="${a}login.php" method="post" enctype="application/x-www-form-urlencoded">
-<p><input type="text" name="user_id" value="$userid"></p>
-<p><input type="password" name="passwd"></p>
+<p>User:<input type="text" name="user_id" value="$userid" size="10"></p>
+<p>Pass:<input type="password" name="passwd" size="10"></p>
 <p><input type="submit" value="Login"></p>
 </form>
 EOT;
