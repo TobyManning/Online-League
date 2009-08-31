@@ -9,8 +9,7 @@ include 'php/head.php';
 <div align="center"><img src="images/go2.jpeg" width="500" height="375" border="0" alt="Go Board Picture" align="middle"></div>
 <p>Welcome to the new British Go Association League Website.
 </p>
-<p>This site is currently under construction but should be safe to explore as you wish. There
-shouldn't be any broken links but many pages are "holding" only.
+<p>This site is mostly complete apart from a page which needs writing by someone else.
 </p>
 <?php
 if (preg_match("/^62\.253\.222\.[0-9]*/", $_SERVER["REMOTE_ADDR"])) {
