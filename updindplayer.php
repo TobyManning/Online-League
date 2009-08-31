@@ -53,12 +53,19 @@ EOT;
 $player->clubopt();
 print "Rank:";
 $player->rankopt();
+// Try to avoid Firefox guessing userid based on the last thing we typed if not there.
+$du = $player->display_userid(0);
+$dp = $player->disp_passwd();
+if (strlen($du) != 0)
+	$du = " value=\"" . $du . "\"";
+if (strlen($dp) != 0)
+	$dp = " value=\"" . $dp . "\"";
 print <<<EOT
 </p>
 <p>
 Email:<input type="text" name="email" value="{$player->display_email_nolink()}">
-Userid:<input type="text" name="userid" value="{$player->display_userid(0)}">
-Password:<input type="password" name="passw" value="{$player->disp_passwd()}">
+Userid:<input type="text" name="userid"$du>
+Password:<input type="password" name="passw"$dp>
 KGS:<input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10">
 IGS:<input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10">
 </p>

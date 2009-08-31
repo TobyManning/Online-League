@@ -185,7 +185,7 @@ class Player  {
 		if (!$ret || mysql_num_rows($ret) == 0)
 			return  "";
 		$row = mysql_fetch_array($ret);
-		return htmlspecialchars($row[0]);	
+		return $row[0];	
 	}
 	
 	public function disp_passwd() {
