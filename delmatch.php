@@ -26,7 +26,7 @@ $Title = "Delete match completed";
 include 'php/head.php';
 ?>
 <body>
-h1>Delete Match Completed</h1>
+<h1>Delete Match Completed</h1>
 
 <?php
 print <<<EOT
@@ -34,7 +34,7 @@ print <<<EOT
 Successfully completed deletion of Match between
 {$mtch->Hteam->display_name()} and
 {$mtch->Ateam->display_name()} set for
-{$tach->Date->display()}.
+{$mtch->Date->display()}.
 </p>
 <p>
 <a href="matchtmupd.php?div={$mtch->Division}">Click here</a> to go back
