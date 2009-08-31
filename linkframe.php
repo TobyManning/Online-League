@@ -58,7 +58,7 @@ EOT;
 	}
 	$qu = htmlspecialchars($username);
 	print <<<EOT
-<tr><td><a href="${a}logout.php">Logout $qu</a></td></tr>
+<tr><td><a href="${a}logout.php">Logout<br>$qu</a></td></tr>
 EOT;
 }
 print "</table>\n";
