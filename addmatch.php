@@ -74,8 +74,10 @@ EOT;
 teamselect('hteam', $teams);
 print "and";
 teamselect('ateam', $teams);
+print <<<EOT
 </p>
 <p>
+EOT;
 $mtch->Date->dateopt("Date of match");
 print "with";
 $mtch->slackdopt();
