@@ -56,7 +56,7 @@ EOT;
 	}
 	print <<<EOT
 <tr><td><a href="${a}logout.php">Logout</a></td></tr>
-EOT;	
+EOT;
 }
 print "</table>\n";
 if (!$login)  {
