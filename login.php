@@ -7,7 +7,7 @@ $passwd = $_POST['passwd'];
 $quserid = mysql_real_escape_string($userid);
 $ret = mysql_query("select first,last,password,admin from player where user='$quserid'");
 
-if ($ret || mysql_num_rows($ret) == 0)  {
+if (!$ret || mysql_num_rows($ret) == 0)  {
 	print <<<EOT
 <html>
 <head>
