@@ -1,6 +1,7 @@
 <?php
 session_start();
 $username = $_SESSION['user_name'];
+$userpriv = $_SESSION['user_priv'];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
@@ -52,8 +53,12 @@ EOT;
 			print "<td>$ref$ht</a></td><td>$ref$at</a></td>\n";
 		}
 		else  {
-			$ref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
-			$ndref = "</a>";
+			$ref = '';
+			$ndref = '';
+			if ($userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username)) {
+				$ref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+				$ndref = "</a>";
+			}
 			print "<td>$ref$ht$ndref</td><td>$ref$at$ndref</td>\n";
 		}
 		print "</tr>\n";

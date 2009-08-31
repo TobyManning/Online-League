@@ -30,7 +30,7 @@ $editok = $userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username);
 ?>
 <html>
 <?php
-$Title = "Match Edit Result";
+$Title = "Match Details";
 include 'php/head.php';
 ?>
 <body>
