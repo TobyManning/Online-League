@@ -7,7 +7,7 @@ include 'php/head.php';
 <body>
 <h1>About the League</h1>
 <div align="center">
-<img src="images/KGSGo.png" width="644" height="477" border="1" hspace="10" vspace="20" alt="KGS Go Screen">
+<img src="images/KGSGo.png" width="480" height="356" hspace="10" vspace="20" alt="KGS Go Screen">
 </div>
 <p>
 The British Go Association League Tournament is a team-based Go league designed to be
