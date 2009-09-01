@@ -16,7 +16,7 @@ different areas of the country and to encourage online play amongst members of t
 The league is played in six-monthly seasons, starting in October and April respectively.
 Teams of up to six players may enter the tournament, and are assigned to leagues of six
 teams. Each season, teams play a round robin tournament within their league.
-Games are played online on the <a href="http://www.gokgs.com">KGS Go Server</a>.
+Games are played online on the <a href="http://www.gokgs.com" target="_blank">KGS Go Server</a>.
 </p>
 <p>
 The winners in each league are promoted at the end of the season,
@@ -25,7 +25,7 @@ The champions of the top "A" league will win the League Tournament Cup.
 </p>
 <p>If you would like to form a team, please contact (admin email address).
 Players wishing to join or captain a team must be members of the British Go Association,
-which can be joined <a href="http://www.britgo.org/join">here</a>,
+which can be joined <a href="http://www.britgo.org/join" target="_blank">here</a>,
 although one non-member will be allowed per team at a small cost.
 As the league is intended to mainly link to clubs,
 please try to form teams from locally-based players.
