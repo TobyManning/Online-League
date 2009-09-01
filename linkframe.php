@@ -58,6 +58,7 @@ EOT;
 	}
 	$qu = htmlspecialchars($username);
 	print <<<EOT
+<tr><td><a href="${a}ownupd.php" target="_top">Update account</a></td></tr>
 <tr><td><a href="${a}logout.php">Logout<br>$qu</a></td></tr>
 EOT;
 }

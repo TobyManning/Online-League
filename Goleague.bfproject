@@ -1,7 +1,16 @@
 name: Go League
-files: /home/jmc/src/Websites/goleague/showmtch.php
+files: /home/jmc/src/Websites/goleague/indexb.php
+files: /home/jmc/src/Websites/goleague/index.php
+files: /home/jmc/src/Websites/goleague/linkframe.php
+files: /home/jmc/src/Websites/goleague/login.php
+files: /home/jmc/src/Websites/goleague/php/team.php
+files: /home/jmc/src/Websites/goleague/php/player.php
+files: /home/jmc/src/Websites/goleague/updmatch2.php
 files: /home/jmc/src/Websites/goleague/matchesb.php
-files: /home/jmc/src/Websites/goleague/resultsb.php
+files: /home/jmc/src/Websites/goleague/updindplayer.php
+files: /home/jmc/src/Websites/goleague/php/matchdate.php
+files: /home/jmc/src/Websites/goleague/php/match.php
+files: /home/jmc/src/Websites/goleague/updmatch.php
 basedir: 
 webdir: 
 template: 
@@ -24,6 +33,8 @@ classlist: memb
 targetlist: _parent
 targetlist: _blank
 targetlist: _top
+urllist: index.php
+urllist: updmatch.php
 urllist: updmatch.php?{$mtch->urlof()}
 urllist: '.$SCRIPT_NAME.'
 urllist: <?php echo $SCRIPT_NAME ?>
@@ -32,25 +43,21 @@ urllist: javascript:history.back()
 urllist: javascript:archive(div)
 urllist: matchupdb.php
 urllist: javascript:okdel($div)
-urllist: matchupd.php?div=$div
-urllist: matchsetup.php?div=$div
-bmarks: ::/home/jmc/src/Websites/goleague/updindclub2.php:1520:wrong:2286:
-bmarks: ::/home/jmc/src/Websites/goleague/updindclub2.php:987:wrong:2286:
+recent_files: /home/jmc/src/Websites/goleague/indexb.php
+recent_files: /home/jmc/src/Websites/goleague/index.php
+recent_files: /home/jmc/src/Websites/goleague/linkframe.php
+recent_files: /home/jmc/src/Websites/goleague/login.php
 recent_files: /home/jmc/src/Websites/goleague/showmtch.php
-recent_files: /home/jmc/src/Websites/goleague/matchesb.php
-recent_files: /home/jmc/src/Websites/goleague/resultsb.php
-recent_files: /home/jmc/src/Websites/goleague/php/rank.php
-recent_files: /home/jmc/src/Websites/goleague/downloadsgf.php
-recent_files: /home/jmc/src/Websites/goleague/addresult2.php
-recent_files: /home/jmc/src/Websites/goleague/addresult.php
 recent_files: /home/jmc/src/Websites/goleague/php/team.php
 recent_files: /home/jmc/src/Websites/goleague/php/game.php
-recent_files: /home/jmc/src/Websites/goleague/php/match.php
+recent_files: /home/jmc/src/Websites/goleague/addmatch.php
+recent_files: /home/jmc/src/Websites/goleague/updindplayer2.php
+recent_files: /home/jmc/src/Websites/goleague/adminb.php
+recent_files: /home/jmc/src/Websites/goleague/logout.php
 recent_files: /home/jmc/src/Websites/goleague/php/player.php
-recent_files: /home/jmc/src/Websites/goleague/updmatch.php
-recent_files: /home/jmc/src/Websites/goleague/php/matchdate.php
-recent_files: /home/jmc/src/Websites/whcf/html/php/piewdl.php
-recent_files: /home/jmc/src/Websites/whcf/html/members/edscore.php
+recent_files: /home/jmc/src/Websites/goleague/php/head.php
+recent_files: /home/jmc/src/Websites/goleague/php/wrongentry.php
+recent_files: /home/jmc/src/Websites/goleague/updmatch2.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1
