@@ -74,6 +74,7 @@ KGS:<input type="text" name="kgs" value="{$player->display_kgs()}" size="10" max
 </p>
 <p>
 IGS:<input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10">
+EOT;
 ?>
 </p>
 <p>
