@@ -46,37 +46,33 @@ all indirect.</p>
 print <<<EOT
 <form name="playform" action="ownupdb2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
 {$player->save_hidden()}
-<p>
-Player Name:
-<input type="text" name="playname" value="{$player->display_name()}">
-</p>
-<p>
-Club:
+<table cellpadding="2" cellspacing="5" border="0">
+<tr><td>Player Name</td>
+<td><input type="text" name="playname" value="{$player->display_name()}"></td></tr>
+<tr><td>Club</td>
+<td>
 EOT;
 $player->clubopt();
 print <<<EOT
-<p>Rank:
+</td></tr>
+<tr><td>Rank</td><td>
 EOT;
 $player->rankopt();
-print "</p>\n";
+print "</td></tr>\n";
 $dp = $player->disp_passwd();
 if (strlen($dp) != 0)
 	$dp = " value=\"" . $dp . "\"";
 print <<<EOT
-<p>
-Email:<input type="text" name="email" value="{$player->display_email_nolink()}">
-</p>
-<p>
-Password:<input type="password" name="passw"$dp>
-</p>
-<p>
-KGS:<input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10">
-</p>
-<p>
-IGS:<input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10">
+<tr><td>Email</td>
+<td><input type="text" name="email" value="{$player->display_email_nolink()}"></td>
+<tr><td>Password</td><td><input type="password" name="passw"$dp></td></tr>
+<tr><td>KGS</td>
+<td><input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10"></td></tr>
+<tr><td>IGS</td>
+<td><input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10"></td></tr>
 EOT;
 ?>
-</p>
+</table>
 <p>
 <input type="submit" name="subm" value="Update Details">
 </p>
