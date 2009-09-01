@@ -3,15 +3,15 @@
 class ClubException extends Exception {}
 
 class Club {
-	public $Code;
-	public $Name;
-	public $Contactfirst;
-	public $Contactlast;
-	public $Contactemail;
-	public $Contactphone;
-	public $Website;
-	public $Night;
-	public $Region;
+	public $Code;				// 3-letter code
+	public $Name;				// Name of club
+	public $Contactfirst;	// First name of contact (not player object as contact mightn't be
+	public $Contactlast;		// Last name of contact
+	public $Contactemail;	// Email of contact
+	public $Contactphone;	// Phone number
+	public $Website;			// Club website if any
+	public $Night;				// Usual night for playing Sun=0 .. Sat=6
+	public $Region;			// Region (not used at present)
 	
 	public function __construct($n="") {
 		if (strlen($n) != 0)
@@ -19,28 +19,38 @@ class Club {
 		$this->Night = -1;
 	}
 	
+	// Get club code from a get request ?cl=xyz
+	
 	public function fromget() {
 		$this->Code = $_GET["cl"];
 		if (strlen($this->Code) == 0)
 			throw new ClubException("Null club code field"); 
 	}
-	
+
+	// Get club code from a hidden field in a form
+		
 	public function frompost($prefix = "") {
 		$this->Code = $_POST["${prefix}cl"];
 		if (strlen($this->Code) == 0)
 			throw new ClubException("Null post name field"); 
 	}				
 
+	// Assemble MySQL query string from club
+	
 	public function queryof() {
 		$qc = mysql_real_escape_string($this->Code);
 		return "code='$qc'";
 	}
-	
+
+	// Assemble Get request
+		
 	public function urlof() {
 		$c = urlencode($this->Code);
 		return "cl=$c";
 	}
-	
+
+	// Fetch other details of club from database
+		
 	public function fetchdets() {
 		$q = $this->queryof();
 		$ret = mysql_query("select name,contactfirst,contactlast,contactemail,contactphone,website,meetnight,region from club where $q");
@@ -58,7 +68,9 @@ class Club {
 		$this->Night = $row["meetnight"];
 		$this->Region = $row["region"];
 	}
-	
+
+	// These functions put together fields for display on a web page
+		
 	public function display_contact() {
 		$f = $this->Contactfirst;
 		$l = $this->Contactlast;
@@ -73,11 +85,16 @@ class Club {
 		return htmlspecialchars($this->Name);
 	}
 	
+	// Display email as "send email" so that the mail is sent by the server
+	// and the email address is not displayed anywhere
+	
 	public function display_contemail() {
 		if (strlen($this->Contactemail) == 0)
 			return "-";
 		return "<a href=\"sendmail.php?via=club&{$this->urlof()}\" target=\"_blank\">Send email</a>";
 	}
+	
+	// Display email address only for updating it
 	
 	public function display_contemail_nolink() {
 		return htmlspecialchars($this->Contactemail);
@@ -88,17 +105,23 @@ class Club {
 			return "-";
 		return htmlspecialchars($this->Contactphone);
 	}
-	
+
+	// Display website address as lickable clink
+		
 	public function display_website() {
 		$w = $this->Website;
 		if (strlen($w) == 0)
 			return "-";
 		return "<a href=\"http://$w\" target=\"blank\">$w</a>";
 	}
-	
+
+	// Display website non-lickable
+		
 	public function display_website_raw() {
 		return htmlspecialchars($this->Website);
 	}
+	
+	// Display meeting night
 	
 	public function display_night() {
 		if ($this->Night < 0 || $this->Night > 6)
@@ -106,12 +129,16 @@ class Club {
 		$nights = array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
 		return $nights[$this->Night];
 	}
-	
+
+	// Save club code as hidden field in form
+		
 	public function save_hidden($prefix = "") {
 		$c = $this->Code;
 		return "<input type=\"hidden\" name=\"${prefix}cl\" value=\"$c\">";
 	}
-	
+
+	// Generate selection option for night
+		
 	public function nightopt()
 	{
 		$nights = array("None", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
@@ -126,7 +153,9 @@ class Club {
 		}
 		print "</select>\n";
 	}
-	
+
+	// Create club
+		
 	public function create() {
 		$qcode = mysql_real_escape_string($this->Code);
 		$qname = mysql_real_escape_string($this->Name);
@@ -139,7 +168,9 @@ class Club {
 		$n = $this->Night;
 		mysql_query("insert into club (code,name,contactfirst,contactlast,contactemail,contactphone,website,meetnight,region) values ('$qcode','$qname','$qcfirst','$qclast','$qemail','$qphone','$qweb',$n,'$qreg')");
 	}
-	
+
+	// Update club
+		
 	public function update() {
 		$qname = mysql_real_escape_string($this->Name);
 		$qcfirst = mysql_real_escape_string($this->Contactfirst);

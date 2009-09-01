@@ -88,8 +88,5 @@ menu on the left. This will reset any "cookies" with your original name in.
 </p>
 EOT;
 ?>
-<p>
-Click <a href="playupd.php" target="_top">here</a> to return to the player update menu.
-</p>
 </body>
 </html>
