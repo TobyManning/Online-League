@@ -68,6 +68,7 @@ class Player  {
 		$ret = mysql_query("select first,last,rank,club,email,kgs,igs,admin from player where user='$qid'");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			throw new PlayerException("Unknown player userid $id");
+		$row = mysql_fetch_assoc($ret);
 		$this->First = $row['first'];
 		$this->Last = $row['last'];
 		$this->Rank = new Rank($row["rank"]);
