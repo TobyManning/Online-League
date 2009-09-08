@@ -6,7 +6,7 @@
 //  ALSO MAKE SURE that magic_quotes_gpc is turned off in you php init!!!!
 //  **********************************************************************
 
-if  (!mysql_connect("localhost", "apache")  ||  !mysql_select_db("bgaleague")) {
+if  (!mysql_connect("db48c.pair.com", "maproom_4", "QeWwhsLj")  ||  !mysql_select_db("maproom_bgaleague")) {
 
 	$mess = mysql_error();
 
