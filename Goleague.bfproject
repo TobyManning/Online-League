@@ -1,4 +1,7 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/playersb.php
+files: /home/jmc/src/Websites/goleague/clubsb.php
+files: /home/jmc/src/Websites/goleague/copyrightblurb.php
 files: /home/jmc/src/Websites/goleague/indexb.php
 files: /home/jmc/src/Websites/goleague/aboutusb.php
 files: /home/jmc/src/Websites/goleague/php/nameclash.php
@@ -52,6 +55,11 @@ urllist: '.$SCRIPT_NAME.'
 urllist: <?php echo $SCRIPT_NAME ?>
 urllist: teamsupd.php
 urllist: javascript:history.back()
+recent_files: /home/jmc/src/Websites/goleague/players.php
+recent_files: /home/jmc/src/Websites/goleague/clubs.php
+recent_files: /home/jmc/src/Websites/goleague/playersb.php
+recent_files: /home/jmc/src/Websites/goleague/clubsb.php
+recent_files: /home/jmc/src/Websites/goleague/copyrightblurb.php
 recent_files: /home/jmc/src/Websites/goleague/indexb.php
 recent_files: /home/jmc/src/Websites/goleague/aboutusb.php
 recent_files: /home/jmc/src/Websites/goleague/php/nameclash.php
@@ -62,11 +70,6 @@ recent_files: /home/jmc/src/Websites/goleague/matches.php
 recent_files: /home/jmc/src/Websites/goleague/ownupd.php
 recent_files: /home/jmc/src/Websites/goleague/newplayer.php
 recent_files: /home/jmc/src/Websites/goleague/ownupdb.php
-recent_files: /home/jmc/src/Websites/goleague/index.php
-recent_files: /home/jmc/src/Websites/goleague/linkframe.php
-recent_files: /home/jmc/src/Websites/goleague/login.php
-recent_files: /home/jmc/src/Websites/goleague/php/team.php
-recent_files: /home/jmc/src/Websites/goleague/php/player.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

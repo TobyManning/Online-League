@@ -7,8 +7,7 @@ include 'php/head.php';
 <body class="nomarg">
 <p class="note">
 This website was designed, authored and programmed by
-<a href="http://www.john.collins.name" target="_blank">John Collins</a> and is hosted by
-<a href="http://www.xisl.com">Xi Software Ltd</a> specialists in Linux and Unix software.
+<a href="http://www.john.collins.name" target="_blank">John Collins</a>.
 </p>
 </body>
 </html>

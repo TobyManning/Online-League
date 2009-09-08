@@ -1,4 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<?php
+include 'php/opendatabase.php';
+?>
 <html>
 <?php
 $Title = "Clubs";
@@ -18,8 +21,6 @@ include 'php/club.php';
 <th>Night</th>
 </tr>
 <?php
-mysql_connect("localhost", "apache");
-mysql_select_db("bgaleague");
 $ret = mysql_query("select code from club order by name");
 if ($ret && mysql_num_rows($ret)) {
 	while ($row = mysql_fetch_assoc($ret)) {
