@@ -69,7 +69,7 @@ case 'A':
     		$passw = $passw . $poss[rand(0,$lp)];
 		}
 	}
-	$player->set_passwd($passw);
+	//$player->set_passwd($passw);
 	$Title = "Player {$player->display_name()} created OK";
 	if (strlen($email) != 0)  {
 		$fh = popen("mail -s 'BGA League account created' $email", "w");
