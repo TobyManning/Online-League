@@ -26,7 +26,7 @@ catch (MatchException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
-$editok = $userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username);
+$editok = strlen($username) != 0 && ($userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username));
 ?>
 <html>
 <?php

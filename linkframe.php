@@ -27,9 +27,6 @@ print <<<EOT
 <tr><td><a href="${a}index.php" target="_top">Home</a></td></tr>
 <tr><td><a href="http://www.britgo.org" target="_top">BGA Home</a></td></tr>
 <tr><td><a href="${a}aboutus.php" target="_top">About The League</a></td></tr>
-EOT;
-if ($login) {
-	print <<<EOT
 <tr><td><a href="${a}clubs.php" target="_top">Clubs</a></td></tr>
 <tr><td><a href="${a}teams.php" target="_top">Teams</a></td></tr>
 <tr><td><a href="${a}players.php" target="_top">Players</a></td></tr>
@@ -40,6 +37,7 @@ if ($login) {
 <tr><td><a href="${a}results.php" target="_top">Results</a></td></tr>
 <tr><td><a href="${a}league.php" target="_top">League</a></td></tr>
 EOT;
+if ($login) {
 	if ($userpriv == 'A' || $userpriv == 'SA')  {
 		print <<<EOT
 <tr><td><a href="${a}admin.php" target="_top" class="memb">Admin menu</a></td></tr>

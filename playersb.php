@@ -1,3 +1,9 @@
+<?php
+session_start();
+$username = $_SESSION['user_name'];
+$userpriv = $_SESSION['user_priv'];
+$logged_in = strlen($username) != 0;
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 include 'php/opendatabase.php';
@@ -43,6 +49,12 @@ case  "clubrank":
 	$byrank = 0;	// Did mean that
 	break;
 }
+
+// Provide for 10 columns if not printing club column otherwise 11
+// Chop last 2 columns off if not logged in
+
+$cs = $logged_in? 10: 8;
+$cs += $pclub;
 if (count($initials) != 0)  {
 	print <<<EOT
 <a name="Top"></a>
@@ -76,6 +88,9 @@ print <<<EOT
 <th>${ref}D</a></th>
 <th>${ref}L</a></th>
 <th>${ref}Online</a></th>
+EOT;
+if ($logged_in)
+	print <<<EOT
 <th>${ref}Userid</a></th>
 <th>${ref}Email</a></th>
 EOT;
@@ -97,7 +112,7 @@ if ($ret && mysql_num_rows($ret)) {
 				$lrank = $nrank;
 				print <<<EOT
 <tr>
-<th colspan=11 align="center">
+<th colspan=$cs align="center">
 <a name="{$nrank->anchor()}"></a>
 <a href="#Top">{$nrank->display()}</a>
 </th>
@@ -111,7 +126,7 @@ EOT;
 				$linit = $pinit;
 				print <<<EOT
 <tr>
-<th colspan=11 align="center">
+<th colspan=$cs align="center">
 <a name="$pinit"></a>
 <a href="#Top">$pinit</a>
 </th>
@@ -127,7 +142,7 @@ EOT;
 					$linit = $cinit;
 					$ref = "<a name=\"$cinit\"></a>";
 				}
-				print "<tr><th colspan=\"10\" align=\"center\">" . $ref . "<a href=\"#Top\">" . htmlspecialchars($club) . "</a></th></tr>\n";
+				print "<tr><th colspan=\"$cs\" align=\"center\">" . $ref . "<a href=\"#Top\">" . htmlspecialchars($club) . "</a></th></tr>\n";
 				$lclub = $club;
 			}
 		}
@@ -145,6 +160,9 @@ EOT;
 <td>{$p->drawn_games()}</td>
 <td>{$p->lost_games()}</td>
 <td>{$p->display_online()}</td>
+EOT;
+		if ($logged_in)
+			print <<<EOT
 <td>{$p->display_userid()}</td>
 <td>{$p->display_email()}</td>
 </tr>

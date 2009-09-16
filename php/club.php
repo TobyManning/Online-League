@@ -88,8 +88,8 @@ class Club {
 	// Display email as "send email" so that the mail is sent by the server
 	// and the email address is not displayed anywhere
 	
-	public function display_contemail() {
-		if (strlen($this->Contactemail) == 0)
+	public function display_contemail($pe = true) {
+		if (!$pe || strlen($this->Contactemail) == 0)
 			return "-";
 		return "<a href=\"sendmail.php?via=club&{$this->urlof()}\" target=\"_blank\">Send email</a>";
 	}

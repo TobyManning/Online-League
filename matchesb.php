@@ -61,7 +61,7 @@ EOT;
 		else  {
 			$ref = '';
 			$ndref = '';
-			if ($userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username)) {
+			if (strlen($username) != 0 && ($userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username))) {
 				$ref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
 				$ndref = "</a>";
 			}
