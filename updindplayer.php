@@ -29,6 +29,10 @@ function formvalid()
          alert("No player name given");
          return false;
       }
+      if  (!nonblank(form.userid.value))  {
+         alert("No userid given");
+         return false;
+      }
 		return true;
 }
 </script>

@@ -6,6 +6,8 @@ include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 $player = new Player();
+// This is a bit of a Bodge for now
+$player->Club = new Club('NoC');
 $Title = "New Player";
 include 'php/head.php';
 ?>
@@ -17,6 +19,10 @@ function formvalid()
       var form = document.playform;
       if  (!nonblank(form.playname.value))  {
          alert("No player name given");
+         return false;
+      }
+      if  (!nonblank(form.userid.value))  {
+         alert("No userid given");
          return false;
       }
 		return true;
