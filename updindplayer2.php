@@ -62,14 +62,16 @@ case 'A':
 	$player->Userid = $userid;
 	$player->create();
 	// If no password specified, invent one
-	if ($strlen($passw) == 0)  {
-		$poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-		$lp = strlen($poss) - 1;
-		for ($i = 0; $i < 8; $i++) {
-    		$passw = $passw . $poss[rand(0,$lp)];
-		}
-	}
+	//if ($strlen($passw) == 0)  {
+	//	$poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	//	$lp = strlen($poss) - 1;
+	//	for ($i = 0; $i < 8; $i++) {
+    //	$passw = $passw . $poss[rand(0,$lp)];
+	//	}
+	//}
 	//$player->set_passwd($passw);
+	if (strlen($passw) == 0)
+		$passw = "foo";
 	$Title = "Player {$player->display_name()} created OK";
 	if (strlen($email) != 0)  {
 		$fh = popen("mail -s 'BGA League account created' $email", "w");
