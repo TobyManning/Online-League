@@ -63,16 +63,17 @@ case 'A':
 	$player->create();
 	// If no password specified, invent one
 	if ($strlen($passw) == 0)  {
-		$poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-		$lp = strlen($poss) - 1;
-		$passw = $passw . $poss[rand(0,$lp)];
-		$passw = $passw . $poss[rand(0,$lp)];
-		$passw = $passw . $poss[rand(0,$lp)];
-		$passw = $passw . $poss[rand(0,$lp)];
-		$passw = $passw . $poss[rand(0,$lp)];
-		$passw = $passw . $poss[rand(0,$lp)];
-		$passw = $passw . $poss[rand(0,$lp)];
-		$passw = $passw . $poss[rand(0,$lp)];
+//		$poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//		$lp = strlen($poss) - 1;
+//		$passw = $passw . $poss[rand(0,$lp)];
+//		$passw = $passw . $poss[rand(0,$lp)];
+//		$passw = $passw . $poss[rand(0,$lp)];
+//		$passw = $passw . $poss[rand(0,$lp)];
+//		$passw = $passw . $poss[rand(0,$lp)];
+//		$passw = $passw . $poss[rand(0,$lp)];
+//		$passw = $passw . $poss[rand(0,$lp)];
+//		$passw = $passw . $poss[rand(0,$lp)];
+		$passw = "Carrot";
 	}
 	$player->set_passwd($passw);
 	$Title = "Player {$player->display_name()} created OK";
