@@ -9,7 +9,8 @@ include 'php/head.php';
 <div align="center"><img src="images/go2.jpeg" width="500" height="375" border="0" alt="Go Board Picture" align="middle"></div>
 <p>Welcome to the new British Go Association League Website.
 </p>
-<p>This site is just about live.
+<p>The British Go Association League Tournament is a team-based Go league designed to be played mainly over the Internet. The purpose of the league is to encourage interaction between players in different areas of the country and to encourage online play amongst members of the BGA.</p>
+<p>To learn more about the league, click <a href="./aboutusb.php">here</a>.
 </p>
 </body>
 </html>
