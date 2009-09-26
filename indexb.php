@@ -10,7 +10,7 @@ include 'php/head.php';
 <p>Welcome to the new British Go Association League Website.
 </p>
 <p>The British Go Association League Tournament is a team-based Go league designed to be played mainly over the Internet. The purpose of the league is to encourage interaction between players in different areas of the country and to encourage online play amongst members of the BGA.</p>
-<p>To learn more about the league, click <a href="./aboutusb.php">here</a>.
+<p>To learn more about the league, click <a href="aboutus.php" target="_top">here</a>.
 </p>
 </body>
 </html>
