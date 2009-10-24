@@ -79,7 +79,7 @@ print <<<EOT
 EOT;
 
 $ret = mysql_query("select first,last from player order by last,first,rank desc");
-if ($ret)) {
+if ($ret) {
 	while ($row = mysql_fetch_assoc($ret)) {
 		$p = new Player($row["first"], $row["last"]);
 		if ($p->count_teams() != 0)
