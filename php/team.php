@@ -93,6 +93,13 @@ class Team  {
 		return $this->Captain->display_name();
 	}
 	
+	public function display_capt_email() {
+		$m = $this->Captain->display_email();
+		if (strlen($m) < 2)
+			return "";
+		return $m;
+	}
+	
 	public function save_hidden($prefix = "") {
 		$f = $this->Name;
 		return "<input type=\"hidden\" name=\"${prefix}tn\" value=\"$f\">";

@@ -30,6 +30,7 @@ Team {$team->display_name()} - {$team->display_description()} - division
 </p>
 <p>
 Team captain is {$team->display_captain()}.
+{$team->display_capt_email()}
 </p>
 <h3>Members</h3>
 <table class="teamdisp">

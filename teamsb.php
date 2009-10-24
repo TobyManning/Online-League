@@ -19,6 +19,7 @@ include 'php/head.php';
 	<th>Full Name</th>
 	<th>Captain</th>
 	<th>Members</th>
+	<th>Email</th>
 </tr>
 <?php
 $teamlist = list_teams(0, "divnum,name");
@@ -37,6 +38,7 @@ EOT;
 	<td>{$team->display_description()}</td>
 	<td>{$team->display_captain()}</td>
 	<td>{$team->count_members()}</td>
+	<td>{$team->display_capt_email()}</td>
 </tr>
 EOT;
 }
