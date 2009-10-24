@@ -33,6 +33,7 @@ print <<<EOT
 <tr><td class="subind"><a href="${a}players.php?by=club" target="_top">By club</a></td></tr>
 <tr><td class="subind"><a href="${a}players.php?by=rank" target="_top">By rank</a></td></tr>
 <tr><td class="subind"><a href="${a}players.php?by=clubrank" target="_top">By club/rank</a></td></tr>
+<tr><td><a href="${a}pbt.php" target="_top">Players by team</a></td></tr>
 <tr><td><a href="${a}matches.php" target="_top">Matches</a></td></tr>
 <tr><td><a href="${a}results.php" target="_top">Results</a></td></tr>
 <tr><td><a href="${a}league.php" target="_top">League</a></td></tr>
