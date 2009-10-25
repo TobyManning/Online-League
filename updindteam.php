@@ -47,7 +47,12 @@ EOT;
 pressing the "Add team" button.
 </p>
 <?php
+if ($team->Paid)
+	print "<p>The team is marked as having paid.\n";
+else
+	print "<p>The team is marked as not having paid.\n";
 print <<<EOT
+<a href="updpaid.php?{$team->urlof()}">Change this</a>.</p>
 <form name="teamform" action="updindteam2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
 {$team->save_hidden()}
 <p>
