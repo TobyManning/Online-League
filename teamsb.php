@@ -1,3 +1,9 @@
+<?php
+session_start();
+$username = $_SESSION['user_name'];
+$userpriv = $_SESSION['user_priv'];
+$logged_in = strlen($username) != 0;
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 include 'php/opendatabase.php';
@@ -20,8 +26,10 @@ include 'php/head.php';
 	<th>Captain</th>
 	<th>Members</th>
 	<th>Email</th>
-</tr>
 <?php
+if ($userpriv == 'A' || $userpriv == 'SA')
+	print "<th>Paid</th>\n";
+print "</tr>\n";
 $teamlist = list_teams(0, "divnum,name");
 $lastdiv = -199;
 foreach ($teamlist as $team) {
@@ -38,9 +46,13 @@ EOT;
 	<td>{$team->display_description()}</td>
 	<td>{$team->display_captain()}</td>
 	<td>{$team->count_members()}</td>
-	<td>{$team->display_capt_email()}</td>
-</tr>
+	<td>{$team->display_capt_email($logged_in)}</td>
 EOT;
+	if ($userpriv == 'A' || $userpriv == 'SA') {
+		$pd = $team->Paid? 'Yes': 'No';
+		print "<td>$pd</td>\n";
+	}
+	print "</tr>\n";
 }
 ?>
 </table>

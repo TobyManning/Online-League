@@ -1,3 +1,9 @@
+<?php
+session_start();
+$username = $_SESSION['user_name'];
+$userpriv = $_SESSION['user_priv'];
+$logged_in = strlen($username) != 0;
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 include 'php/opendatabase.php';
@@ -30,8 +36,14 @@ Team {$team->display_name()} - {$team->display_description()} - division
 </p>
 <p>
 Team captain is {$team->display_captain()}.
-{$team->display_capt_email()}
+{$team->display_capt_email($logged_in)}
 </p>
+EOT;
+if (($userpriv == 'A' || $userpriv == 'SA') && !$team->Paid)
+	print <<<EOT
+<p><b>Team has not paid.</b></p>
+EOT;
+print <<<EOT
 <h3>Members</h3>
 <table class="teamdisp">
 <tr>

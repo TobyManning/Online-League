@@ -13,6 +13,7 @@ class Team  {
 	public $Lost;			// Lost matches
 	public $Scoref;		// Scores for
 	public $Scorea;		// Scores against
+	public $Paid;			// Paid
 	
 	public function __construct($n = "") {
 		if (strlen($n) != 0)
@@ -54,7 +55,7 @@ class Team  {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select description,divnum,captfirst,captlast from team where $q");
+		$ret = mysql_query("select description,divnum,captfirst,captlast,paid from team where $q");
 		if (!$ret)
 			throw new TeamException("Cannot read database for team $q");
 		if (mysql_num_rows($ret) == 0)
@@ -62,6 +63,7 @@ class Team  {
 		$row = mysql_fetch_assoc($ret);
 		$this->Description = $row["description"];
 		$this->Division = $row["divnum"];
+		$this->Paid = $row["paid"];
 		try {
 			$this->Captain = new Player($row["captfirst"], $row["captlast"]);
 			$this->Captain->fetchdets();
@@ -93,7 +95,9 @@ class Team  {
 		return $this->Captain->display_name();
 	}
 	
-	public function display_capt_email() {
+	public function display_capt_email($l = true) {
+		if (!$l)
+			return "";
 		$m = $this->Captain->display_email();
 		if (strlen($m) < 2)
 			return "";
@@ -130,6 +134,10 @@ class Team  {
 		$qdiv = $this->Division;
 		if (!mysql_query("update team set description='$qdescr',divnum=$qdiv,captfirst='$qcfirst',captlast='$qclast' where {$this->queryof()}"))
 			throw new TeamException(mysql_error());
+	}
+	
+	public function setpaid($v = true) {
+		mysql_query("update team set paid=$v where {$this->queryof()}");
 	}
 	
 	public function divopt() {
