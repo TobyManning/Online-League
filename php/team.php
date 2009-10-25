@@ -137,7 +137,8 @@ class Team  {
 	}
 	
 	public function setpaid($v = true) {
-		mysql_query("update team set paid=$v where {$this->queryof()}");
+		$vv = $v? 1: 0;
+		mysql_query("update team set paid=$vv where {$this->queryof()}");
 	}
 	
 	public function divopt() {

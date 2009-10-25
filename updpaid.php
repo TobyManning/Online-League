@@ -22,20 +22,24 @@ print <<<EOT
 <body>
 <h1>Update Paid for Team {$team->display_name()}</h1>
 EOT;
-if ($team->Paid)
+if ($team->Paid) {
 	print <<<EOT
 <p>
 Team {$team->display_name()} was previously marked as paid but setting to <b>unpaid</b>.
 </p>
 EOT;
-else
+	$v = false;
+}
+else {
 	print <<<EOT
 <p>
 Team {$team->display_name()} was previously marked as unpaid.
 Now setting to <b>paid</b>.
 </p>
 EOT;
-$team->setpaid(!$team->Paid);
+	$v = true;
+}
+$team->setpaid($v);
 ?>
 <p>
 Click <a href="teamsupd.php" target="_top">here</a> to return to the team update menu.
