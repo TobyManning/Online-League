@@ -46,7 +46,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		}
 		print <<<EOT
 <tr>
-<td>{$mtch->Date->display()}</td>
+<td>{$mtch->Date->display_month()}</td>
 EOT;
 		$ht = $mtch->Hteam->display_name();
 		$at = $mtch->Ateam->display_name();
