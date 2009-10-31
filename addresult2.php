@@ -26,7 +26,7 @@ $fn = $_FILES["sgffile"];
 if ($fn['error'] == UPLOAD_ERR_OK  &&  preg_match('/.*\.sgf$/i', $fn['name']) && $fn['size'] > 0)
 	$sgfdata = file_get_contents($fn['tmp_name']);
 if ($date_played->unequal($g->Date))
-	$g->resetdate($date_played);
+	$g->reset_date($date_played);
 $g->set_result($_POST["result"], $_POST["resulttype"]);
 if (strlen($sgfdata) != 0)
 	$g->set_sgf($sgfdata);

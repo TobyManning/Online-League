@@ -145,6 +145,15 @@ class Match {
 		return count($this->Games);
 	}
 	
+	public function is_allocated() {
+		if ($this->ngames() < 3)
+			return false;
+		foreach ($this->Games as $game)
+			if (!$game->is_allocated())
+				return false;
+		return true;
+	}
+	
 	public function teamalloc()  {
 		$ret = mysql_query("select count(*) from game where {$this->queryof('match')}");
 		if (!$ret || mysql_num_rows($ret) == 0)
@@ -223,9 +232,13 @@ class Match {
 			$possp = new Player($name);
 		}
 		catch (PlayerException $e) {
-			return false;
+			return 'N';
 		}
-		return $this->Hteam->Captain->is_same($possp) || $this->Ateam->Captain->is_same($possp);
+		if ($this->Hteam->Captain->is_same($possp))
+			return 'H';
+		if ($this->Ateam->Captain->is_same($possp))
+			return 'A';
+		return 'N';
 	}
 }
 

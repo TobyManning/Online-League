@@ -19,8 +19,9 @@ class Game {
 		$this->Ind = $in;
 		$this->Division = $d;
 		$this->Date = new Matchdate();
-		$this->Wteam = new Team();
-		$this->Bteam = new Team();
+		//  We don't allocate team structures any more as we can do this in pieces
+		//  $this->Wteam = new Team();
+		//  $this->Bteam = new Team();
 		$this->Result = 'N';
 		$this->Resultdet = "";
 		$this->Sgf = "";
@@ -64,32 +65,62 @@ class Game {
 		$row = mysql_fetch_assoc($ret);
 		$this->Division = $row["divnum"];
 		$this->Date->fromtabrow($row);
-		$this->Wteam = new Team($row["wteam"]);
-		$this->Bteam = new Team($row["bteam"]);
-		$this->Wplayer = new Player($row["wfirst"], $row["wlast"]);
-		$this->Bplayer = new Player($row["bfirst"], $row["blast"]);
-		$this->Wplayer->fetchdets();
-		$this->Bplayer->fetchdets();
+		// We may only have allocated one side of this game
+		// If this is the case the unallocated team name will be blank
+		// But protect against mangled names
+		$wt = $row['wteam'];
+		try {
+			if (strlen($wt) != 0)  {
+				$this->Wteam = new Team($wt);
+				$this->Wplayer = new Player($row["wfirst"], $row["wlast"]);
+				$this->Wplayer->fetchdets();
+			}
+			$bt = $row["bteam"];
+			if (strlen($bt) != 0)  {
+				$this->Bteam = new Team($bt);
+				$this->Bplayer = new Player($row["bfirst"], $row["blast"]);
+				$this->Bplayer->fetchdets();
+			}
+		}
+		catch (PlayerException $e) {
+			throw new GameException($e->getMessage());
+		}
 		$this->Result = $row["result"];
 		$this->Resultdet = $row["reshow"];
 		$this->Matchind = $row["matchind"];
 	}
 	
 	public function create_game() {
-		$qwfirst = $this->Wplayer->queryfirst();
-		$qwlast = $this->Wplayer->querylast();
-		$qbfirst = $this->Bplayer->queryfirst();
-		$qblast = $this->Bplayer->querylast();
-		$qwteam = $this->Wteam->queryname();
-		$qbteam = $this->Bteam->queryname();
-		$qwrank = $this->Wplayer->Rank->Rankvalue;
-		$qbrank = $this->Bplayer->Rank->Rankvalue;
+	
+		// Set these to some numeric value in case not defined
+
+		$qwrank = 0;
+		$qbrank = 0;
+		
+		//  Teams are not defined if only partly allocated
+		
+		if ($this->Wteam) {
+			$qwteam = $this->Wteam->queryname();
+			$qwfirst = $this->Wplayer->queryfirst();
+			$qwlast = $this->Wplayer->querylast();
+			$qwrank = $this->Wplayer->Rank->Rankvalue;
+		}
+		if ($this->Bteam) {
+			$qbteam = $this->Bteam->queryname();
+			$qbfirst = $this->Bplayer->queryfirst();
+			$qblast = $this->Bplayer->querylast();
+			$qbrank = $this->Bplayer->Rank->Rankvalue;
+		}
+		
 		$qdate = $this->Date->queryof();
+		
 		// These are always going to be 'N' and null but let's be consistent.
+		
 		$qres = mysql_real_escape_string($this->Result);
 		$qresdat = mysql_real_escape_string($this->Resultdet);
 		$qsgf = mysql_real_escape_string($this->Sgf);
 		$qmi = $this->Matchind;
+		
 		if (!mysql_query("insert into game (matchdate,wfirst,wlast,wteam,wrank,bfirst,blast,bteam,brank,result,reshow,sgf,matchind,divnum) values ('$qdate','$qwfirst','$qwlast','$qwteam',$qwrank,'$qbfirst','$qblast','$qbteam',$qbrank,'$qres','$qresdat','$qsgf',{$this->Matchind},{$this->Division})"))
 			throw new GameException(mysql_error());
 		$ret = mysql_query("select last_insert_id()");
@@ -100,16 +131,33 @@ class Game {
 	}
 	
 	public function update_players()  {
-		$qwfirst = $this->Wplayer->queryfirst();
-		$qwlast = $this->Wplayer->querylast();
-		$qbfirst = $this->Bplayer->queryfirst();
-		$qblast = $this->Bplayer->querylast();
-		$qwteam = $this->Wteam->queryname();
-		$qbteam = $this->Bteam->queryname();
-		$qwrank = $this->Wplayer->Rank->Rankvalue;
-		$qbrank = $this->Bplayer->Rank->Rankvalue;
+
+		// Set these to some numeric value in case not defined
+
+		$qwrank = 0;
+		$qbrank = 0;
+
+		//  Teams are not defined if only partly allocated
+		
+		if ($this->Wteam) {
+			$qwteam = $this->Wteam->queryname();
+			$qwfirst = $this->Wplayer->queryfirst();
+			$qwlast = $this->Wplayer->querylast();
+			$qwrank = $this->Wplayer->Rank->Rankvalue;
+		}
+		if ($this->Bteam) {
+			$qbteam = $this->Bteam->queryname();
+			$qbfirst = $this->Bplayer->queryfirst();
+			$qblast = $this->Bplayer->querylast();
+			$qbrank = $this->Bplayer->Rank->Rankvalue;
+		}
+		
 		if (!mysql_query("update game set wfirst='$qwfirst',wlast='$qwlast',bfirst='$qbfirst',blast='$qblast',wteam='$qwteam',bteam='$qbteam',wrank=$qwrank,brank=$qbrank where {$this->queryof()}"))
 			throw new GameException(mysql_error()); 
+	}
+	
+	public function is_allocated() {
+		return $this->Wteam && $this->Bteam;
 	}
 	
 	private function has_sgf() {

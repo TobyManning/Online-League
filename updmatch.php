@@ -63,6 +63,7 @@ function checkteamsvalid() {
 	}
 	return true;		
 }
+</script>
 <?php
 
 // Load members of team and at the same time check we've got enough
@@ -71,7 +72,6 @@ function checkteam($team) {
 	$result = $team->list_members();
 	if (count($result) < 3)  {
 		print <<<EOT
-</script>
 <h1>Edit Match</h1>
 <p>
 Sorry but there are not enough members in {$team->display_name()} yet to
@@ -92,44 +92,7 @@ EOT;
 
 $Htmemb = checkteam($mtch->Hteam);
 $Atmemb = checkteam($mtch->Ateam);
-
-print <<<EOT
-var hplayranks = new Array();
-var aplayranks = new Array();
-EOT;
-
-foreach ($Htmemb as $ht) {
-	print "hplayranks.push({$ht->Rank->Rankvalue});\n";
-}
-foreach ($Atmemb as $at) {
-	print "aplayranks.push({$at->Rank->Rankvalue});\n";
-}
-
-//  This is still Javascript we're creating in case anyone's confused
-//  This function is called when a team member is selected and possibly
-//  update white-black or black-white when ranks differ.
-//  We might want to revisit this code and think about handicap stones
-//  which shouldn't be too difficult
-
 ?>
-
-function tmselect(n) {
-	var 	form = document.matchform;
-	var hel = form["htm" + n].selectedIndex;
-	var ael = form["atm" + n].selectedIndex;
-	var cel = form["colours" + n];
-	if  (hel <= 0  ||  ael <= 0)
-		return;
-	var hrnk = hplayranks[hel-1];
-	var arnk = aplayranks[ael-1];
-	var csel = 0;
-	if  (hrnk > arnk)
-		csel = 1;
-	else if (hrnk < arnk)
-		csel = 2;
-	cel.selectedIndex = csel;
-}
-</script>
 <h1>Edit Match</h1>
 <?php
 // Output select team member and if recorded display W or B
@@ -139,22 +102,31 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 	$matchm = false;
 	if (count($mch->Games) > $n)  {
 		$g = $mch->Games[$n];
-		if ($g->Wteam->is_same($team))  {
+		
+		//  We might have half-allocated teams in which case
+		//  the White or Black team is not defined
+		
+		if ($g->Wteam && $g->Wteam->is_same($team))  {
 			$matchm = $g->Wplayer;
 			$colour = 1;
 		}
-		else  {
+		elseif ($g->Bteam)  {
 			$matchm = $g->Bplayer;
 			$colour = 2;
 		}
 		$readonly = $g->Result != 'N';
 	}
 	print "<td>\n";
+
+	// readonly will only be set if result is not "N" which
+	// will only be if the colours are assigned and $matchm
+	// will be set
+	 
 	if ($readonly)
 		print $matchm->display_name();
 	else  {
 		print <<<EOT
-<select name="$ha$n" onchange="javascript:tmselect($n)">
+<select name="$ha$n">
 <option value="-">-</option>
 EOT;
 		foreach ($membs as $memb) {
@@ -224,6 +196,10 @@ for ($row = 0; $row < 3; $row++)  {
 <p>
 Make any adjustments and
 <input type="submit" value="Click here"> or <input type="reset" value="Reset form">
+</p>
+<p>
+Set colours to "Nigiri" throughout to randomly pick a colour which will be assigned to boards
+1 and 3 and the opposite to board 2.
 </p>
 </form>
 </body>

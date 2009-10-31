@@ -22,42 +22,105 @@ catch (MatchException $e) {
 	exit(0);	
 }
 
-function getgdets($m, $n, &$wplay, &$bplay, &$wteam, &$bteam)  {
-	// Assume "home" player is white.
-	$wplay = new Player();
-	$bplay = new Player();
-	$wplay->fromsel($_POST["htm$n"]);
-	$bplay->fromsel($_POST["atm$n"]);
-	$wteam = $m->Hteam;
-	$bteam = $m->Ateam;
-	$col = $_POST["colours$n"];
+// If colours are set up don't change anything
 
-	// Colour will be 0 for Nigiri 1 for Home White 2 for Home Black
-	// If set to Nigiri reset randomly
+$colset = false;
+$hadnig = false;
+$hadw = false;
+$hadb = false;
 
-	if ($col == 0)
-		$col = rand(1,2);
+for ($b = 0;  $b < 3;  $b++)  {
+	$h = new Player();
+	$a = new Player();
+	$h->fromsel($_POST["htm$b"]);
+	$a->fromsel($_POST["atm$b"]);
+	$h->fetchdets();
+	$a->fetchdets();
+	$cols[$b] = $_POST["colours$b"];
+	switch ($cols[$b]) {
+	default:
+		$hadnig = true;
+		break;
+	case 1:		//  Home player white
+		$hadw = true;
+		$colset = true;
+		break;
+	case 2:		//  Home player black
+		$hadb = true;
+		$colset = true;
+		break;
+	}
+	$hplayer[$b] = $h;
+	$aplayer[$b] = $a;
+}
 
-	if ($col == 2)  {		// Swap round players and teams
-		$tmp = $wplay;
-		$wplay = $bplay;
-		$bplay = $tmp;
-		$tmp = $wteam;
-		$wteam = $bteam;
-		$bteam = $tmp;
+//  Sort an array of players by descending rank - stably
+//  Use bubble sort
+
+function sortrank($arr) {
+	if ($arr[0]->Rank->Rankvalue < $arr[1]->Rank->Rankvalue) {
+		$t = $arr[0];
+		$arr[0] = $arr[1];
+		$arr[1] = $t;
+	}
+	if ($arr[1]->Rank->Rankvalue < $arr[2]->Rank->Rankvalue) {
+		$t = $arr[1];
+		$arr[1] = $arr[2];
+		$arr[2] = $t;
+	}
+	if ($arr[0]->Rank->Rankvalue < $arr[1]->Rank->Rankvalue) {
+		$t = $arr[0];
+		$arr[0] = $arr[1];
+		$arr[1] = $t;
 	}
 }
 
-function setgdets($g, $wplay, $bplay, $wteam, $bteam)  {
-	$g->Wteam = $wteam;
-	$g->Bteam = $bteam;
-	$wplay->fetchdets();
-	$bplay->fetchdets();
-	$g->Wplayer = $wplay;
-	$g->Bplayer = $bplay;
+// If colours not set, sort players into rank order and assign
+// otherwise set nigiri randomly 
+
+if ($colset)  {
+	//  Colours set - if had nigiri try to make at least one different
+	
+	if ($hadnig)  {
+		if ($hadw && $hadb) {
+			// Had both white and black - if middle one nigiri choose at random
+			// Otherwise make nigiri one opposite of middle one
+			if ($cols[1] <= 1)
+				$cols[1] = rand(1,2);
+			elseif ($cols[0] <= 1)
+				$cols[0] = 3 - $cols[1];
+			else
+				$cols[2] = 3 - $cols[1];
+		}
+		elseif ($hadw)  {
+			//  White set set nigiri ones to black
+			for ($b = 0;  $b < 3;  $b++)
+				if ($cols[$b] <= 1)
+					$cols[$b] = 2;
+		}
+		else {
+			//  Black set set nigiri ones to white
+			for ($b = 0;  $b < 3; $b++)
+				if ($cols[$b] <= 1)
+					$cols[$b] = 1;
+		}
+	}
+}
+else {
+
+	// So now we sort each time into order
+	
+	sortrank($hplayer);
+	sortrank($aplayer);
+
+	//  Now assign colours either WBW or BWB
+	
+	$cols[0] = rand(1,2);
+	$cols[1] = 3 - $cols[0];
+	$cols[2] = $cols[0];
 }
 
-//  Check for update of date and days
+// If matchdate has changed, fix it
 
 $newdate = new Matchdate();
 $newdate->frompost();
@@ -71,30 +134,41 @@ if ($newdate->unequal($mtch->Date) || $newslack != $mtch->Slackdays)  {
 	$mtch->dateupdate();
 }
 
+// Set up game details according to who is white/black
+// col=1 means "home" player is white otherwise black
+
+function setgteams($g, $col, $hteam, $ateam, $hplay, $aplay)  {
+	if ($col == 1)  {
+		$g->Wteam = $hteam;
+		$g->Bteam = $ateam;
+		$g->Wplayer = $hplay;
+		$g->Bplayer = $aplay;
+	}
+	else  {
+		$g->Wteam = $ateam;
+		$g->Bteam = $hteam;
+		$g->Wplayer = $aplay;
+		$g->Bplayer = $hplay;
+	}
+}
+
 // Get and create or update each game
  
 $gnum = $mtch->ngames();
 
 for ($gm = 0;  $gm < 3;  $gm++)  {
 	if  ($gm < $gnum)  {
+		// Game already allocated
 		$g = $mtch->Games[$gm];
 		// Don't try to change any played games
-		if  ($g->Result != 'N')
-			continue;
-			
-		getgdets($mtch, $gm, $wplay, $bplay, $wteam, $bteam);
-
-		// Now see if players have changed and if W or B has changed
-		
-		if (!($g->Wteam->is_same($wteam) && $g->Wplayer->is_same($wplay) && $g->Bplayer->is_same($bplay)))  {
-			setgdets($g, $wplay, $bplay, $wteam, $bteam);
+		if  ($g->Result == 'N') {
+			setgteams($g, $cols[$gm], $mtch->Hteam, $mtch->Ateam, $hplayer[$gm], $aplayer[$gm]);
 			$g->update_players();
 		}
 	}
 	else  {
 		$g = $mtch->newgame();
-		getgdets($mtch, $gm, $wplay, $bplay, $wteam, $bteam);
-		setgdets($g, $wplay, $bplay, $wteam, $bteam);
+		setgteams($g, $cols[$gm], $mtch->Hteam, $mtch->Ateam, $hplayer[$gm], $aplayer[$gm]);		
 		$g->create_game();
 	}
 }
