@@ -26,7 +26,7 @@ include 'php/head.php';
 <th>Date</th>
 <th>Team A</th>
 <th>Team B</th>
-<th>TBA</th>
+<th>Status</th>
 </tr>
 <?php
 $ret = mysql_query("select ind from lgmatch order by divnum,matchdate,hteam,ateam");
@@ -70,10 +70,12 @@ EOT;
 			}
 			print "<td>$ref$ht$ndref</td><td>$ref$at$ndref</td>\n";
 		}
-		if ($mtch->is_allocated())
-			print "<td>&nbsp;</td>";
+		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->result == 'D')
+			print "<td>Played</td>";
+		elseif ($mtch->is_allocated())
+			print "<td>Not played</td>";
 		else
-			print "<td>not all</td>";
+			print "<td>TBA</td>";
 		print "</tr>\n";
 	}
 }
