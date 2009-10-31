@@ -37,6 +37,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		$mtch->fetchdets();
 		try {
 			$mtch->fetchteams();
+			$mtch->fetchgames();
 		}
 		catch (MatchException $e) {
 			continue;
