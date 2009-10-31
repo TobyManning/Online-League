@@ -12,6 +12,7 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
 include 'php/matchdate.php';
+include 'php/game.php';
 ?>
 <html>
 <?php
