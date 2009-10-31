@@ -2,7 +2,7 @@
 session_start();
 $username = $_SESSION['user_name'];
 $userpriv = $_SESSION['user_priv'];
-$admin = strlen($username) !- 0 && ($userpriv == 'A' || $userpriv == 'SA');
+$admin = strlen($username) != 0 && ($userpriv == 'A' || $userpriv == 'SA');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
