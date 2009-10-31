@@ -2,6 +2,7 @@
 session_start();
 $username = $_SESSION['user_name'];
 $userpriv = $_SESSION['user_priv'];
+$admin = strlen($username) !- 0 && ($userpriv == 'A' || $userpriv == 'SA');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
@@ -62,13 +63,21 @@ EOT;
 			print "<td>$ref$ht</a></td><td>$ref$at</a></td>\n";
 		}
 		else  {
-			$ref = '';
-			$ndref = '';
-			if (strlen($username) != 0 && ($userpriv == 'A' || $userpriv == 'SA' || $mtch->is_captain($username))) {
-				$ref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
-				$ndref = "</a>";
+			$href = $aref = $hndref = $andref = '';
+			if ($admin)  {
+				$href = $aref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+				$hndref = $andref = "</a>";
 			}
-			print "<td>$ref$ht$ndref</td><td>$ref$at$ndref</td>\n";
+			$c = $mtch->is_captain($username);
+			if ($c == 'H')  {
+				$href = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+				$hndref = "</a>";
+			}
+			elseif ($c == 'A') {
+				$aref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+				$andref = "</a>";
+			}
+			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";
 		}
 		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->result == 'D')
 			print "<td>Played</td>";
