@@ -25,6 +25,7 @@ include 'php/head.php';
 <th>Date</th>
 <th>Team A</th>
 <th>Team B</th>
+<th>TBA</th>
 </tr>
 <?php
 $ret = mysql_query("select ind from lgmatch order by divnum,matchdate,hteam,ateam");
@@ -67,6 +68,10 @@ EOT;
 			}
 			print "<td>$ref$ht$ndref</td><td>$ref$at$ndref</td>\n";
 		}
+		if ($mtch->is_allocated())
+			print "<td>&nbsp;</td>";
+		else
+			print "<td>not all</td>";
 		print "</tr>\n";
 	}
 }
