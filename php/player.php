@@ -438,10 +438,21 @@ function list_players($order = "last,first,rank desc") {
 	$ret = mysql_query("select first,last from player order by $order");
 	$result = array();
 	if ($ret) {
-		while ($row = mysql_fetch_assoc($ret)) {
+		while ($row = mysql_fetch_assoc($ret))
 			array_push($result, new player($row['first'], $row['last']));
-		}
 	}
+	return $result;
+}
+
+function list_admins() {
+	$ret = mysql_query("select first,last from player where admin!='N'");
+	$result = array();
+	if ($ret) {
+		while ($row = mysql_fetch_assoc($ret))
+			array_push($result, new player($row['first'], $row['last']));
+	}
+	foreach ($result as $p)
+		$p->fetchdets();
 	return $result;
 }
 

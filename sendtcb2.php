@@ -5,18 +5,30 @@ include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
 include 'php/opendatabase.php';
+
 $subj = $_POST["subject"];
 $emailrep = $_POST["emailrep"];
 $mess = $_POST["messagetext"];
+$admins = $_POST["admintoo"];
+$cc = $_POST["ccto"];
 $tlist = list_teams();
-$destarr = array();
+$mlist = array();
 foreach ($tlist as $team) {
 	$team->fetchdets();
 	if (strlen($team->Captain->Email) != 0)
-		array_push($destarr, $team->Captain->Email);
+		$mlist[$team->Captain->Email] = 1;
 }
-$dest = implode(' ', $destarr);
-if (strlen($dest) != 0)  {
+if (strlen($cc) != 0) {
+	foreach (preg_split("/[\s,]+/", $cc) as $m)
+		$mlist[$m] = 1;
+}
+if ($admins) {
+	$la = list_admins();
+	foreach ($la as $p)
+		if (strlen($p->Email) != 0)
+			$mlist[$p->Email] = 1;
+}
+foreach (array_keys($mlist) as $dest) {
 	$fh = popen("mail -s 'Go League email - $subj' $dest", "w");
 	fwrite($fh, "Please reply to $emailrep\n");
 	fwrite($fh, "$mess\n");

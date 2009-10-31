@@ -225,6 +225,7 @@ foreach ($mtch->Games as $g) {
 </tr>
 EOT;
 }
+$mtch->mail_allocated();
 print <<<EOT
 </table>
 <p>Click <a href="updmatch.php?{$mtch->urlof()}">here</a> to change any details of the match.</p>

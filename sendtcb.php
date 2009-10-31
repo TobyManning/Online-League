@@ -26,6 +26,8 @@ function formvalid()
 <form name="mailform" action="sendtcb2.php" method="post" enctype="application/x-www-form-urlencoded"  onsubmit="javascript:return formvalid();">
 <p>Subject:<input type="text" name="subject"></p>
 <p>Reply to:<input type="text" name="emailrep"></p>
+<p>CC to:<input type="text" name="ccto"> (comma or space sep)</p>
+<p><input type="checkbox" name="admintoo">Mail admins too</p>
 <textarea name="messagetext" rows="10" cols="40"></textarea>
 <br clear="all">
 <input type="submit" name="submit" value="Submit message">
