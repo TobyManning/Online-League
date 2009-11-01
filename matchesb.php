@@ -80,16 +80,17 @@ EOT;
 		else  {
 			$href = $aref = $hndref = $andref = '';
 			if ($admin)  {
-				$href = $aref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\">";
+				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\">";
 				$hndref = $andref = "</a>";
 			}
 			$c = $mtch->is_captain($username);
 			if ($c == 'H')  {
-				$href = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\">";
 				$hndref = "</a>";
 			}
 			elseif ($c == 'A') {
-				$aref = "<a href=\"updmatch.php?{$mtch->urlof()}\">";
+				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\">";
 				$andref = "</a>";
 			}
 			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";
