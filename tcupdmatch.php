@@ -145,7 +145,7 @@ for ($row = 0; $row < 3; $row++)  {
 	print "<tr><td>\n";
 	$matchm = false;
 	if ($row < $ng)  {
-		$g = $mch->Games[$row];
+		$g = $mtch->Games[$row];
 		if ($g->Wteam && $g->Wteam->is_same($Myteam))
 			$matchm = $g->Wplayer;
 		elseif ($g->Bteam && $g->Bteam->is_same($Myteam))
