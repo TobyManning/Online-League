@@ -34,7 +34,7 @@ catch (GameException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
-header("content-type: application/x-go-sgf");
-header("Content-Disposition: attachment; filename=\"{$g->game_name()}\"");
+header("Content-Type: application/x-go-sgf");
+header("Content-Disposition: attachment; filename={$g->game_name()}");
 print $g->Sgf;
 ?>
