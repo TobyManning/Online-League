@@ -134,6 +134,7 @@ EOT;
 print <<<EOT
 <form name="matchform" action="tcupdmatch2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkteamvalid()">
 {$mtch->save_hidden()}
+{$Myteam->save_hidden()}
 <table class="updmatch">
 <tr><th>Player assignments</th></tr>
 EOT;

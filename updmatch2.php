@@ -23,6 +23,8 @@ include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
+include 'php/sortrank.php';
+
 $mtch = new Match();
 try  {
 	$mtch->frompost();
@@ -66,27 +68,6 @@ for ($b = 0;  $b < 3;  $b++)  {
 	}
 	$hplayer[$b] = $h;
 	$aplayer[$b] = $a;
-}
-
-//  Sort an array of players by descending rank - stably
-//  Use bubble sort
-
-function sortrank($arr) {
-	if ($arr[0]->Rank->Rankvalue < $arr[1]->Rank->Rankvalue) {
-		$t = $arr[0];
-		$arr[0] = $arr[1];
-		$arr[1] = $t;
-	}
-	if ($arr[1]->Rank->Rankvalue < $arr[2]->Rank->Rankvalue) {
-		$t = $arr[1];
-		$arr[1] = $arr[2];
-		$arr[2] = $t;
-	}
-	if ($arr[0]->Rank->Rankvalue < $arr[1]->Rank->Rankvalue) {
-		$t = $arr[0];
-		$arr[0] = $arr[1];
-		$arr[1] = $t;
-	}
 }
 
 // If colours not set, sort players into rank order and assign
