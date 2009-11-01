@@ -35,5 +35,6 @@ catch (GameException $e) {
 	exit(0);	
 }
 header("content-type: application/x-go-sgf");
+header('Content-Disposition: attachment; filename="{$g->game_name()}"');
 print $g->Sgf;
 ?>

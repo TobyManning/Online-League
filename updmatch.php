@@ -14,6 +14,10 @@
 
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+// This is for when an admin wants to edit the match details - members of
+// teams selected on each side for a match
+
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';

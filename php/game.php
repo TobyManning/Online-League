@@ -105,6 +105,10 @@ class Game {
 		$this->Matchind = $row["matchind"];
 	}
 	
+	public function game_name() {
+		return "bga_gm{$this->Ind}.sgf";
+	}
+	
 	public function create_game() {
 	
 		// Set these to some numeric value in case not defined
