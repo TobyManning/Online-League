@@ -131,7 +131,7 @@ class Match {
 	// Fetch the game list (not including score)
 		
 	public function fetchgames() {
-		$ret = mysql_query("select ind from game where {$this->queryof('match')} order by wrank desc,brank desc,wlast,blast,wfirst,bfirst");
+		$ret = mysql_query("select ind from game where {$this->queryof('match')} order by ind");
 		if (!$ret)
 			throw new MatchException("Game read fail " . mysql_error());
 		$result = array();
