@@ -18,7 +18,7 @@
 //  Sort an array of players by descending rank - stably
 //  Use bubble sort
 
-function sortrank($arr) {
+function sortrank(&$arr) {
 	if ($arr[0]->Rank->Rankvalue < $arr[1]->Rank->Rankvalue) {
 		$t = $arr[0];
 		$arr[0] = $arr[1];

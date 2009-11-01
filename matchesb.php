@@ -69,7 +69,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 EOT;
 		$ht = $mtch->Hteam->display_name();
 		$at = $mtch->Ateam->display_name();
-		if  ($mtch->teamalloc())  {
+		if  ($mtch->is_allocated())  {
 			if ($mtch->Result == 'H')
 				$ht = "<b>$ht</b>";
 			else if ($mtch->Result == 'A')

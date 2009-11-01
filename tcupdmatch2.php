@@ -195,6 +195,6 @@ change it until we've received it.</p>
 EOT;
 }
 ?>
-<p>Click <a href="matchupdb.php">here</a> to edit some other match.</p>
+<p>Click <a href="matchesb.php">here</a> to edit some other match.</p>
 </body>
 </html>
