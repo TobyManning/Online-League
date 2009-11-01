@@ -31,7 +31,7 @@ include 'php/game.php';
 $mtch = new Match();
 try  {
 	$hora = $_GET["hora"];
-	if ($hora != 'H' || $hora != 'A')
+	if ($hora != 'H' && $hora != 'A')
 		throw new MatchException("team not specified on entry");
 	$mtch->fromget();
 	$mtch->fetchdets();
