@@ -141,7 +141,7 @@ EOT;
 $ng = $mtch->ngames();
 
 for ($row = 0; $row < 3; $row++)  {
-	print "<tr>\n";
+	print "<tr><td>\n";
 	$matchm = false;
 	if ($row < $ng)  {
 		$g = $mch->Games[$row];
@@ -164,10 +164,14 @@ EOT;
 			print <<<EOT
 <option value="$val">
 EOT;
+		print <<<EOT
+{$memb->display_name()} ({$memb->display_rank()})
+</option>
+EOT;
 	}
 	print <<<EOT
 </select>
-</tr>
+</td></tr>
 EOT;
 }
 ?>
