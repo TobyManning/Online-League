@@ -190,8 +190,8 @@ and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
 </p>
 <p>Player assignments are as follows:</p>
 <table>
-<tr><th colspan="3" align="center">White</th><th colspan="3" align="center">Black</th><th>Result</th></tr>
-<tr><th>Player</th><th>Rank</th><th>Team</th><th>Player</th><th>Rank</th><th>Team</th></tr>
+<tr><th colspan="4" align="center">White</th><th colspan="4" align="center">Black</th><th>Result</th></tr>
+<tr><th>Player</th><th>Rank</th><th>Online</th><th>Team</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
 	switch ($g->Result) {
@@ -212,9 +212,11 @@ foreach ($mtch->Games as $g) {
 <tr>
 <td>{$g->Wplayer->display_name()}</td>
 <td>{$g->Wplayer->display_rank()}</td>
+<td>{$g->Wplayer->display_online()}</td>
 <td>{$g->Wteam->display_name()}</td>
 <td>{$g->Bplayer->display_name()}</td>
 <td>{$g->Bplayer->display_rank()}</td>
+<td>{$g->Bplayer->display_online()}</td>
 <td>{$g->Bteam->display_name()}</td>
 <td>$res</td>
 </tr>
