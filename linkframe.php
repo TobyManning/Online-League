@@ -65,6 +65,7 @@ EOT;
 	<tr><td class="subind"><a href="${a}newteam.php" target="_top" class="memb">New team</a></td></tr>
 	<tr><td class="subind"><a href="${a}clubupd.php" target="_top" class="memb">Update clubs</a></td></tr>
 	<tr><td class="subind"><a href="${a}playupd.php" target="_top" class="memb">Update players</a></td></tr>
+	<tr><td class="subind"><a href="${a}rempw.php" target="_top" class="memb">Remind password</a></td></tr>
 	<tr><td class="subind"><a href="${a}teamsupd.php" target="_top" class="memb">Update teams</a></td></tr>
 	<tr><td class="subind"><a href="${a}matchupd.php" target="_top" class="memb">Update matches</a></td></tr>
 	<tr><td class="subind"><a href="${a}sendtc.php" target="_top" class="memb">Message to team captains</a></td></tr>
