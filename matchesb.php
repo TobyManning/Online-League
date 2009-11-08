@@ -97,8 +97,12 @@ EOT;
 		}
 		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->result == 'D')
 			print "<td>Played</td>";
-		elseif ($mtch->is_allocated())
-			print "<td>Not played</td>";
+		elseif ($mtch->is_allocated())  {
+			if ($mtch->Result == 'P')
+				print "<td>Part played</td>";
+			else
+				print "<td>Not played</td>";
+		}
 		else
 			print "<td>TBA</td>";
 		print "</tr>\n";
