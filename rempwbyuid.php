@@ -59,5 +59,6 @@ print <<<EOT
 <p>$Mess</p>
 EOT;
 ?>
+<p>Please click <a href="javascript:self.close();">here</a> to close this window.</p>
 </body>
 </html>
