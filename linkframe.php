@@ -39,7 +39,7 @@ function lostpw() {
 		 alert("No userid given");
        return;
    }
-   alert(l);
+   window.open("rempwbyuid.php?uid=" + l, "Password Reminder", "width=450,height=200,resizeable=yes,scrollbars=yes");
 }
 </script>
 <h2>Places</h2>
