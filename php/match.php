@@ -258,7 +258,7 @@ class Match {
 	public function mail_allocated() {
 		if (!$this->is_allocated())
 			return;
-		$fh = popen("mail -s 'Go League match set up' online-league@britgo.org", "w");
+		$fh = popen("mail -s 'Go League match set up' online-league@britgo.org {$this->Hteam->Captain->Email} {$this->Ateam->Captain->Email}", "w");
 		$mess = <<<EOT
 Completed allocation of players to match in division {$this->Division} for {$this->Date->display_month()} between
 {$this->Hteam->display_name()} ({$this->Hteam->display_description()}) and {$this->Ateam->display_name()} ({$this->Ateam->display_description()}).
@@ -272,6 +272,14 @@ White: {$g->Wplayer->display_name()} {$g->Wplayer->display_rank()} {$g->Wteam->d
 EOT;
 			fwrite($fh, "$mess\n");
 		}
+		$mess = <<<EOT
+
+Team Captains are:
+
+For {$this->Hteam->display_name()}: {$this->Hteam->Captain->display_name()}, {$this->Hteam->Captain->display_email_nolink()}
+For {$this->Ateam->display_name()}: {$this->Ateam->Captain->display_name()}, {$this->Ateam->Captain->display_email_nolink()}
+EOT;
+		fwrite($fh, "$mess\n");
 		pclose($fh);
 	}
 }

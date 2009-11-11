@@ -31,6 +31,17 @@ $Title = "British Go Association League";
 include 'php/head.php';
 ?>
 <body class="nomarg">
+<script language="javascript" src="webfn.js"></script>
+<script language="JavaScript">
+function lostpw() {
+	var l = document.lifm.user_id.value;
+	if (!nonblank(l)) {
+		 alert("No userid given");
+       return;
+   }
+   alert(l);
+}
+</script>
 <h2>Places</h2>
 <?php
 $a = $_GET["abs"];
@@ -84,11 +95,12 @@ if (!$login)  {
 	if (isset($_COOKIE['user_id']))
 		$userid = $_COOKIE['user_id'];
 	print <<<EOT
-<form action="${a}login.php" method="post" enctype="application/x-www-form-urlencoded">
+<form name="lifm" action="${a}login.php" method="post" enctype="application/x-www-form-urlencoded">
 <p>Userid:<input type="text" name="user_id" value="$userid" size="10"></p>
 <p>Password:<input type="password" name="passwd" size="10"></p>
 <p><input type="submit" value="Login"></p>
 </form>
+<p><a href="javascript:lostpw();">Lost password?</a></p>
 EOT;
 }
 ?>

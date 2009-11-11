@@ -1,22 +1,4 @@
 name: Go League
-files: /home/jmc/src/Websites/goleague/php/player.php
-files: /home/jmc/src/Websites/goleague/sendtcb2.php
-files: /home/jmc/src/Websites/goleague/linkframe.php
-files: /home/jmc/src/Websites/goleague/sendtc.php
-files: /home/jmc/src/Websites/goleague/sendtcb.php
-files: /home/jmc/src/Websites/goleague/playupdb.php
-files: /home/jmc/src/Websites/goleague/php/teammemb.php
-files: /home/jmc/src/Websites/goleague/php/team.php
-files: /home/jmc/src/Websites/goleague/teamdisp.php
-files: /home/jmc/src/Websites/goleague/teamsb.php
-files: /home/jmc/src/Websites/goleague/teams.php
-files: /home/jmc/src/Websites/goleague/aboutusb.php
-files: /home/jmc/src/Websites/goleague/indexb.php
-files: /home/jmc/src/Websites/goleague/matchesb.php
-files: /home/jmc/src/Websites/goleague/updindplayer.php
-files: /home/jmc/src/Websites/goleague/php/matchdate.php
-files: /home/jmc/src/Websites/goleague/php/match.php
-files: /home/jmc/src/Websites/goleague/updmatch.php
 basedir: 
 webdir: 
 template: 
@@ -49,23 +31,58 @@ urllist: updmatch.php?{$mtch->urlof()}
 urllist: '.$SCRIPT_NAME.'
 urllist: <?php echo $SCRIPT_NAME ?>
 urllist: teamsupd.php
-bmarks: ::/home/jmc/src/Websites/goleague/pbtb.php:2238::3642:
-bmarks: ::/home/jmc/src/Websites/goleague/pbtb.php:1843:m->display_name()}</:3642:
-recent_files: /home/jmc/src/Websites/goleague/php/player.php
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:8292:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:8061:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:7659:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:6646:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:6616:Date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:6594:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:5508:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:4923:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:4390:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:4053:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:2633:Date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:2288:date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:1359:Date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:846:Date:8482:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:13644:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:13282:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:12944:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:12687:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:12389:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:11206:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:8415:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:8330:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:8196:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:8143:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:8043:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:8005:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:7900:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:7726:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:7650:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:6575:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:4095:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3886:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3621:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:2411:select:13845:
+bmarks: ::/home/jmc/src/Websites/goleague/downloadsgf.php:1229:\nprint $g->Sgf;:1250:
+bmarks: ::/home/jmc/src/Websites/goleague/downloadsgf.php:1112:'Content-Disposition:1250:
+bmarks: ::/home/jmc/src/Websites/goleague/adminb.php:103:\n//   Copyright 2009:1131:
+recent_files: /home/jmc/src/Websites/goleague/php/match.php
+recent_files: /home/jmc/src/Websites/goleague/matchesb.php
 recent_files: /home/jmc/src/Websites/goleague/sendmail2.php
-recent_files: /home/jmc/src/Websites/goleague/sendmail.php
-recent_files: /home/jmc/src/Websites/goleague/teamsupdb.php
-recent_files: /home/jmc/src/Websites/goleague/updindteam.php
-recent_files: /home/jmc/src/Websites/goleague/updpaid.php
-recent_files: /home/jmc/src/Websites/goleague/updindteam2.php
-recent_files: /home/jmc/src/Websites/goleague/teamsupd.php
-recent_files: /home/jmc/src/Websites/goleague/linkframe.php
-recent_files: /home/jmc/src/Websites/goleague/playersb.php
-recent_files: /home/jmc/src/Websites/goleague/pbt.php
-recent_files: /home/jmc/src/Websites/goleague/pbtb.php
-recent_files: /home/jmc/src/Websites/goleague/php/rank.php
-recent_files: /home/jmc/src/Websites/goleague/php/club.php
+recent_files: /home/jmc/src/Websites/goleague/ownupdb2.php
+recent_files: /home/jmc/src/Websites/goleague/updtmemb.php
 recent_files: /home/jmc/src/Websites/goleague/updindplayer2.php
+recent_files: /home/jmc/src/Websites/goleague/rempw2.php
+recent_files: /home/jmc/src/Websites/goleague/php/player.php
+recent_files: /home/jmc/src/Websites/goleague/linkframe.php
+recent_files: /home/jmc/src/Websites/goleague/rempwb.php
+recent_files: /home/jmc/src/Websites/goleague/rempw.php
+recent_files: /home/jmc/src/Websites/goleague/playupd.php
+recent_files: /home/jmc/src/Websites/goleague/playupdb.php
+recent_files: /home/jmc/src/Websites/goleague/bgaleague-style.css
+recent_files: /home/jmc/src/Websites/goleague/showmtch.php
 opendir: /home/jmc/src/Websites/goleague/php
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1
