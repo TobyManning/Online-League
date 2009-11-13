@@ -43,7 +43,7 @@ $sgfdata = "";
 $res = $result . '+' . $resulttype;
 if (preg_match('/\d+/', $resulttype))
 	$res .= '.5';
-$prog = $_SERVER["DOCUMENT_ROOT"] . '/kgsfetchsgf.pl' . "{$g->Wplayer->KGS} {$g->Bplayer->KGS} {$date_played->queryof()} $res";
+$prog = $_SERVER["DOCUMENT_ROOT"] . '/kgsfetchsgf.pl' . " {$g->Wplayer->KGS} {$g->Bplayer->KGS} {$date_played->queryof()} $res";
 
 $fh = popen("perl $prog", "r");
 if ($fh)  {
