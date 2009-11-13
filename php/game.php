@@ -285,4 +285,17 @@ function list_nosgf_games() {
 	}
 	return $result;
 }
+
+function list_played_games() {
+	$result = array();
+	$ret = mysql_query("select ind from game where result!='N' order by matchdate,wlast,wfirst,blast,bfirst");
+	if ($ret) {
+		while ($row = mysql_fetch_array($ret)) {
+			$r = new game($row[0]);
+			$r->fetchdets();
+			array_push($result, $r);
+		}
+	}
+	return $result;
+}
 ?>

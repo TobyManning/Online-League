@@ -70,6 +70,12 @@ setcookie("user_name", $username, time()+60*60*24*60, "/");
 <head>
 <title>Login OK</title>
 </head>
-<body onload="document.location='linkframe.php'">
+<body onload="onl();">
+<script language="javascript">
+function onl() {
+	top.frames[1].location.reload();
+	document.location='linkframe.php';
+}
+</script>
 </body>
 </html>
