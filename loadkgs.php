@@ -43,9 +43,10 @@ $sgfdata = "";
 $res = $result . '+' . $resulttype;
 if (preg_match('/\d+/', $resulttype))
 	$res .= '.5';
-$prog = $_SERVER["DOCUMENT_ROOT"] . '/league/kgsfetchsgf.pl' . " {$g->Wplayer->KGS} {$g->Bplayer->KGS} {$date_played->queryof()} $res";
 
-$fh = popen("perl $prog", "r");
+$prog = $_SERVER["DOCUMENT_ROOT"] . '/league/kgsfetchsgf.pl';
+
+$fh = popen("$prog {$g->Wplayer->KGS} {$g->Bplayer->KGS} {$date_played->queryof()} $res", "r");
 if ($fh)  {
 	while ($part = fread($fh, 200))
 		$sgfdata .= $part;
