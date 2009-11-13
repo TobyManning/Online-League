@@ -45,7 +45,7 @@ if (preg_match('/\d+/', $resulttype))
 	$res .= '.5';
 $prog = $_SERVER["DOCUMENT_ROOT"] . '/kgsfetchsgf.pl';
 
-$fh = popen("$prog {$g->Wplayer->KGS} {$g->Bplayer->KGS} {$date_played->queryof()} $res", "r");
+$fh = popen("perl $prog {$g->Wplayer->KGS} {$g->Bplayer->KGS} {$date_played->queryof()} $res", "r");
 if ($fh)  {
 	while ($part = fread($fh, 200))
 		$sgfdata .= $part;
