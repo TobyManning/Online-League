@@ -53,7 +53,7 @@ if ($fh)  {
 	if ($code != 0 || strlen($sgfdata) == 0)  {
 		switch ($code) {
 		default:
-			$msg = "I cannot tell why code was $code";
+			$msg = "I cannot tell why code was $code (prog $prog)";
 			break;
 		case 10:
 			$msg = "Could not find games on {$date_played->display()}";
