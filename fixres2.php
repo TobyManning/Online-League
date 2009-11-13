@@ -69,8 +69,8 @@ switch ($g->Result) {
 		if (preg_match('/W\+(.*)(\.5)?/', $g->Resultdet, $rm)) {
 			switch ($rm[1])  {
 			default:
-				if (preg_match('/^\d+$/', $rm[1]))
-					$selnum = $t;
+				if (preg_match('/^(\d+)\.5$/', $rm[1], $dm))
+					$selnum = $dm[1];
 				break;
 			case 'H':
 				$selh = ' selected';
@@ -89,8 +89,8 @@ switch ($g->Result) {
 		if (preg_match('/B\+(.*)(\.5)?/', $g->Resultdet, $rm)) {
 			switch ($rm[1])  {
 			default:
-				if (preg_match('/^\d+$/', $rm[1]))
-					$selnum = $t;
+				if (preg_match('/^(\d+)\.5$/', $rm[1], $dm))
+					$selnum = $dm[1];
 				break;
 			case 'H':
 				$selh = ' selected';
