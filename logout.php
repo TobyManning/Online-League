@@ -23,5 +23,12 @@ unset($_SESSION['user_priv']);
 <head>
 <title>Logging out</title>
 </head>
-<body onload="document.location='linkframe.php'">
+<body onload="onl();">
+<script language="javascript">
+function onl() {
+	top.frames[1].location.reload();
+	document.location='linkframe.php';
+}
+</script>
 </body>
+</html>
