@@ -30,6 +30,17 @@ $Title = "Add SGF file";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript">
+function gkgs() {
+	var gns = document.gnum.gn;
+	if (gns.selectedIndex < 0) {
+		alert("No game selected");
+		return;
+	}
+	var game = gns.options[gns.selectedIndex].value;
+	document.location = "aloadkgs.php?gn=" + game;
+}
+</script>
 <h1>Add SGF record</h1>
 <p>
 Use this page to add SGF records to results which don't have them.
@@ -43,7 +54,12 @@ EOT;
 }
 else {
 	print <<<EOT
-<form action="addsgf2.php" method="post" enctype="multipart/form-data">
+<p>
+Select a game from below and <a href="javascript:gkgs();">click here</a>
+to try to load it from KGS archives. Otherwise load from an SGF file
+on your computer.
+</p>
+<form name="gnum" action="addsgf2.php" method="post" enctype="multipart/form-data">
 <p>
 Select game:
 <select name="gn">
