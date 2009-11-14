@@ -41,7 +41,33 @@ $Title = "Edit Game Result";
 include 'php/head.php';
 ?>
 <body>
-<body>
+<script language="javascript">
+function loadkgs() {
+	var fm = document.resform;
+	var game = fm.gn.value;
+	var dayel = fm.day;
+	var monel = fm.month;
+	var yrel = fm.year;
+	var day = dayel.options[dayel.selectedIndex].value;
+	var month = monel.options[monel.selectedIndex].value;
+	var year = yrel.options[yrel.selectedIndex].value;
+	var resel = fm.result;
+	var resty = fm.resulttype;
+	if (resel.selectedIndex < 0 || resty.selectedIndex < 0) {
+		alert("No result selected");
+		return;
+	}
+	var res = resel.options[resel.selectedIndex].value;
+	var restype = resty.options[resty.selectedIndex].value;
+	if (restype == 'N') {
+		alert("Result type not set");
+		return;
+	}
+	document.location = "loadkgs.php?gn=" + game +
+							  "&md=" + year + "-" + month + "-" + day + "&r=" +
+							  res + "&rt=" + restype;
+}
+</script>
 <h1>Edit Game Result</h1>
 <p>
 Editing result for Game between
@@ -54,6 +80,16 @@ print <<<EOT
 ({$g->Bplayer->display_rank()}) of
 {$g->Bteam->display_name()} as Black.
 </p>
+EOT;
+if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
+	print <<<EOT
+<p><b>If the game was played on KGS</b> using the online names
+{$g->Wplayer->display_online()} and
+{$g->Bplayer->display_online()}, get the date played and result correct in the form
+below and <a href="javascript:loadkgs();"><b>Click here</b></a>.</p>
+EOT;
+}
+print <<<EOT
 <form action="fixres3.php" method="post" enctype="multipart/form-data">
 {$g->save_hidden()}
 <p>
