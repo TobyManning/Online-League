@@ -139,9 +139,15 @@ class Team  {
 		mysql_query("update team set name='$qname' where {$this->queryof()}");
 		// Need to change team in teammemb as well
 		mysql_query("update teammemb set teamname='$qname' where {$this->queryof('teamname')}");
+		// Also reset any matches
+		mysql_query("update lgmatch set hteam='$qname' where {$this->queryof('hteam')}");
+		mysql_query("update lgmatch set ateam='$qname' where {$this->queryof('ateam')}");
+		// And games
+		mysql_query("update game set wteam='$qname' where {$this->queryof('wteam')}");
+		mysql_query("update game set bteam='$qname' where {$this->queryof('bteam')}");
 		$this->Name = $newt->Name;
 	}
-	
+
 	public function update() {
 		$qdescr = mysql_real_escape_string($this->Description);
 		$qcfirst = $this->Captain->queryfirst();
