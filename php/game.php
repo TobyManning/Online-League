@@ -187,6 +187,12 @@ class Game {
 		return $row[0] != 0;
 	}
 	
+	public function date_played() {
+		if ($this->Result == 'N')
+			return "";
+		return $this->Date->disp_abbrev();
+	}
+	
 	public function display_result($addunpl = false) {
 		if ($this->Result == 'N')  {
 			if  ($addunpl)

@@ -53,6 +53,10 @@ class Matchdate {
 		return date("D j M Y", $this->timestamp);
 	}
 	
+	public function disp_abbrev() {
+		return date("d/m/y", $this->timestamp);
+	}
+	
 	public function display_month() {
 		return date("F Y", $this->timestamp);
 	}

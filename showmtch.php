@@ -65,12 +65,13 @@ and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
 </p>
 <p>Player and board assignments are as follows:</p>
 <table class="showmatch">
-<tr><th colspan="4" align="center">White</th><th colspan="4" align="center">Black</th><th>Result</th></tr>
-<tr><th>Player</th><th>Rank</th><th>Online</th><th>Team</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th></tr>
+<tr><th colspan="5" align="center">White</th><th colspan="4" align="center">Black</th><th>Result</th></tr>
+<tr><th>Date</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
 	print <<<EOT
 <tr>
+<td>{$g->date_played()}</td>
 <td>{$g->Wplayer->display_name()}</td>
 <td>{$g->Wplayer->display_rank()}</td>
 <td>{$g->Wplayer->display_online()}</td>
