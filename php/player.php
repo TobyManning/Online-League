@@ -228,26 +228,22 @@ class Player  {
 	}
 
 	// Display KGS and IGS handles hopefully optimally
+	// We now display KGS online names if they exist without a prefix
+	// IGS is only displayed if it exists and is different or there's no KGS
 	
 	public function display_online() {
 		$k = $this->KGS;
 		$i = $this->IGS;
-		if ($k == $i) {
-			if ($k == "")
-				$online = "-";
+		if (strlen($k) != 0) {
+			if (strlen($i) != 0 && strcasecmp($k, $i) != 0)
+				$online = "KGS:$k IGS:$i";
 			else
 				$online = $k;
 		}
-		else  {
-			if ($k != "") {
-				if ($i != "")
-					$online = "KGS:$k IGS:$i";
-				else
-					$online = "KGS:$k";
-			}
-			else
-				$online = "IGS:$i";
-		}
+		elseif (strlen($i) != 0)
+			$online = "IGS:$i";
+		else
+			$online = "-";	
 		return htmlspecialchars($online);
 	}
 
