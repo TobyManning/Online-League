@@ -20,7 +20,7 @@ $Title = "Update clubs";
 include 'php/head.php';
 print <<<EOT
 <frameset cols="15%,*">
-<frame src="linkframe.php?adm=y" frameborder="0" scrolling="no" marginwidth="0" marginheight="0">
+<frame src="linkframe.php?adm=y" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
 <frame src="clubupdb.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
 </frameset>
 EOT;

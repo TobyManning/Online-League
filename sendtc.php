@@ -20,7 +20,7 @@ $Title = "Send message to team captains";
 include 'php/head.php';
 ?>
 <frameset cols="15%,*">
-<frame src="linkframe.php?adm=y" frameborder="0" scrolling="no" marginwidth="0" marginheight="0">
+<frame src="linkframe.php?adm=y" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
 <frame src="sendtcb.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
 </frameset>
 </html>

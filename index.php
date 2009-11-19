@@ -21,7 +21,7 @@ include 'php/head.php';
 ?>
 <frameset rows="90%,*">
 <frameset cols="15%,*">
-<frame src="linkframe.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0">
+<frame src="linkframe.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
 <frame src="indexb.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
 </frameset>
 <frame src="copyrightblurb.php" frameborder="0" marginwidth="0" marginheight="0" noresize>
