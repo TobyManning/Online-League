@@ -29,11 +29,13 @@ class Team  {
 	public $Scoref;		// Scores for
 	public $Scorea;		// Scores against
 	public $Paid;			// Paid
+	public $Sortrank;		// Ranking for league sort
 	
 	public function __construct($n = "") {
 		if (strlen($n) != 0)
 			$this->Name = $n;
 		$this->Division = 1;
+		$this->Sortrank = 0;
 	}
 	
 	public function fromget() {
@@ -204,6 +206,8 @@ class Team  {
 							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(ascore)");
 		$this->Scorea = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(ascore)") +
 							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hscore)");
+		$this->Sortrank = $this->Won * 1000 + $this->Drawn * 500 - $this->Lost * 1000
+									+ $this->Scoref - $this->Scorea;
 	}
 	
 	public function count_members() {
@@ -248,12 +252,9 @@ function max_division() {
 }
 
 function score_compare($teama, $teamb) {
-	if ($teama->Won != $teamb->Won)
-		return $teama->Won > $teamb->Won? -1: 1;
-	$sa = $teama->Scoref - $teama->Scorea;
-	$sb = $teamb->Scoref - $teamb->Scorea;
-	if ($sa == $sb)
-		return strcasecmp($teama->Name, $teamb->Name);
-	return $sa > $sb? -1: 1;
+	// Decide ordering when compiling PWDL then fall back on name order.
+	if ($teama->Sortrank != $teamb->Sortrank)
+		return $teama->Sortrank > $teamb->Sortrank? -1: 1;
+	return strcasecmp($teama->Name, $teamb->Name);
 }	
 ?>

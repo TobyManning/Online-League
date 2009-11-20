@@ -54,10 +54,20 @@ EOT;
 		$t->get_scores();
 	}
 	usort($tl, 'score_compare');
+	$maxrank = $tl[0]->Sortrank;
+	$minrank = $tl[count($tl)-1]->Sortrank;
+	// This avoids showing prom/releg if they're all the same as with nothing played.
+	if ($maxrank == $minrank)
+		$maxrank = $minrank = -9999999;
 	foreach ($tl as $t) {
+		$n = $t->display_name();
+		if ($t->Sortrank == $maxrank)
+			$n = "<span class=\"prom\">$n</span>";
+		elseif ($t->Sortrank == $minrank)
+			$n = "<span class=\"releg\">$n</span>";
 		print <<<EOT
 <tr>
-<td>{$t->display_name()}</td>
+<td>$n</td>
 <td>{$t->Played}</td>
 <td>{$t->Won}</td>
 <td>{$t->Drawn}</td>
