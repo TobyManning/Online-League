@@ -253,7 +253,7 @@ function score_compare($teama, $teamb) {
 	$sa = $teama->Scoref - $teama->Scorea;
 	$sb = $teamb->Scoref - $teamb->Scorea;
 	if ($sa == $sb)
-		return 0;
+		return strcasecmp($teama->Name, $teamb->Name);
 	return $sa > $sb? -1: 1;
 }	
 ?>
