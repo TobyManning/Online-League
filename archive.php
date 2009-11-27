@@ -50,7 +50,7 @@ for ($d = 1; $d <= $ml; $d++) {
 		array_push($messages,
 			$d == 1? "Need to have playoff for championship":
 			"Need to have playoff for promotion from division $d");
-	if  ($tl[$nteams-2] == $tl[$nteams-1])
+	if  ($tl[$nteams-2]->Sortrank == $tl[$nteams-1]->Sortrank)
 		array_push($messages,
 			$d == $ml? "Need to have playoff for bottom team":
 			"Need to have playoff for relegation from division $d");

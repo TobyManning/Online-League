@@ -82,6 +82,7 @@ EOT;
 	}
 }
 ?>
+<h2>Complete league and assign to history</h2>
 <p>Click <a href="javascript:archive()">here</a> to consign played matches to history,
 promote and relegate teams ready to draw for next season.</p>
 </body>
