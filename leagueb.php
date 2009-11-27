@@ -81,7 +81,7 @@ EOT;
 ?>
 </table>
 </div>
-<p>Key to above: (P)layed (W)on (D)rawn (L)ost Games (F)or Games (Against).
+<p>Key to above: (P)layed (W)on (D)rawn (L)ost Games (F)or Games (A)gainst.
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
 </p>
 <h2>Previous Seasons</h2>
