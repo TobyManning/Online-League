@@ -47,7 +47,7 @@ foreach ($membs as $m) {
 		exit(0);
 	}
 	if ($r != $m->Rank->Rankvalue)
-		$m->updrank($n);
+		$m->updrank($r);
 	$n++;
 }
 ?>
@@ -59,8 +59,8 @@ include 'php/head.php';
 <body>
 <h1>Rank adjustments complete</h1>
 <p>
-Finished making rank adjustments.
-<a href="matchesb.php">Click here</a> if you want to go to match assignments.
+Finished making rank adjustments.</p>
+<p><a href="matchesb.php">Click here</a> if you want to go to match assignments.
 </p>
 </body>
 </html>
