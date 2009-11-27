@@ -50,9 +50,10 @@ function okdel(div) {
 		location = "matchesdel.php?div=" + div;
 }
 
-function archive(div) {
+function archive() {
 	killwind();
-	alert("Sorry not written archive bit yet as nothing yet to archive");
+	if (confirm("Sure you want to archive played matches"))
+		location = "archive.php";
 }
 </script>
 <h1>Update Matches</h1>
@@ -77,10 +78,11 @@ EOT;
 		print <<<EOT
 <p>Click <a href="matchtmupd.php?div=$div">here</a> to allocate/update team members for matches in division $div.</p>
 <p>Click <a href="javascript:okdel($div)">here</a> to delete the matches for division $div.</p>
-<p>Click <a href="javascript:archive(div)">here</a> to consign played matches to history.</p>
 EOT;
 	}
 }
 ?>
+<p>Click <a href="javascript:archive()">here</a> to consign played matches to history,
+promote and relegate teams ready to draw for next season.</p>
 </body>
 </html>
