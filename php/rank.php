@@ -56,8 +56,8 @@ class Rank {
 	//  NB this is a function which generates output
 	//  Don't use it embedded in a string!!!
 		
-	public function rankopt() {
-		print "<select name=\"rank\">\n";
+	public function rankopt($suff="") {
+		print "<select name=\"rank$suff\">\n";
 		for ($r = 8;  $r >= 0;  $r--)  {
 			$rn = $r+1;
 			$rn = "$rn Dan";

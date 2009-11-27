@@ -1,4 +1,5 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/bgaleague-style.css
 files: /home/jmc/src/Websites/goleague/php/player.php
 files: /home/jmc/src/Websites/goleague/php/team.php
 files: /home/jmc/src/Websites/goleague/leagueb.php
@@ -70,6 +71,7 @@ bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3886:select:13961:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3621:select:13961:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:2411:select:13961:
 bmarks: ::/home/jmc/src/Websites/goleague/adminb.php:103:\n//   Copyright 2009:1131:
+recent_files: /home/jmc/src/Websites/goleague/bgaleague-style.css
 recent_files: /home/jmc/src/Websites/goleague/php/player.php
 recent_files: /home/jmc/src/Websites/goleague/php/team.php
 recent_files: /home/jmc/src/Websites/goleague/leagueb.php
@@ -84,9 +86,8 @@ recent_files: /home/jmc/src/Websites/goleague/updindplayer.php
 recent_files: /home/jmc/src/Websites/goleague/updindclub2.php
 recent_files: /home/jmc/src/Websites/goleague/updindclub.php
 recent_files: /home/jmc/src/Websites/goleague/teamsupd.php
-recent_files: /home/jmc/src/Websites/goleague/teams.php
-opendir: /home/jmc/src/Websites/goleague/php
-savedir: /home/jmc/src/Websites/goleague/php
+opendir: /home/jmc/src/Websites/goleague
+savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1

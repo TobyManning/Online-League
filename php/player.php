@@ -318,8 +318,8 @@ class Player  {
 
 	// Display rank as a selection
 		
-	public function rankopt() {
-		$this->Rank->rankopt();
+	public function rankopt($suff="") {
+		$this->Rank->rankopt($suff);
 	}
 
 	// Display admin priv as a selection
@@ -389,6 +389,17 @@ class Player  {
 		// Ditto for where this player is white
 		mysql_query("update game set wrank=$r where result='N' and {$this->queryof('w')}");
 	}
+	
+	public function updrank($r) {
+		$this->Rank->Rankvalue = $r;
+		mysql_query("update player set rank=$r where {$this->queryof()}");
+		// Fix rank in teams that this player is a member of
+		mysql_query("update teammemb set rank=$r where {$this->queryof('tm')}");
+		// Fix rank in unplayed games where this player is black
+		mysql_query("update game set brank=$r where result='N' and {$this->queryof('b')}");
+		// Ditto for where this player is white
+		mysql_query("update game set wrank=$r where result='N' and {$this->queryof('w')}");
+	}	
 
 	// MySQL juggling to get Played/Won/Drawn/Lost	
 	private function get_grec($query) {

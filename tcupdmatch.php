@@ -124,6 +124,11 @@ for the division {$mtch->Division} match in
 <p>Please select or reselect team members using the form below.
 <b>Please note</b> that once both teams are allocated you cannot change the team.
 </p>
+<p>
+The players will be sorted into descending order of rank, so if you need to
+adjust the team members' ranks
+<a href="updrank.php?{$Myteam->urlof()}">go here first</a>.
+</p>
 EOT;
 $ce = $Histeam->display_capt_email();
 if (strlen($ce) != 0)
@@ -182,7 +187,8 @@ Select the team members and
 <input type="submit" value="Click here"> or <input type="reset" value="Reset form">
 </p>
 <p>
-Colours will be assigned randomly. Note that teams will be sorted into descending order of rank.
+Colours will be assigned randomly. Note again that teams will be sorted into descending order of rank.
+Click on the link above if you need to adjust these.
 </p>
 </form>
 </body>
