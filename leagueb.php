@@ -81,5 +81,10 @@ EOT;
 ?>
 </table>
 </div>
+<p>Key to above: (P)layed (W)on (D)rawn (L)ost Games (F)or Games (Against).
+<span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
+</p>
+<h2>Previous Seasons</h2>
+<p><a href="prevleagueb.php">Click here</a> to view previous seasons' league.</p>
 </body>
 </html>
