@@ -1,4 +1,6 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/sendtcb2.php
+files: /home/jmc/src/Websites/goleague/sendtcb.php
 files: /home/jmc/src/Websites/goleague/sendmail2.php
 files: /home/jmc/src/Websites/goleague/php/game.php
 files: /home/jmc/src/Websites/goleague/showmtch.php
@@ -75,6 +77,8 @@ bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3886:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3621:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:2411:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/adminb.php:103:\n//   Copyright 2009:1131:
+recent_files: /home/jmc/src/Websites/goleague/sendtcb2.php
+recent_files: /home/jmc/src/Websites/goleague/sendtcb.php
 recent_files: /home/jmc/src/Websites/goleague/sendmail2.php
 recent_files: /home/jmc/src/Websites/goleague/php/game.php
 recent_files: /home/jmc/src/Websites/goleague/showmtch.php
@@ -82,14 +86,12 @@ recent_files: /home/jmc/src/Websites/goleague/php/match.php
 recent_files: /home/jmc/src/Websites/goleague/php/player.php
 recent_files: /home/jmc/src/Websites/goleague/matchesb.php
 recent_files: /home/jmc/src/Websites/goleague/reminder.php
+recent_files: /home/jmc/src/Websites/goleague/php/team.php
 recent_files: /home/jmc/src/Websites/goleague/matchupdb.php
 recent_files: /home/jmc/src/Websites/goleague/archive.php
 recent_files: /home/jmc/src/Websites/goleague/prevleagueb.php
 recent_files: /home/jmc/src/Websites/goleague/leagueb.php
 recent_files: /home/jmc/src/Websites/goleague/matchsup.php
-recent_files: /home/jmc/src/Websites/goleague/addmatch.php
-recent_files: /home/jmc/src/Websites/goleague/matchinit.php
-recent_files: /home/jmc/src/Websites/goleague/php/team.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

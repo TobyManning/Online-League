@@ -57,7 +57,8 @@ $subj = $_POST["subject"];
 $emailrep = $_POST["emailrep"];
 $mess = $_POST["messagetext"];
 $fh = popen("mail -s 'Go League email - $subj' $dest", "w");
-fwrite($fh, "Please reply to $emailrep\n");
+if (strlen($emailrep) != 0)
+	fwrite($fh, "Please reply to $emailrep\n");
 fwrite($fh, "$mess\n");
 pclose($fh);
 ?>

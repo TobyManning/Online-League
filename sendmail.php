@@ -63,10 +63,10 @@ function formvalid()
          alert("No subject given");
          return false;
       }
-      if  (!nonblank(form.emailrep.value))  {
-      	alert("No email given");
-      	return false;
-      }
+//      if  (!nonblank(form.emailrep.value))  {
+//      	alert("No email given");
+//     	return false;
+//      }
 		return true;
 }
 </script>
@@ -74,6 +74,8 @@ function formvalid()
 print <<<EOT
 <h1>Send a message to $name</h1>
 <p>Please use the form below to compose a message to $name.</p>
+<p>If you are expecting a reply please put your email address in the
+"Reply to" box.</p>
 <form name="mailform" action="sendmail2.php" method="post" enctype="application/x-www-form-urlencoded"  onsubmit="javascript:return formvalid();">
 <input type="hidden" name="via" value="$via">
 $hidden
