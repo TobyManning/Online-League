@@ -45,7 +45,8 @@ if ($admins) {
 }
 foreach (array_keys($mlist) as $dest) {
 	$fh = popen("mail -s 'Go League email - $subj' $dest", "w");
-	fwrite($fh, "Please reply to $emailrep\n");
+	if (strlen($emailrep) != 0)
+		fwrite($fh, "Please reply to $emailrep\n");
 	fwrite($fh, "$mess\n");
 	pclose($fh);
 }

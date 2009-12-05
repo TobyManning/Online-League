@@ -29,15 +29,17 @@ function formvalid()
          alert("No subject given");
          return false;
       }
-      if  (!nonblank(form.emailrep.value))  {
-      	alert("No email given");
-      	return false;
-      }
+//      if  (!nonblank(form.emailrep.value))  {
+//      	alert("No email given");
+//      	return false;
+//      }
 		return true;
 }
 </script>
 <h1>Send a message to team captains</h1>
 <p>Please use the form below to compose a message to all team captains.</p>
+<p>If you are expecting replies please put your email address in the
+"Reply to" box.</p>
 <form name="mailform" action="sendtcb2.php" method="post" enctype="application/x-www-form-urlencoded"  onsubmit="javascript:return formvalid();">
 <p>Subject:<input type="text" name="subject"></p>
 <p>Reply to:<input type="text" name="emailrep"></p>
