@@ -251,7 +251,7 @@ class Game {
 		if ($res != 'J')
 			$restype = "$res+$restype";
 		else
-			$restype = "";
+			$restype = "Jigo";
 		$this->Resultdet = $restype;
 		$mtch = new Match($this->Matchind);
 		$mtch->fetchdets();
@@ -262,6 +262,18 @@ class Game {
 		$qres = mysql_real_escape_string($res);
 		$qrest = mysql_real_escape_string($restype);
 		mysql_query("update game set result='$qres',reshow='$qrest' where {$this->queryof()}");		
+	}
+	
+	// Delete wrongly entered result
+	
+	public function delete_result() {
+		$mtch = new Match($this->Matchind);
+		$mtch->fetchdets();
+		$this->adj_match($mtch, -1);
+		$this->Result = 'N';
+		$this->Resultdet = '';
+		$mtch->updscore();
+		mysql_query("update game set result='N',reshow='',sgf='' where {$this->queryof()}");
 	}
 	
 	public function get_sgf() {

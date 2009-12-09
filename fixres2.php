@@ -89,6 +89,12 @@ if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
 below and <a href="javascript:loadkgs();"><b>Click here</b></a>.</p>
 EOT;
 }
+if ($g->Result != 'N') {
+	print <<<EOT
+<p>If the result is completely wrong and should be deleted as if the game had not
+been played <a href="delres.php?{$g->urlof()}">click here</a>.</p>
+EOT;
+}
 print <<<EOT
 <form action="fixres3.php" method="post" enctype="multipart/form-data">
 {$g->save_hidden()}
