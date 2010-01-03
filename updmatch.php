@@ -137,28 +137,45 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 			$matchm = $g->Bplayer;
 			$colour = 2;
 		}
-		$readonly = $g->Result != 'N'? " disabled": "";
+		$readonly = $g->Result != 'N';
 	}
-	print <<<EOT
+
+	// If readonly is set we can't produce a selection box because
+	// that isn't transmitted if it's disabled so we have to make a
+	// hidden one instead
+
+	if ($readonly) {
+		print <<<EOT
+<td>
+{$matchm->display_name()} ({$matchm->display_rank()})
+<input type="hidden" name="$ha$n" value="{$matchm->selof()}">
+</td>
+
+EOT;
+	}
+	else  {
+		print <<<EOT
 <td>	
 <select name="$ha$n"$readonly>
 <option value="-">-</option>
 
 EOT;
-	foreach ($membs as $memb) {
-		$val = $memb->selof();
-		$selms = $matchm && $matchm->is_same($memb)? " selected": "";
-		print <<<EOT
+		foreach ($membs as $memb) {
+			$val = $memb->selof();
+			$selms = $matchm && $matchm->is_same($memb)? " selected": "";
+			print <<<EOT
 <option value="$val"$selms>		
 {$memb->display_name()} ({$memb->display_rank()})
 </option>
 
 EOT;
-	}
-	print <<<EOT
+		}
+		print <<<EOT
 </select>
 </td>
+
 EOT;
+	}
 	return $colour;	// 0 nigiri 1 white 2 black
 }
 
@@ -193,17 +210,24 @@ $played = 0;
 for ($row = 0; $row < 3; $row++)  {
 	print "<tr>\n";
 	$col = selectmemb("htm", $row, $mtch, $mtch->Hteam, $Htmemb);
-	$discol = "";
 	if (count($mtch->Games) > $row && $mtch->Games[$row]->Result != 'N')  {
-		$discol = " disabled";
 		$played++;
+		print <<<EOT
+<td>
+$cols[$col]
+<input type="hidden" name="colours$row" value="$col">
+</td>
+
+EOT;
 	}
-	print "<td><select name=\"colours$row\"$discol>\n";
-	for ($c = 0;  $c < 3;  $c++)  {
-		$s = $c == $col? " selected": "";
-		print "<option$s value=$c>$cols[$c]</option>\n";
+	else  {
+		print "<td><select name=\"colours$row\">\n";
+		for ($c = 0;  $c < 3;  $c++)  {
+			$s = $c == $col? " selected": "";
+			print "<option$s value=$c>$cols[$c]</option>\n";
+		}
+		print "</select></td>\n";
 	}
-	print "</select></td>\n";
 	selectmemb("atm", $row, $mtch, $mtch->Ateam, $Atmemb);		
 	print "</tr>\n";
 }
