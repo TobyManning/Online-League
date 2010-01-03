@@ -23,7 +23,9 @@ $day += 0;
 
 # Fetch catalogue of games of that user for the given month
 
-open(WF, "wget -q -O - http://www.gokgs.com/gameArchives.jsp?user=$White&year=$year&month=$month 2>/dev/null|") or die "Cannot open KGS index";
+$targ = "http://www.gokgs.com/gameArchives.jsp?user=$White\&year=$year\&month=$month";
+
+open(WF, "wget -q -O - '$targ' 2>/dev/null|") or die "Cannot open KGS index";
 
 while (<WF>) {
     chomp;
