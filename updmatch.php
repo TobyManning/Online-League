@@ -49,6 +49,7 @@ include 'php/head.php';
 <script language="javascript">
 function checkteamsvalid() {
 	var 	form = document.matchform;
+	var   force = form.forceass.checked;
 	var	hplayers = new Array(3);
 	var	aplayers = new Array(3);
 	for (var n = 0;  n < 3;  n++)  {
@@ -66,6 +67,10 @@ function checkteamsvalid() {
 		}
 		opt = el.options;
 		aplayers[n] = opt[el.selectedIndex].value;
+		if (force && form["colours" + n].selectedIndex <= 0)  {
+			alert("No colours selected for board " + (n+1));
+			return false;
+		}
 	}
 	for (var p1 = 0;  p1 < 2; p1++)  {
 		for (var p2 = p1 + 1; p2 < 3; p2++) {
@@ -132,41 +137,26 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 			$matchm = $g->Bplayer;
 			$colour = 2;
 		}
-		$readonly = $g->Result != 'N';
+		$readonly = $g->Result != 'N'? " disabled": "";
 	}
-	print "<td>\n";
-
-	// readonly will only be set if result is not "N" which
-	// will only be if the colours are assigned and $matchm
-	// will be set
-	 
-	if ($readonly)
-		print $matchm->display_name();
-	else  {
-		print <<<EOT
-<select name="$ha$n">
+	print <<<EOT
+<td>	
+<select name="$ha$n"$readonly>
 <option value="-">-</option>
 EOT;
-		foreach ($membs as $memb) {
-			$val = $memb->selof();
-			if ($matchm && $matchm->is_same($memb))
-				print <<<EOT
-<option value="$val" selected>
-EOT;
-			else
-				print <<<EOT
-<option value="$val">
-EOT;
-			print <<<EOT
+	foreach ($membs as $memb) {
+		$val = $memb->selof();
+		$selms = $matchm && $matchm->is_same($memb)? " selected": "";
+		print <<<EOT
+<option value="$val"$selms>		
 {$memb->display_name()} ({$memb->display_rank()})
 </option>
 EOT;
-		}
-		print <<<EOT
-</select>
-EOT;
 	}
-	print "</td>\n";
+	print <<<EOT
+</select>
+</td>
+EOT;
 	return $colour;	// 0 nigiri 1 white 2 black
 }
 
@@ -197,10 +187,16 @@ print <<<EOT
 </tr>
 EOT;
 $cols = array("Nigiri", "White-Black", "Black-White");
+$played = 0;
 for ($row = 0; $row < 3; $row++)  {
 	print "<tr>\n";
 	$col = selectmemb("htm", $row, $mtch, $mtch->Hteam, $Htmemb);
-	print "<td><select name=\"colours$row\">\n";
+	$discol = "";
+	if (count($mtch->Games) > $row && $mtch->Games[$row]->Result != 'N')  {
+		$discol = " disabled";
+		$played++;
+	}
+	print "<td><select name=\"colours$row\"$discol>\n";
 	for ($c = 0;  $c < 3;  $c++)  {
 		$s = $c == $col? " selected": "";
 		print "<option$s value=$c>$cols[$c]</option>\n";
@@ -209,8 +205,18 @@ for ($row = 0; $row < 3; $row++)  {
 	selectmemb("atm", $row, $mtch, $mtch->Ateam, $Atmemb);		
 	print "</tr>\n";
 }
+print "</table>\n";
+if ($played != 0)
+	$played = "";
+else
+	$played = " checked readonly";
+print <<<EOT
+<p>
+<input type="checkbox" name="forceass"$played>
+<b>Check this</b> to force board assignments and colours rather than sorting into rank order.
+</p>
+EOT;
 ?>
-</table>
 <p>
 Make any adjustments and
 <input type="submit" value="Click here"> or <input type="reset" value="Reset form">

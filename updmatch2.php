@@ -44,30 +44,44 @@ $colset = false;
 $hadnig = false;
 $hadw = false;
 $hadb = false;
+$forcing = $_POST["forceass"];
 
-for ($b = 0;  $b < 3;  $b++)  {
-	$h = new Player();
-	$a = new Player();
-	$h->fromsel($_POST["htm$b"]);
-	$a->fromsel($_POST["atm$b"]);
-	$h->fetchdets();
-	$a->fetchdets();
-	$cols[$b] = $_POST["colours$b"];
-	switch ($cols[$b]) {
-	default:
-		$hadnig = true;
-		break;
-	case 1:		//  Home player white
-		$hadw = true;
-		$colset = true;
-		break;
-	case 2:		//  Home player black
-		$hadb = true;
-		$colset = true;
-		break;
+try {
+	for ($b = 0;  $b < 3;  $b++)  {
+		$h = new Player();
+		$a = new Player();
+		$h->fromsel($_POST["htm$b"]);
+		$a->fromsel($_POST["atm$b"]);
+		$h->fetchdets();
+		$a->fetchdets();
+		$cols[$b] = $_POST["colours$b"];
+		switch ($cols[$b]) {
+		default:
+			$hadnig = true;
+			break;
+		case 1:		//  Home player white
+			$hadw = true;
+			$colset = true;
+			break;
+		case 2:		//  Home player black
+			$hadb = true;
+			$colset = true;
+			break;
+		}
+		$hplayer[$b] = $h;
+		$aplayer[$b] = $a;
 	}
-	$hplayer[$b] = $h;
-	$aplayer[$b] = $a;
+}
+catch  (PlayerException $e) {
+	$mess = $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);	
+}
+
+if ($forcing && (!$colset || $hadnig))  {
+	$mess = "Colours not set up";
+	include 'php/wrongentry.php';
+	exit(0);
 }
 
 // If colours not set, sort players into rank order and assign
@@ -103,7 +117,7 @@ if ($colset)  {
 }
 else {
 
-	// So now we sort each time into order
+	// So now we sort each team into order
 	
 	sortrank($hplayer);
 	sortrank($aplayer);

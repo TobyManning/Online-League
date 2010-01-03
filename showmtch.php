@@ -58,7 +58,7 @@ print <<<EOT
 and
 {$mtch->Ateam->display_name()} ({$mtch->Ateam->display_description()})
 in
-{$mtch->Date->display_month()} with {$mtch->Slackdays} days to play the games.
+{$mtch->Date->display_month()}.
 </p>
 <p>Team captains are {$mtch->Hteam->Captain->display_name()} for {$mtch->Hteam->display_name()}
 and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
