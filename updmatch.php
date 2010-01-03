@@ -143,6 +143,7 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 <td>	
 <select name="$ha$n"$readonly>
 <option value="-">-</option>
+
 EOT;
 	foreach ($membs as $memb) {
 		$val = $memb->selof();
@@ -151,6 +152,7 @@ EOT;
 <option value="$val"$selms>		
 {$memb->display_name()} ({$memb->display_rank()})
 </option>
+
 EOT;
 	}
 	print <<<EOT

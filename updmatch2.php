@@ -50,8 +50,14 @@ try {
 	for ($b = 0;  $b < 3;  $b++)  {
 		$h = new Player();
 		$a = new Player();
-		$h->fromsel($_POST["htm$b"]);
-		$a->fromsel($_POST["atm$b"]);
+		$hn = $_POST["htm$b"];
+		$an = $_POST["atm$b"];
+		if (strlen($hn) == 0)
+			throw new PlayerException("Home team $b is null");
+		if (strlen($an) == 0)
+			throw new PlayerException("Away team $b is null");
+		$h->fromsel($hn);
+		$a->fromsel($an);
 		$h->fetchdets();
 		$a->fetchdets();
 		$cols[$b] = $_POST["colours$b"];
