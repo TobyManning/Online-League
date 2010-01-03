@@ -206,7 +206,7 @@ for ($row = 0; $row < 3; $row++)  {
 	print "</tr>\n";
 }
 print "</table>\n";
-if ($played != 0)
+if ($played == 0)
 	$played = "";
 else
 	$played = " checked readonly";
