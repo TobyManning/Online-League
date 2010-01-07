@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -15,6 +14,11 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+session_start();
+$userid = $_SESSION['user_id'];
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<?php
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -24,6 +28,8 @@ include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
+include 'php/news.php';
+
 $g = new Game();
 try  {
 	$g->frompost();
@@ -42,7 +48,7 @@ if ($fn['error'] == UPLOAD_ERR_OK  &&  preg_match('/.*\.sgf$/i', $fn['name']) &&
 	$sgfdata = file_get_contents($fn['tmp_name']);
 if ($date_played->unequal($g->Date))
 	$g->reset_date($date_played);
-$g->set_result($_POST["result"], $_POST["resulttype"]);
+$mtch = $g->set_result($_POST["result"], $_POST["resulttype"]);
 if (strlen($sgfdata) != 0)
 	$g->set_sgf($sgfdata);
 ?>
@@ -65,6 +71,30 @@ print <<<EOT
 {$g->Bteam->display_name()} as Black was {$g->display_result()}.
 </p>
 EOT;
+if ($mtch->Result == 'P')  {
+	print <<<EOT
+<p>The match has not been completed yet.
+</p>
+
+EOT;
+	$n = new News($userid, "Game completed in {$mtch->Hteam->Name} -v- {$mtch->Ateam->Name} in Division {$mtch->Division}"); 
+	$n->addnews();	
+}
+else  {
+	$result = 'The winner of the match was ';
+	if ($mtch->Result == 'H')
+		$result .= $mtch->Hteam->Name;
+	elseif ($mtch->Result == 'A')
+		$result .= $mtch->Ateam->Name;
+	else
+		$result = 'The match was drawn';
+	print <<<EOT
+<p>The match has now been completed.</p>
+<p>$result.</p>
+EOT;
+	$n = new News($userid, "Match now completed between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}. $result.");
+	$n->addnews();
+}
 ?>
 </body>
 </html>

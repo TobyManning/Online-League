@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -17,6 +16,12 @@
 
 // Complete "team captain" version of team allocation
 
+session_start();
+$userid = $_SESSION['user_id'];
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<?php
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -27,6 +32,7 @@ include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/sortrank.php';
+include 'php/news.php';
 
 $mtch = new Match();
 try  {
@@ -187,6 +193,8 @@ EOT;
 EOT;
 	}
 	$mtch->mail_allocated();
+	$n = new News($userid, "Match now allocated between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}");
+	$n->addnews();
 }
 else  {
 	print <<<EOT

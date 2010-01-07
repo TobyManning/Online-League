@@ -47,8 +47,8 @@ class Matchdate {
 		$this->enctime($_POST["{$prefix}md"]);
 	}
 	
-	public function fromtabrow($mysqlrow) {
-		$this->enctime($mysqlrow["matchdate"]);
+	public function fromtabrow($mysqlrow, $col = "matchdate") {
+		$this->enctime($mysqlrow[$col]);
 	}
 	
 	public function display() {

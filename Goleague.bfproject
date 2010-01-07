@@ -1,4 +1,8 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/fixres3.php
+files: /home/jmc/src/Websites/goleague/php/matchdate.php
+files: /home/jmc/src/Websites/goleague/loadkgs.php
+files: /home/jmc/src/Websites/goleague/fixres2.php
 files: /home/jmc/src/Websites/goleague/php/player.php
 files: /home/jmc/src/Websites/goleague/showmtch.php
 files: /home/jmc/src/Websites/goleague/updmatch.php
@@ -71,23 +75,23 @@ bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3886:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3621:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:2411:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/adminb.php:103:\n//   Copyright 2009:1131:
-recent_files: /home/jmc/src/Websites/goleague/matchesb.php
+recent_files: /home/jmc/src/Websites/goleague/fixres3.php
+recent_files: /home/jmc/src/Websites/goleague/php/matchdate.php
+recent_files: /home/jmc/src/Websites/goleague/loadkgs.php
+recent_files: /home/jmc/src/Websites/goleague/fixres2.php
 recent_files: /home/jmc/src/Websites/goleague/php/player.php
-recent_files: /home/jmc/src/Websites/goleague/php/team.php
 recent_files: /home/jmc/src/Websites/goleague/showmtch.php
-recent_files: /home/jmc/src/Websites/goleague/matchtmupd.php
 recent_files: /home/jmc/src/Websites/goleague/updmatch.php
+recent_files: /home/jmc/src/Websites/goleague/updmatch2.php
+recent_files: /home/jmc/src/Websites/goleague/matchesb.php
+recent_files: /home/jmc/src/Websites/goleague/php/team.php
+recent_files: /home/jmc/src/Websites/goleague/matchtmupd.php
 recent_files: /home/jmc/src/Websites/goleague/reminder.php
 recent_files: /home/jmc/src/Websites/goleague/fixresb.php
-recent_files: /home/jmc/src/Websites/goleague/fixres2.php
-recent_files: /home/jmc/src/Websites/goleague/fixres3.php
 recent_files: /home/jmc/src/Websites/goleague/delres.php
 recent_files: /home/jmc/src/Websites/goleague/php/match.php
-recent_files: /home/jmc/src/Websites/goleague/sendtcb.php
-recent_files: /home/jmc/src/Websites/goleague/sendmail2.php
-recent_files: /home/jmc/src/Websites/goleague/updmatch2.php
-opendir: /home/jmc/src/Websites/goleague/php
-savedir: /home/jmc/src/Websites/goleague
+opendir: /home/jmc/src/Websites/goleague
+savedir: /home/jmc/src/Websites/goleague/php
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1
