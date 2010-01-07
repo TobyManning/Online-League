@@ -96,7 +96,7 @@ been played <a href="delres.php?{$g->urlof()}">click here</a>.</p>
 EOT;
 }
 print <<<EOT
-<form action="fixres3.php" method="post" enctype="multipart/form-data">
+<form action="fixres3.php" name="resform" method="post" enctype="multipart/form-data">
 {$g->save_hidden()}
 <p>
 EOT;
