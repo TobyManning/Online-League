@@ -162,7 +162,7 @@ table.league {
 	border: solid;
 }
 table.news {
-	padding: 2px;
-	border-spacing: 3px;
+	padding: 4px;
 	empty-cells: show;
+	border-spacing: 3px;
 }
