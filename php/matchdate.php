@@ -24,10 +24,12 @@ class Matchdate {
 	}
 	
 	public function enctime($ds) {
-		$yr = substr($ds, 0, 4);
-		$mn = substr($ds, 5, 2);
-		$dy = substr($ds, 8);
-		$this->timestamp = mktime(12,0,0,$mn,$dy,$yr);
+		if preg_match('/(\d+).(\d+).(\d+)/', $ds, $rm) {
+			$yr = $rm[1];
+			$mn = $rm[2];
+			$dy = $rm[3];
+			$this->timestamp = mktime(12,0,0,$mn,$dy,$yr);
+		}
 	}
 
 	public function fromget()  {
