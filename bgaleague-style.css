@@ -161,3 +161,8 @@ table.league {
 	border-width: 1px;
 	border: solid;
 }
+table.news {
+	padding: 2px;
+	border-spacing: 3px;
+	empty-cells: show;
+}
