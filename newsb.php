@@ -29,7 +29,7 @@ include 'php/head.php';
 <p>The following events have taken place recently - please watch this space!</p>
 <p>The userid is that of the person who made the update and the date is when the
 update was make not necessarily when a game was played.</p>
-<table cellpadding="0" cellspacing="0" border="0" class="news">
+<table class="news">
 <tr>
 <th>Date</th>
 <th>Userid</th>
