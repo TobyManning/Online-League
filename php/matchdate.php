@@ -24,7 +24,7 @@ class Matchdate {
 	}
 	
 	public function enctime($ds) {
-		if preg_match('/(\d+).(\d+).(\d+)/', $ds, $rm) {
+		if (preg_match('/(\d+).(\d+).(\d+)/', $ds, $rm)) {
 			$yr = $rm[1];
 			$mn = $rm[2];
 			$dy = $rm[3];
