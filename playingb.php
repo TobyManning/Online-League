@@ -28,6 +28,7 @@ include 'php/head.php';
 <ul>
 <li>AGA Rules</li>
 <li>No handicap</li>
+<li>7.5 Komi</li>
 <li>Free Game</li>
 <li>Colours assigned <u>as specified in the match allocation</u> not according to strengths
 of players</li>
