@@ -53,6 +53,7 @@ print <<<EOT
 <tr><td><a href="${a}index.php" target="_top">Home</a></td></tr>
 <tr><td><a href="http://www.britgo.org" target="_top">BGA Home</a></td></tr>
 <tr><td><a href="${a}aboutus.php" target="_top">About The League</a></td></tr>
+<tr><td><a href="${a}playing.php" target="_top">Playing Games</a></td></tr>
 <tr><td><a href="${a}news.php" target="_top">News updates</a></td></tr>
 <tr><td><a href="${a}clubs.php" target="_top">Clubs</a></td></tr>
 <tr><td><a href="${a}teams.php" target="_top">Teams</a></td></tr>
