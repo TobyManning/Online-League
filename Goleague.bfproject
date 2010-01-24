@@ -1,15 +1,10 @@
 name: Go League
-files: /home/jmc/src/Websites/goleague/php/team.php
-files: /home/jmc/src/Websites/goleague/remindunpaid.php
 files: /home/jmc/src/Websites/goleague/reminder.php
-files: /home/jmc/src/Websites/goleague/addresult.php
-files: /home/jmc/src/Websites/goleague/tcupdmatch.php
-files: /home/jmc/src/Websites/goleague/bgaleague-style.css
-files: /home/jmc/src/Websites/goleague/linkframe.php
+files: /home/jmc/src/Websites/goleague/remindunpaid.php
 files: /home/jmc/src/Websites/goleague/newsb.php
-files: /home/jmc/src/Websites/goleague/php/game.php
-files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
-files: /home/jmc/src/Websites/goleague/updmatch2.php
+files: /home/jmc/src/Websites/goleague/linkframe.php
+files: /home/jmc/src/Websites/goleague/playingb.php
+files: /home/jmc/src/Websites/goleague/playing.php
 basedir: 
 webdir: 
 template: 
@@ -42,6 +37,7 @@ urllist: linkframe.php?edres=y
 urllist: linkframe.php
 urllist: javascript:gkgs();
 urllist: javascript:lostpw();
+bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:1113:</li>:2519:
 bmarks: ::/home/jmc/src/Websites/goleague/loadkgs.php:2518: 0;:3818:
 bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:8775:date:9282:
 bmarks: ::/home/jmc/src/Websites/goleague/php/game.php:8544:date:9282:
@@ -77,22 +73,22 @@ bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:4095:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3886:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3621:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:2411:select:14514:
-recent_files: /home/jmc/src/Websites/goleague/php/team.php
-recent_files: /home/jmc/src/Websites/goleague/remindunpaid.php
 recent_files: /home/jmc/src/Websites/goleague/reminder.php
+recent_files: /home/jmc/src/Websites/goleague/remindunpaid.php
+recent_files: /home/jmc/src/Websites/goleague/newsb.php
+recent_files: /home/jmc/src/Websites/goleague/linkframe.php
+recent_files: /home/jmc/src/Websites/goleague/playingb.php
+recent_files: /home/jmc/src/Websites/goleague/playing.php
+recent_files: /home/jmc/src/Websites/goleague/aboutusb.php
+recent_files: /home/jmc/src/Websites/goleague/aboutus.php
+recent_files: /home/jmc/src/Websites/goleague/php/team.php
 recent_files: /home/jmc/src/Websites/goleague/addresult.php
 recent_files: /home/jmc/src/Websites/goleague/tcupdmatch.php
 recent_files: /home/jmc/src/Websites/goleague/bgaleague-style.css
-recent_files: /home/jmc/src/Websites/goleague/linkframe.php
-recent_files: /home/jmc/src/Websites/goleague/newsb.php
 recent_files: /home/jmc/src/Websites/goleague/php/game.php
 recent_files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
 recent_files: /home/jmc/src/Websites/goleague/updmatch2.php
-recent_files: /home/jmc/src/Websites/goleague/updmatch.php
-recent_files: /home/jmc/src/Websites/goleague/showmtch.php
-recent_files: /home/jmc/src/Websites/goleague/fixres2.php
-recent_files: /home/jmc/src/Websites/goleague/loadkgs.php
-opendir: /home/jmc/src/Websites/goleague/php
+opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1
 view_custom_menu: 1
