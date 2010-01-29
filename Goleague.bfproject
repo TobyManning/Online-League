@@ -1,4 +1,5 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/leagueb.php
 files: /home/jmc/src/Websites/goleague/reminder.php
 files: /home/jmc/src/Websites/goleague/remindunpaid.php
 files: /home/jmc/src/Websites/goleague/newsb.php
@@ -73,6 +74,7 @@ bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:4095:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3886:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:3621:select:14514:
 bmarks: ::/home/jmc/src/Websites/goleague/php/player.php:2411:select:14514:
+recent_files: /home/jmc/src/Websites/goleague/leagueb.php
 recent_files: /home/jmc/src/Websites/goleague/reminder.php
 recent_files: /home/jmc/src/Websites/goleague/remindunpaid.php
 recent_files: /home/jmc/src/Websites/goleague/newsb.php
@@ -87,7 +89,6 @@ recent_files: /home/jmc/src/Websites/goleague/tcupdmatch.php
 recent_files: /home/jmc/src/Websites/goleague/bgaleague-style.css
 recent_files: /home/jmc/src/Websites/goleague/php/game.php
 recent_files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
-recent_files: /home/jmc/src/Websites/goleague/updmatch2.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

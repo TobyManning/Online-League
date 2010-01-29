@@ -68,12 +68,12 @@ EOT;
 		print <<<EOT
 <tr>
 <td>$n</td>
-<td>{$t->Played}</td>
-<td>{$t->Won}</td>
-<td>{$t->Drawn}</td>
-<td>{$t->Lost}</td>
-<td>{$t->Scoref}</td>
-<td>{$t->Scorea}</td>
+<td align="right">{$t->Played}</td>
+<td align="right">{$t->Won}</td>
+<td align="right">{$t->Drawn}</td>
+<td align="right">{$t->Lost}</td>
+<td align="right">{$t->Scoref}</td>
+<td align="right">{$t->Scorea}</td>
 </tr>
 EOT;
 	}
