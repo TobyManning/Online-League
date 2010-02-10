@@ -206,8 +206,12 @@ class Team  {
 							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(ascore)");
 		$this->Scorea = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(ascore)") +
 							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hscore)");
-		$this->Sortrank = $this->Won * 1000 + $this->Drawn * 500 - $this->Lost * 1000
-									+ $this->Scoref - $this->Scorea;
+		$this->Sortrank = $this->Won * 100
+								+ $this->Drawn * 50
+								// - $this->Lost * 100
+								+ $this->Scoref
+								// - $this->Scorea
+								;
 	}
 	
 	public function count_members() {
