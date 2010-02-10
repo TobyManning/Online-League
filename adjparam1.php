@@ -24,6 +24,23 @@ $Title = "Adjustment of Parameters";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript">
+function checkform()
+{
+	var re = new RegExp(/^-?\d+(\.\d+)?$/);
+	var form = document.pform;
+	if (!re.exec(form.p.value) ||
+		 !re.exec(form.w.value) ||
+		 !re.exec(form.d.value) ||
+		 !re.exec(form.l.value) ||
+		 !re.exec(form.f.value) ||
+		 !re.exec(form.a.value))  {
+		 alert("Please enter numeric values for fields");
+		 return  false;
+	}
+	return true;
+}
+</script>
 <h1>Adjusting parameters</h1>
 <p>
 Use the following form to adjust the parameters used to order the league results.
