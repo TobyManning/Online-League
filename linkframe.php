@@ -84,6 +84,7 @@ EOT;
 	<tr><td class="subind"><a href="${a}sendtc.php" target="_top" class="memb">Message to team captains</a></td></tr>
 	<tr><td class="subind"><a href="${a}fixres.php" target="_top" class="memb">Amend result</a></td></tr>
 	<tr><td class="subind"><a href="${a}addsgf.php" target="_top" class="memb">Add sgf</a></td></tr>
+	<tr><td class="subind"><a href="${a}adjparam.php" target="_top" class="memb">Adjust parameters</a></td></tr>
 EOT;
 		}
 	}
