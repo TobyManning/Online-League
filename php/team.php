@@ -197,7 +197,7 @@ class Team  {
 		return $row[0];
 	}
 	
-	public function get_scores() {
+	public function get_scores($p = Null) {
 		$this->Played = $this->get_n_from_matches("result!='N' and result!='P' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
 		$this->Won = $this->get_n_from_matches("({$this->queryof('hteam')} and result='H') or ({$this->queryof('ateam')} and result='A')");
 		$this->Lost = $this->get_n_from_matches("({$this->queryof('hteam')} and result='A') or ({$this->queryof('ateam')} and result='H')");
@@ -206,12 +206,13 @@ class Team  {
 							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(ascore)");
 		$this->Scorea = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(ascore)") +
 							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hscore)");
-		$this->Sortrank = $this->Won * 100
-								+ $this->Drawn * 50
-								// - $this->Lost * 100
-								+ $this->Scoref
-								// - $this->Scorea
-								;
+		if ($p)
+			$this->Sortrank = $this->Played * $p->Played +
+									$this->Won * $p->Won +
+									$this->Drawn * $p->Drawn +	
+									$this->Lost * $p->Lost +
+									$this->Scoref * $p->For +
+									$this->Scorea * $p->Against;
 	}
 	
 	public function count_members() {

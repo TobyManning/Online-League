@@ -22,6 +22,10 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
 include 'php/matchdate.php';
+include 'php/params.php';
+
+$pars = new Params();
+$pars->fetchvalues();
 
 // Check that we are ready to archive
 
@@ -36,7 +40,7 @@ for ($d = 1; $d <= $ml; $d++) {
 		continue;
 	}
 	foreach ($tl as $t) {
-		$t->get_scores();
+		$t->get_scores($pars);
 	}
 	usort($tl, 'score_compare');
 	$maxrank = $tl[0]->Sortrank;

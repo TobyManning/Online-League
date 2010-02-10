@@ -22,6 +22,7 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
 include 'php/matchdate.php';
+include 'php/params.php';
 ?>
 <html>
 <?php
@@ -42,6 +43,8 @@ include 'php/head.php';
 <th>A</th>
 </tr>
 <?php
+$pars = new Params();
+$pars->fetchvalues();
 $ml = max_division();
 for ($d = 1; $d <= $ml; $d++) {
 	print <<<EOT
@@ -51,7 +54,7 @@ for ($d = 1; $d <= $ml; $d++) {
 EOT;
 	$tl = list_teams($d);
 	foreach ($tl as $t) {
-		$t->get_scores();
+		$t->get_scores($pars);
 	}
 	usort($tl, 'score_compare');
 	$maxrank = $tl[0]->Sortrank;
