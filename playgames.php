@@ -44,8 +44,8 @@ include 'php/head.php';
 <?php
 print <<<EOT
 <p>
-These are recorded games on the league for {$player->display_name()} currently
-{$player->display_rank()} of {$player->Club->display_name()}.
+These are recorded games on the league for {$player->display_name()}, currently
+{$player->display_rank()}, of {$player->Club->display_name()}.
 </p>
 EOT;
 if ($player->played_games(false) == 0)  {
@@ -64,10 +64,9 @@ print <<<EOT
 Record is Played: {$player->played_games(false)} Won: {$player->won_games()}
 Drawn: {$player->drawn_games()} Lost: {$player->lost_games()}.
 </p>
-<div align="center">
 <img src="php/piewdl.php?w={$player->won_games()}&d={$player->drawn_games()}&l={$player->lost_games()}">
-</div>
-<table>
+<br />
+<table class="resultsb">
 <tr>
 <th>Date</th>
 <th>Team</th>
