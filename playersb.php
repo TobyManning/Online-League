@@ -186,5 +186,6 @@ EOT;
 }
 ?>
 </table>
+<p>Click on "P" (played games) column to get game record for player.</p>
 </body>
 </html>
