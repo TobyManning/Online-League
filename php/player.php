@@ -437,8 +437,10 @@ class Player  {
 		return  $this->Drawn;
 	}
 	
-	public function played_games() {
+	public function played_games($displink = false) {
 		$this->get_grecs();
+		if ($displink && $this->Played != 0)
+			return "<a href=\"playgames.php?{$this->selof()}\">{$this->Played}</a>";
 		return  $this->Played;
 	}
 	
