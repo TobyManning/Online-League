@@ -21,6 +21,7 @@ include 'php/rank.php';
 include 'php/player.php';
 include 'php/game.php';
 include 'php/matchdate.php';
+include 'php/team.php';
 try {
 	$player = new Player();
 	$player->fromget();
