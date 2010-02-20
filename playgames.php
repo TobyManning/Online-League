@@ -43,7 +43,7 @@ include 'php/head.php';
 print <<<EOT
 <p>
 These are recorded games on the league for {$player->display_name()} currently
-{$player->display_rank()} of ($player->Club->display_name()}.
+{$player->display_rank()} of {$player->Club->display_name()}.
 </p>
 EOT;
 if ($player->played_games(false) == 0)  {
