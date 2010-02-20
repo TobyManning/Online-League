@@ -91,10 +91,13 @@ if ($ret && mysql_num_rows($ret)) {
 		}
 		print "<tr><td>{$g->date_played()}</td>\n";
 		if ($g->Wplayer->is_same($player))  {
-			print "<td>{$g->Wteam->display_name()}</td>\n";
-			print "<td>White</td>\n";
-			print "<td>{$g->Bplayer->display_name()}</td>\n";
-			print "<td>{$g->Bteam->display_name()}</td>\n";
+			print <<<EOT
+<td>{$g->Wteam->display_name()}</td>
+<td>White</td>
+<td><a href="playgames.php?{$g->Bplayer->urlof()}">{$g->Bplayer->display_name()}</a></td>
+<td>{$g->Bteam->display_name()}</td>
+
+EOT;
 			switch ($g->Result) {
 			default: $r = '?'; break;
 			case 'W': $r = "Won"; break;
@@ -104,10 +107,13 @@ if ($ret && mysql_num_rows($ret)) {
 			print "<td>$r</td>\n";			
 		}
 		else {
-			print "<td>{$g->Bteam->display_name()}</td>\n";
-			print "<td>Black</td>\n";
-			print "<td>{$g->Wplayer->display_name()}</td>\n";
-			print "<td>{$g->Wteam->display_name()}</td>\n";
+			print <<<EOT
+<td>{$g->Bteam->display_name()}</td>
+<td>Black</td>
+<td><a href="playgames.php?{$g->Wplayer->urlof()}">{$g->Wplayer->display_name()}</a></td>
+<td>{$g->Wteam->display_name()}</td>
+
+EOT;
 			switch ($g->Result) {
 			default: $r = '?'; break;
 			case 'W': $r = "Lost"; break;
@@ -121,5 +127,6 @@ if ($ret && mysql_num_rows($ret)) {
 }
 ?>
 </table>
+<p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
 </body>
 </html>
