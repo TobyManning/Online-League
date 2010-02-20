@@ -20,6 +20,7 @@ include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/game.php';
+include 'php/matchdate.php';
 try {
 	$player = new Player();
 	$player->fromget();
