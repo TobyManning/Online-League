@@ -82,8 +82,7 @@ $ret = mysql_query("select ind from game where result!='N' and (({$player->query
 if ($ret && mysql_num_rows($ret)) {
 	while ($row = mysql_fetch_assoc($ret)) {
 		try  {
-			$g = new Game();
-			$g->fromget();
+			$g = new Game($row["ind"]);
 			$g->fetchdets();
 		}
 		catch (GameException $e) {

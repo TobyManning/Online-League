@@ -13,7 +13,7 @@ $ldeg = 360 - $wdeg - $ddeg;
 
 $image = imagecreatetruecolor(106,106);
 
-$bground = imagecolorallocate($image, 178, 200, 255);
+$bground = imagecolorallocate($image, 255, 255, 0xB3);
 $red = imagecolorallocate($image, 255, 0, 0);
 $green = imagecolorallocate($image, 0, 255, 0);
 $blue = imagecolorallocate($image, 0, 0, 255);
