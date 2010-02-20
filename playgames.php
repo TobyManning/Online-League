@@ -60,10 +60,10 @@ EOT;
 print <<<EOT
 <p>
 Record is Played: {$player->played_games(false)} Won: {$player->won_games()}
-Drawn: {$player->drawn_games()} Lost: ($player->lost_games()}.
+Drawn: {$player->drawn_games()} Lost: {$player->lost_games()}.
 </p>
 <div align="center">
-<img src="php/piewdl.php?w={$player->won_games()}&d={$player->drawn_games()}&l=($player->lost_games()}">
+<img src="php/piewdl.php?w={$player->won_games()}&d={$player->drawn_games()}&l={$player->lost_games()}">
 </div>
 <table>
 <tr>
