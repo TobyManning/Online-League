@@ -84,7 +84,7 @@ EOT;
 		if ($t->Played == 0)
 			print "<td>&nbsp;</td><td>&nbsp;</td>";
 		else
-			print <<<EOT;
+			print <<<EOT
 <td><img src="php/piewdl.php?s=20&w={$t->Won}&d={$t->Drawn}&l={$t->Lost}"></td>
 <td><img src="php/piewdl.php?s=20&w={$t->Scoref}&d=0&l={$t->Scorea}"></td>
 
