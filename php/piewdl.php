@@ -4,6 +4,10 @@ header("content-type: image/png");
 $w = $_GET["w"];
 $d = $_GET["d"];
 $l = $_GET["l"];
+$s = $_GET["s"];
+
+if (strlen($s) == 0)
+	$s = 100;
 
 $tot = $w + $d + $l;
 
@@ -20,11 +24,11 @@ $blue = imagecolorallocate($image, 0, 0, 255);
 
 imagefill($image, 0, 0, $bground);
 if  ($wdeg > 0)
-	imagefilledarc($image, 53, 53, 100, 100, 0, $wdeg, $green, IMG_ARC_PIE);
+	imagefilledarc($image, 53, 53, $s, $s, 0, $wdeg, $green, IMG_ARC_PIE);
 if  ($ddeg > 0)
-	imagefilledarc($image, 53, 53, 100, 100, $wdeg, $wdeg+$ddeg, $blue, IMG_ARC_PIE);
+	imagefilledarc($image, 53, 53, $s, $s, $wdeg, $wdeg+$ddeg, $blue, IMG_ARC_PIE);
 if  ($ldeg > 0)
-	imagefilledarc($image, 53, 53, 100, 100, $wdeg+$ddeg, 360, $red, IMG_ARC_PIE);
+	imagefilledarc($image, 53, 53, $s, $s, $wdeg+$ddeg, 360, $red, IMG_ARC_PIE);
 imagepng($image);
 imagedestroy($image);
 ?>

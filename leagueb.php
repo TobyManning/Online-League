@@ -41,6 +41,8 @@ include 'php/head.php';
 <th>L</th>
 <th>F</th>
 <th>A</th>
+<th>M</th>
+<th>G</th>
 </tr>
 <?php
 $pars = new Params();
@@ -77,14 +79,24 @@ EOT;
 <td align="right">{$t->Lost}</td>
 <td align="right">{$t->Scoref}</td>
 <td align="right">{$t->Scorea}</td>
-</tr>
+
 EOT;
+		if ($t->Played == 0)
+			print "<td>&nbsp;</td><td>&nbsp;</td>";
+		else
+			print <<<EOT;
+<td><img src="php/piewdl.php?s=20&w={$t->Won}&d={$t->Drawn}&l={$t->Lost}"></td>
+<td><img src="php/piewdl.php?s=20&w={$t->Scoref}&d=0&l={$t->Scorea}"></td>
+
+EOT;
+		print "</tr>\n";
 	}
 }
 ?>
 </table>
 </div>
-<p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost, Games <b>F</b>or and Games <b>A</b>gainst.
+<p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost, Games <b>F</b>or and Games <b>A</b>gainst,
+<b>M</b>atch performance and <b>G</b>ame performance,
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
 </p>
 <h2>Previous Seasons</h2>
