@@ -85,8 +85,8 @@ EOT;
 			print "<td>&nbsp;</td><td>&nbsp;</td>";
 		else
 			print <<<EOT
-<td><img width=20 height=20 src="php/piewdl.php?s=20&w={$t->Won}&d={$t->Drawn}&l={$t->Lost}"></td>
-<td><img width=20 height=20 src="php/piewdl.php?s=20&w={$t->Scoref}&d=0&l={$t->Scorea}"></td>
+<td><img width=30 height=30 src="php/piewdl.php?s=20&w={$t->Won}&d={$t->Drawn}&l={$t->Lost}"></td>
+<td><img width=30 height=30 src="php/piewdl.php?s=20&w={$t->Scoref}&d=0&l={$t->Scorea}"></td>
 
 EOT;
 		print "</tr>\n";
