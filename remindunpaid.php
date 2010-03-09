@@ -10,7 +10,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 	while ($row = mysql_fetch_array($ret))  {
 		$team = new Team($row[0]);
 		$team->fetchdets();
-		$dest = $team->Capt->Email;
+		$dest = $team->Captain->Email;
 		$fh = popen("mail -s 'BGA Online team subs update reminder' $dest", "w");
 		$mess = <<<EOT
 Dear {$team->display_captain()}:

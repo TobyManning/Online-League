@@ -92,7 +92,7 @@ else  {
 		$pd = $d - 1;
 		print "<p>{$promo[$d]->display_name()} are promoted from division $d to divsion $pd.</p>\n";
 	}
-	print "<h2>Relegations/h2>\n";
+	print "<h2>Relegations</h2>\n";
 	for ($d = 1; $d < $ml; $d++) {
 		$pd = $d + 1;
 		print "<p>{$releg[$d]->display_name()} are relegated from division $d to divsion $pd.</p>\n";
