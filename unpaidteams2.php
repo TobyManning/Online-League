@@ -58,12 +58,13 @@ while ($row = mysql_fetch_array($ret))  {
 }
 foreach ($teams as $team) {
 	$dest = $team->Captain->Email;
-	$fh = popen("mail -s 'Go League email - Subscription unpaid' jmc@xisl.com", "w");
-	if (strlen($emailrep) != 0)
-		fwrite($fh, "Please reply to $emailrep\n");
-	fwrite($fh, "Message would have gone to $dest\n");
-	fwrite($fh, "$mess\n");
-	pclose($fh);
+	if (strlen($dest) != 0)  {
+		$fh = popen("mail -s 'Go League email - Subscription unpaid' $dest", "w");
+		if (strlen($emailrep) != 0)
+			fwrite($fh, "Please reply to $emailrep\n");
+		fwrite($fh, "$mess\n");
+		pclose($fh);
+	}
 }
 ?>
 <html>
