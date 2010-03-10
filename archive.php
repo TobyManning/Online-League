@@ -86,23 +86,33 @@ else  {
 		$promo[$d]->fetchdets();
 		$releg[$d]->fetchdets();
 	}
-	print "<h2>Promotions</h2>\n";
+	print "<h2>Champions</h2>\n";
 	print "<p><b>{$promo[1]->display_name()} are the league champions!!!</p>\n";
 	for ($d = 2; $d <= $ml; $d++) {
-		$pd = $d - 1;
-		print "<p>{$promo[$d]->display_name()} are promoted from division $d to divsion $pd.</p>\n";
-	}
-	print "<h2>Relegations</h2>\n";
-	for ($d = 1; $d < $ml; $d++) {
-		$pd = $d + 1;
-		print "<p>{$releg[$d]->display_name()} are relegated from division $d to divsion $pd.</p>\n";
+		print "<p>{$promo[$d]->display_name()} are champions of division $d</p>\n";
 	}
 	print <<<EOT
+<h2>The Wooden Spoon</h2>
 <p>We commiserate with {$releg[$ml]->display_name()} on coming bottom.</p>
-
-<p><a href="archive2.php">Click here</a> to implement those changes,
-archive matches and clear down ready for next season.</p>
-
+<h2>Promotions and relegations</h2>
+<p>The following promotions and relegations are proposed. Please uncheck any to be
+excluded.
+</p>
+<form action="archive2.php" method="post" enctype="application/x-www-form-urlencoded">
+EOT;
+	for ($d = 1; $d < $ml; $d++)  {
+		$nd = $d + 1;
+		print <<<EOT
+<input type="checkbox" name="pd$d" value="yes" checked>
+<p>Promote {$promo[$nd]->display_name()} from division $nd and relegate
+{$releg[$d]->display_name()} from division $d.</p>
+EOT;
+	}
+	print <<<EOT
+<p>
+Please <input type="submit" name="submit" value="Click Here"> when ready.
+</p>
+</form>
 EOT;
 }
 ?>
