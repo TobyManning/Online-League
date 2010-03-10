@@ -87,7 +87,7 @@ else  {
 		$releg[$d]->fetchdets();
 	}
 	print "<h2>Champions</h2>\n";
-	print "<p><b>{$promo[1]->display_name()} are the league champions!!!</p>\n";
+	print "<p><b>{$promo[1]->display_name()} are the league champions!!!</b></p>\n";
 	for ($d = 2; $d <= $ml; $d++) {
 		print "<p>{$promo[$d]->display_name()} are champions of division $d</p>\n";
 	}
@@ -103,8 +103,8 @@ EOT;
 	for ($d = 1; $d < $ml; $d++)  {
 		$nd = $d + 1;
 		print <<<EOT
-<input type="checkbox" name="pd$d" value="yes" checked>
-<p>Promote {$promo[$nd]->display_name()} from division $nd and relegate
+<p><input type="checkbox" name="pd$d" value="yes" checked>
+Promote {$promo[$nd]->display_name()} from division $nd and relegate
 {$releg[$d]->display_name()} from division $d.</p>
 EOT;
 	}
