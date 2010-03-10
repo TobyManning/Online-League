@@ -136,7 +136,7 @@ else  {
 <p>The match has now been completed.</p>
 <p>$result.</p>
 EOT;
-	$n = new News($userid, "Match now completed between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}. $result.");
+	$n = new News($userid, "Match now completed between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}. $result.", true);
 	$n->addnews();
 }
 ?>

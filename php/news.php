@@ -18,11 +18,13 @@ class News {
 	public $Date;
 	public $User;
 	public $Item;
+	public $Rssable;
 	
-	public function __construct($u = "", $it = "") {
+	public function __construct($u = "", $it = "", $rss = false) {
 		$this->Date = new Matchdate();
 		$this->User = $u;
 		$this->Item = $it;
+		$this->Rssable = $rss;
 	}
 	
 	public function fromrow($r) {
@@ -47,7 +49,8 @@ class News {
 		$qdate = $this->Date->queryof();
 		$quser = mysql_real_escape_string($this->User);
 		$qitem = mysql_real_escape_string($this->Item);
-		mysql_query("insert into news (ndate,user,item) values ('$qdate','$quser','$qitem')");
+		$qr = $this->Rssable? 1: 0;
+		mysql_query("insert into news (ndate,user,item,rss) values ('$qdate','$quser','$qitem',$qr)");
 	}
 }
 ?>

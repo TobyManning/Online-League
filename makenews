@@ -1,0 +1,40 @@
+#! /usr/bin/perl
+##
+##
+## Copyright (c) John M Collins, Xi Software Ltd 2010.
+##
+## makenews.pl: created on Wed Mar 10 2010.
+##----------------------------------------------------------------------
+##
+
+use XML::LibXML;
+use DBD::mysql;
+use Time::Local;
+
+$Database = DBI->connect("DBI:mysql:database=maproom_bgaleague;host=db48c.pair.com", "maproom_4", "QeWwhsLj");
+
+$doc = XML::LibXML::Document->createDocument;
+$docel = $doc->createElement("rss");
+$doc->setDocumentElement($docel);
+$docel->setAttribute("version", "2.0");
+$chel = XML::LibXML::Element->new("channel");
+$docel->appendChild($chel);
+
+@Days = ('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
+@Months = ('Jan', 'Feb', 'Mar', 'Apr', 'May'. 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+
+$sfh = $Database->prepare("select ndate,item from news where rss=1 order by ndate desc limit 15");
+$sfh->execute;
+while (my ($d,$i) = $sfh->fetchrow_array)  {
+    my ($y,$m,$md) = $d =~ /(\d+)-(\d+)-(\d+)/;
+    my $t = timelocal(0,0,12,$md,$m-1,$y-1900);
+    my @dbits = localtime($t);
+    $d = sprintf("%s, %.2d %s %d 12:00:00 GMT", $Days[$dbits[6]], $dbits[3], $Months[$dbits[4]], $dbits[5]+1900);
+    my $itemel = XML::LibXML::Element->new("item");
+    $chel->appendChild($itemel);
+    $itemel->appendTextChild("title", "Match Result");
+    $itemel->appendTextChild("description", $i);
+    $itemel->appendTextChild("link", "http://www.britgo.org/results.php");
+    $itemel->appendTextChild("pub", $d);
+}
+$doc->toFile("rss.xml", 1);
