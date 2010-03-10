@@ -82,6 +82,28 @@ EOT;
 		print "<p>$mess</p>\n";
 }
 else  {
+	$earliest = new Matchdate();
+	$latest = new Matchdate();
+	$seasnum = 1;
+	$ret = mysql_query("select matchdate from lgmatch order by matchdate limit 1");
+	if ($ret && mysql_num_rows($ret) > 0)  {
+		$row = mysql_fetch_array($ret);
+		if ($row)
+			$earliest->enctime($row[0]);	
+	}
+	$ret = mysql_query("select matchdate from lgmatch order by matchdate desc limit 1");
+	if ($ret && mysql_num_rows($ret) > 0)  {
+		$row = mysql_fetch_array($ret);
+		if ($row)
+			$latest->enctime($row[0]);	
+	}
+	$ret = mysql_query("select count(*) from season");
+	if ($ret && mysql_num_rows($ret) > 0) {
+		$row = mysql_fetch_array($ret);
+		if ($row)
+			$seasnum = $row[0]+1;
+	}
+	$name = "Season $seasnum {$earliest->display_month()} to {$latest->display_month()}";
 	for ($d = 1; $d <= $ml; $d++) {
 		$promo[$d]->fetchdets();
 		$releg[$d]->fetchdets();
@@ -99,6 +121,8 @@ else  {
 excluded.
 </p>
 <form action="archive2.php" method="post" enctype="application/x-www-form-urlencoded">
+<p>Season name: <input type="text" name="seasname" value="$name" size="60"></p>
+
 EOT;
 	for ($d = 1; $d < $ml; $d++)  {
 		$nd = $d + 1;
