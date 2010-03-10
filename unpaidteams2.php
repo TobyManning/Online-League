@@ -45,7 +45,7 @@ if (!$ret || mysql_num_rows($ret) == 0)  {
 $num = 0;
 while ($row = mysql_fetch_array($ret))  {
 	$tname = $row[0];
-	if ($teams[$num])  {
+	if ($tar[$num])  {
 		$team = new Team($tname);
 		$team->fetchdets();
 		array_push($teams, $team);
