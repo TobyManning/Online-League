@@ -35,6 +35,6 @@ while (my ($d,$i) = $sfh->fetchrow_array)  {
     $itemel->appendTextChild("title", "Match Result");
     $itemel->appendTextChild("description", $i);
     $itemel->appendTextChild("link", "http://www.britgo.org/results.php");
-    $itemel->appendTextChild("pub", $d);
+    $itemel->appendTextChild("pubDate", $d);
 }
 $doc->toFile("rss.xml", 1);
