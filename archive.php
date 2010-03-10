@@ -116,12 +116,12 @@ else  {
 	print <<<EOT
 <h2>The Wooden Spoon</h2>
 <p>We commiserate with {$releg[$ml]->display_name()} on coming bottom.</p>
-<h2>Promotions and relegations</h2>
+<h2>End of Season / Promotions and relegations</h2>
+<form action="archive2.php" method="post" enctype="application/x-www-form-urlencoded">
+<p>Name for season: <input type="text" name="seasname" value="$name" size="60"></p>
 <p>The following promotions and relegations are proposed. Please uncheck any to be
 excluded.
 </p>
-<form action="archive2.php" method="post" enctype="application/x-www-form-urlencoded">
-<p>Season name: <input type="text" name="seasname" value="$name" size="60"></p>
 
 EOT;
 	for ($d = 1; $d < $ml; $d++)  {
