@@ -35,6 +35,10 @@ if (empty($tar))  {
 	include 'php/wrongentry.php';
 	exit(0);
 }
+$lookup = array();
+foreach ($tar as $t) {
+	$lookup[$t] = 1;
+}
 $teams = array();
 $ret = mysql_query("select name from team where paid=0 order by divnum,name");
 if (!$ret || mysql_num_rows($ret) == 0)  {
@@ -45,7 +49,7 @@ if (!$ret || mysql_num_rows($ret) == 0)  {
 $num = 0;
 while ($row = mysql_fetch_array($ret))  {
 	$tname = $row[0];
-	if ($tar[$num])  {
+	if ($lookup[$num])  {
 		$team = new Team($tname);
 		$team->fetchdets();
 		array_push($teams, $team);
