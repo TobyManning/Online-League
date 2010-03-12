@@ -17,8 +17,8 @@
 class PlayerException extends Exception {}
 
 class Player  {
-	protected $First;
-	protected $Last;
+	public $First;
+	public $Last;
 	public $Rank;
 	public $Club;
 	public $Email;
