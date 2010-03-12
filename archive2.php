@@ -88,7 +88,7 @@ foreach ($Full_teams as $team) {
 	// Create the members
 	$membs = $team->list_members();
 	foreach ($membs as $memb)  {
-		$hmemb = new HistteamMemb($team, $memb->First, $memb->Last);
+		$hmemb = new HistteamMemb($hteam, $memb->First, $memb->Last);
 		$hmemb->create();
 	}
 }
