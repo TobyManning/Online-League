@@ -48,7 +48,7 @@ include 'php/head.php';
 print <<<EOT
 <p>
 This is the final league table for
-{$seas->display_name()}, the start date for which was
+<b>{$seas->display_name()}</b>, the start date for which was
 {$seas->display_start()} and the end was {$seas->display_end()}.
 </p>
 
