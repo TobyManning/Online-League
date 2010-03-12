@@ -30,8 +30,8 @@ class Histteam  {
 	public $Scorea;		// Scores against
 	public $Sortrank;		// Ranking for league sort
 	
-	public function __construct($s) {
-		$this->Name = "";
+	public function __construct($s, $n = "") {
+		$this->Name = $n;
 		$this->Seas = $s;
 		$this->Division = 1;
 		$this->Sortrank = 0;
