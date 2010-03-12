@@ -47,7 +47,7 @@ class HistteamMemb extends Player  {
 		$qrank = $this->Rank->Rankvalue;
 		// Save messing around by deleting any same named individual in the same season
 		mysql_query("delete from histteammemb where $qsind and $qname");
-		if (!mysql_query("insert into histteammemb (seasind,teamname,tmfirst,tmlast,rank) values ($qindn,'$qteam','$qfirst','$qlast',$qrank"))
+		if (!mysql_query("insert into histteammemb (seasind,teamname,tmfirst,tmlast,rank) values ($qindn,'$qteam','$qfirst','$qlast',$qrank)"))
 			throw new HistteamMembException(mysql_error());
 	}
 }
