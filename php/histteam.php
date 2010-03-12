@@ -101,7 +101,7 @@ class Histteam  {
 	}
 	
 	public function get_n_from_matches($crit, $wot="count(*)") {
-		$ret = mysql_query("select $wot from histmatch where seasind={$this->Seas->Ind} and $crit");
+		$ret = mysql_query("select $wot from histmatch where {$this->Seas->queryof()} and $crit");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			return 0;
 		$row = mysql_fetch_array($ret);
