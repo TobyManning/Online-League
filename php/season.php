@@ -44,7 +44,7 @@ class Season  {
 	}
 	
 	public function urlof() {
-		return "si={$this->ind}";
+		return "si={$this->Ind}";
 	}
 	
 	public function fetchdets() {
