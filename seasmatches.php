@@ -104,12 +104,13 @@ EOT;
 	}
 }
 else {
-	print "<tr><td colspan=\"3\" align=\"center\">No matches to display</td></tr>\n";
+	print "<tr><td colspan=\"4\" align=\"center\">No matches to display</td></tr>\n";
 }
 ?>
+</table>
 <h2>Other Seasons</h2>
 <p>Please <a href="javascript:history.back()">click here</a> to go back.
 </p>
-</table>
+
 </body>
 </html>
