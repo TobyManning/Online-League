@@ -92,10 +92,12 @@ EOT;
 		else if ($mtch->Result == 'A')
 			$at = "<b>$at</b>";
 		$ref = "<a href=\"histshowmtch.php?{$mtch->urlof()}\">";
+		$hs = $mtch->Hscore+0;
+		$as = $mtch->Ascore+0;
 		print <<<EOT
 <td>$ref$ht</a></td>
 <td>$ref$at</a></td>
-<td>{$mtch->Hscore}-{$mtch->Ascore}</td>
+<td>$hs-$as</td>
 </tr>
 
 EOT;
@@ -105,6 +107,9 @@ else {
 	print "<tr><td colspan=\"3\" align=\"center\">No matches to display</td></tr>\n";
 }
 ?>
+<h2>Other Seasons</h2>
+<p>Please <a href="javascript:history.back()">click here</a> to go back.
+</p>
 </table>
 </body>
 </html>
