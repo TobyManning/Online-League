@@ -20,6 +20,7 @@ include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
+include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/game.php';
 include 'php/matchdate.php';
