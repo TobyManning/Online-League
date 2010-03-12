@@ -61,6 +61,22 @@ class HistMatch {
 	public function fromget() {
 		$this->Ind = intval($_GET["hmi"]);
 	}
+	
+	// From match ind get season ind and season
+	
+	public function getseason() {
+		$ret = mysql_query("select seasind from histmatch where ind={$this->Ind}");
+		if (!$ret || mysql_num_rows($ret) != 1)
+			throw new HistMatchException("Cannot read database for season ind");
+		$row = mysql_fetch_array($ret);
+		try  {
+			$this->Seas = new Season($row[0]);
+			$this->Seas->fetchdets();
+		}
+		catch (SeasonException $e)  {
+			throw new HistMatchException($e->getMessage());
+		}	
+	}		
 
 	// For generation of query string with match ind in
 		
