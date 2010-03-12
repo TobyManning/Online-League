@@ -68,7 +68,7 @@ EOT;
 <?php
 $pars = new Params();
 $pars->fetchvalues();
-$ml = hist_max_division();
+$ml = hist_max_division($seas);
 for ($d = 1; $d <= $ml; $d++) {
 	print <<<EOT
 <tr>
