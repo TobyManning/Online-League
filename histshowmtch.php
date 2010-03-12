@@ -59,8 +59,8 @@ for
 </p>
 <p>Player and board assignments were as follows:</p>
 <table class="showmatch">
-<tr><th colspan="5" align="center">White</th><th colspan="4" align="center">Black</th><th>Result</th></tr>
-<tr><th>Date</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th></tr>
+<tr><th colspan="3" align="center">White</th><th colspan="2" align="center">Black</th><th>Result</th></tr>
+<tr><th>Date</th><th>Player</th><th>Team</th><th>Player</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
 	print <<<EOT
