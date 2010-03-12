@@ -118,7 +118,7 @@ class HistMatch {
 		try  {
 			while ($row = mysql_fetch_array($ret))  {
 				$g = new Game($row[0], $this->Ind, $this->Division);
-				$g->fetchdets();
+				$g->fetchhistdets($this->Seas);
 				array_push($result, $g);
 			}
 		}

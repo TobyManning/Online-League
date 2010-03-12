@@ -105,6 +105,27 @@ class Game {
 		$this->Matchind = $row["matchind"];
 	}
 	
+	public function fetchhistdets($seas) {
+		$q = $this->queryof();
+		$ret = mysql_query("select divnum,matchdate,wteam,bteam,wfirst,wlast,bfirst,blast,result,reshow,matchind from game where $q");
+		if (!$ret)
+			throw new GameException("Cannot read database for game $q");
+		if (mysql_num_rows($ret) == 0)
+			throw new GameException("Cannot find game record {$this->Ind}");
+		$row = mysql_fetch_assoc($ret);
+		$this->Division = $row["divnum"];
+		$this->Date->fromtabrow($row);
+		$wt = $row['wteam'];
+		$bt = $row['bteam'];
+		$this->Wteam = new Histteam($seas, $wt);
+		$this->Bteam = new Histteam($seas, $bt);
+		$this->Wplayer = new Player($row["wfirst"], $row["wlast"]);
+		$this->Bplayer = new Player($row["bfirst"], $row["blast"]);
+		$this->Result = $row["result"];
+		$this->Resultdet = $row["reshow"];
+		$this->Matchind = $row["matchind"];
+	}
+	
 	public function game_name() {
 		return "bga_gm{$this->Ind}.sgf";
 	}
