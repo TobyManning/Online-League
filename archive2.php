@@ -88,7 +88,9 @@ foreach ($Full_teams as $team) {
 	// Create the members
 	$membs = $team->list_members();
 	foreach ($membs as $memb)  {
+		$memb->fetchdets();
 		$hmemb = new HistteamMemb($hteam, $memb->First, $memb->Last);
+		$hmemb->Rank = $memb->Rank;
 		$hmemb->create();
 	}
 }
