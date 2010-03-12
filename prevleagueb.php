@@ -22,6 +22,7 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
 include 'php/matchdate.php';
+include 'php/season.php';
 ?>
 <html>
 <?php
@@ -30,8 +31,45 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Previous Seasons League</h1>
-<p>
-Sorry this bit not written yet as no previous seasons to show.
+<?php
+$seasons = list_seasons();
+if (count($seasons) == 0) {
+	print <<<EOT
+<p>There are currently no past seasons to display.
+Please come back soon!
 </p>
+<p>Please <a href="javascript:history.back()">click here</a> to go back.
+</p>
+
+EOT;
+}
+else {
+	print <<<EOT
+<table class="teamsb">
+<tr>
+	<th>Season Name</th>
+	<th>Start Date</th>
+	<th>End Date</th>
+	<th>League table</th>
+	<th>Matches</th>
+</tr>
+
+EOT;
+	foreach ($seasons as $seas) {
+		$seas->fetchdets();
+		print <<<EOT
+<tr>
+	<td>{$seas->display_name()}</td>
+	<td>{$seas->display_start()}</td>
+	<td>{$seas->display_end()}</td>
+	<td><a href="seasleague.php?{$seas->urlof()}">Click</a></td>
+	<td><a href="seasmatches.php?{$seas->urlof()}">Click</a></td>
+</tr>
+
+EOT;
+	}
+	print "</table>\n";
+}
+?>
 </body>
 </html>
