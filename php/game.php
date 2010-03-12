@@ -290,6 +290,11 @@ class Game {
 		mysql_query("update game set sgf='$qsgfdata' where {$this->queryof()}");
 		$this->Sgf = $sgfdata;
 	}
+	
+	public function set_current($v = false) {
+		$vi = $v? 1: 0;
+		mysql_query("update game set current=$vi where {$this->queryof()}");
+	}
 }
 
 function list_nosgf_games() {

@@ -29,38 +29,8 @@ $pars->fetchvalues();
 
 // Check that we are ready to archive
 
-$messages = array();
+include 'php/promoreleg.php';
 
-$ml = max_division();
-for ($d = 1; $d <= $ml; $d++) {
-	$tl = list_teams($d);
-	$nteams = count($tl);
-	if ($nteams < 3) {
-		array_push($messages, "Not enough teams in division $d");
-		continue;
-	}
-	foreach ($tl as $t) {
-		$t->get_scores($pars);
-	}
-	usort($tl, 'score_compare');
-	$maxrank = $tl[0]->Sortrank;
-	$minrank = $tl[$nteams-1]->Sortrank;
-	// This avoids showing prom/releg if they're all the same as with nothing played.
-	if ($maxrank == $minrank)  {
-		array_push($messages, "Not enough matches played in division $d");
-		continue;
-	}
-	if ($tl[0]->Sortrank == $tl[1]->Sortrank)
-		array_push($messages,
-			$d == 1? "Need to have playoff for championship":
-			"Need to have playoff for promotion from division $d");
-	if  ($tl[$nteams-2]->Sortrank == $tl[$nteams-1]->Sortrank)
-		array_push($messages,
-			$d == $ml? "Need to have playoff for bottom team":
-			"Need to have playoff for relegation from division $d");
-	$promo[$d] = $tl[0];
-	$releg[$d] = $tl[$nteams-1];
-}
 ?>
 <html>
 <?php

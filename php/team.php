@@ -159,6 +159,14 @@ class Team  {
 			throw new TeamException(mysql_error());
 	}
 	
+	// Update division only for when we've not read in the lot
+	
+	public function updatediv($newdiv) {
+		if (!mysql_query("update team set divnum=$newdiv where {$this->queryof()}"))
+			throw new TeamException(mysql_error());
+		$this->Division = $newdiv;		
+	}
+	
 	public function setpaid($v = true) {
 		$vv = $v? 1: 0;
 		mysql_query("update team set paid=$vv where {$this->queryof()}");
@@ -241,7 +249,7 @@ function list_teams($div = 0, $order = "name") {
 	$result = array();
 	if ($ret) {
 		while ($row = mysql_fetch_array($ret)) {
-			array_push($result, new team($row[0]));
+			array_push($result, new Team($row[0]));
 		}
 	}
 	return $result;
