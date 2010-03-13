@@ -29,6 +29,7 @@ include 'php/season.php';
 include 'php/histteam.php';
 include 'php/histteammemb.php';
 include 'php/histmatch.php';
+include 'php/news.php';
 
 // Regurgitate what we did before in case we've been entered wrongly.
 
@@ -102,8 +103,8 @@ for ($d = 1; $d < $ml; $d++)  {
 	if ($_POST["pd$d"])  {
 		array_push($messages,
 		"Promoted {$promo[$nd]->display_name()} from division $nd and relegated {$releg[$d]->display_name()} from division $d");
-		// $promo[$nd]->updatediv($d);
-		// $releg[$d]->updatediv($nd);
+		$promo[$nd]->updatediv($d);
+		$releg[$d]->updatediv($nd);
 	}
 }
 
@@ -123,11 +124,10 @@ try {
 		$matchind = $row[0];
 		$mtch = new Match($matchind);
 		$mtch->fetchdets();
-//  Set games as non-current (TURNED OFF FOR DEBUG)
-//		$mtch->fetchgames();
-//		foreach ($mtch->Games as $g) {
-//			$g->set_current(false);
-//		}
+		$mtch->fetchgames();
+		foreach ($mtch->Games as $g) {
+			$g->set_current(false);
+		}
 		// Now set up the hist match unless it's not been played at all
 		if ($mtch->Result != 'N')  {
 			$hmtch = new HistMatch($Seas, $mtch->query_ind(), $mtch->Division);
@@ -152,14 +152,16 @@ catch (HistMatchException $e) {
 	exit(0);
 }
 
-//  Now delete all unplayed games (TURNED OFF FOR DEBUG)
-//  Delete all matches (TURNED OFF FOR DEBUG)
+//  Now delete all unplayed games
+//  Delete all matches
 
-// mysql_query("delete from game where result='N'");
-// mysql_query("delete from lgmatch");
+mysql_query("delete from game where result='N'");
+mysql_query("delete from lgmatch");
 
-// I think that just about does it.
+// I think that just about does it. Create a news item
 
+$nws = new News('ADMINS', "Season now closed and archived as $Sname.", true);
+$nws->addnews();
 ?>
 <html>
 <?php
