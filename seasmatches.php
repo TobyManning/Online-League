@@ -91,7 +91,7 @@ EOT;
 			$ht = "<b>$ht</b>";
 		else if ($mtch->Result == 'A')
 			$at = "<b>$at</b>";
-		$ref = "<a href=\"histshowmtch.php?{$mtch->urlof()}\">";
+		$ref = "<a href=\"histshowmtch.php?{$mtch->urlof()}\" class=\"nound\">";
 		$hs = $mtch->Hscore+0;
 		$as = $mtch->Ascore+0;
 		print <<<EOT
