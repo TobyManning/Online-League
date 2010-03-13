@@ -277,7 +277,7 @@ EOT;
 Team Captains are:
 
 For {$this->Hteam->display_name()}: {$this->Hteam->display_captain()}, {$this->Hteam->Captain->display_email_nolink()}
-For {$this->Ateam->display_name()}: {$this->Ateam->display_captain())}, {$this->Ateam->Captain->display_email_nolink()}
+For {$this->Ateam->display_name()}: {$this->Ateam->display_captain()}, {$this->Ateam->Captain->display_email_nolink()}
 EOT;
 		fwrite($fh, "$mess\n");
 		pclose($fh);
