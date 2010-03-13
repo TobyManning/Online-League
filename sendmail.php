@@ -24,7 +24,7 @@ try {
 	default:
 		$player = new Player();
 		$player->fromget();
-		$name = $player->display_name();
+		$name = $player->display_name(false);
 		$hidden = $player->save_hidden();
 		break;
 	case "club":

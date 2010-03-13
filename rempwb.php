@@ -41,7 +41,7 @@ for ($row = 0; $row < $rows; $row++) {
 			print "&nbsp;";
 		else {
 			$pl = $playerlist[$ind];
-			print "<a href=\"rempw2.php?{$pl->urlof()}\">{$pl->display_name()}</a>";		
+			print "<a href=\"rempw2.php?{$pl->urlof()}\">{$pl->display_name(false)}</a>";		
 		}
 		print "</td>";
 	}

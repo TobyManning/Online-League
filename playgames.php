@@ -44,14 +44,14 @@ include 'php/head.php';
 <?php
 print <<<EOT
 <p>
-These are recorded games on the league for {$player->display_name()}, currently
+These are recorded games on the league for {$player->display_name(false)}, currently
 {$player->display_rank()}, of {$player->Club->display_name()}.
 </p>
 EOT;
-if ($player->played_games(false) == 0)  {
+if ($player->played_games() == 0)  {
 	print <<<EOT
 <p>
-Sorry but there do not seem to be any recorded completed games for {$player->display_name()}.
+Sorry but there do not seem to be any recorded completed games for {$player->display_name(false)}.
 Please <a href="javascript:history.back()">click here</a> to go back.
 </p>
 </body>
@@ -61,7 +61,7 @@ EOT;
 }
 print <<<EOT
 <p>
-Record is Played: {$player->played_games(false)} Won: {$player->won_games()}
+Record is Played: {$player->played_games()} Won: {$player->won_games()}
 Drawn: {$player->drawn_games()} Lost: {$player->lost_games()}.
 </p>
 <img src="php/piewdl.php?w={$player->won_games()}&d={$player->drawn_games()}&l={$player->lost_games()}">
@@ -94,7 +94,7 @@ if ($ret && mysql_num_rows($ret)) {
 			print <<<EOT
 <td>{$g->Wteam->display_name()}</td>
 <td>White</td>
-<td><a href="playgames.php?{$g->Bplayer->urlof()}">{$g->Bplayer->display_name()}</a></td>
+<td>{$g->Bplayer->display_name()}</td>
 <td>{$g->Bteam->display_name()}</td>
 
 EOT;
@@ -110,7 +110,7 @@ EOT;
 			print <<<EOT
 <td>{$g->Bteam->display_name()}</td>
 <td>Black</td>
-<td><a href="playgames.php?{$g->Wplayer->urlof()}">{$g->Wplayer->display_name()}</a></td>
+<td>{$g->Wplayer->display_name()}</td>
 <td>{$g->Wteam->display_name()}</td>
 
 EOT;

@@ -191,10 +191,16 @@ class Player  {
 
 	// Display whole name
 		
-	public function display_name() {
+	public function display_name($displink = true) {
 		$f = $this->First;
 		$l = $this->Last;
-		return htmlspecialchars("$f $l");
+		$ret = htmlspecialchars("$f $l");
+		if ($displink) {
+			$this->get_grecs();
+			if ($this->Played != 0)
+				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\">$ret</a>";
+		}
+		return $ret;
 	}
 
 	// Display rank in standard format
@@ -437,10 +443,8 @@ class Player  {
 		return  $this->Drawn;
 	}
 	
-	public function played_games($displink = true) {
+	public function played_games() {
 		$this->get_grecs();
-		if ($displink && $this->Played != 0)
-			return "<a href=\"playgames.php?{$this->urlof()}\">{$this->Played}</a>";
 		return  $this->Played;
 	}
 	

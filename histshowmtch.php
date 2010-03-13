@@ -66,9 +66,9 @@ foreach ($mtch->Games as $g) {
 	print <<<EOT
 <tr>
 <td>{$g->date_played()}</td>
-<td><a href="playgames.php?{$g->Wplayer->urlof()}">{$g->Wplayer->display_name()}</a></td>
+<td>{$g->Wplayer->display_name()}</td>
 <td>{$g->Wteam->display_name()}</td>
-<td><a href="playgames.php?{$g->Bplayer->urlof()}">{$g->Bplayer->display_name()}</a></td>
+<td>{$g->Bplayer->display_name()}</td>
 <td>{$g->Bteam->display_name()}</td>
 <td>{$g->display_result()}</td>
 </tr>

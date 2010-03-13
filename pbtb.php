@@ -122,6 +122,6 @@ EOT;
 }
 ?>
 </table>
-<p>Click on "P" (played games) column to get game record for player.</p>
+<p>Click on player name to get game record for player.</p>
 </body>
 </html>

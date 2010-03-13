@@ -35,7 +35,7 @@ function checkname($newplayer) {
 	$ret = mysql_query("select first,last from player where {$newplayer->queryof()}");
 	if ($ret && mysql_num_rows($ret) != 0)  {
 		$column = "name";
-		$value = $newplayer->display_name();
+		$value = $newplayer->display_name(false);
 		include 'php/nameclash.php';
 		exit(0);
 	}

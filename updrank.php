@@ -58,7 +58,7 @@ $membs = $team->list_members();
 $n=0;
 foreach ($membs as $m) {
 	$m->fetchdets();
-	print "<tr><td>{$m->display_name()}</td>\n<td>";
+	print "<tr><td>{$m->display_name(false)}</td>\n<td>";
 	$m->rankopt($n);
 	print "</td></tr>\n";
 	$n++;

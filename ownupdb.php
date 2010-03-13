@@ -63,7 +63,7 @@ print <<<EOT
 {$player->save_hidden()}
 <table cellpadding="2" cellspacing="5" border="0">
 <tr><td>Player Name</td>
-<td><input type="text" name="playname" value="{$player->display_name()}"></td></tr>
+<td><input type="text" name="playname" value="{$player->display_name(false)}"></td></tr>
 <tr><td>Club</td>
 <td>
 EOT;

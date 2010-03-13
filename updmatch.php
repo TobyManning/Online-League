@@ -147,7 +147,7 @@ function selectmemb($ha, $n, $mch, $team, $membs) {
 	if ($readonly) {
 		print <<<EOT
 <td>
-{$matchm->display_name()} ({$matchm->display_rank()})
+{$matchm->display_name(false)} ({$matchm->display_rank()})
 <input type="hidden" name="$ha$n" value="{$matchm->selof()}">
 </td>
 
@@ -165,7 +165,7 @@ EOT;
 			$selms = $matchm && $matchm->is_same($memb)? " selected": "";
 			print <<<EOT
 <option value="$val"$selms>		
-{$memb->display_name()} ({$memb->display_rank()})
+{$memb->display_name(false)} ({$memb->display_rank()})
 </option>
 
 EOT;

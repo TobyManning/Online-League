@@ -171,7 +171,7 @@ EOT;
 <option value="$val">
 EOT;
 		print <<<EOT
-{$memb->display_name()} ({$memb->display_rank()})
+{$memb->display_name(false)} ({$memb->display_rank()})
 </option>
 EOT;
 	}

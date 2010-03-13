@@ -7,6 +7,34 @@ a.memb:link {
 a.memb:visited {
 	color: #D53B3B;
 }
+a.name:active {
+	text-decoration: none;
+	color: #7718EB;
+}
+a.name:hover {
+	text-decoration: none;
+	color: #7718EB;
+}
+a.name:link {
+	text-decoration: none;
+	color: black;
+}
+a.name:visited {
+	text-decoration: none;
+	color: black;
+}
+a.nound:active {
+	text-decoration: none;
+	color: black;
+}
+a.nound:link {
+	text-decoration: none;
+	color: black;
+}
+a.nound:visited {
+	text-decoration: none;
+	color: black;
+}
 a:active {
 	color: black;
 }

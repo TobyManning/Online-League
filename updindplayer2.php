@@ -39,7 +39,7 @@ function checkname($newplayer) {
 	$ret = mysql_query("select first,last from player where {$newplayer->queryof()}");
 	if ($ret && mysql_num_rows($ret) != 0)  {
 		$column = "name";
-		$value = $newplayer->display_name();
+		$value = $newplayer->display_name(false);
 		include 'php/nameclash.php';
 		exit(0);
 	}
@@ -85,7 +85,7 @@ case 'A':
 			$passw = $passw . $poss[rand(0,$lp)];
 	}
 	$player->set_passwd($passw);
-	$Title = "Player {$player->display_name()} created OK";
+	$Title = "Player {$player->display_name(false)} created OK";
 	if (strlen($email) != 0)  {
 		$fh = popen("mail -s 'BGA League account created' $email", "w");
 		fwrite($fh, "Please DO NOT reply to this message!!!\n\n");
@@ -139,7 +139,7 @@ default:
 	$origplayer->update();
 	if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
 		$origplayer->set_passwd($passw);
-	$Title = "Player {$origplayer->display_name()} updated OK";
+	$Title = "Player {$origplayer->display_name(false)} updated OK";
 	break;
 }
 print "<html>\n";

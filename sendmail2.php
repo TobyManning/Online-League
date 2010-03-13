@@ -26,7 +26,7 @@ try {
 		$player = new Player();
 		$player->frompost();
 		$player->fetchdets();
-		$name = $player->display_name();
+		$name = $player->display_name(false);
 		$dest = $player->Email;
 		break;
 	case "club":

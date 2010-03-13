@@ -47,10 +47,10 @@ include 'php/head.php';
 Finished deleting result for Game between
 <?php
 print <<<EOT
-<b>{$g->Wplayer->display_name()}</b>
+<b>{$g->Wplayer->display_name(false)}</b>
 ({$g->Wplayer->display_rank()}) of
 {$g->Wteam->display_name()} as White and
-<b>{$g->Bplayer->display_name()}</b>
+<b>{$g->Bplayer->display_name(false)}</b>
 ({$g->Bplayer->display_rank()}) of
 {$g->Bteam->display_name()} as Black.
 </p>

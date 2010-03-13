@@ -60,9 +60,9 @@ EOT;
 		print <<<EOT
 <tr>
 <td>{$g->Date->display()}</td>
-<td>{$g->Wplayer->display_name()}</td>
+<td>{$g->Wplayer->display_name(false)}</td>
 <td>{$g->Wplayer->display_online()}</td>
-<td>{$g->Bplayer->display_name()}</td>
+<td>{$g->Bplayer->display_name(false)}</td>
 <td>{$g->Bplayer->display_online()}</td>
 <td><a href="fixres2.php?{$g->urlof()}">$rd</a></td>
 </tr>

@@ -74,23 +74,23 @@ EOT;
 				$ht = "<b>$ht</b>";
 			else if ($mtch->Result == 'A')
 				$at = "<b>$at</b>";
-			$ref = "<a href=\"showmtch.php?{$mtch->urlof()}\">";
+			$ref = "<a href=\"showmtch.php?{$mtch->urlof()}\" class=\"nound\">";
 			print "<td>$ref$ht</a></td><td>$ref$at</a></td>\n";
 		}
 		else  {
 			$href = $aref = $hndref = $andref = '';
 			if ($admin)  {
-				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\">";
-				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\">";
+				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"nound\">";
+				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"nound\">";
 				$hndref = $andref = "</a>";
 			}
 			$c = $mtch->is_captain($username);
 			if ($c == 'H')  {
-				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\">";
+				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"nound\">";
 				$hndref = "</a>";
 			}
 			elseif ($c == 'A') {
-				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\">";
+				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"nound\">";
 				$andref = "</a>";
 			}
 			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";

@@ -44,13 +44,13 @@ if ($nrows == 0) {
 	include 'php/dataerror.php';
 	exit(0);
 }
-$Title = "Deletion of {$player->display_name()} complete";
+$Title = "Deletion of {$player->display_name(false)} complete";
 include 'php/head.php';
 print <<<EOT
 <body>
-<h1>Deletion of {$player->display_name()} complete</h1>
+<h1>Deletion of {$player->display_name(false)} complete</h1>
 <p>
-Deletion of player {$player->display_name()} was successful.</p>
+Deletion of player {$player->display_name(false)} was successful.</p>
 EOT;
 ?>
 <p>

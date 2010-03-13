@@ -170,8 +170,8 @@ and
 in
 {$mtch->Date->display_month()}.
 </p>
-<p>Team captains are {$mtch->Hteam->Captain->display_name()} for {$mtch->Hteam->display_name()}
-and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
+<p>Team captains are {$mtch->Hteam->display_captain()} for {$mtch->Hteam->display_name()}
+and {$mtch->Ateam->display_captain()} for {$mtch->Ateam->display_name()}.
 </p>
 <p>Player assignments are as follows:</p>
 <table>

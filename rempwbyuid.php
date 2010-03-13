@@ -35,11 +35,11 @@ $pw = $player->get_passwd();
 
 if (strlen($em) == 0)  {
 	$Title = "No email address";
-	$Mess = "Player {$player->display_name()} has no email address set up.";
+	$Mess = "Player {$player->display_name(false)} has no email address set up.";
 }
 elseif (strlen($pw) == 0)  {
 	$Title = "No password";
-	$Mess = "Player {$player->display_name()} has no password set.";
+	$Mess = "Player {$player->display_name(false)} has no password set.";
 }
 else {
 	$Title = "Reminder sent";

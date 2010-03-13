@@ -60,8 +60,8 @@ and
 in
 {$mtch->Date->display_month()}.
 </p>
-<p>Team captains are {$mtch->Hteam->Captain->display_name()} for {$mtch->Hteam->display_name()}
-and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
+<p>Team captains are {$mtch->Hteam->display_captain()} for {$mtch->Hteam->display_name()}
+and {$mtch->Ateam->display_captain()} for {$mtch->Ateam->display_name()}.
 </p>
 <p>Player and board assignments are as follows:</p>
 <table class="showmatch">
@@ -69,25 +69,14 @@ and {$mtch->Ateam->Captain->display_name()} for {$mtch->Ateam->display_name()}.
 <tr><th>Date</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
-	$wg = $g->Wplayer->played_games(false);
-	$bg = $g->Bplayer->played_games(false);
-	$wpre = $bpre = $wpost = $bpost= "";
-	if ($wg != 0) {
-		$wpre = "<a href=\"playgames.php?{$g->Wplayer->urlof()}\">";
-		$wpost= "</a>";
-	}
-	if ($bg != 0) {
-		$bpre = "<a href=\"playgames.php?{$g->Bplayer->urlof()}\">";
-		$bpost= "</a>";
-	}
 	print <<<EOT
 <tr>
 <td>{$g->date_played()}</td>
-<td>$wpre{$g->Wplayer->display_name()}$wpost</td>
+<td>{$g->Wplayer->display_name()}</td>
 <td>{$g->Wplayer->display_rank()}</td>
 <td>{$g->Wplayer->display_online()}</td>
 <td>{$g->Wteam->display_name()}</td>
-<td>$bpre{$g->Bplayer->display_name()}$bpost</td>
+<td>{$g->Bplayer->display_name()}</td>
 <td>{$g->Bplayer->display_rank()}</td>
 <td>{$g->Bplayer->display_online()}</td>
 <td>{$g->Bteam->display_name()}</td>

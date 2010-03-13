@@ -268,7 +268,7 @@ EOT;
 		fwrite($fh, "$mess\n");
 		foreach ($this->Games as $g) {
 			$mess = <<<EOT
-White: {$g->Wplayer->display_name()} {$g->Wplayer->display_rank()} {$g->Wteam->display_name()} Black: {$g->Bplayer->display_name()} {$g->Bplayer->display_rank()} {$g->Bteam->display_name()}
+White: {$g->Wplayer->display_name(false)} {$g->Wplayer->display_rank()} {$g->Wteam->display_name()} Black: {$g->Bplayer->display_name(false)} {$g->Bplayer->display_rank()} {$g->Bteam->display_name()}
 EOT;
 			fwrite($fh, "$mess\n");
 		}
@@ -276,8 +276,8 @@ EOT;
 
 Team Captains are:
 
-For {$this->Hteam->display_name()}: {$this->Hteam->Captain->display_name()}, {$this->Hteam->Captain->display_email_nolink()}
-For {$this->Ateam->display_name()}: {$this->Ateam->Captain->display_name()}, {$this->Ateam->Captain->display_email_nolink()}
+For {$this->Hteam->display_name()}: {$this->Hteam->display_captain()}, {$this->Hteam->Captain->display_email_nolink()}
+For {$this->Ateam->display_name()}: {$this->Ateam->display_captain())}, {$this->Ateam->Captain->display_email_nolink()}
 EOT;
 		fwrite($fh, "$mess\n");
 		pclose($fh);

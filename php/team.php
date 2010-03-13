@@ -109,7 +109,7 @@ class Team  {
 	}
 	
 	public function display_captain() {
-		return $this->Captain->display_name();
+		return $this->Captain->display_name(false);
 	}
 	
 	public function display_capt_email($l = true) {
@@ -190,9 +190,9 @@ class Team  {
 		foreach ($plist as $p) {
 			$v = $p->selof();
 			if ($p->is_same($this->Captain))
-				print "<option value=\"$v\" selected>{$p->display_name()}</option>\n";
+				print "<option value=\"$v\" selected>{$p->display_name(false)}</option>\n";
 			else
-				print "<option value=\"$v\">{$p->display_name()}</option>\n";
+				print "<option value=\"$v\">{$p->display_name(false)}</option>\n";
 		}
 		print "</select>\n";
 	}

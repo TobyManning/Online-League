@@ -45,7 +45,7 @@ class tcrems {
 		$fh = popen("mail -s 'Go League match reminder' $dest", "w");
 		$mess = <<<EOT
 
-Dear {$this->Capt->display_name()},
+Dear {$this->Capt->display_name(false)},
 
 This is an auto-reminder from the BGA online league software.
 Please do not reply to this!
@@ -65,7 +65,7 @@ EOT;
 			foreach ($this->Unalloc as $m) {
 				$oth = $this->othercapt($m);
 				$mess = <<<EOT
-{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name()} {$oth->Email})
+{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email})
 
 EOT;
 				fwrite($fh, $mess);
@@ -84,7 +84,7 @@ EOT;
 			foreach ($this->Notplayed as $m) {
 				$oth = $this->othercapt($m);
 				$mess = <<<EOT
-{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name()} {$oth->Email})
+{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email})
 
 
 EOT;
@@ -104,7 +104,7 @@ EOT;
 			foreach ($this->Partplayed as $m) {
 				$oth = $this->othercapt($m);
 				$mess = <<<EOT
-{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name()} {$oth->Email})
+{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email})
 
 EOT;
 				fwrite($fh, $mess);
@@ -112,7 +112,7 @@ EOT;
 					if ($g->Result != 'N')
 						continue;
 					$mess = <<<EOT
-  {$g->Wplayer->display_name()} ({$g->Wplayer->display_online()}) of {$g->Wteam->display_name()} -v- {$g->Bplayer->display_name()} ({$g->Bplayer->display_online()}) of {$g->Bteam->display_name()}
+  {$g->Wplayer->display_name(false)} ({$g->Wplayer->display_online()}) of {$g->Wteam->display_name()} -v- {$g->Bplayer->display_name(false)} ({$g->Bplayer->display_online()}) of {$g->Bteam->display_name()}
 
 EOT;
 					fwrite($fh, $mess);
@@ -150,8 +150,8 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		}
 		$hc = $mtch->Hteam->Captain;
 		$ac = $mtch->Ateam->Captain;
-		$hcn = $hc->display_name();
-		$acn = $ac->display_name();
+		$hcn = $hc->display_name(false);
+		$acn = $ac->display_name(false);
 		
 		if  (!array_key_exists($hcn, $Captains))
 			$Captains[$hcn] = new tcrems($hc);

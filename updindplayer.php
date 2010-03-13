@@ -31,7 +31,7 @@ catch (PlayerException $e) {
 	include 'php/wrongentry.php';
 	exit(0);
 }
-$Title = "Update Player {$player->display_name()}";
+$Title = "Update Player {$player->display_name(false)}";
 include 'php/head.php';
 print <<<EOT
 <body>
@@ -51,7 +51,7 @@ function formvalid()
 		return true;
 }
 </script>
-<h1>Update Player {$player->display_name()}</h1>
+<h1>Update Player {$player->display_name(false)}</h1>
 <p>Please update the details of the player as required using the form below.</p>
 <p>Alternatively <a href="delplayer.php?{$player->urlof()}">Click here</a> to remove
 details of the player.</p>
@@ -66,7 +66,7 @@ print <<<EOT
 {$player->save_hidden()}
 <p>
 Player Name:
-<input type="text" name="playname" value="{$player->display_name()}">
+<input type="text" name="playname" value="{$player->display_name(false)}">
 Club:
 EOT;
 $player->clubopt();
