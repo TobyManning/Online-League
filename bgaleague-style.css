@@ -8,32 +8,36 @@ a.memb:visited {
 	color: #D53B3B;
 }
 a.name:active {
-	text-decoration: none;
 	color: #7718EB;
+	text-decoration: none;
 }
 a.name:hover {
-	text-decoration: none;
+	text-decoration: underline;
 	color: #7718EB;
 }
 a.name:link {
-	text-decoration: none;
 	color: black;
+	text-decoration: none;
 }
 a.name:visited {
-	text-decoration: none;
 	color: black;
+	text-decoration: none;
 }
 a.nound:active {
+	color: black;
 	text-decoration: none;
+}
+a.nound:hover {
+	text-decoration: underline;
 	color: black;
 }
 a.nound:link {
-	text-decoration: none;
 	color: black;
+	text-decoration: none;
 }
 a.nound:visited {
-	text-decoration: none;
 	color: black;
+	text-decoration: none;
 }
 a:active {
 	color: black;
