@@ -127,6 +127,8 @@ EOT;
 }
 ?>
 </table>
+<p>You can click on the name of each opponent to see the record for that opponent.
+</p>
 <p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
 </body>
 </html>

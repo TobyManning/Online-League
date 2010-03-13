@@ -38,6 +38,11 @@ $Title = "Promotion and Relegation / Archive";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript">
+function checkok() {
+	return confirm("Are you sure you want to this - it is pretty well irreversible");
+}
+</script>
 <h1>Promotion and Relegation / Archive</h1>
 <?php
 if (count($messages) > 0)  {
@@ -87,7 +92,7 @@ else  {
 <h2>The Wooden Spoon</h2>
 <p>We commiserate with {$releg[$ml]->display_name()} on coming bottom.</p>
 <h2>End of Season / Promotions and relegations</h2>
-<form action="archive2.php" method="post" enctype="application/x-www-form-urlencoded">
+<form action="archive2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return checkok()">
 <p>Name for season: <input type="text" name="seasname" value="$name" size="60"></p>
 <p>The following promotions and relegations are proposed. Please uncheck any to be
 excluded.
@@ -103,6 +108,10 @@ Promote {$promo[$nd]->display_name()} from division $nd and relegate
 EOT;
 	}
 	print <<<EOT
+<p>Remember that this will delete <u>all</u> current matches
+after doing an archive and remove records of unplayed games so
+do this with care!
+</p>
 <p>
 Please <input type="submit" name="submit" value="Click Here"> when ready.
 </p>
