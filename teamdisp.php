@@ -28,6 +28,7 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/teammemb.php';
 include 'php/match.php';
+include 'php/matchdate.php';
 try {
 	$team = new Team();
 	$team->fromget();
