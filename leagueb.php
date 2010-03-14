@@ -63,7 +63,7 @@ EOT;
 	if ($maxrank == $minrank)
 		$maxrank = $minrank = -9999999;
 	foreach ($tl as $t) {
-		$n = $t->display_name();
+		$n = "<a href=\"teamdisp.php?{$t->urlof()}\" class=\"nound\">{$t->display_name()}</a>";
 		if ($t->Sortrank == $maxrank)
 			$n = "<span class=\"prom\">$n</span>";
 		elseif ($t->Sortrank == $minrank)
