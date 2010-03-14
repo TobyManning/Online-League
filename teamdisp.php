@@ -110,7 +110,7 @@ Drawn: {$team->Drawn} Lost: {$team->Lost}.
 </tr>
 
 EOT;
-	$ret = mysql_query("select ind from lgmatch where {$team->queryof('hteam')} or {$team->queryof('ateam')} order by matchdate");
+	$ret = mysql_query("select ind from lgmatch where result!='N' and result!='P' and ({$team->queryof('hteam')} or {$team->queryof('ateam')}) order by matchdate");
 	if ($ret)  {
 		while ($row = mysql_fetch_array($ret))  {
 			$mtch = new Match($row[0]);
