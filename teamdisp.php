@@ -154,5 +154,6 @@ Game record is For: {$team->Scoref} Against: {$team->Scorea}. (Drawn games are 0
 EOT;
 }
 ?>
+<p><b>Please note</b> you can click on players, opposing teams and results for more details.</p>
 </body>
 </html>
