@@ -102,7 +102,7 @@ Drawn: {$team->Drawn} Lost: {$team->Lost}.
 </p>
 <img src="php/piewdl.php?w={$team->Won}&d={$team->Drawn}&l={$team->Lost}">
 <br />
-<table class="showmatch">
+<table class="teamdisp">
 <tr>
 	<th>Date</th>
 	<th>Opponent</th>
@@ -133,8 +133,8 @@ EOT;
 			print <<<EOT
 <tr>
 	<td>{$mtch->Date->display_month()}</td>
-	<td><a href="teamdisp.php?{$oppteam->urlof()}">{$oppteam->display_name()}</a></td>
-	<td><a href="showmtch.php?{$mtch->urlof()}">$res</a></td>
+	<td><a href="teamdisp.php?{$oppteam->urlof()}" class="nound">{$oppteam->display_name()}</a></td>
+	<td><a href="showmtch.php?{$mtch->urlof()}" class="nound">$res</a></td>
 </tr>
 
 EOT;
@@ -146,7 +146,7 @@ if ($team->Scoref + $team->Scorea != 0)  {
 	print <<<EOT
 <h2>Game Record</h2>
 <p>
-Game record is for: {$team->Scoref} Lost: {$team->Scorea}. (Drawn games are 0.5 each).
+Game record is for: {$team->Scoref} Against: {$team->Scorea}. (Drawn games are 0.5 each).
 </p>
 <img src="php/piewdl.php?w={$team->Scoref}&d=0&l={$team->Scorea}">
 <br />
