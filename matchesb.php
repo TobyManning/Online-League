@@ -95,11 +95,17 @@ EOT;
 			}
 			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";
 		}
-		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->result == 'D')
-			print "<td>Played</td>";
+		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->result == 'D')  {
+				$h = $mtch->Hscore + 0;
+				$a = $mtch->Ascore + 0;			
+			print "<td>Played ($h-$a)</td>";
+		}
 		elseif ($mtch->is_allocated())  {
-			if ($mtch->Result == 'P')
-				print "<td>Part played</td>";
+			if ($mtch->Result == 'P') {
+				$h = $mtch->Hscore + 0;
+				$a = $mtch->Ascore + 0;
+				print "<td>Part played ($h-$a)</td>";
+			}
 			else
 				print "<td>Not played</td>";
 		}

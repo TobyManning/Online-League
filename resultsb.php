@@ -37,6 +37,7 @@ entry to see the individual scores and in some cases game scores.</p>
 <th>Date</th>
 <th>Team A</th>
 <th>Team B</th>
+<th>Score</th>
 </tr>
 <?php
 $ret = mysql_query("select ind from lgmatch where result='H' or result='A' order by divnum,matchdate,hteam,ateam");
@@ -48,7 +49,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		$mtch->fetchdets();
 		if ($mtch->Division != $lastdiv)  {
 			$lastdiv = $mtch->Division;
-			print "<tr><th colspan=\"3\" align=\"center\">Division $lastdiv</th></tr>\n";
+			print "<tr><th colspan=\"4\" align=\"center\">Division $lastdiv</th></tr>\n";
 		}
 		print <<<EOT
 <tr>
@@ -67,11 +68,13 @@ EOT;
 		else  {
 			print "<td>$ht</td><td>$at</td>\n";
 		}
-		print "</tr>\n";
+		$h = $mtch->Hscore + 0;
+		$a = $mtch->Ascore + 0;
+		print "<td>$h-$a</td></tr>\n";
 	}
 }
 else {
-	print "<tr><td colspan=\"3\" align=\"center\">No matches yet</td></tr>\n";
+	print "<tr><td colspan=\"4\" align=\"center\">No matches yet</td></tr>\n";
 }
 ?>
 </table>
