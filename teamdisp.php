@@ -65,6 +65,10 @@ print <<<EOT
 	<th>Name</th>
 	<th>Rank</th>
 	<th>Club</th>
+	<th>Played</th>
+	<th>Won</th>
+	<th>Drawn</th>
+	<th>Lost</th>
 </tr>
 EOT;
 $membs = $team->list_members();
@@ -76,10 +80,77 @@ foreach ($membs as $m) {
 	<td>{$m->display_name()}</td>
 	<td>{$m->display_rank()}</td>
 	<td>{$m->Club->display_name()}</td>
+	<td>{$m->played_games()}</td>
+	<td>{$m->won_games()}</td>
+	<td>{$m->drawn_games()}</td>
+	<td>{$m->lost_games()}</td>
 </tr>
 EOT;
 }
 ?>
 </table>
+<?php
+$team->get_scores();
+if ($team->Played != 0)  {
+	print <<<EOT
+<h2>Match Record</h2>
+<p>
+Match record is Played: {$team->Played} Won: {$team->Won}
+Drawn: {$team->Drawn} Lost: {$team->Lost}.
+</p>
+<img src="php/piewdl.php?w={$team->Won}&d={$team->Drawn}&l={$team->Lost}">
+<br />
+<table class="showmatch">
+<tr>
+	<th>Date</th>
+	<th>Opponent</th>
+	<th>Result</th>
+</tr>
+
+EOT;
+	$ret = mysql_query("select ind from lgmatch where {$team->queryof('hteam')} or {$team->queryof('ateam')} order by matchdate");
+	if ($ret)  {
+		while ($row = mysql_fetch_array($ret))  {
+			$mtch = new Match($row[0]);
+			$mtch->fetchdets();
+			$oppteam = $mtch->Hteam;
+			if ($oppteam->is_same($team))  {
+				$oppteam = $mtch->Ateam;
+				switch ($mtch->Result) {
+				case 'H':	$res = 'Lost';	break;
+				case 'D':	$res = 'Drawn'; break;
+				case 'A':	$res = 'Won';	break;
+				}
+			}
+			else
+				switch ($mtch->Result) {
+				case 'H':	$res = 'Won';	break;
+				case 'D':	$res = 'Drawn'; break;
+				case 'A':	$res = 'Lost';	break;
+				}
+			print <<<EOT
+<tr>
+	<td>{$mtch->Date->display_month()}</td>
+	<td><a href="teamdisp.php?{$oppteam->urlof()}">{$oppteam->display_name()}</a></td>
+	<td><a href="showmtch.php?{$mtch->urlof()}">$res</a></td>
+</tr>
+
+EOT;
+		}
+	}
+	print "</table>\n";
+}
+if ($team->Hscore + $team->Ascore != 0)  {
+	print <<<EOT
+<h2>Game Record</h2>
+<p>
+Game record is for: {$team->Hscore} Lost: {$team->Ascore}. (Drawn games are 0.5 each).
+</p>
+<img src="php/piewdl.php?w={$team->Hscore}&d=0&l={$team->Ascore}">
+<br />
+
+EOT;
+}
+?>
 </body>
 </html>
