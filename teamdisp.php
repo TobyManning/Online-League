@@ -146,7 +146,7 @@ if ($team->Scoref + $team->Scorea != 0)  {
 	print <<<EOT
 <h2>Game Record</h2>
 <p>
-Game record is for: {$team->Scoref} Against: {$team->Scorea}. (Drawn games are 0.5 each).
+Game record is For: {$team->Scoref} Against: {$team->Scorea}. (Drawn games are 0.5 each).
 </p>
 <img src="php/piewdl.php?w={$team->Scoref}&d=0&l={$team->Scorea}">
 <br />
