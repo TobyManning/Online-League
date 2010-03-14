@@ -63,20 +63,53 @@ in
 <p>Team captains are {$mtch->Hteam->display_captain()} for {$mtch->Hteam->display_name()}
 and {$mtch->Ateam->display_captain()} for {$mtch->Ateam->display_name()}.
 </p>
+
+EOT;
+if ($result=='H' || $result=='A' || $result=='D') {
+	$h = $mtch->Hscore + 0;
+	$a = $mtch->Ascore + 0;
+	print <<<EOT
+<p>The final score was $h-$a.</p>
+<p>Player and board assignments were:</p>
+
+EOT;
+}
+else {
+	if ($result=='P') {
+		$h = $mtch->Hscore + 0;
+		$a = $mtch->Ascore + 0;
+		print "<p>Score to date is $h-$a</p>\n";
+	}
+	print <<<EOT
 <p>Player and board assignments are as follows:</p>
+
+EOT;
+}
+print <<<EOT
 <table class="showmatch">
 <tr><th colspan="5" align="center">White</th><th colspan="4" align="center">Black</th><th>Result</th></tr>
 <tr><th>Date</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
+	$bpre = $bpost = $wpre = $wpost = "";
+	switch ($g->Result)  {
+	case 'W':
+		$wpre = "<b>";
+		$wpost = "</b>";
+		break;
+	case 'B':
+		$bpre = "<b>";
+		$bpost = "</b>";
+		break;
+	}
 	print <<<EOT
 <tr>
 <td>{$g->date_played()}</td>
-<td>{$g->Wplayer->display_name()}</td>
+<td>$wpre{$g->Wplayer->display_name()}$wpost</td>
 <td>{$g->Wplayer->display_rank()}</td>
 <td>{$g->Wplayer->display_online()}</td>
 <td>{$g->Wteam->display_name()}</td>
-<td>{$g->Bplayer->display_name()}</td>
+<td>$bpre{$g->Bplayer->display_name()}$bpost</td>
 <td>{$g->Bplayer->display_rank()}</td>
 <td>{$g->Bplayer->display_online()}</td>
 <td>{$g->Bteam->display_name()}</td>
