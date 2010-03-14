@@ -119,16 +119,16 @@ EOT;
 			if ($oppteam->is_same($team))  {
 				$oppteam = $mtch->Ateam;
 				switch ($mtch->Result) {
-				case 'H':	$res = 'Lost';	break;
+				case 'H':	$res = 'Won';	break;
 				case 'D':	$res = 'Drawn'; break;
-				case 'A':	$res = 'Won';	break;
+				case 'A':	$res = 'Lost';	break;
 				}
 			}
 			else
 				switch ($mtch->Result) {
-				case 'H':	$res = 'Won';	break;
+				case 'H':	$res = 'Lost';	break;
 				case 'D':	$res = 'Drawn'; break;
-				case 'A':	$res = 'Lost';	break;
+				case 'A':	$res = 'Won';	break;
 				}
 			print <<<EOT
 <tr>
@@ -142,13 +142,13 @@ EOT;
 	}
 	print "</table>\n";
 }
-if ($team->Hscore + $team->Ascore != 0)  {
+if ($team->Scoref + $team->Scorea != 0)  {
 	print <<<EOT
 <h2>Game Record</h2>
 <p>
-Game record is for: {$team->Hscore} Lost: {$team->Ascore}. (Drawn games are 0.5 each).
+Game record is for: {$team->Scoref} Lost: {$team->Scorea}. (Drawn games are 0.5 each).
 </p>
-<img src="php/piewdl.php?w={$team->Hscore}&d=0&l={$team->Ascore}">
+<img src="php/piewdl.php?w={$team->Scoref}&d=0&l={$team->Scorea}">
 <br />
 
 EOT;
