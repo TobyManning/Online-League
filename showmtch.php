@@ -65,7 +65,7 @@ and {$mtch->Ateam->display_captain()} for {$mtch->Ateam->display_name()}.
 </p>
 
 EOT;
-if ($result=='H' || $result=='A' || $result=='D') {
+if ($mtch->Result=='H' || $mtch->Result=='A' || $mtch->Result=='D') {
 	$h = $mtch->Hscore + 0;
 	$a = $mtch->Ascore + 0;
 	print <<<EOT
@@ -75,7 +75,7 @@ if ($result=='H' || $result=='A' || $result=='D') {
 EOT;
 }
 else {
-	if ($result=='P') {
+	if ($mtch->Result=='P') {
 		$h = $mtch->Hscore + 0;
 		$a = $mtch->Ascore + 0;
 		print "<p>Score to date is $h-$a</p>\n";
