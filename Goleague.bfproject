@@ -5,9 +5,7 @@ files: /home/jmc/src/Websites/goleague/php/team.php
 files: /home/jmc/src/Websites/goleague/teamdisp.php
 files: /home/jmc/src/Websites/goleague/php/game.php
 files: /home/jmc/src/Websites/goleague/showmtch.php
-files: /home/jmc/src/Websites/goleague/playgames.php
 files: /home/jmc/src/Websites/goleague/php/match.php
-files: /home/jmc/src/Websites/goleague/resultsb.php
 files: /home/jmc/src/Websites/goleague/matchesb.php
 basedir: 
 webdir: 
@@ -46,20 +44,20 @@ urllist: javascript:gkgs();
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:1113:</li>:2519:
 recent_files: /home/jmc/src/Websites/goleague/php/player.php
+recent_files: /home/jmc/src/Websites/goleague/leagueb.php
+recent_files: /home/jmc/src/Websites/goleague/php/team.php
+recent_files: /home/jmc/src/Websites/goleague/teamdisp.php
+recent_files: /home/jmc/src/Websites/goleague/php/game.php
+recent_files: /home/jmc/src/Websites/goleague/showmtch.php
+recent_files: /home/jmc/src/Websites/goleague/php/match.php
+recent_files: /home/jmc/src/Websites/goleague/matchesb.php
+recent_files: /home/jmc/src/Websites/goleague/resultsb.php
+recent_files: /home/jmc/src/Websites/goleague/playgames.php
 recent_files: /home/jmc/src/Websites/goleague/bgaleague-style.css
 recent_files: /home/jmc/src/Websites/goleague/membpick.html
 recent_files: /home/jmc/src/Websites/goleague/matchtmupd.php
 recent_files: /home/jmc/src/Websites/goleague/updtmemb.php
 recent_files: /home/jmc/src/Websites/goleague/seasmatches.php
-recent_files: /home/jmc/src/Websites/goleague/addresult2.php
-recent_files: /home/jmc/src/Websites/goleague/archive2.php
-recent_files: /home/jmc/src/Websites/goleague/php/news.php
-recent_files: /home/jmc/src/Websites/goleague/leagueb.php
-recent_files: /home/jmc/src/Websites/goleague/php/team.php
-recent_files: /home/jmc/src/Websites/goleague/teamdisp.php
-recent_files: /home/jmc/src/Websites/goleague/php/game.php
-recent_files: /home/jmc/src/Websites/goleague/updmatch.php
-recent_files: /home/jmc/src/Websites/goleague/matchupd.php
 opendir: /home/jmc/src/Websites/goleague/php
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

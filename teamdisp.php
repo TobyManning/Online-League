@@ -82,10 +82,10 @@ foreach ($membs as $m) {
 	<td>{$m->display_name()}</td>
 	<td>{$m->display_rank()}</td>
 	<td>{$m->Club->display_name()}</td>
-	<td>{$m->played_games()}</td>
-	<td>{$m->won_games()}</td>
-	<td>{$m->drawn_games()}</td>
-	<td>{$m->lost_games()}</td>
+	<td align="right">{$m->played_games()}</td>
+	<td align="right">{$m->won_games()}</td>
+	<td align="right">{$m->drawn_games()}</td>
+	<td align="right">{$m->lost_games()}</td>
 </tr>
 EOT;
 }
