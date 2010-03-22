@@ -23,9 +23,9 @@ $docel->appendChild($chel);
 @Days = ('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
 @Months = ('Jan', 'Feb', 'Mar', 'Apr', 'May'. 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
 
-$sfh = $Database->prepare("select ndate,item from news where rss=1 order by ndate desc limit 15");
+$sfh = $Database->prepare("select ndate,item,link from news where rss=1 order by ndate desc limit 15");
 $sfh->execute;
-while (my ($d,$i) = $sfh->fetchrow_array)  {
+while (my ($d,$i,$lnk) = $sfh->fetchrow_array)  {
     my ($y,$m,$md) = $d =~ /(\d+)-(\d+)-(\d+)/;
     my $t = timelocal(0,0,12,$md,$m-1,$y-1900);
     my @dbits = localtime($t);
@@ -34,7 +34,9 @@ while (my ($d,$i) = $sfh->fetchrow_array)  {
     $chel->appendChild($itemel);
     $itemel->appendTextChild("title", "Match Result");
     $itemel->appendTextChild("description", $i);
-    $itemel->appendTextChild("link", "http://league.britgo.org/results.php");
+    $lnk = "news.php" if length($lnk) == 0;
+    $lnk = "http://league.britgo.org/$lnk" unless $lnk =~ m|/|;
+    $itemel->appendTextChild("link", $lnk);
     $itemel->appendTextChild("pubDate", $d);
 }
 $doc->toFile("rss.xml", 1);
