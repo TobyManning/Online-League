@@ -160,7 +160,7 @@ mysql_query("delete from lgmatch");
 
 // I think that just about does it. Create a news item
 
-$nws = new News('ADMINS', "Season now closed and archived as $Sname.", true);
+$nws = new News('ADMINS', "Season now closed and archived as $Sname.", true, "leagueb.php");
 $nws->addnews();
 ?>
 <html>

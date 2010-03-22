@@ -77,7 +77,7 @@ if ($mtch->Result == 'P')  {
 </p>
 
 EOT;
-	$n = new News($userid, "Game completed in {$mtch->Hteam->Name} -v- {$mtch->Ateam->Name} in Division {$mtch->Division}"); 
+	$n = new News($userid, "Game completed in {$mtch->Hteam->Name} -v- {$mtch->Ateam->Name} in Division {$mtch->Division}", false, $mtch->showmatch()); 
 	$n->addnews();	
 }
 else  {
@@ -92,7 +92,7 @@ else  {
 <p>The match has now been completed.</p>
 <p>$result.</p>
 EOT;
-	$n = new News($userid, "Match now completed between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}. $result.", true);
+	$n = new News($userid, "Match now completed between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}. $result.", true, $mtch->showmatch());
 	$n->addnews();
 }
 ?>

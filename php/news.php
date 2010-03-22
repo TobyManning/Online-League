@@ -51,7 +51,7 @@ class News {
 	public function display_link() {
 		$lnk = $this->Link;
 		if (strlen($lnk) != 0)
-			$lnk = " - <a href=\"$lnk\">link</a>";
+			$lnk = "<a href=\"$lnk\">Link</a>";
 		return $lnk;
 	}#			
 	

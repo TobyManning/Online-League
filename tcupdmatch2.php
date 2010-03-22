@@ -193,7 +193,7 @@ EOT;
 EOT;
 	}
 	$mtch->mail_allocated();
-	$n = new News($userid, "Match now allocated between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}");
+	$n = new News($userid, "Match now allocated between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}", false, $mtch->showmatch());
 	$n->addnews();
 }
 else  {

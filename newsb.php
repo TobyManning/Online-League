@@ -45,7 +45,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 <tr>
 <td valign="top">{$n->display_date()}</td>
 <td valign="top">{$n->display_user()}</td>
-<td>{$n->display_item()}{$n->display_link()}</td>
+<td>{$n->display_item()} {$n->display_link()}</td>
 </tr>
 
 EOT;

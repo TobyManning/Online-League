@@ -71,7 +71,7 @@ print <<<EOT
 {$g->Bteam->display_name()} as Black to be {$g->display_result()}.
 </p>
 EOT;
-$n = new News($userid, "Amended result in {$mtch->Hteam->Name} -v- {$mtch->Ateam->Name} match in Division {$mtch->Division}");
+$n = new News($userid, "Amended result in {$mtch->Hteam->Name} -v- {$mtch->Ateam->Name} match in Division {$mtch->Division}", false, $mtch->showmatch());
 $n->addnews();
 ?>
 </body>

@@ -86,6 +86,12 @@ class Match {
 	public function urlof() {
 		return "mi={$this->Ind}";
 	}
+	
+	// For leaving a link for news etc
+	
+	public function showmatch() {
+		return "showmtch.php?{$this->urlof()}";
+	}
 
 	// Use for generating a database query component referring to the match
 	// $prefix is set to a non-empty string where the column name has some
