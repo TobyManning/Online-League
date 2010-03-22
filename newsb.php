@@ -36,7 +36,7 @@ update was made not necessarily when a game was played.</p>
 <th>Item</th>
 </tr>
 <?php
-$ret = mysql_query("select ndate,user,item  from news order by ndate desc");
+$ret = mysql_query("select ndate,user,item,link  from news order by ndate desc");
 if ($ret && mysql_num_rows($ret) > 0)  {
 	while ($row = mysql_fetch_assoc($ret))  {
 		$n = new News();
@@ -45,7 +45,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 <tr>
 <td valign="top">{$n->display_date()}</td>
 <td valign="top">{$n->display_user()}</td>
-<td>{$n->display_item()}</td>
+<td>{$n->display_item()}{$n->display_link()}</td>
 </tr>
 
 EOT;

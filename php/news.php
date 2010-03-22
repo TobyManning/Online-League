@@ -19,18 +19,21 @@ class News {
 	public $User;
 	public $Item;
 	public $Rssable;
+	public $Link;
 	
-	public function __construct($u = "", $it = "", $rss = false) {
+	public function __construct($u = "", $it = "", $rss = false, $lnk = "") {
 		$this->Date = new Matchdate();
 		$this->User = $u;
 		$this->Item = $it;
 		$this->Rssable = $rss;
+		$this->Link = $lnk;
 	}
 	
 	public function fromrow($r) {
 		$this->Date->fromtabrow($r, 'ndate');
 		$this->User = $r['user'];
 		$this->Item = $r['item'];
+		$this->Link = $r['link'];
 	}
 	
 	public function display_date() {
@@ -45,12 +48,20 @@ class News {
 		return htmlspecialchars($this->Item);
 	}
 	
+	public function display_link() {
+		$lnk = $this->Link;
+		if (strlen($lnk) != 0)
+			$lnk = " - <a href=\"$lnk\">link</a>";
+		return $lnk;
+	}#			
+	
 	public function addnews() {
 		$qdate = $this->Date->queryof();
 		$quser = mysql_real_escape_string($this->User);
 		$qitem = mysql_real_escape_string($this->Item);
+		$qlink = mysql_real_escape_string($this->Link);
 		$qr = $this->Rssable? 1: 0;
-		mysql_query("insert into news (ndate,user,item,rss) values ('$qdate','$quser','$qitem',$qr)");
+		mysql_query("insert into news (ndate,user,item,rss,link) values ('$qdate','$quser','$qitem',$qr,'$qlink')");
 	}
 }
 ?>
