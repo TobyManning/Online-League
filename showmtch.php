@@ -119,6 +119,7 @@ EOT;
 }
 ?>
 </table>
-<p>Click <a href="javascript:history.back()">here</a> to view some other match.</p>
+<p>Click <a href="javascript:history.back()">here</a> to return to your previous page
+or <a href="matchesb.php">here</a> to look at other matches.</p>
 </body>
 </html>
