@@ -65,7 +65,7 @@ EOT;
 			foreach ($this->Unalloc as $m) {
 				$oth = $this->othercapt($m);
 				$mess = <<<EOT
-{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email})
+{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email} {$oth->Phone})
 
 EOT;
 				fwrite($fh, $mess);
@@ -84,7 +84,7 @@ EOT;
 			foreach ($this->Notplayed as $m) {
 				$oth = $this->othercapt($m);
 				$mess = <<<EOT
-{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email})
+{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email} {$oth->Phone})
 
 
 EOT;
@@ -104,7 +104,7 @@ EOT;
 			foreach ($this->Partplayed as $m) {
 				$oth = $this->othercapt($m);
 				$mess = <<<EOT
-{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email})
+{$m->Date->display_month()} {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()} ({$oth->display_name(false)} {$oth->Email} {$oth->Phone})
 
 EOT;
 				fwrite($fh, $mess);

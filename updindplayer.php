@@ -83,8 +83,13 @@ print <<<EOT
 </p>
 <p>
 Email:<input type="text" name="email" value="{$player->display_email_nolink()}">
+Phone:<input type="text" name="phone" value="{$player->display_phone()}">
+</p>
+<p>
 Userid:<input type="text" name="userid"$du>
 Password:<input type="password" name="passw"$dp>
+</p>
+<p>
 KGS:<input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10">
 IGS:<input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10">
 </p>

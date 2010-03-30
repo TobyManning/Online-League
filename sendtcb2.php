@@ -43,10 +43,12 @@ if ($admins) {
 		if (strlen($p->Email) != 0)
 			$mlist[$p->Email] = 1;
 }
+// Set up reply to address.
+$rt = "";
+if (strlen($emailrep) != 0)
+	$rt = "REPLYTO='$emailrep' ";
 foreach (array_keys($mlist) as $dest) {
-	$fh = popen("mail -s 'Go League email - $subj' $dest", "w");
-	if (strlen($emailrep) != 0)
-		fwrite($fh, "Please reply to $emailrep\n");
+	$fh = popen("{$rt}mail -s 'Go League email - $subj' $dest", "w");
 	fwrite($fh, "$mess\n");
 	pclose($fh);
 }

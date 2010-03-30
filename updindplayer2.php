@@ -48,6 +48,7 @@ function checkname($newplayer) {
 $action = substr($_POST["subm"], 0, 1);
 $playname = $_POST["playname"];
 $email = $_POST["email"];
+$phone = $_POST["phone"];
 $userid = $_POST["userid"];
 $kgs = $_POST["kgs"];
 $igs = $_POST["igs"];
@@ -70,6 +71,7 @@ case 'A':
 	$player->Rank = new Rank($rank);
 	$player->Club = new Club($club);
 	$player->Email = $email;
+	$player->Phone = $phone;
 	$player->KGS = $kgs;
 	$player->IGS = $igs;
 	// Force Admin priv to N unless Super-admin
@@ -133,6 +135,7 @@ default:
 	$origplayer->Rank = new Rank($rank);
 	$origplayer->Club = new Club($club);
 	$origplayer->Email = $email;
+	$origplayer->Phone = $phone;
 	// Leave priv alone unless super-admin
 	if ($userpriv == 'SA')
 		$origplayer->Admin = $admin;

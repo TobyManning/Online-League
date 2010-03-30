@@ -278,14 +278,23 @@ White: {$g->Wplayer->display_name(false)} {$g->Wplayer->display_rank()} {$g->Wte
 EOT;
 			fwrite($fh, "$mess\n");
 		}
+		$ht = $this->Hteam;
+		$at = $this->Ateam;
+		$hc = $ht->Captain;
+		$ac = $at->Captain;
 		$mess = <<<EOT
 
 Team Captains are:
 
-For {$this->Hteam->display_name()}: {$this->Hteam->display_captain()}, {$this->Hteam->Captain->display_email_nolink()}
-For {$this->Ateam->display_name()}: {$this->Ateam->display_captain()}, {$this->Ateam->Captain->display_email_nolink()}
+For {$ht->display_name()}: {$ht->display_captain()}, {$hc->display_email_nolink()}
+For {$at->display_name()}: {$at->display_captain()}, {$ac->display_email_nolink()}
+
 EOT;
 		fwrite($fh, "$mess\n");
+		if (strlen($hc->Phone) != 0)
+			fwrite($fh, "You can reach {$ht->display_captain()} on {$hc->display_phone()}.\n");
+		if (strlen($ac->Phone) != 0)
+			fwrite($fh, "You can reach {$at->display_captain()} on {$ac->display_phone()}.\n");
 		pclose($fh);
 	}
 }

@@ -56,12 +56,13 @@ while ($row = mysql_fetch_array($ret))  {
 	}
 	$num++;
 }
+$rt = "";
+if (strlen($emailrep) != 0)
+	$rt = "REPLYTO='$emailrep' ";
 foreach ($teams as $team) {
 	$dest = $team->Captain->Email;
 	if (strlen($dest) != 0)  {
-		$fh = popen("mail -s 'Go League email - Subscription unpaid' $dest", "w");
-		if (strlen($emailrep) != 0)
-			fwrite($fh, "Please reply to $emailrep\n");
+		$fh = popen("{$rt}mail -s 'Go League email - Subscription unpaid' $dest", "w");
 		fwrite($fh, "$mess\n");
 		pclose($fh);
 	}

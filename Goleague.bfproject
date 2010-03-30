@@ -1,22 +1,4 @@
 name: Go League
-files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
-files: /home/jmc/src/Websites/goleague/loadkgs.php
-files: /home/jmc/src/Websites/goleague/fixres3.php
-files: /home/jmc/src/Websites/goleague/archive2.php
-files: /home/jmc/src/Websites/goleague/addmatch.php
-files: /home/jmc/src/Websites/goleague/addmatch2.php
-files: /home/jmc/src/Websites/goleague/addresult2.php
-files: /home/jmc/src/Websites/goleague/php/matchdate.php
-files: /home/jmc/src/Websites/goleague/newsb.php
-files: /home/jmc/src/Websites/goleague/php/news.php
-files: /home/jmc/src/Websites/goleague/php/player.php
-files: /home/jmc/src/Websites/goleague/leagueb.php
-files: /home/jmc/src/Websites/goleague/php/team.php
-files: /home/jmc/src/Websites/goleague/teamdisp.php
-files: /home/jmc/src/Websites/goleague/php/game.php
-files: /home/jmc/src/Websites/goleague/showmtch.php
-files: /home/jmc/src/Websites/goleague/php/match.php
-files: /home/jmc/src/Websites/goleague/matchesb.php
 basedir: 
 webdir: 
 template: 
@@ -53,6 +35,7 @@ urllist: linkframe.php
 urllist: javascript:gkgs();
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:1113:</li>:2519:
+recent_files: /home/jmc/src/Websites/goleague/seasmatches.php
 recent_files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
 recent_files: /home/jmc/src/Websites/goleague/loadkgs.php
 recent_files: /home/jmc/src/Websites/goleague/fixres3.php
@@ -67,9 +50,8 @@ recent_files: /home/jmc/src/Websites/goleague/php/player.php
 recent_files: /home/jmc/src/Websites/goleague/leagueb.php
 recent_files: /home/jmc/src/Websites/goleague/php/team.php
 recent_files: /home/jmc/src/Websites/goleague/teamdisp.php
-recent_files: /home/jmc/src/Websites/goleague/php/game.php
 opendir: /home/jmc/src/Websites/goleague
-savedir: /home/jmc/src/Websites/goleague
+savedir: /home/jmc/src/Websites/goleague/php
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1

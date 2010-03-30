@@ -145,8 +145,8 @@ class Team  {
 		mysql_query("update lgmatch set hteam='$qname' where {$this->queryof('hteam')}");
 		mysql_query("update lgmatch set ateam='$qname' where {$this->queryof('ateam')}");
 		// And games
-		mysql_query("update game set wteam='$qname' where {$this->queryof('wteam')}");
-		mysql_query("update game set bteam='$qname' where {$this->queryof('bteam')}");
+		mysql_query("update game set wteam='$qname' where {$this->queryof('wteam')} and current=1");
+		mysql_query("update game set bteam='$qname' where {$this->queryof('bteam')} and current=1");
 		$this->Name = $newt->Name;
 	}
 
