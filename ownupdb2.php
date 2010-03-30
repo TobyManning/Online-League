@@ -43,6 +43,7 @@ function checkname($newplayer) {
 
 $playname = $_POST["playname"];
 $email = $_POST["email"];
+$phone = $_POST["phone"];
 $kgs = $_POST["kgs"];
 $igs = $_POST["igs"];
 $club = $_POST["club"];
@@ -85,6 +86,7 @@ if ($origplayer->IGS != $igs) {
 $origplayer->Rank = new Rank($rank);
 $origplayer->Club = new Club($club);
 $origplayer->Email = $email;
+$origplayer->Phone = $phone;
 $origplayer->update();
 if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
 	$origplayer->set_passwd($passw);

@@ -83,7 +83,7 @@ print <<<EOT
 </p>
 <p>
 Email:<input type="text" name="email" value="{$player->display_email_nolink()}">
-Phone:<input type="text" name="phone" value="{$player->display_phone()}">
+Phone:<input type="text" name="phone" size=30 value="{$player->display_phone()}">
 </p>
 <p>
 Userid:<input type="text" name="userid"$du>
