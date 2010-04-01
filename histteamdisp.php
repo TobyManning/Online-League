@@ -56,7 +56,7 @@ print <<<EOT
 This is the record for
 {$team->display_name()} - {$team->display_description()}
 in {$team->display_division()}
-for season ($seas->display_name()}
+for <b>{$seas->display_name()}</b>
 running from
 {$seas->display_start()} to {$seas->display_end()}.
 </p>
