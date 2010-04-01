@@ -57,18 +57,34 @@ and
 for
 {$mtch->Date->display_month()}.
 </p>
+EOT;
+$h = $mtch->Hscore + 0;
+$a = $mtch->Ascore + 0;
+print <<<EOT
+<p>The final score was $h-$a.</p>
 <p>Player and board assignments were as follows:</p>
 <table class="showmatch">
 <tr><th colspan="3" align="center">White</th><th colspan="2" align="center">Black</th><th>Result</th></tr>
 <tr><th>Date</th><th>Player</th><th>Team</th><th>Player</th><th>Team</th></tr>
 EOT;
 foreach ($mtch->Games as $g) {
+	$bpre = $bpost = $wpre = $wpost = "";
+	switch ($g->Result)  {
+	case 'W':
+		$wpre = "<b>";
+		$wpost = "</b>";
+		break;
+	case 'B':
+		$bpre = "<b>";
+		$bpost = "</b>";
+		break;
+	}
 	print <<<EOT
 <tr>
 <td>{$g->date_played()}</td>
-<td>{$g->Wplayer->display_name()}</td>
+<td>$wpre{$g->Wplayer->display_name()}$wpost</td>
 <td>{$g->Wteam->display_name()}</td>
-<td>{$g->Bplayer->display_name()}</td>
+<td>$bpre{$g->Bplayer->display_name()}$bpost</td>
 <td>{$g->Bteam->display_name()}</td>
 <td>{$g->display_result()}</td>
 </tr>

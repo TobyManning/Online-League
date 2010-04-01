@@ -65,9 +65,9 @@ class Team  {
 		return preg_replace($p, $r, $this->Name);
 	}
 	
-	public function urlof() {
+	public function urlof($id = "tn") {
 		$n = urlencode($this->Name);
-		return "tn=$n";
+		return "$id=$n";
 	}
 	
 	public function fetchdets() {

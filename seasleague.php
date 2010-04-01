@@ -91,6 +91,7 @@ EOT;
 			$n = "<span class=\"prom\">$n</span>";
 		elseif ($t->Sortrank == $minrank)
 			$n = "<span class=\"releg\">$n</span>";
+		$n = "<a href=\"histteamdisp.php?{$t->urlof()}&{$seas->urlof()}\" class=\"nound\">$n</a>";
 		print <<<EOT
 <tr>
 <td>$n</td>

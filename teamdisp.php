@@ -29,6 +29,7 @@ include 'php/team.php';
 include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/matchdate.php';
+include 'php/season.php';
 try {
 	$team = new Team();
 	$team->fromget();
@@ -91,6 +92,7 @@ EOT;
 }
 ?>
 </table>
+<p>(Player record includes all online league games).</p>
 <?php
 $team->get_scores();
 if ($team->Played != 0)  {
@@ -155,5 +157,26 @@ EOT;
 }
 ?>
 <p><b>Please note</b> you can click on players, opposing teams and results for more details.</p>
+<?php
+$ret = mysql_query("select seasind from histteam where {$team->queryof()} order by seasind");
+if ($ret && mysql_num_rows($ret) > 0)  {
+	print <<<EOT
+<h2>Previous Seasons</h2>
+<p>Select from the following to see the performance of {$team->display_name()} in previous seasons.
+</p>
+<table>
+
+EOT;
+	while ($row = mysql_fetch_array($ret)) {
+		$s = new Season($row[0]);
+		$s->fetchdets();
+		print "<tr><td><a href=\"histteamdisp.php?{$team->urlof('htn')}&{$s->urlof()}\" class=\"nound\">{$s->display_name()}</a></td></tr>\n";
+	}
+	print <<<EOT
+</table>
+
+EOT;
+}
+?>
 </body>
 </html>
