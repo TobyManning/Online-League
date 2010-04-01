@@ -32,7 +32,7 @@ class HistteamMemb extends Player  {
 		$qname = $this->queryof('tm');
 		$ret = mysql_query("select rank from histteammemb where $qsind and $qname");
 		if ($ret && mysql_num_rows($ret) > 0)  {
-			$row = mysql_read_array($ret);
+			$row = mysql_fetch_array($ret);
 			$this->Rank = new Rank($row[0]);
 		}
 	}
