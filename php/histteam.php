@@ -131,6 +131,10 @@ class Histteam  {
 									$this->Scorea * $p->Against;
 	}
 	
+	public function is_same($tm) {
+		return $this->Name == $tm->Name;
+	}
+	
 	public function count_members() {
 		$ret = mysql_query("select count(*) from histteammemb where {$this->queryof('teamname')}");
 		if (!$ret || mysql_num_rows($ret) == 0)
