@@ -78,5 +78,8 @@ else {
 }
 ?>
 </table>
+<h2>Previous Seasons</h2>
+<p><a href="prevleagueb.php">Click here</a> to view the league
+table and/or matches from previous seasons.</p>
 </body>
 </html>
