@@ -115,9 +115,12 @@ EOT;
 	}
 }
 else {
-	print "<tr><td colspan=\"3\" align=\"center\">No matches yet</td></tr>\n";
+	print "<tr><td colspan=\"3\" align=\"center\">No matches yet for the current season</td></tr>\n";
 }
 ?>
 </table>
+<h2>Previous Seasons</h2>
+<p><a href="prevleagueb.php">Click here</a> to view the league
+table and/or matches from previous seasons.</p>
 </body>
 </html>
