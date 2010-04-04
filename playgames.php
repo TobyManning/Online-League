@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2010 John Collins
 
@@ -15,6 +14,13 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+session_start();
+$username = $_SESSION['user_name'];
+$userpriv = $_SESSION['user_priv'];
+$logged_in = strlen($username) != 0;
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<?php
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -129,6 +135,28 @@ EOT;
 </table>
 <p>You can click on the name of each opponent to see the record for that opponent.
 </p>
+<?php
+if ($logged_in) {
+	$em = $player->display_email_link();
+	$ph = $player->display_phone();
+	if (strlen($em) != 0 || strlen($ph) != 0)  {
+		print <<<EOT
+<h2>Player Contact Information</h2>
+
+EOT;
+		if (strlen($em) != 0)
+			print <<<EOT
+<p>The email address of {$player->display_name(false)} is $em.</p>
+
+EOT;
+		if (strlen($ph) != 0)
+			print <<<EOT
+<p>The phone number(s) of {$player->display_name(false)} is/are $ph.</p>
+
+EOT;
+	}
+}
+?>
 <p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
 </body>
 </html>

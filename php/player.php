@@ -296,6 +296,13 @@ class Player  {
 	}
 	
 	// Display email address
+	
+	public function display_email_link() {
+		if (strlen($this->Email) == 0)
+			return "";
+		$m = htmlspecialchars($this->Email);
+		return "<a href=\"mailto:$m\">$m</a>";
+	}
 		
 	public function display_email_nolink() {
 		return htmlspecialchars($this->Email);
