@@ -1,4 +1,7 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/pbtb.php
+files: /home/jmc/src/Websites/goleague/playgames.php
+files: /home/jmc/src/Websites/goleague/php/player.php
 files: /home/jmc/src/Websites/goleague/resultsb.php
 files: /home/jmc/src/Websites/goleague/aboutusb.php
 files: /home/jmc/src/Websites/goleague/aboutus.php
@@ -41,6 +44,9 @@ urllist: linkframe.php
 urllist: javascript:gkgs();
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:1113:</li>:2519:
+recent_files: /home/jmc/src/Websites/goleague/pbtb.php
+recent_files: /home/jmc/src/Websites/goleague/playgames.php
+recent_files: /home/jmc/src/Websites/goleague/php/player.php
 recent_files: /home/jmc/src/Websites/goleague/resultsb.php
 recent_files: /home/jmc/src/Websites/goleague/aboutusb.php
 recent_files: /home/jmc/src/Websites/goleague/aboutus.php
@@ -53,9 +59,6 @@ recent_files: /home/jmc/src/Websites/goleague/php/season.php
 recent_files: /home/jmc/src/Websites/goleague/teamdisp.php
 recent_files: /home/jmc/src/Websites/goleague/php/histteammemb.php
 recent_files: /home/jmc/src/Websites/goleague/php/histteam.php
-recent_files: /home/jmc/src/Websites/goleague/histshowmtch.php
-recent_files: /home/jmc/src/Websites/goleague/seasleague.php
-recent_files: /home/jmc/src/Websites/goleague/php/team.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

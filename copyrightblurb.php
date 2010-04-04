@@ -24,5 +24,7 @@ include 'php/head.php';
 This website was designed, authored and programmed by
 <a href="http://www.john.collins.name" target="_blank">John Collins</a>.
 </p>
+<p>Copyright &copy; John Collins 2009-2010. Licensed under
+<a href="http://www.gnu.org/licenses/">GPL v3</a>.</p>
 </body>
 </html>
