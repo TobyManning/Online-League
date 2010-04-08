@@ -38,7 +38,7 @@ try  {
 }
 catch (MatchException $e) {
 	if ($e->Nfound) {
-		$loc = "histmatch.php?hmi={$e->Mid}";
+		$loc = "histshowmatch.php?hmi={$e->Mid}";
 		include 'php/jumpto.php';
 		exit(0);
 	}
