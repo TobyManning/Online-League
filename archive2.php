@@ -154,9 +154,11 @@ catch (HistMatchException $e) {
 
 //  Now delete all unplayed games
 //  Delete all matches
+//  Delete all news items for stale matches
 
 mysql_query("delete from game where result='N'");
 mysql_query("delete from lgmatch");
+mysql_query("delete from news where user!='ADMINS'");
 
 // I think that just about does it. Create a news item
 
