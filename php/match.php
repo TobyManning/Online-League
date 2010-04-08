@@ -14,7 +14,16 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-class MatchException extends Exception {}
+class MatchException extends Exception {
+	public $Nfound;		// Couldn't find match
+	public $Mid;			// Match id
+
+	public function __construct($msg, $nf = false, $mid = 0) {
+		parent::__construct($msg);
+		$this->Nfound = $nf;
+		$this->Mid = $mid;
+	}
+}
 
 // For convenience (and easy later extension) we have a "home team"
 // and an "away team" on each match.
@@ -109,8 +118,12 @@ class Match {
 		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays from lgmatch where $q");
 		if (!$ret)
 			throw new MatchException("Cannot read database for match $q");
-		if (mysql_num_rows($ret) == 0)
-			throw new MatchException("Cannot find match record {$this->Ind}");
+		if (mysql_num_rows($ret) == 0)  {
+			if ($this->Ind == 0)
+				throw new MatchException("No match id");
+			else
+				throw new MatchException("Cannot find match record {$this->Ind}", true, $this->Ind);
+		}
 		$row = mysql_fetch_assoc($ret);
 		$this->Division = $row["divnum"];
 		$this->Hteam = new Team($row["hteam"]);

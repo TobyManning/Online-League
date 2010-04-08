@@ -37,6 +37,11 @@ try  {
 	$mtch->fetchgames();
 }
 catch (MatchException $e) {
+	if ($e->Nfound) {
+		$loc = "histmatch.php?hmi={$e->Mid}";
+		include 'php/jumpto.php';
+		exit(0);
+	}
 	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);	
