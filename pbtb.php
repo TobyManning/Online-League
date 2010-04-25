@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -14,13 +15,6 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-session_start();
-$username = $_SESSION['user_name'];
-$userpriv = $_SESSION['user_priv'];
-$logged_in = strlen($username) != 0;
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<?php
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -36,30 +30,32 @@ include 'php/head.php';
 <body>
 <h1>Players by team</h1>
 <?php
-// Provide for 11 columns
-// Chop last 2 columns off if not logged in
+// Provide for 12 columns
 
-$cs = $logged_in? 11: 9;
+$cs = 12;
 print <<<EOT
 <table class="pllist">
 <tr>
+<tr>
+<th colspan="3">&nbsp;</th>
+<th colspan="4" align="center">Current</th>
+<th colspan="4" align="center">Total</th>
+</tr>
 <th>Name</th>
 <th>Rank</th>
-<th>Club</th>
+<th>Online</th>
 <th>P</th>
 <th>W</th>
 <th>D</th>
 <th>L</th>
-<th>Online</th>
-EOT;
-if ($logged_in)
-	print <<<EOT
-<th>Userid</th>
-<th>Email</th>
-EOT;
-?>
+<th>P</th>
+<th>W</th>
+<th>D</th>
+<th>L</th>
+<th>Club</th>
 </tr>
-<?php
+
+EOT;
 $tlist = list_teams();
 foreach ($tlist as $team) {
 	$team->fetchdets();
@@ -74,19 +70,19 @@ EOT;
 <tr>
 <td>{$m->display_name()}</td>
 <td>{$m->display_rank()}</td>
-<td>{$m->Club->display_name()}</td>
+<td>{$m->display_online()}</td>
+<td>{$m->played_games(true)}</td>
+<td>{$m->won_games(true)}</td>
+<td>{$m->drawn_games(true)}</td>
+<td>{$m->lost_games(true)}</td>
 <td>{$m->played_games()}</td>
 <td>{$m->won_games()}</td>
 <td>{$m->drawn_games()}</td>
 <td>{$m->lost_games()}</td>
-<td>{$m->display_online()}</td>
+<td>{$m->Club->display_name()}</td>
+</tr>
+
 EOT;
-		if ($logged_in)
-			print <<<EOT
-<td>{$m->display_userid()}</td>
-<td>{$m->display_email()}</td>
-EOT;
-		print "</tr>\n";
 	}
 }
 print <<<EOT
@@ -105,19 +101,19 @@ if ($ret) {
 <tr>
 <td>{$p->display_name()}</td>
 <td>{$p->display_rank()}</td>
-<td>{$p->Club->display_name()}</td>
+<td>{$p->display_online()}</td>
+<td>{$p->played_games(true)}</td>
+<td>{$p->won_games(true)}</td>
+<td>{$p->drawn_games(true)}</td>
+<td>{$p->lost_games(true)}</td>
 <td>{$p->played_games()}</td>
 <td>{$p->won_games()}</td>
 <td>{$p->drawn_games()}</td>
 <td>{$p->lost_games()}</td>
-<td>{$p->display_online()}</td>
+<td>{$p->Club->display_name()}</td>
+</tr>
+
 EOT;
-		if ($logged_in)
-			print <<<EOT
-<td>{$p->display_userid()}</td>
-<td>{$p->display_email()}</td>
-EOT;
-		print "</tr>\n";
 	}
 }
 ?>

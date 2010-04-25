@@ -81,5 +81,9 @@ EOT;
 <br clear="all">
 <input type="submit" name="submit" value="Submit message">
 </form>
+<h2>Set all teams as unpaid</h2>
+<p>At the start of the season, you will want to set all teams as not having paid.
+If you want to do this now, <a href="setunpaid.php">click here</a>.
+</p>
 </body>
 </html>

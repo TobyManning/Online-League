@@ -1,4 +1,11 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/archive2.php
+files: /home/jmc/src/Websites/goleague/php/histmatch.php
+files: /home/jmc/src/Websites/goleague/histshowmtch.php
+files: /home/jmc/src/Websites/goleague/php/jumpto.php
+files: /home/jmc/src/Websites/goleague/php/match.php
+files: /home/jmc/src/Websites/goleague/php/teammemb.php
+files: /home/jmc/src/Websites/goleague/showmtch.php
 files: /home/jmc/src/Websites/goleague/copyrightblurb.php
 files: /home/jmc/src/Websites/goleague/pbtb.php
 files: /home/jmc/src/Websites/goleague/playgames.php
@@ -34,6 +41,7 @@ classlist: memb
 targetlist: _parent
 targetlist: _blank
 targetlist: _top
+urllist: $loc
 urllist: http://www.gnu.org/licenses/
 urllist: http://www.gnu.org/licenses
 urllist: leagueb.php
@@ -43,9 +51,15 @@ urllist: matchesb.php
 urllist: '.$SCRIPT_NAME.'
 urllist: <?php echo $SCRIPT_NAME ?>
 urllist: linkframe.php?adm=y
-urllist: linkframe.php?edres=y
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:1113:</li>:2519:
+recent_files: /home/jmc/src/Websites/goleague/archive2.php
+recent_files: /home/jmc/src/Websites/goleague/php/wrongentry.php
+recent_files: /home/jmc/src/Websites/goleague/php/histmatch.php
+recent_files: /home/jmc/src/Websites/goleague/histshowmtch.php
+recent_files: /home/jmc/src/Websites/goleague/php/match.php
+recent_files: /home/jmc/src/Websites/goleague/php/teammemb.php
+recent_files: /home/jmc/src/Websites/goleague/showmtch.php
 recent_files: /home/jmc/src/Websites/goleague/copyrightblurb.php
 recent_files: /home/jmc/src/Websites/goleague/pbtb.php
 recent_files: /home/jmc/src/Websites/goleague/playgames.php
@@ -54,13 +68,6 @@ recent_files: /home/jmc/src/Websites/goleague/resultsb.php
 recent_files: /home/jmc/src/Websites/goleague/aboutusb.php
 recent_files: /home/jmc/src/Websites/goleague/aboutus.php
 recent_files: /home/jmc/src/Websites/goleague/indexb.php
-recent_files: /home/jmc/src/Websites/goleague/leagueb.php
-recent_files: /home/jmc/src/Websites/goleague/matchesb.php
-recent_files: /home/jmc/src/Websites/goleague/php/histmatch.php
-recent_files: /home/jmc/src/Websites/goleague/histteamdisp.php
-recent_files: /home/jmc/src/Websites/goleague/php/season.php
-recent_files: /home/jmc/src/Websites/goleague/teamdisp.php
-recent_files: /home/jmc/src/Websites/goleague/php/histteammemb.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

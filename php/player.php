@@ -32,6 +32,10 @@ class Player  {
 	private $Won;
 	private $Drawn;
 	private $Lost;
+	private $Playeds;		// This season
+	private $Wons;
+	private $Drawns;
+	private $Losts;
 
 	// Construct a player object, possibly starting from various
 	// versions of the name
@@ -198,11 +202,8 @@ class Player  {
 		$f = $this->First;
 		$l = $this->Last;
 		$ret = htmlspecialchars("$f $l");
-		if ($displink) {
-			$this->get_grecs();
-			if ($this->Played != 0)
+		if ($displink)
 				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\">$ret</a>";
-		}
 		return $ret;
 	}
 
@@ -438,30 +439,38 @@ class Player  {
 			return;
 		$this->Gotrecs = true;
 		// Get SQL to do all the work
-		$this->Played = $this->get_grec("result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
-		$this->Won = $this->get_grec("({$this->queryof('w')} and result='W') or ({$this->queryof('b')} and result='B')");
-		$this->Drawn = $this->get_grec("result='J' and ({$this->queryof('w')} or {$this->queryof('b')})");
-		$this->Lost = $this->get_grec("({$this->queryof('w')} and result='B') or ({$this->queryof('b')} and result='W')");
+		$qw = $this->queryof('w');
+		$qb = $this->queryof('b');
+		$rw = "result='W'";
+		$rb = "result='B'";
+		$this->Played = $this->get_grec("result!='N' and ($qw or $qb)");
+		$this->Won = $this->get_grec("($qw and $rw) or ($qb and $rb)");
+		$this->Drawn = $this->get_grec("result='J' and ($qw or $qb)");
+		$this->Lost = $this->get_grec("($qw and $rb) or ($qb and $rw)");
+		$this->Playeds = $this->get_grec("current=1 and result!='N' and ($qw or $qb)");
+		$this->Wons = $this->get_grec("current=1 and (($qw and $rw) or ($qb and $rb))");
+		$this->Drawns = $this->get_grec("current=1 and result='J' and ($qw or $qb)");
+		$this->Losts = $this->get_grec("current=1 and (($qw and $rb) or ($qb and $rw))");
 	}
 	
-	public function won_games() {
+	public function won_games($curr=false) {
 		$this->get_grecs();
-		return  $this->Won;
+		return  $curr? $this->Wons: $this->Won;
 	}
 	
-	public function lost_games() {
+	public function lost_games($curr=false) {
 		$this->get_grecs();
-		return  $this->Lost;
+		return  $curr? $this->Losts: $this->Lost;
 	}
 
-	public function drawn_games() {
+	public function drawn_games($curr=false) {
 		$this->get_grecs();
-		return  $this->Drawn;
+		return  $curr? $this->Drawns: $this->Drawn;
 	}
 	
-	public function played_games() {
+	public function played_games($curr=false) {
 		$this->get_grecs();
-		return  $this->Played;
+		return  $curr? $this->Playeds: $this->Played;
 	}
 	
 	// Count teams this player is a member of
