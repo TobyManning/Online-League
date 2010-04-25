@@ -39,6 +39,7 @@ print <<<EOT
 <tr>
 <th colspan="3">&nbsp;</th>
 <th colspan="4" align="center">Current</th>
+<th>&nbsp;</th>
 <th colspan="4" align="center">Total</th>
 </tr>
 <th>Name</th>
