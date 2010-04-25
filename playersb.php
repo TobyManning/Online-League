@@ -59,10 +59,9 @@ case  "clubrank":
 	break;
 }
 
-// Provide for 10 columns if not printing club column otherwise 11
-// Chop last 2 columns off if not logged in
+// Provide for 11 columns if not printing club column otherwise 12
 
-$cs = 11;
+$cs = 12;
 $cs += $pclub;
 if (count($initials) != 0)  {
 	print <<<EOT
@@ -98,6 +97,7 @@ print <<<EOT
 <th>${ref}W</a></th>
 <th>${ref}D</a></th>
 <th>${ref}L</a></th>
+<td>&nbsp;</td>
 <th>${ref}P</a></th>
 <th>${ref}W</a></th>
 <th>${ref}D</a></th>
@@ -169,6 +169,7 @@ EOT;
 <td>{$p->won_games(true)}</td>
 <td>{$p->drawn_games(true)}</td>
 <td>{$p->lost_games(true)}</td>
+<td>&nbsp;&nbsp;&nbsp;</td>
 <td>{$p->played_games()}</td>
 <td>{$p->won_games()}</td>
 <td>{$p->drawn_games()}</td>

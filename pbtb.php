@@ -32,7 +32,7 @@ include 'php/head.php';
 <?php
 // Provide for 12 columns
 
-$cs = 12;
+$cs = 13;
 print <<<EOT
 <table class="pllist">
 <tr>
@@ -48,6 +48,7 @@ print <<<EOT
 <th>W</th>
 <th>D</th>
 <th>L</th>
+<th>&nbsp;</th>
 <th>P</th>
 <th>W</th>
 <th>D</th>
@@ -75,6 +76,7 @@ EOT;
 <td>{$m->won_games(true)}</td>
 <td>{$m->drawn_games(true)}</td>
 <td>{$m->lost_games(true)}</td>
+<td>&nbsp;&nbsp;&nbsp;</td>
 <td>{$m->played_games()}</td>
 <td>{$m->won_games()}</td>
 <td>{$m->drawn_games()}</td>
@@ -106,6 +108,7 @@ if ($ret) {
 <td>{$p->won_games(true)}</td>
 <td>{$p->drawn_games(true)}</td>
 <td>{$p->lost_games(true)}</td>
+<td>&nbsp;&nbsp;&nbsp;</td>
 <td>{$p->played_games()}</td>
 <td>{$p->won_games()}</td>
 <td>{$p->drawn_games()}</td>
