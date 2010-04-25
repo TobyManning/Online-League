@@ -62,7 +62,11 @@ $tlist = list_teams();
 foreach ($tlist as $team) {
 	$team->fetchdets();
 	print <<<EOT
-<tr><th colspan=$cs align="center">{$team->display_name()}</th></tr>
+<tr>
+<th colspan=$cs align="center">
+<a href="teamdisp.php?{$team->urlof()}" class="nound">{$team->display_name()}</a>
+</th>
+</tr>
 EOT;
 	$pl = $team->list_members();
 	foreach ($pl as $m) {
