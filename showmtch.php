@@ -122,8 +122,11 @@ foreach ($mtch->Games as $g) {
 		$bpost = "</b>";
 		break;
 	}
-	if ($hcapable && $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue > $hred)  {
-		array_push($hcaps, $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue - $hred);
+	$hstones = $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue - $hred;
+	if ($hstones > 9)
+		$hstones = 9;
+	if ($hcapable && $hstones > 0)  {
+		array_push($hcaps, $hstones);
 		array_push($boards, $board);
 	}
 	print <<<EOT
