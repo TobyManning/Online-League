@@ -17,6 +17,7 @@
 
 include 'php/opendatabase.php';
 include 'php/params.php';
+include 'php/team.php';
 ?>
 <html>
 <?php
@@ -65,9 +66,46 @@ print <<<EOT
 EOT;
 ?>
 </table>
-<p>Then <input type="submit" name="Sub" value="Click Here"> when ready.</p>
 <p>If a game is drawn (Jigo) then half the "Game Won" value plus half the "Game Lost" value
 is added.</p>
+<h2>Divisions with handicaps</h2>
+<p>
+Some lower division matches the may be played with handicaps.
+Set the highest division to which handicaps apply to be:
+<select name="hdiv">
+<?php
+$md = max_division();
+for ($div = 1; $div <= $md; $div++) {
+	$s = $div == $pars->Hdiv? " selected": "";
+	print <<<EOT
+<option value="$div"$s>$div</option>
+
+EOT;
+}
+$s = $pars->Hdiv > $md? " selected": "";
+print <<<EOT
+<option value="1000"$s>None</option>
+
+EOT;
+?>
+</select>
+</p>
+<p>Reduce handicap for games with handicaps by
+<select name="hred">
+<?php
+for ($h = 0; $h < 10; $h++) {
+	$s = $h == $pars->Hreduct? " selected": "";
+	print <<<EOT
+<option value="$h"$s>$h</option>
+
+EOT;
+}
+?>
+</select>
+stones (games between players with a lower rank difference will be even).
+</p>
+<p>Then <input type="submit" name="Sub" value="Click Here"> when ready.</p>
+
 </form>
 </body>
 </html>

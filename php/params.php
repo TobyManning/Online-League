@@ -24,14 +24,18 @@ class Params  {
 	public $Lost;
 	public $For;
 	public $Against;
+	public $Hdiv;
+	public $Hreduct;
 
 	public function __construct() {
-		$Played = 0;
-		$Won = 100;
-		$Drawn = 50;
-		$Lost = 0;
-		$For = 1;
-		$Against = 0;
+		$this->Played = 0;
+		$this->Won = 100;
+		$this->Drawn = 50;
+		$this->Lost = 0;
+		$this->For = 1;
+		$this->Against = 0;
+		$this->Hdiv = 1000;
+		$this->Hreduct = 0;
 	}
 	
 	public function fetchvalues() {
@@ -39,24 +43,31 @@ class Params  {
 		if (!$ret)
 			throw new ParamException(mysql_error());
 		while ($row = mysql_fetch_assoc($ret)) {
+			$v = $row["val"];
 			switch ($row["sc"])  {
 			case 'p':
-				$this->Played = $row["val"];
+				$this->Played = $v;
 				break;
 			case 'w':
-				$this->Won = $row["val"];
+				$this->Won = $v;
 				break;
 			case 'd':
-				$this->Drawn = $row["val"];
+				$this->Drawn = $v;
 				break;
 			case 'l':
-				$this->Lost = $row["val"];
+				$this->Lost = $v;
 				break;
 			case 'f':
-				$this->For = $row["val"];
+				$this->For = $v;
 				break;
 			case 'a':
-				$this->Against = $row["val"];
+				$this->Against = $v;
+				break;
+			case 'hd':
+				$this->Hdiv = $v;
+				break;
+			case 'hr':
+				$this->Hreduct = $v;
 				break;
 			}
 		}
@@ -71,6 +82,8 @@ class Params  {
 		mysql_query("insert into params (sc,val) values ('l', $this->Lost)");
 		mysql_query("insert into params (sc,val) values ('f', $this->For)");
 		mysql_query("insert into params (sc,val) values ('a', $this->Against)");
+		mysql_query("insert into params (sc,val) values ('hd', $this->Hdiv)");
+		mysql_query("insert into params (sc,val) values ('hr', $this->Hreduct)");
 	}
 }
 ?>

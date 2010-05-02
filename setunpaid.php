@@ -16,32 +16,16 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 include 'php/opendatabase.php';
-include 'php/params.php';
-$p = $_POST["p"];
-if (strlen($p) == 0) {
-    include 'php/wrongentry.php';
-    exit(0);
-}
-$pars = new Params();
-$pars->fetchvalues();
-$pars->Played = $_POST["p"] + 0.0;
-$pars->Won = $_POST["w"] + 0.0;
-$pars->Drawn = $_POST["d"] + 0.0;
-$pars->Lost = $_POST["l"] + 0.0;
-$pars->For = $_POST["f"] + 0.0;
-$pars->Against = $_POST["a"] + 0.0;
-$pars->Hdiv = $_POST["hdiv"] + 0;
-$pars->Hreduct = $_POST["hred"] + 0;
-$pars->putvalues();
+mysql_query("update team set paid=0");
 ?>
 <html>
 <?php
-$Title = "Adjustment of Parameters Complete";
+$Title = "All teams set unpaid";
 include 'php/head.php';
 ?>
 <body>
-<h1>Adjusting parameters Complete</h1>
-<p>Finished adjusting parameters.</p>
-<p><a href="leagueb.php">Click here</a> to see what the league looks like now.</p>
+<h1>All teams set unpaid</h1>
+<p>All teams have been set as unpaid.
+</p>
 </body>
 </html>
