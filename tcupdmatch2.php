@@ -33,6 +33,10 @@ include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/sortrank.php';
 include 'php/news.php';
+include 'php/params.php';
+
+$pars = new Params();
+$pars->fetchvalues();
 
 $mtch = new Match();
 try  {
@@ -61,6 +65,11 @@ catch (TeamException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
+
+// Is this a "handicappable" division
+
+$hcapable = $mtch->Division >= $pars->Hdiv;
+$hred = $pars->Hreduct;
 
 for ($b = 0;  $b < 3;  $b++)  {
 	$h = new Player();
@@ -127,6 +136,19 @@ else {
 					$col = 0;
 				}
 			} // End of looking at existing w/b defined
+			
+			// If handicapable and above number of stones to be deducted and
+			// Weaker player is white, swap players
+			
+			if ($hcapable && $g->Bplayer->Rank->Rankvalue - $g->Wplayer->Rank->Rankvalue > $hred)  {
+				$tmp = $g->Wteam;
+				$g->Wteam = $g->Bteam;
+				$g->Bteam = $tmp;
+				$tmp = $g->Wplayer;
+				$g->Wplayer = $g->Bplayer;
+				$g->Bplayer = $tmp;
+				$col = 1 - $col;				
+			}
 			
 			$g->update_players();
 

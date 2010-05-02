@@ -24,6 +24,10 @@ include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/sortrank.php';
+include 'php/params.php';
+
+$pars = new Params();
+$pars->fetchvalues();
 
 $mtch = new Match();
 try  {
@@ -37,6 +41,11 @@ catch (MatchException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
+
+// Set if handicaps apply to this division
+
+$hcapable = $mtch->Division >= $pars->Hdiv;
+$hred = $pars->Hreduct;
 
 // If colours are set up don't change anything
 
@@ -153,6 +162,18 @@ if ($newdate->unequal($mtch->Date) || $newslack != $mtch->Slackdays)  {
 // col=1 means "home" player is white otherwise black
 
 function setgteams($g, $col, $hteam, $ateam, $hplay, $aplay)  {
+	global $hcapable, $hred;
+
+	// Force colour to white for stronger player if handicaps apply and rank
+	// difference is greater than handicap reduction
+
+	if ($hcapable)  {
+		if  ($hplay->Rank->Rankvalue - $aplay->Rank->Rankvalue > $hred)
+			$col = 1;
+		elseif ($aplay->Rank->Rankvalue - $hplay->Rank->Rankvalue > $hred)
+			$col = 0;
+	}
+
 	if ($col == 1)  {
 		$g->Wteam = $hteam;
 		$g->Bteam = $ateam;
