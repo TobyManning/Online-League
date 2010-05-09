@@ -68,6 +68,9 @@ else
 	print "<p><b>The team is marked as not playing in this season.</b>\n";
 print <<<EOT
 <a href="updplaying.php?{$team->urlof()}">Change this</a>.</p>
+
+EOT;
+
 if ($team->Paid)
 	print "<p>The team is marked as having paid.\n";
 else
