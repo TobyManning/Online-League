@@ -273,43 +273,6 @@ class Match {
 			return 'A';
 		return 'N';
 	}
-	
-	public function mail_allocated() {
-		if (!$this->is_allocated())
-			return;
-		$fh = popen("mail -s 'Go League match set up' online-league@britgo.org {$this->Hteam->Captain->Email} {$this->Ateam->Captain->Email}", "w");
-		$mess = <<<EOT
-Completed allocation of players to match in division {$this->Division} for {$this->Date->display_month()} between
-{$this->Hteam->display_name()} ({$this->Hteam->display_description()}) and {$this->Ateam->display_name()} ({$this->Ateam->display_description()}).
-
-Allocation is:
-EOT;
-		fwrite($fh, "$mess\n");
-		foreach ($this->Games as $g) {
-			$mess = <<<EOT
-White: {$g->Wplayer->display_name(false)} {$g->Wplayer->display_rank()} {$g->Wteam->display_name()} Black: {$g->Bplayer->display_name(false)} {$g->Bplayer->display_rank()} {$g->Bteam->display_name()}
-EOT;
-			fwrite($fh, "$mess\n");
-		}
-		$ht = $this->Hteam;
-		$at = $this->Ateam;
-		$hc = $ht->Captain;
-		$ac = $at->Captain;
-		$mess = <<<EOT
-
-Team Captains are:
-
-For {$ht->display_name()}: {$ht->display_captain()}, {$hc->display_email_nolink()}
-For {$at->display_name()}: {$at->display_captain()}, {$ac->display_email_nolink()}
-
-EOT;
-		fwrite($fh, "$mess\n");
-		if (strlen($hc->Phone) != 0)
-			fwrite($fh, "You can reach {$ht->display_captain()} on {$hc->display_phone()}.\n");
-		if (strlen($ac->Phone) != 0)
-			fwrite($fh, "You can reach {$at->display_captain()} on {$ac->display_phone()}.\n");
-		pclose($fh);
-	}
 }
 
 // Return the number of matches for a division

@@ -49,6 +49,7 @@ $igs = $_POST["igs"];
 $club = $_POST["club"];
 $rank = $_POST["rank"];
 $passw = $_POST["passw"];
+$okem = $_POST["okem"];
 
 try {
 	$origplayer = new Player();
@@ -86,6 +87,7 @@ if ($origplayer->IGS != $igs) {
 $origplayer->Rank = new Rank($rank);
 $origplayer->Club = new Club($club);
 $origplayer->Email = $email;
+$origplayer->OKemail = $okem;
 $origplayer->Phone = $phone;
 $origplayer->update();
 if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())

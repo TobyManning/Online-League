@@ -29,6 +29,7 @@ class Team  {
 	public $Scoref;		// Scores for
 	public $Scorea;		// Scores against
 	public $Paid;			// Paid
+	public $Playing;		// Playing
 	public $Sortrank;		// Ranking for league sort
 	
 	public function __construct($n = "") {
@@ -36,6 +37,7 @@ class Team  {
 			$this->Name = $n;
 		$this->Division = 1;
 		$this->Sortrank = 0;
+		$this->Playing = true;
 	}
 	
 	public function fromget() {
@@ -72,7 +74,7 @@ class Team  {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select description,divnum,captfirst,captlast,paid from team where $q");
+		$ret = mysql_query("select description,divnum,captfirst,captlast,paid,playing from team where $q");
 		if (!$ret)
 			throw new TeamException("Cannot read database for team $q");
 		if (mysql_num_rows($ret) == 0)
@@ -81,6 +83,7 @@ class Team  {
 		$this->Description = $row["description"];
 		$this->Division = $row["divnum"];
 		$this->Paid = $row["paid"];
+		$this->Playing = $row["playing"];
 		try {
 			$this->Captain = new Player($row["captfirst"], $row["captlast"]);
 			$this->Captain->fetchdets();
@@ -172,6 +175,11 @@ class Team  {
 		mysql_query("update team set paid=$vv where {$this->queryof()}");
 	}
 	
+	public function setplaying($v = true) {
+		$vv = $v? 1: 0;
+		mysql_query("update team set playing=$vv where {$this->queryof()}");
+	}	
+	
 	public function divopt() {
 		print "<select name=\"division\">\n";
 		$maxt = max_division() + 1; // Allow for 1 more than number of existing
@@ -243,20 +251,31 @@ class Team  {
 	}
 }
 
-function list_teams($div = 0, $order = "name") {
-	$divsel = $div == 0? "": " where divnum=$div";
-	$ret = mysql_query("select name from team$divsel order by $order");
+function list_teams($div = 0, $order = "name", $pl = 1) {
+	$divsel = $div == 0? "": " and divnum=$div";
+	$ret = mysql_query("select name from team where playing=$pl$divsel order by $order");
 	$result = array();
 	if ($ret) {
-		while ($row = mysql_fetch_array($ret)) {
+		while ($row = mysql_fetch_array($ret))
 			array_push($result, new Team($row[0]));
-		}
+	}
+	return $result;
+}
+
+// For when we want all teams playing or not
+
+function list_all_teams() {
+	$ret = mysql_query("select name from team order by playing desc,name");
+	$result = array();
+	if ($ret) {
+		while ($row = mysql_fetch_array($ret))
+			array_push($result, new Team($row[0]));
 	}
 	return $result;
 }
 
 function max_division() {
-	$ret = mysql_query("select max(divnum) from team");
+	$ret = mysql_query("select max(divnum) from team where playing=1");
 	if ($ret && mysql_num_rows($ret) > 0) {
 		$row = mysql_fetch_array($ret);
 		return $row[0];

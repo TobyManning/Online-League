@@ -34,6 +34,7 @@ include 'php/game.php';
 include 'php/sortrank.php';
 include 'php/news.php';
 include 'php/params.php';
+include 'php/mailalloc.php';
 
 $pars = new Params();
 $pars->fetchvalues();
@@ -214,7 +215,7 @@ EOT;
 </tr>
 EOT;
 	}
-	$mtch->mail_allocated();
+	mail_allocated($mtch, $pars);
 	$n = new News($userid, "Match now allocated between {$mtch->Hteam->Name} and {$mtch->Ateam->Name} in Division {$mtch->Division}", false, $mtch->showmatch());
 	$n->addnews();
 }

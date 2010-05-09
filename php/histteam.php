@@ -29,12 +29,14 @@ class Histteam  {
 	public $Scoref;		// Scores for
 	public $Scorea;		// Scores against
 	public $Sortrank;		// Ranking for league sort
+	public $Playing;		// Playing in the season
 	
 	public function __construct($s, $n = "") {
 		$this->Name = $n;
 		$this->Seas = $s;
 		$this->Division = 1;
 		$this->Sortrank = 0;
+		$this->Playing = true;
 	}
 	
 	public function fromget() {
@@ -65,7 +67,7 @@ class Histteam  {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select description,divnum from histteam where $q");
+		$ret = mysql_query("select description,divnum,playing from histteam where $q");
 		if (!$ret)
 			throw new HistteamException("Cannot read database for histteam {$this->Name}");
 		if (mysql_num_rows($ret) == 0)
@@ -73,6 +75,7 @@ class Histteam  {
 		$row = mysql_fetch_assoc($ret);
 		$this->Description = $row["description"];
 		$this->Division = $row["divnum"];
+		$this->Playing = $row["playing"];
 	}
 	
 	public function display_name() {
@@ -94,9 +97,10 @@ class Histteam  {
 		$qdescr = mysql_real_escape_string($this->Description);
 		$qdiv = $this->Division;
 		$qseas = $this->Seas->Ind;
+		$qplaying = $this->Playing? 1: 0;
 		// Delete any team with the same name for the season
 		mysql_query("delete from histteam where {$this->Seas->queryof()} and name='$qname'");
-		if (!mysql_query("insert into histteam (name,description,divnum,seasind) values ('$qname','$qdescr',$qdiv,$qseas)"))
+		if (!mysql_query("insert into histteam (name,description,divnum,seasind,playing) values ('$qname','$qdescr',$qdiv,$qseas,$qplaying)"))
 			throw new HistteamException(mysql_error());
 	}
 	
@@ -155,10 +159,10 @@ class Histteam  {
 	}
 }
 
-function hist_list_teams($s, $div = 0, $order = "name") {
+function hist_list_teams($s, $div = 0, $order = "name", $pl = 1) {
 	$divsel = $div == 0? "": " and divnum=$div";
 	$i = $s->Ind;
-	$ret = mysql_query("select name from histteam where seasind=$i$divsel order by $order");
+	$ret = mysql_query("select name from histteam where playing=$pl and seasind=$i$divsel order by $order");
 	$result = array();
 	if ($ret) {
 		while ($row = mysql_fetch_array($ret)) {
@@ -169,7 +173,7 @@ function hist_list_teams($s, $div = 0, $order = "name") {
 }
 
 function hist_max_division($s) {
-	$ret = mysql_query("select max(divnum) from histteam where seasind={$s->Ind}");
+	$ret = mysql_query("select max(divnum) from histteam where playing=1 and seasind={$s->Ind}");
 	if ($ret && mysql_num_rows($ret) > 0) {
 		$row = mysql_fetch_array($ret);
 		return $row[0];

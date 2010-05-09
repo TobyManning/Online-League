@@ -77,7 +77,7 @@ $Seas->create();
 
 //  Create the historic teams from the current ones
 
-$Full_teams = list_teams();
+$Full_teams = list_all_teams();
 
 foreach ($Full_teams as $team) {
 	$team->fetchdets();
@@ -85,6 +85,7 @@ foreach ($Full_teams as $team) {
 	$hteam->Name = $team->Name;
 	$hteam->Description = $team->Description;
 	$hteam->Division = $team->Division;
+	$hteam->Playing = $team->Playing;
 	$hteam->create();
 	// Create the members
 	$membs = $team->list_members();

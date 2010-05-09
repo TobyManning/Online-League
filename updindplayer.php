@@ -79,11 +79,16 @@ if (strlen($du) != 0)
 	$du = " value=\"" . $du . "\"";
 if (strlen($dp) != 0)
 	$dp = " value=\"" . $dp . "\"";
+$okemch = $player->OKemail?" checked": "";
 print <<<EOT
 </p>
 <p>
 Email:<input type="text" name="email" value="{$player->display_email_nolink()}">
 Phone:<input type="text" name="phone" size=30 value="{$player->display_phone()}">
+</p>
+<p>
+<input type="checkbox" name="okem"$okemch>
+Check if player is happy to accept emails about matches to be played
 </p>
 <p>
 Userid:<input type="text" name="userid"$du>

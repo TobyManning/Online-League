@@ -62,6 +62,12 @@ EOT;
 pressing the "Add team" button.
 </p>
 <?php
+if ($team->Playing)
+	print "<p>The team is marked as playing in this season.\n";
+else
+	print "<p><b>The team is marked as not playing in this season.</b>\n";
+print <<<EOT
+<a href="updplaying.php?{$team->urlof()}">Change this</a>.</p>
 if ($team->Paid)
 	print "<p>The team is marked as having paid.\n";
 else

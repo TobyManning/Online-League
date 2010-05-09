@@ -42,6 +42,28 @@ include 'php/head.php';
 	<th>Members</th>
 	<th>Email</th>
 <?php
+
+// Function to print team details
+
+function printteam($team) {
+	// Set these global seems easier
+	global $userpriv, $logged_in;
+	print <<<EOT
+<tr>
+	<td><a href="teamdisp.php?{$team->urlof()}">{$team->display_name()}</a></td>
+	<td>{$team->display_description()}</td>
+	<td>{$team->display_captain()}</td>
+	<td>{$team->count_members()}</td>
+	<td>{$team->display_capt_email($logged_in)}</td>
+
+EOT;
+	if ($userpriv == 'A' || $userpriv == 'SA') {
+		$pd = $team->Paid? 'Yes': 'No';
+		print "<td>$pd</td>\n";
+	}
+	print "</tr>\n";
+}
+
 if ($userpriv == 'A' || $userpriv == 'SA')
 	print "<th>Paid</th>\n";
 print "</tr>\n";
@@ -53,21 +75,21 @@ foreach ($teamlist as $team) {
 		$lastdiv = $team->Division;
 		print <<<EOT
 <tr><th colspan="4" align="center">Division {$team->display_division()}</th></tr>
+
 EOT;
 	}
-	print <<<EOT
-<tr>
-	<td><a href="teamdisp.php?{$team->urlof()}">{$team->display_name()}</a></td>
-	<td>{$team->display_description()}</td>
-	<td>{$team->display_captain()}</td>
-	<td>{$team->count_members()}</td>
-	<td>{$team->display_capt_email($logged_in)}</td>
+	printteam($team);
+}
+$teamlist = list_teams(0, "name", 0);
+if (count($teamlist) != 0) {
+		print <<<EOT
+<tr><th colspan="4" align="center">Not in a division</th></tr>
+
 EOT;
-	if ($userpriv == 'A' || $userpriv == 'SA') {
-		$pd = $team->Paid? 'Yes': 'No';
-		print "<td>$pd</td>\n";
+	foreach ($teamlist as $team) {
+		$team->fetchdets();
+		printteam($team);
 	}
-	print "</tr>\n";
 }
 ?>
 </table>

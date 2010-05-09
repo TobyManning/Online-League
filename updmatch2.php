@@ -25,6 +25,7 @@ include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/sortrank.php';
 include 'php/params.php';
+include 'php/mailalloc.php';
 
 $pars = new Params();
 $pars->fetchvalues();
@@ -263,7 +264,7 @@ foreach ($mtch->Games as $g) {
 </tr>
 EOT;
 }
-$mtch->mail_allocated();
+mail_allocated($mtch, $pars, true);
 print <<<EOT
 </table>
 <p>Click <a href="updmatch.php?{$mtch->urlof()}">here</a> to change any details of the match.</p>

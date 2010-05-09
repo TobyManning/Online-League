@@ -30,7 +30,7 @@ include 'php/head.php';
 on one at random below and just change the entries on the form.</p>
 <table class="classupdb">
 <?php
-$teamlist = list_teams();
+$teamlist = list_all_teams();
 $countteams = count($teamlist);
 $rows = floor(($countteams + 3) / 4);
 for ($row = 0; $row < $rows; $row++) {

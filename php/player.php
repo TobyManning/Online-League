@@ -22,6 +22,7 @@ class Player  {
 	public $Rank;
 	public $Club;
 	public $Email;
+	public $OKemail;
 	public $Phone;
 	public $KGS;
 	public $IGS;
@@ -55,6 +56,7 @@ class Player  {
 			}
 			$Gotrecs = false;
 			$this->Rank = new Rank();
+			$this->OKemail = false;
 	}
 
 	// Fill in the name of the player from a "get" request
@@ -84,7 +86,7 @@ class Player  {
 	
 	public function fromid($id) {
 		$qid = mysql_real_escape_string($id);
-		$ret = mysql_query("select first,last,rank,club,email,phone,kgs,igs,admin from player where user='$qid'");
+		$ret = mysql_query("select first,last,rank,club,email,okmail,phone,kgs,igs,admin from player where user='$qid'");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			throw new PlayerException("Unknown player userid $id");
 		$row = mysql_fetch_assoc($ret);
@@ -98,6 +100,7 @@ class Player  {
 		$this->IGS = $row["igs"];
 		$this->Admin = $row["admin"];
 		$this->Userid = $id;
+		$this->OKemail = $row["okmail"];
 	}
 
 	// Generate a MySQL query from a player object
@@ -149,7 +152,7 @@ class Player  {
 		
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select rank,club,email,phone,kgs,igs,admin,user from player where $q");
+		$ret = mysql_query("select rank,club,email,okmail,phone,kgs,igs,admin,user from player where $q");
 		if (!$ret)
 			throw new PlayerException("Cannot read database for player $q");
 		if (mysql_num_rows($ret) == 0)
@@ -163,6 +166,7 @@ class Player  {
 		$this->IGS = $row["igs"];
 		$this->Admin = $row["admin"];
 		$this->Userid = $row["user"];
+		$this->OKemail = $row["okmail"];
 	}
 
 	// Get more info about the club
@@ -369,8 +373,9 @@ class Player  {
 		$qphone = mysql_real_escape_string($this->Phone);
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
+		$qokemail = $this->OKemail? 1: 0;
 		$r = $this->Rank->Rankvalue;
-		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,phone,admin) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail','$qphone','$qadmin')");
+		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,okmail,phone,admin) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail',$qokemail,'$qphone','$qadmin')");
 	}
 
 	// Update player record of name
@@ -400,11 +405,12 @@ class Player  {
 		$quser = mysql_real_escape_string($this->Userid);
 		$qadmin = mysql_real_escape_string($this->Admin);
 		$qemail = mysql_real_escape_string($this->Email);
+		$qokemail = $this->OKemail? 1: 0;
 		$qphone = mysql_real_escape_string($this->Phone);
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
 		$r = $this->Rank->Rankvalue;
-		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',phone='$qphone',kgs='$qkgs',igs='$qigs',rank=$r where {$this->queryof()}");
+		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',okmail=$qokemail,phone='$qphone',kgs='$qkgs',igs='$qigs',rank=$r where {$this->queryof()}");
 		// Fix rank in teams that this player is a member of
 		mysql_query("update teammemb set rank=$r where {$this->queryof('tm')}");
 		// Fix rank in unplayed games where this player is black

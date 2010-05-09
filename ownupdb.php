@@ -77,9 +77,12 @@ print "</td></tr>\n";
 $dp = $player->disp_passwd();
 if (strlen($dp) != 0)
 	$dp = " value=\"" . $dp . "\"";
+$okemch = $player->OKemail?" checked": "";
 print <<<EOT
 <tr><td>Email</td>
 <td><input type="text" name="email" value="{$player->display_email_nolink()}"></td></tr>
+<tr><td>OK to send emails about pending matches</td>
+<td><input type="checkbox" name="okem"$okemch></td></tr>
 <tr><td>Phone</td>
 <td><input type="text" name="phone" value="{$player->display_phone()}" size="30"></td></tr>
 <tr><td>Password</td><td><input type="password" name="passw"$dp></td></tr>
