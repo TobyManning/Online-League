@@ -180,7 +180,7 @@ else  {
 		$dat->next_month();	
 	}		 
 }
-$nws = new News('ADMINS', "Draw made for new season", true, "matchesb.php");
+$nws = new News('ADMINS', "Draw made for new season division $div", true, "matchesb.php");
 $nws->addnews();
 
 ?>
