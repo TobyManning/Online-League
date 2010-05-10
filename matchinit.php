@@ -22,6 +22,8 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
 include 'php/matchdate.php';
+include 'php/news.php';
+
 $div = $_POST["div"];
 if (strlen($div) == 0) {
 	include 'php/wrongentry.php';
@@ -155,16 +157,20 @@ else  {
 			$teams[$t] = $tmp;
 		}
 	}
+	$inclbye = 0;
 	if (($nteams & 1) == 1)  {
 		array_push($teams, new Team("Bye"));
-		$nteams++;
+		$inclbye = 1;
 	}
-	$md = new MatchData($nteams);
+	$md = new MatchData($nteams+$inclbye);
 	$md->permute();
 	foreach ($md->Resmatch as $rm)  {
 		print "<h2>{$dat->display_month()}</h2>\n";
 		foreach ($rm as $rim) {
 			print "<p>{$teams[$rim->Home]->display_name()} -v- {$teams[$rim->Away]->display_name()}</p>\n";
+			// Don't create matches for bye.
+			if ($inclbye && ($rim->Home == $nteams || $rim->Away == $nteams))
+				continue;
 			$mtch = new Match(0, $div);
 			$mtch->Hteam = $teams[$rim->Home];
 			$mtch->Ateam = $teams[$rim->Away];
@@ -174,6 +180,9 @@ else  {
 		$dat->next_month();	
 	}		 
 }
+$nws = new News('ADMINS', "Draw made for new season", true, "matchesb.php");
+$nws->addnews();
+
 ?>
 <p>Click <a href="javascript:self.close()">here</a> to close this window.</p>
 </body>
