@@ -27,8 +27,7 @@ if (strlen($div) == 0) {
 $Title = "Initialise Matches for Division $div";
 include 'php/head.php';
 $md = new Matchdate();
-//  Initialise to start of season which we say is September
-$md->set_season(9);
+$md->set_season();
 print <<<EOT
 <body>
 <h1>Initialise Matches for division $div</h1>

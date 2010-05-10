@@ -88,7 +88,7 @@ class Matchdate {
 		return $now < $this->timestamp;
 	}
 	
-	public function set_season($startmon = 9) {
+	public function set_season($startmon = -1) {
 		$times = getdate($this->timestamp);
 		$yr = $times["year"];
 		$mon = $times["mon"];
