@@ -37,6 +37,25 @@ print <<<EOT
 EOT;
 $md->dateopt('Starting date');
 ?>
+</p>
+<p>Allocate matches every
+<select name="mintnum" size="0">
+<option value="1" selected>1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+</select>
+<select name="mint" size="0">
+<option value="d">days</option>
+<option value="w">weeks</option>
+<option value="m" selected>months</option>
+</select>
+</p>
 <p>
 <input type="submit" value="Generate Matches">
 </p>

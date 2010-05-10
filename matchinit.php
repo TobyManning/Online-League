@@ -31,6 +31,8 @@ if (strlen($div) == 0) {
 }
 $dat = new Matchdate();
 $dat->frompost();
+$mintnum = $_POST["mintnum"];
+$mint = $_POST["mint"];
 ?>
 <html>
 <?php
@@ -177,7 +179,7 @@ else  {
 			$mtch->Date = $dat;
 			$mtch->create();
 		}
-		$dat->next_month();	
+		$dat->next_month($mint, $mintnum);	
 	}		 
 }
 $nws = new News('ADMINS', "Draw made for new season division $div", true, "matchesb.php");

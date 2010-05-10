@@ -97,16 +97,27 @@ class Matchdate {
 		$this->timestamp = mktime(12,0,0,$mon, 1, $yr);
 	}
 	
-	public function next_month() {
+	public function next_month($mint = "m", $mintnum = 1) {
 		$times = getdate($this->timestamp);
 		$yr = $times["year"];
 		$mon = $times["mon"];
-		$mon++;
-		if ($mon > 12) {
-			$mon = 1;
-			$yr++;
+		$day = $times["day"];
+		switch ($mint) {
+		default:
+			$mon += $mintnum;
+			if ($mon > 12) {
+				$mon = 1;
+				$yr++;
+			}
+			break;
+		case 'd':
+			$day += $mintnum;
+			break;
+		case 'w':
+			$day += $mintnum * 7;
+			break;
 		}
-		$this->timestamp = mktime(12,0,0,$mon, 1, $yr);		
+		$this->timestamp = mktime(12,0,0,$mon, $day, $yr);		
 	}
 	
 	public function next_day($ndays = 1) {
