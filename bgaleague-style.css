@@ -24,19 +24,35 @@ a.name:visited {
 	text-decoration: none;
 }
 a.nound:active {
-	color: black;
 	text-decoration: none;
+	color: black;
 }
 a.nound:hover {
-	text-decoration: underline;
 	color: black;
+	text-decoration: underline;
 }
 a.nound:link {
-	color: black;
 	text-decoration: none;
+	color: black;
 }
 a.nound:visited {
+	text-decoration: none;
 	color: black;
+}
+a.noundm:active {
+	color: #553999;
+	text-decoration: none;
+}
+a.noundm:hover {
+	color: #553999;
+	text-decoration: underline;
+}
+a.noundm:link {
+	color: #553999;
+	text-decoration: none;
+}
+a.noundm:visited {
+	color: #553999;
 	text-decoration: none;
 }
 a:active {
