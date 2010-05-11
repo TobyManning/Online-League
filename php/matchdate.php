@@ -101,7 +101,7 @@ class Matchdate {
 		$times = getdate($this->timestamp);
 		$yr = $times["year"];
 		$mon = $times["mon"];
-		$day = $times["day"];
+		$day = $times["mday"];
 		switch ($mint) {
 		default:
 			$mon += $mintnum;
