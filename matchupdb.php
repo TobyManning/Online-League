@@ -82,7 +82,7 @@ EOT;
 	}
 	print <<<EOT
 <p>
-Click <a href="matchcreate.php?div=$div">here</a> to create an individual match in division $div
+Click <a href="addmatch.php?div=$div">here</a> to create an individual match in division $div
 outside the draw, e.g. for tie-breaks.
 </p>
 
