@@ -33,7 +33,6 @@ $dat = new Matchdate();
 $dat->frompost();
 $mintnum = $_POST["mintnum"];
 $mint = $_POST["mint"];
-print "$mintnum / $mint\n";
 ?>
 <html>
 <?php
@@ -183,7 +182,7 @@ else  {
 		$dat->next_month($mint, $mintnum);	
 	}		 
 }
-$nws = new News('ADMINS', "Draw made for new season division $div", true, "matchesb.php");
+$nws = new News('ADMINS', "Draw made $mint $mintnum for new season division $div", true, "matchesb.php");
 $nws->addnews();
 
 ?>
