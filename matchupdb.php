@@ -70,7 +70,7 @@ EOT;
 	if ($nm == 0)  {
 		print <<<EOT
 <p>
-Click <a href="javascript:initmatches($div)">here</a> to set up matches for division $div.
+Click <a href="javascript:initmatches($div)">here</a> to perform the draw of matches for division $div.
 </p>
 EOT;
 	}
@@ -80,6 +80,13 @@ EOT;
 <p>Click <a href="javascript:okdel($div)">here</a> to delete the matches for division $div.</p>
 EOT;
 	}
+	print <<<EOT
+<p>
+Click <a href="matchcreate.php?div=$div">here</a> to create an individual match in division $div
+outside the draw, e.g. for tie-breaks.
+</p>
+
+EOT;
 }
 ?>
 <h2>Complete league and assign to history</h2>
