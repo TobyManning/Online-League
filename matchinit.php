@@ -33,6 +33,7 @@ $dat = new Matchdate();
 $dat->frompost();
 $mintnum = $_POST["mintnum"];
 $mint = $_POST["mint"];
+print "$mintnum / $mint\n";
 ?>
 <html>
 <?php
