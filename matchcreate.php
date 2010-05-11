@@ -47,7 +47,7 @@ function okmatch() {
 		return false;
 	}
 	if (tbs < 0) {
-		alert("No team selected for team B"):
+		alert("No team selected for team B");
 		return false;
 	}
 	if (tas == tbs) {
