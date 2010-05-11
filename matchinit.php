@@ -39,7 +39,7 @@ $mint = $_POST["mint"];
 $Title = "Initialise Matches";
 include 'php/head.php';
 ?>
-<body onload="javascript:opener.location.reload()">
+<body>
 <h1>Initialise Matches</h1>
 <?php
 
