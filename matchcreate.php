@@ -40,8 +40,8 @@ include 'php/head.php';
 <script language="javascript">
 function okmatch() {
 	var fm = document.mform;
-	var tas = fm.teama.selectedIndex;
-	var tbs = fm.teamb.selectedIndex;
+	var tas = fm.atn.selectedIndex;
+	var tbs = fm.btn.selectedIndex;
 	if (tas < 0) {
 		alert("No team selected for team A");
 		return false;
@@ -92,12 +92,12 @@ print <<<EOT
 </p>
 <p>Team A:
 EOT;
-teamselect($teams, "teama");
+teamselect($teams, "atn");
 print <<<EOT
 </p>
 <p>Team B:
 EOT;
-teamselect($teams, "teamb");
+teamselect($teams, "btn");
 ?>
 </p>
 <p>Click <input type="submit" name="sub" value="here"> when ready.</p>
