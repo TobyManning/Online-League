@@ -80,7 +80,9 @@ EOT;
 	foreach ($games as $g) {
 		$wp = $g->Wplayer;
 		$bp = $g->Bplayer;
-		if ($g->Wteam->is_same($ht)) {
+		$wt = $g->Wteam;
+		$bt = $g->Bteam;
+		if ($wt->is_same($ht)) {
 			$hp = $wp;
 			$ap = $bp;
 			$hcol = "White";
