@@ -147,6 +147,7 @@ EOT;
 }
 ?>
 </table>
+<?php
 if (count($boards) > 0)  {
 	$n = count($boards);
 	print <<<EOT
@@ -175,6 +176,7 @@ EOT;
 	}
 	print "</table>\n";
 }
+?>
 <p>Click <a href="javascript:history.back()">here</a> to return to your previous page
 or <a href="matchesb.php">here</a> to look at other matches.</p>
 </body>
