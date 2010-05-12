@@ -32,7 +32,14 @@ while (my ($d,$i,$lnk) = $sfh->fetchrow_array)  {
     $d = sprintf("%s, %.2d %s %d 12:00:00 GMT", $Days[$dbits[6]], $dbits[3], $Months[$dbits[4]], $dbits[5]+1900);
     my $itemel = XML::LibXML::Element->new("item");
     $chel->appendChild($itemel);
-    $itemel->appendTextChild("title", "Match Result");
+    $tit = "League Update";
+    if ($lnk =~ /showmtch/) {
+	$tit = "Match Result";
+    }
+    elsif ($lnk =~ /leagueb/) {
+	$tit = "League Status";
+    }
+    $itemel->appendTextChild("title", $tit);
     $itemel->appendTextChild("description", $i);
     $lnk = "news.php" if length($lnk) == 0;
     $lnk = "http://league.britgo.org/$lnk" unless $lnk =~ m|/|;
