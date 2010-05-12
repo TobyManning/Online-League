@@ -35,10 +35,10 @@ class Rank {
 		}
 	}
 
-	// This is for anchors based on rank - add 20
+	// This is for anchors based on rank - add 30
 		
 	public function anchor() {
-		$r = $this->Rankvalue + 20;
+		$r = $this->Rankvalue + 30;
 		return "R" . $r;
 	}
 
@@ -66,7 +66,7 @@ class Rank {
 			else
 				print "<option value=$r>$rn</option>\n";
 		}
-		for ($r = -1;  $r >= -20;  $r--)  {
+		for ($r = -1;  $r >= -30;  $r--)  {
 			$rn = -$r;
 			$rn = "$rn Kyu";
 			if ($r == $this->Rankvalue)
