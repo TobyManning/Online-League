@@ -40,18 +40,34 @@ a.nound:visited {
 	color: black;
 }
 a.noundm:active {
-	color: #553999;
+	color: #8C4857;
 	text-decoration: none;
 }
 a.noundm:hover {
-	color: #553999;
+	color: #8C4857;
 	text-decoration: underline;
 }
 a.noundm:link {
-	color: #553999;
+	color: #8C4857;
 	text-decoration: none;
 }
 a.noundm:visited {
+	color: #8C4857;
+	text-decoration: none;
+}
+a.noundd:active {
+	color: #553999;
+	text-decoration: none;
+}
+a.noundd:hover {
+	color: #553999;
+	text-decoration: underline;
+}
+a.noundd:link {
+	color: #553999;
+	text-decoration: none;
+}
+a.noundd:visited {
 	color: #553999;
 	text-decoration: none;
 }

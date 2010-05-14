@@ -74,7 +74,7 @@ EOT;
 				$ht = "<b>$ht</b>";
 			else if ($mtch->Result == 'A')
 				$at = "<b>$at</b>";
-			$ref = "<a href=\"showmtch.php?{$mtch->urlof()}\" class=\"noundm\">";
+			$ref = "<a href=\"showmtch.php?{$mtch->urlof()}\" class=\"noundd\">";
 			print "<td>$ref$ht</a></td><td>$ref$at</a></td>\n";
 		}
 		else  {
