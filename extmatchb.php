@@ -115,7 +115,12 @@ EOT;
 
 EOT;
 		}
-		print "</table>\n";
+		$np = count($players);
+		print <<<EOT
+</table>
+<p>$np players in total.</p>
+
+EOT;
 	}
 }
 ?>
