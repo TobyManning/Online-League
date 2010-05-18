@@ -4,7 +4,7 @@ function mail_player($board, $pl, $pt, $pc, $col, $opp, $ot, $hstones)
 {
 	if (strlen($pl->Email) == 0)
 		return "email for {$pl->display_name(false)} is not known";
-	if (!$pl->OKemail)
+	if (!($pl->OKemail || $pl->is_same($pc)))
 		return "{$pl->display_name(false)} does not want email";
 
 	$fhh = popen("mail -s 'Go League match assignment' {$pl->Email}", "w");
