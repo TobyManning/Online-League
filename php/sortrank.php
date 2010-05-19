@@ -16,24 +16,20 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //  Sort an array of players by descending rank - stably
-//  Use bubble sort
+//  Use bubble sort - May 2010 add "fuzz"
 
-function sortrank(&$arr) {
-	if ($arr[0]->Rank->Rankvalue < $arr[1]->Rank->Rankvalue) {
-		$t = $arr[0];
-		$arr[0] = $arr[1];
-		$arr[1] = $t;
+function swapiflessthan(&$a, &$b, $fuzz) {
+	if  ($a->Rank->Rankvalue + $fuzz < $b->Rank->Rankvalue)  {
+		$t = $a;
+		$a = $b;
+		$b = $t;
 	}
-	if ($arr[1]->Rank->Rankvalue < $arr[2]->Rank->Rankvalue) {
-		$t = $arr[1];
-		$arr[1] = $arr[2];
-		$arr[2] = $t;
-	}
-	if ($arr[0]->Rank->Rankvalue < $arr[1]->Rank->Rankvalue) {
-		$t = $arr[0];
-		$arr[0] = $arr[1];
-		$arr[1] = $t;
-	}
+}
+
+function sortrank(&$arr, $fuzz = 0) {
+	swapiflessthan($arr[0], $arr[1], $fuzz);
+	swapiflessthan($arr[1], $arr[2], $fuzz);
+	swapiflessthan($arr[0], $arr[1], $fuzz);
 }
 
 ?>

@@ -32,6 +32,7 @@ $pars->For = $_POST["f"] + 0.0;
 $pars->Against = $_POST["a"] + 0.0;
 $pars->Hdiv = $_POST["hdiv"] + 0;
 $pars->Hreduct = $_POST["hred"] + 0;
+$pars->Rankfuzz = $_POST["rfuzz"] + 0;
 $pars->putvalues();
 ?>
 <html>

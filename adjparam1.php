@@ -104,6 +104,19 @@ EOT;
 </select>
 stones (games between players with a lower rank difference will be even).
 </p>
+<p>Ignore rank differences less than
+<select name="rfuzz">
+<?php
+for ($f = 0; $f < 20; $f++) {
+	$s = $f == $pars->Rankfuzz? " selected": "";
+	print <<<EOT
+<option value="$f"$s>$f</option>
+
+EOT;
+}
+?>
+</select>
+when adjusting board order.</p>
 <p>Then <input type="submit" name="Sub" value="Click Here"> when ready.</p>
 
 </form>

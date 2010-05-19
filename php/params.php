@@ -26,6 +26,7 @@ class Params  {
 	public $Against;
 	public $Hdiv;
 	public $Hreduct;
+	public $Rankfuzz;
 
 	public function __construct() {
 		$this->Played = 0;
@@ -36,6 +37,7 @@ class Params  {
 		$this->Against = 0;
 		$this->Hdiv = 1000;
 		$this->Hreduct = 0;
+		$this->Rankfuzz = 0;
 	}
 	
 	public function fetchvalues() {
@@ -69,6 +71,9 @@ class Params  {
 			case 'hr':
 				$this->Hreduct = $v;
 				break;
+			case 'fz':
+				$this->Rankfuzz = $v;
+				break;
 			}
 		}
 	}
@@ -84,6 +89,7 @@ class Params  {
 		mysql_query("insert into params (sc,val) values ('a', $this->Against)");
 		mysql_query("insert into params (sc,val) values ('hd', $this->Hdiv)");
 		mysql_query("insert into params (sc,val) values ('hr', $this->Hreduct)");
+		mysql_query("insert into params (sc,val) values ('fz', $this->Rankfuzz)");
 	}
 }
 ?>

@@ -79,7 +79,7 @@ for ($b = 0;  $b < 3;  $b++)  {
 	$player[$b] = $h;
 }
 
-sortrank($player);
+sortrank($player, $pars->Rankfuzz);
 
 // If we haven't got any games yet, select colours as WBW or BWB and create the game
 // with our team filled in

@@ -135,8 +135,8 @@ else {
 
 	// So now we sort each team into order
 	
-	sortrank($hplayer);
-	sortrank($aplayer);
+	sortrank($hplayer, $pars->Rankfuzz);
+	sortrank($aplayer, $pars->Rankfuzz);
 
 	//  Now assign colours either WBW or BWB
 	
