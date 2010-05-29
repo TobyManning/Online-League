@@ -197,11 +197,11 @@ EOT;
 if ($logged_in) {
 	$em = $player->display_email_link();
 	$ph = $player->display_phone();
-	if (strlen($em) != 0 || strlen($ph) != 0)  {
 		print <<<EOT
 <h2>Player Contact Information - $Name</h2>
 
 EOT;
+	if (strlen($em) != 0 || strlen($ph) != 0)  {
 		if (strlen($em) != 0)
 			print <<<EOT
 <p>Email address: $em.</p>
@@ -213,6 +213,11 @@ EOT;
 
 EOT;
 	}
+	else
+		print <<<EOT
+<p>Sorry, we don't have any contact information for $Name.</p>
+
+EOT;
 }
 ?>
 <p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
