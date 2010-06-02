@@ -44,6 +44,10 @@ include 'php/head.php';
 <body>
 <h1>Playing games on the league</h1>
 <p>We'd like to clarify how games should be played on the league to avoid confusion.
+(Please note that this is the current version,
+modified in practice and takes priority over the original
+specification at
+<a href="http://league.britgo.org/doc/LeagueDescription.pdf" target="_blank">this document</a>).
 </p>
 <h2>Standard Even Games</h2>
 <p>Games should be played with the following parameters on KGS

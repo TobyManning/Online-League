@@ -41,7 +41,10 @@ The winners in each league are promoted at the end of the season,
 whilst losers face demotion to the league below.
 The champions of the top division will win the League Tournament Cup.
 </p>
-<p>A full description of the league, with details of how to form teams and join, can be found <a href="http://league.britgo.org/doc/LeagueDescription.pdf" target="_blank">here</a>.</p>
+<p>A full description of the league, as originally devised, with details of how to form teams and join, can be found
+<a href="http://league.britgo.org/doc/LeagueDescription.pdf" target="_blank">here</a>,
+however it has been adjusted a little in practice and the full description of
+playing games is to be found <a href="playing.php" target="_top">here</a>.</p>
 <p>If you would like to form a team, please contact the Online League coordinators at online-league at britgo.org.
 Players wishing to captain a team must be members of the British Go Association,
 which can be joined <a href="http://www.britgo.org/join" target="_blank">here</a>.
