@@ -111,8 +111,8 @@ class Team  {
 		return $this->Division;
 	}
 	
-	public function display_captain() {
-		return $this->Captain->display_name(false);
+	public function display_captain($lnk = false) {
+		return $this->Captain->display_name($lnk);
 	}
 	
 	public function display_capt_email($l = true) {

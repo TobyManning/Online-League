@@ -94,7 +94,8 @@ print <<<EOT
 {$g->save_hidden()}
 <p>
 EOT;
-$g->Date->dateopt("Game was played on");
+$today = new Matchdate();
+$today->dateopt("Game was played on");
 print <<<EOT
 </p>
 <p>

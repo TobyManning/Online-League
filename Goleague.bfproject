@@ -1,4 +1,8 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/playingb.php
+files: /home/jmc/src/Websites/goleague/playing.php
+files: /home/jmc/src/Websites/goleague/aboutusb.php
+files: /home/jmc/src/Websites/goleague/aboutus.php
 files: /home/jmc/src/Websites/goleague/playgames.php
 files: /home/jmc/src/Websites/goleague/php/player.php
 files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
@@ -35,6 +39,8 @@ classlist: memb
 targetlist: _parent
 targetlist: _blank
 targetlist: _top
+urllist: playing.php
+urllist: playgames.php
 urllist: <?php echo $SCRIPT_NAME ?>
 urllist: teamdisp.php?{$team
 urllist: setunpaid.php
@@ -43,10 +49,12 @@ urllist: http://www.gnu.org/licenses/
 urllist: http://www.gnu.org/licenses
 urllist: leagueb.php
 urllist: prevleagueb.php
-urllist: archive2.php
-urllist: matchesb.php
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
-bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:2667:</li>:4771:
+bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:2886:</li>:4990:
+recent_files: /home/jmc/src/Websites/goleague/playingb.php
+recent_files: /home/jmc/src/Websites/goleague/playing.php
+recent_files: /home/jmc/src/Websites/goleague/aboutusb.php
+recent_files: /home/jmc/src/Websites/goleague/aboutus.php
 recent_files: /home/jmc/src/Websites/goleague/playgames.php
 recent_files: /home/jmc/src/Websites/goleague/php/player.php
 recent_files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
@@ -58,10 +66,6 @@ recent_files: /home/jmc/src/Websites/goleague/php/mailalloc.php
 recent_files: /home/jmc/src/Websites/goleague/php/matchdate.php
 recent_files: /home/jmc/src/Websites/goleague/bgaleague-style.css
 recent_files: /home/jmc/src/Websites/goleague/extmatch.php
-recent_files: /home/jmc/src/Websites/goleague/matchesb.php
-recent_files: /home/jmc/src/Websites/goleague/showmtch.php
-recent_files: /home/jmc/src/Websites/goleague/php/rank.php
-recent_files: /home/jmc/src/Websites/goleague/playersb.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

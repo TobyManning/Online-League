@@ -76,8 +76,8 @@ and
 in
 {$mtch->Date->display_month()}.
 </p>
-<p>Team captains are {$mtch->Hteam->display_captain()} for {$mtch->Hteam->display_name()}
-and {$mtch->Ateam->display_captain()} for {$mtch->Ateam->display_name()}.
+<p>Team captains are {$mtch->Hteam->display_captain(true)} for {$mtch->Hteam->display_name()}
+and {$mtch->Ateam->display_captain(true)} for {$mtch->Ateam->display_name()}.
 </p>
 
 EOT;
