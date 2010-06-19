@@ -56,12 +56,14 @@ class News {
 	}#			
 	
 	public function addnews() {
-		$qdate = $this->Date->queryof();
-		$quser = mysql_real_escape_string($this->User);
-		$qitem = mysql_real_escape_string($this->Item);
-		$qlink = mysql_real_escape_string($this->Link);
-		$qr = $this->Rssable? 1: 0;
-		mysql_query("insert into news (ndate,user,item,rss,link) values ('$qdate','$quser','$qitem',$qr,'$qlink')");
+		if  (strlen($this->User) != 0)  {
+			$qdate = $this->Date->queryof();
+			$quser = mysql_real_escape_string($this->User);
+			$qitem = mysql_real_escape_string($this->Item);
+			$qlink = mysql_real_escape_string($this->Link);
+			$qr = $this->Rssable? 1: 0;
+			mysql_query("insert into news (ndate,user,item,rss,link) values ('$qdate','$quser','$qitem',$qr,'$qlink')");
+		}
 	}
 }
 ?>

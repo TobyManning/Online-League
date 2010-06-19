@@ -17,6 +17,11 @@
 // Complete "team captain" version of team allocation
 
 session_start();
+
+if (!isset($_SESSION['user_id']) || strlen($_SESSION['user_id']) == 0) {
+	include 'php/horses.php';
+	exit(0);
+}
 $userid = $_SESSION['user_id'];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
