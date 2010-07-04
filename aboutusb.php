@@ -25,21 +25,34 @@ include 'php/head.php';
 <img src="images/KGSGo.png" width="480" height="356" hspace="10" vspace="20" alt="KGS Go Screen">
 </div>
 <p>
-The British Go Association League Tournament is a team-based Go league designed to be
+The British Go Association League Tournaments are a pair of Go leagues designed to be
 played mainly over the Internet.
 The purpose of the league is to encourage interaction between players in
 different areas of the country and to encourage online play amongst members of the BGA.
 </p>
+<p>The league was originally a just team-based league, but following the success of this
+an individual league will be introduced in addition from October 2010.</p>
 <p>
-The league is played in six-monthly seasons, starting in October and April respectively.
-Teams of up to six players may enter the tournament, and are assigned to leagues of six
-teams. Each season, teams play a round robin tournament within their league.
-Games are played online on the <a href="http://www.gokgs.com" target="_blank">KGS Go Server</a>.
+The league is played in six-monthly seasons for both the team and individual leagues,
+starting in October and April.
+</p>
+<p>In the team league, teams of up to six players may enter the
+tournament, and are assigned to league divisions of six or seven teams.
+Each season, teams play a round robin tournament within their league.
+</p>
+<p>In the individual league, players are assigned to a division of roughly the same
+standard of players and play each other on a "self-pairing" basis. Players may play each
+other as often as they like but are encouraged to play as many different opponents as
+they can within their division.
+</p>
+Games are played online on the <a href="http://www.gokgs.com" target="_blank">KGS Go Server</a>
+in the "British Room".
 </p>
 <p>
-The winners in each league are promoted at the end of the season,
-whilst losers face demotion to the league below.
-The champions of the top division will win the League Tournament Cup.
+The winners in each league division are promoted at the end of the season,
+whilst losers face demotion to the league below. There may be more promotions or
+relegations in the individual league, depending upon numbers.
+The champions of the top division will win the League Tournament Shield.
 </p>
 <p>A full description of the league, as originally devised, with details of how to form teams and join, can be found
 <a href="http://league.britgo.org/doc/LeagueDescription.pdf" target="_blank">here</a>,
@@ -52,8 +65,15 @@ Non-members can join teams at an extra cost.
 As the league is intended to mainly link to clubs,
 please try to form teams from locally-based players.
 </p>
-<p>You can see the current league status
-<a href="league.php" target="_top">here</a>.
+<p>If you would like to play in the individual league, ask the Online League coordinators
+for an account (you can have the same account if you play in both leagues) and set your
+account as being active in the individual league. You will be given a user id and a password.
+You can set the password to your own choice of characters later. Please set the contact
+details, including your KGS name, on your account.
+</p>
+<p>You can see the current team league status
+<a href="league.php" target="_top">here</a> and the individual league status
+<a href="ileague.php" target="_top">here</a>.
 For any further questions, please contact the Online League coordinators at online-league at britgo.org.</p>
 </body>
 </html>

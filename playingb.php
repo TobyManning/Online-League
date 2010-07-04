@@ -49,6 +49,7 @@ modified in practice and takes priority over the original
 specification at
 <a href="http://league.britgo.org/doc/LeagueDescription.pdf" target="_blank">this document</a>).
 </p>
+<p>Differences for the individual league are noted as they arise.</p>
 <h2>Standard Even Games</h2>
 <p>Games should be played with the following parameters on KGS
 </p>
@@ -77,12 +78,13 @@ $luh = $hdiv - 1;
 
 if ($luh > 0)  {
 	if ($hdiv <= $md)  {		//  Some have handicaps
+		print "<h2>Team League Division";
 		if ($luh == 1)
-			print "<h2>Division 1</h2>\n";
+			 print "1</h2>\n";
 		elseif ($luh == 2)
-			print "<h2>Divisions 1 and 2</h2>\n";
+			print "s 1 and 2</h2>\n";
 		else
-			print "<h2>Divisions 1 to $luh</h2>\n";
+			print "s 1 to $luh</h2>\n";
 	}
 	print <<<EOT
 <p>
@@ -94,23 +96,26 @@ may have to click the button next to his name to get the colours right.</p>
 EOT;
 	if ($hdiv <= $md)
 		print <<<EOT
-<h2>Divisions $hdiv and below</h2>
+<h2>Team League Divisions $hdiv and below</h2>
 <p>These divisions may have handicap games where the player strengths are sufficiently
 different, otherwise they should be even as described above.
 Please try to stick to the colours as they are assigned WBW or BWB to boards 1 to 3
 regardless of strengths (wherever this is possible). One player
 may have to click the button next to his name to get the colours right.</p>
 </p>
+<p>Games in the Individual League are always played without handicaps.</p>
 EOT;
 }
 else {
 	print <<<EOT
-<p>All divisions may have handicap games where the player strengths are sufficiently
+<p>All divisions in the team league may have handicap games
+where the player strengths are sufficiently
 different, otherwise they should be even as described above.
 Please try to stick to the colours as they are assigned WBW or BWB to boards 1 to 3
 regardless of strengths (wherever this is possible). One player
 may have to click the button next to his name to get the colours right.</p>
 
+<p>All games in the Individual League are played without handicaps, however.</p>
 EOT;
 }
 if ($hdiv <= $md) {
@@ -137,16 +142,30 @@ EOT;
 EOT;
 }
 ?>
+<h2>The Individual League</h2>
+<p>Games in the individual league are always played without handicaps regardless of the players'
+strengths. Colours should be accepted according to whatever the server proposes and the game
+and result entered later.
+</p>
+<p>Games are "self-pairing". To start a game in the Individual League, post a game in the
+KGS British Room with the rules and time controls as given above with the title
+<b>BGA Individual League Division X</b>, where X is your division. You should accept
+any challenge from someone in your division, but preferring people you have played less
+often if a choice arises. Try not to play the same person more than once a week and
+certainly not more than once a day.</p>
+<p>One of the players, usually the winner, should enter the details of the game and
+the result as soon as possible afterwards.</p>
 <h2>General points</h2>
 <p>We suggest a "Free Game" as the KGS handicaps are ignored and in some cases wildly different
 strength players meet with non-standard handicaps
 and we don't think this should confuse KGS rankings.</p>
 <p>If you suddenly realise during the game you've got the game settings wrong you can either
-opt to continue or discount the game and replay it later, unless the colours are wrong when it
-should always be replayed.
+opt to continue or discount the game and replay it later, unless the colours are wrong
+(this only applies to the team league) when it should always be replayed.
 </p>
 <p>If there is an unavoidable interruption such as one player is disconnected or KGS crashes,
-please try to resume it or agree the result by one side resigning possibly in consultation
+please try to resume it as soon as possible
+or agree the result by one side resigning possibly in consultation
 with an agreed adjudicator.</p>
 </body>
 </html>
