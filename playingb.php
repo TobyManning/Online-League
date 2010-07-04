@@ -167,5 +167,8 @@ opt to continue or discount the game and replay it later, unless the colours are
 please try to resume it as soon as possible
 or agree the result by one side resigning possibly in consultation
 with an agreed adjudicator.</p>
+<p>If it is impossible to resume the game and it appears very close, record the game as
+a draw (Jigo). (This is why a column has been provided for draws in the tables -
+and potentially a team match could be drawn also).</p>
 </body>
 </html>
