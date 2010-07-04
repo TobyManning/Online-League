@@ -388,7 +388,7 @@ class Player  {
 		$qokemail = $this->OKemail? 1: 0;
 		$qbgamemb = $this->BGAmemb? 1: 0;
 		$r = $this->Rank->Rankvalue;
-		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,okmail,phone,admin,bgamemb,ildiv) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail',$qokemail,'$qphone','$qadmin',$qbgamemb,{$this->ILdiv}");
+		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,okmail,phone,admin,bgamemb,ildiv) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail',$qokemail,'$qphone','$qadmin',$qbgamemb,{$this->ILdiv})");
 	}
 
 	// Update player record of name
