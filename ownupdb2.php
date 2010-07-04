@@ -89,6 +89,16 @@ $origplayer->Club = new Club($club);
 $origplayer->Email = $email;
 $origplayer->OKemail = $okem;
 $origplayer->Phone = $phone;
+if ($origplayer->ILdiv == 0)  {
+	if ($_POST["join"])  {
+		$maxdiv = max_ildivision();
+		if ($maxdiv == 0)
+			$maxdiv++;
+		$origplayer->ILdiv = $maxdiv;
+	}
+}
+else  if  (!$origplayer->ILpaid  &&  !$_POST["stayin"])
+	$origplayer->ILdiv = 0;
 $origplayer->update();
 if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
 	$origplayer->set_passwd($passw);

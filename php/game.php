@@ -343,9 +343,9 @@ class Game {
 		$this->Sgf = $sgfdata;
 	}
 	
-	public function set_current($v = false) {
+	public function set_current($v = false, $si = 0) {
 		$vi = $v? 1: 0;
-		mysql_query("update game set current=$vi where {$this->queryof()}");
+		mysql_query("update game set current=$vi,seasind=$i where {$this->queryof()}");
 	}
 }
 

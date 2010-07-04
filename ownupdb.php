@@ -91,6 +91,24 @@ print <<<EOT
 <tr><td>IGS</td>
 <td><input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10"></td></tr>
 EOT;
+if ($player->ILdiv != 0) {
+	if ($player->ILpaid)
+		print <<<EOT
+<tr><td>Individual League Division</td><td>{$player->ILdiv}</td></tr>
+
+EOT;
+	else
+		print <<<EOT
+<tr><td>Individual League Division {$player->ILdiv}</td>
+<td><input type="checkbox" name="stayin" checked>Stay in</td></tr>
+
+EOT;
+}
+else
+	print <<<EOT
+<tr><td>Join individual league</td>
+<td><input type="checkbox" name="join">Join</td></tr>
+EOT;
 ?>
 </table>
 <p>

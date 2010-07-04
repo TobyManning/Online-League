@@ -80,6 +80,15 @@ a:link {
 a:visited {
 	color: black;
 }
+a.il:active {
+	color: #528652;
+}
+a.il:link {
+	color: #528652;
+}
+a.il:visited {
+	color: #528652;
+}
 h1 {
 	text-align: center;
 	color: #B38F7D;
@@ -101,6 +110,18 @@ body.nomarg {
 	background-color: #FFFFB3;
 	color: #000000;
 	text-align: justify;
+}
+body.il {
+	background-color: #C9F1C9;
+	text-align: justify;
+	color: #000000;
+	margin-left: 0.25in;
+	margin-right: 0.25in;
+}
+body.ilnomarg {
+	background-color: #C9F1C9;
+	text-align: justify;
+	color: #000000;
 }
 p.note {
 	text-align: center;

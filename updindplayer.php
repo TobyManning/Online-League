@@ -81,6 +81,8 @@ if (strlen($dp) != 0)
 	$dp = " value=\"" . $dp . "\"";
 $okemch = $player->OKemail?" checked": "";
 $bgamemb = $player->BGAmemb?" checked": "";
+$ilpaid = $player->ILpaid?" checked": "";
+$npil = $player->ILdiv == 0? " selected": "";
 print <<<EOT
 </p>
 <p>
@@ -103,6 +105,25 @@ Password:<input type="password" name="passw"$dp>
 KGS:<input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10">
 IGS:<input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10">
 </p>
+<p>
+Individual league division:
+<select name="ildiv" size="0">
+<option value="0"$npil>Not playing</option>
+EOT;
+$maxdivs = max_ildivision();
+for ($d = 1;  $d <= $maxdivs;  $d++)  {
+	$ild = $player->ILdiv == $d? " selected": "";
+	print <<<EOT
+<option value="$d"$ild>$d</option>
+EOT;
+}	
+print <<<EOT
+</select>
+Paid <input type="checkbox" name="ilpaid"$ilpaid>
+</p>
+
+EOT;
+print <<<EOT
 <p>
 Admin Privs:
 EOT;

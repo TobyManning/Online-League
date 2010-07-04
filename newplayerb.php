@@ -72,6 +72,20 @@ Check if player is happy to accept emails about matches to be played
 Player is BGA member
 </p>
 <p>
+Individual league division:
+<select name="ildiv" size="0">
+<option value="0" selected>Not playing</option>
+<?php
+$maxdivs = max_ildivision();
+for ($d = 1;  $d <= $maxdivs;  $d++)
+	print <<<EOT
+<option value="$d">$d</option>
+EOT;
+?>
+</select>
+Paid <input type="checkbox" name="ilpaid">
+</p>
+<p>
 Admin Privs:
 <?php
 $player->adminopt();

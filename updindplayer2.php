@@ -58,6 +58,8 @@ $admin = $_POST["admin"];
 $passw = $_POST["passw"];
 $okem = $_POST["okem"];
 $bgamemb = $_POST["bgamemb"];
+$ildiv = $_POST["ildiv"];
+$ilpaid = $_POST["ilpaid"];
 
 switch ($action) {
 case 'A':
@@ -81,7 +83,10 @@ case 'A':
 	// Force Admin priv to N unless Super-admin
 	$player->Admin = $userpriv != 'SA'? $admin: 'N';
 	$player->Userid = $userid;
+	$player->ILdiv = $ildiv;
 	$player->create();
+	if  ($ilpaid)
+		$player->setpaid(true);
 	// If no password specified, invent one
 	if (strlen($passw) == 0)  {
 		$passw = "";
@@ -142,10 +147,17 @@ default:
 	$origplayer->Phone = $phone;
 	$origplayer->OKemail = $okem;
 	$origplayer->BGAmemb = $bgamemb;
+	$origplayer->ILdiv = $ildiv;
 	// Leave priv alone unless super-admin
 	if ($userpriv == 'SA')
 		$origplayer->Admin = $admin;
 	$origplayer->update();
+	if ($origplayer->ILpaid)  {
+		if  (!$ilpaid)
+			$origplayer->setpaid(false);
+	}
+	else  if  ($ilpaid)
+		$origplayer->setpaid(true);
 	if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
 		$origplayer->set_passwd($passw);
 	$Title = "Player {$origplayer->display_name(false)} updated OK";

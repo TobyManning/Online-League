@@ -127,7 +127,7 @@ try {
 		$mtch->fetchdets();
 		$mtch->fetchgames();
 		foreach ($mtch->Games as $g) {
-			$g->set_current(false);
+			$g->set_current(false, $Seas->Ind);
 		}
 		// Now set up the hist match unless it's not been played at all
 		if ($mtch->Result != 'N')  {

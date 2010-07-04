@@ -23,14 +23,20 @@ if (isset($_SESSION['user_id'])) {
 }
 else
 	$login = false;
+$bc = "nomarg";
+if ($_GET["il"] == 'y')
+	$bc = "ilnomarg";
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "British Go Association League";
 include 'php/head.php';
+print <<<EOT
+<body class="$bc">
+
+EOT;
 ?>
-<body class="nomarg">
 <script language="javascript" src="webfn.js"></script>
 <script language="JavaScript">
 function lostpw() {
@@ -66,6 +72,7 @@ print <<<EOT
 <tr><td><a href="${a}matches.php" target="_top">Matches</a></td></tr>
 <tr><td><a href="${a}results.php" target="_top">Results</a></td></tr>
 <tr><td><a href="${a}league.php" target="_top">League</a></td></tr>
+<tr><td><a href="${a}ileague.php" target="_top" class="il">Individual League</a></td></tr>
 EOT;
 if ($login) {
 	if ($userpriv == 'A' || $userpriv == 'SA')  {

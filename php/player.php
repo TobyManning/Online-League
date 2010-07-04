@@ -57,7 +57,7 @@ class Player  {
 			else
 				throw new PlayerException("Cannot parse name");
 			}
-			$Gotrecs = false;
+			$Gotrecs = '';
 			$this->Rank = new Rank();
 			$this->OKemail = false;
 			$this->BGAmemb = false;
@@ -461,10 +461,10 @@ class Player  {
 	}
 	
 	// Get Played/Won/Drawn/Lost
-	private function get_grecs()  {
-		if  ($this->Gotrecs)
+	private function get_grecs($l)  {
+		if  ($this->Gotrecs == $l)
 			return;
-		$this->Gotrecs = true;
+		$this->Gotrecs = $l;
 		// Get SQL to do all the work
 		$qw = $this->queryof('w');
 		$qb = $this->queryof('b');
@@ -474,30 +474,52 @@ class Player  {
 		$this->Won = $this->get_grec("($qw and $rw) or ($qb and $rb)");
 		$this->Drawn = $this->get_grec("result='J' and ($qw or $qb)");
 		$this->Lost = $this->get_grec("($qw and $rb) or ($qb and $rw)");
-		$this->Playeds = $this->get_grec("current=1 and result!='N' and ($qw or $qb)");
-		$this->Wons = $this->get_grec("current=1 and (($qw and $rw) or ($qb and $rb))");
-		$this->Drawns = $this->get_grec("current=1 and result='J' and ($qw or $qb)");
-		$this->Losts = $this->get_grec("current=1 and (($qw and $rb) or ($qb and $rw))");
+		$this->Playeds = $this->get_grec("league='$l' and current=1 and result!='N' and ($qw or $qb)");
+		$this->Wons = $this->get_grec("league='$l' and current=1 and (($qw and $rw) or ($qb and $rb))");
+		$this->Drawns = $this->get_grec("league='$l' and current=1 and result='J' and ($qw or $qb)");
+		$this->Losts = $this->get_grec("league='$l' and current=1 and (($qw and $rb) or ($qb and $rw))");
 	}
 	
-	public function won_games($curr=false) {
-		$this->get_grecs();
+	public function won_games($curr=false, $l='T') {
+		$this->get_grecs($l);
 		return  $curr? $this->Wons: $this->Won;
 	}
 	
-	public function lost_games($curr=false) {
-		$this->get_grecs();
+	public function lost_games($curr=false, $l='T') {
+		$this->get_grecs($l);
 		return  $curr? $this->Losts: $this->Lost;
 	}
 
-	public function drawn_games($curr=false) {
-		$this->get_grecs();
+	public function drawn_games($curr=false, $l='T') {
+		$this->get_grecs($l);
 		return  $curr? $this->Drawns: $this->Drawn;
 	}
 	
-	public function played_games($curr=false) {
-		$this->get_grecs();
+	public function played_games($curr=false, $l='T') {
+		$this->get_grecs($l);
 		return  $curr? $this->Playeds: $this->Played;
+	}
+	
+	// For getting previous season statistics in various leagues usually individual
+	
+	private function histgrec($si, $l, $q) {
+		return $this->get_grec("seasind=$si and league='$l' and $q");
+	}
+	
+	public function histwon($si, $l = 'I') {
+		return $this->histgrec("((result='W' and {$this->queryof('w')}) or (result='B' and {$this->queryof('b')}))");
+	}
+	
+	public function histlost($si, $l = 'I') {
+		return $this->histgrec("((result='B' and {$this->queryof('w')}) or (result='W' and {$this->queryof('b')}))");
+	}
+	
+	public function histdrawn($si, $l = 'I') {
+		return $this->histgrec("result='J' and ({$this->queryof('w')} or {$this->queryof('b')})");
+	}
+	
+	public function histplayed($si, $l = 'I') {
+		return $this->histgrec("result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
 	}
 	
 	// Count teams this player is a member of
@@ -564,5 +586,25 @@ function list_player_ranks() {
 		}
 	}
 	return $result;
-}	
+}
+
+function max_ildivision() {
+	$ret = mysql_query("select max(ildiv) from player");
+	if ($ret && mysql_num_rows($ret) > 0) {
+		$row = mysql_fetch_array($ret);
+		return $row[0];
+	}
+	return 1;	
+}
+
+function list_players_ildiv($div, $order = "last,first,rank desc") {
+	$ret = mysql_query("select first,last from player where ildiv=$div order by $order");
+	$result = array();
+	if ($ret) {
+		while ($row = mysql_fetch_assoc($ret))
+			array_push($result, new player($row['first'], $row['last']));
+	}
+	return $result;
+}
+	
 ?>

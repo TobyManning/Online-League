@@ -22,12 +22,14 @@ class Season  {
 	public $Name;			// Season name
 	public $Startdate;	// First date for season
 	public $Enddate;		// Last date for season
+	public $League;
 	
-	public function __construct($id = 0) {
+	public function __construct($id = 0, $l = 'T') {
 		$this->Ind = $id;
 		$this->Name = "";
 		$this->Startdate = new Matchdate();
 		$this->Enddate = new Matchdate();
+		$this->League = $l;
 	}
 	
 	public function fromget() {
@@ -48,7 +50,7 @@ class Season  {
 	}
 	
 	public function fetchdets() {
-		$ret = mysql_query("select name,startdate,enddate from season where {$this->queryof('ind')}");
+		$ret = mysql_query("select name,startdate,enddate,league from season where {$this->queryof('ind')}");
 		if (!$ret)
 			throw new SeasconException("Cannot read database for season");
 		if (mysql_num_rows($ret) == 0)
@@ -57,6 +59,7 @@ class Season  {
 		$this->Name = $row["name"];
 		$this->Startdate->enctime($row["startdate"]);
 		$this->Enddate->enctime($row["enddate"]);
+		$this->League = $row["league"];
 	}
 		
 	public function display_name() {
@@ -74,7 +77,7 @@ class Season  {
 		$qname = mysql_real_escape_string($this->Name);
 		$qstart = $this->Startdate->queryof();
 		$qend = $this->Enddate->queryof();
-		if (!mysql_query("insert into season (name,startdate,enddate) values ('$qname','$qstart','$qend')"))
+		if (!mysql_query("insert into season (name,startdate,enddate,league) values ('$qname','$qstart','$qend','{$this->League}')"))
 			throw new SeasonException(mysql_error());
 		$ret = mysql_query("select last_insert_id()");
 		if (!$ret || mysql_num_rows($ret) == 0)
@@ -92,9 +95,9 @@ class Season  {
 	}
 }
 
-function list_seasons($desc = true) {
+function list_seasons($l = 'T', $desc = true) {
 	$ord = $desc? " desc": "";
-	$ret = mysql_query("select ind from season order by enddate$ord");
+	$ret = mysql_query("select ind from season where league='$l' order by enddate$ord");
 	$result = array();
 	if ($ret) {
 		while ($row = mysql_fetch_array($ret)) {
