@@ -29,8 +29,9 @@ class Game {
 	public  $Resultdet;	// Score as W+10.5 or B+R etc
 	public  $Sgf;			// Sgf file
 	public  $Matchind;	// Ind in match table
+	public  $League;		// Which league T=team I=individual P=pair
 	
-	public function __construct($in = 0, $min = 0, $d = 1) {
+	public function __construct($in = 0, $min = 0, $d = 1, $l = 'T') {
 		$this->Ind = $in;
 		$this->Division = $d;
 		$this->Date = new Matchdate();
@@ -41,6 +42,7 @@ class Game {
 		$this->Resultdet = "";
 		$this->Sgf = "";
 		$this->Matchind = $min;
+		$this->League = $l;
 	}
 	
 	public function query_ind() {
@@ -72,7 +74,7 @@ class Game {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select divnum,matchdate,wteam,bteam,wfirst,wlast,bfirst,blast,result,reshow,matchind from game where $q");
+		$ret = mysql_query("select divnum,matchdate,wteam,bteam,wfirst,wlast,bfirst,blast,result,reshow,matchind,league from game where $q");
 		if (!$ret)
 			throw new GameException("Cannot read database for game $q");
 		if (mysql_num_rows($ret) == 0)
@@ -80,34 +82,51 @@ class Game {
 		$row = mysql_fetch_assoc($ret);
 		$this->Division = $row["divnum"];
 		$this->Date->fromtabrow($row);
+		$this->League = $row["league"];
+
 		// We may only have allocated one side of this game
 		// If this is the case the unallocated team name will be blank
 		// But protect against mangled names
-		$wt = $row['wteam'];
-		try {
-			if (strlen($wt) != 0)  {
-				$this->Wteam = new Team($wt);
+
+		try  {
+			switch ($this->League)  {
+			case 'T':
+				$wt = $row['wteam'];		
+				if (strlen($wt) != 0)  {
+					$this->Wteam = new Team($wt);
+					$this->Wplayer = new Player($row["wfirst"], $row["wlast"]);
+					$this->Wplayer->fetchdets();
+				}
+				$bt = $row["bteam"];
+				if (strlen($bt) != 0)  {
+					$this->Bteam = new Team($bt);
+					$this->Bplayer = new Player($row["bfirst"], $row["blast"]);
+					$this->Bplayer->fetchdets();
+				}
+				$this->Matchind = $row["matchind"];
+				break;
+			default:
+				$t = $this->League == 'P'? "Pairs": "Individual";
+				$this->Wteam = new Team($t);
+				$this->Bteam = new Team($t);
 				$this->Wplayer = new Player($row["wfirst"], $row["wlast"]);
 				$this->Wplayer->fetchdets();
-			}
-			$bt = $row["bteam"];
-			if (strlen($bt) != 0)  {
-				$this->Bteam = new Team($bt);
 				$this->Bplayer = new Player($row["bfirst"], $row["blast"]);
 				$this->Bplayer->fetchdets();
+				break;
 			}
 		}
 		catch (PlayerException $e) {
 			throw new GameException($e->getMessage());
 		}
+		
 		$this->Result = $row["result"];
-		$this->Resultdet = $row["reshow"];
-		$this->Matchind = $row["matchind"];
+		$this->Resultdet = $row["reshow"];	
 	}
 	
 	public function fetchhistdets($seas) {
 		$q = $this->queryof();
-		$ret = mysql_query("select divnum,matchdate,wteam,bteam,wfirst,wlast,bfirst,blast,result,reshow,matchind from game where $q");
+		$ret = mysql_query("select divnum,matchdate,wteam,bteam,wfirst,wlast,bfirst,blast,result,reshow,matchind,league from game where $q");
 		if (!$ret)
 			throw new GameException("Cannot read database for game $q");
 		if (mysql_num_rows($ret) == 0)
@@ -115,8 +134,19 @@ class Game {
 		$row = mysql_fetch_assoc($ret);
 		$this->Division = $row["divnum"];
 		$this->Date->fromtabrow($row);
-		$wt = $row['wteam'];
-		$bt = $row['bteam'];
+		$this->League = $row["league"];
+		switch ($this->League) {
+		case  'T':
+			$wt = $row['wteam'];
+			$bt = $row['bteam'];
+			break;
+		case  'P':
+			$wt = $bt = "Pairs";
+			break;
+		default:
+			$wt = $bt = "Individual";
+			break;
+		}
 		$this->Wteam = new Histteam($seas, $wt);
 		$this->Bteam = new Histteam($seas, $bt);
 		$this->Wplayer = new Player($row["wfirst"], $row["wlast"]);
@@ -133,6 +163,7 @@ class Game {
 	public function create_game() {
 	
 		// Set these to some numeric value in case not defined
+		// Only invoked for team league.
 
 		$qwrank = 0;
 		$qbrank = 0;
@@ -161,7 +192,7 @@ class Game {
 		$qsgf = mysql_real_escape_string($this->Sgf);
 		$qmi = $this->Matchind;
 		
-		if (!mysql_query("insert into game (matchdate,wfirst,wlast,wteam,wrank,bfirst,blast,bteam,brank,result,reshow,sgf,matchind,divnum) values ('$qdate','$qwfirst','$qwlast','$qwteam',$qwrank,'$qbfirst','$qblast','$qbteam',$qbrank,'$qres','$qresdat','$qsgf',{$this->Matchind},{$this->Division})"))
+		if (!mysql_query("insert into game (matchdate,wfirst,wlast,wteam,wrank,bfirst,blast,bteam,brank,result,reshow,sgf,matchind,divnum,league) values ('$qdate','$qwfirst','$qwlast','$qwteam',$qwrank,'$qbfirst','$qblast','$qbteam',$qbrank,'$qres','$qresdat','$qsgf',{$this->Matchind},{$this->Division},'{$this->League}')"))
 			throw new GameException(mysql_error());
 		$ret = mysql_query("select last_insert_id()");
 		if (!$ret || mysql_num_rows($ret) == 0)

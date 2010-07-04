@@ -1,4 +1,8 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/php/news.php
+files: /home/jmc/src/Websites/goleague/php/horses.php
+files: /home/jmc/src/Websites/goleague/php/wrongentry.php
+files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
 files: /home/jmc/src/Websites/goleague/addresult.php
 files: /home/jmc/src/Websites/goleague/php/team.php
 files: /home/jmc/src/Websites/goleague/showmtch.php
@@ -42,9 +46,13 @@ urllist: leagueb.php
 urllist: prevleagueb.php
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:2886:</li>:4990:
+recent_files: /home/jmc/src/Websites/goleague/php/news.php
+recent_files: /home/jmc/src/Websites/goleague/php/wrongentry.php
+recent_files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
 recent_files: /home/jmc/src/Websites/goleague/addresult.php
 recent_files: /home/jmc/src/Websites/goleague/php/team.php
 recent_files: /home/jmc/src/Websites/goleague/showmtch.php
+recent_files: /home/jmc/src/Websites/goleague/php/matchdate.php
 recent_files: /home/jmc/src/Websites/goleague/playgames.php
 recent_files: /home/jmc/src/Websites/goleague/playingb.php
 recent_files: /home/jmc/src/Websites/goleague/playing.php
@@ -53,12 +61,8 @@ recent_files: /home/jmc/src/Websites/goleague/aboutus.php
 recent_files: /home/jmc/src/Websites/goleague/php/mailalloc.php
 recent_files: /home/jmc/src/Websites/goleague/reminder.php
 recent_files: /home/jmc/src/Websites/goleague/php/game.php
-recent_files: /home/jmc/src/Websites/goleague/php/match.php
-recent_files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
-recent_files: /home/jmc/src/Websites/goleague/php/player.php
-recent_files: /home/jmc/src/Websites/goleague/php/matchdate.php
-opendir: /home/jmc/src/Websites/goleague
-savedir: /home/jmc/src/Websites/goleague
+opendir: /home/jmc/src/Websites/goleague/php
+savedir: /home/jmc/src/Websites/goleague/php
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1
