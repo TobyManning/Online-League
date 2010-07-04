@@ -64,6 +64,14 @@ KGS:<input type="text" name="kgs" size="10" maxlength="10">
 IGS:<input type="text" name="igs" size="10" maxlength="10">
 </p>
 <p>
+<input type="checkbox" name="okem">
+Check if player is happy to accept emails about matches to be played
+</p>
+<p>
+<input type="checkbox" name="bgamemb">
+Player is BGA member
+</p>
+<p>
 Admin Privs:
 <?php
 $player->adminopt();

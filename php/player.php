@@ -28,6 +28,9 @@ class Player  {
 	public $IGS;
 	public $Admin;
 	public $Userid;
+	public $BGAmemb;
+	public $ILdiv;
+	public $ILpaid;
 	private $Gotrecs;
 	private $Played;
 	private $Won;
@@ -57,6 +60,9 @@ class Player  {
 			$Gotrecs = false;
 			$this->Rank = new Rank();
 			$this->OKemail = false;
+			$this->BGAmemb = false;
+			$this->ILdiv = 0;
+			$this->ILpaid = false;
 	}
 
 	// Fill in the name of the player from a "get" request
@@ -86,7 +92,7 @@ class Player  {
 	
 	public function fromid($id) {
 		$qid = mysql_real_escape_string($id);
-		$ret = mysql_query("select first,last,rank,club,email,okmail,phone,kgs,igs,admin from player where user='$qid'");
+		$ret = mysql_query("select first,last,rank,club,email,okmail,phone,kgs,igs,admin,bgamemb,ildiv,ilpaid from player where user='$qid'");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			throw new PlayerException("Unknown player userid $id");
 		$row = mysql_fetch_assoc($ret);
@@ -101,6 +107,9 @@ class Player  {
 		$this->Admin = $row["admin"];
 		$this->Userid = $id;
 		$this->OKemail = $row["okmail"];
+		$this->BGAmemb = $row["bgamemb"];
+		$this->ILdiv = $row["ildiv"];
+		$this->ILpaid = $row["ilpaid"];
 	}
 
 	// Generate a MySQL query from a player object
@@ -152,7 +161,7 @@ class Player  {
 		
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select rank,club,email,okmail,phone,kgs,igs,admin,user from player where $q");
+		$ret = mysql_query("select rank,club,email,okmail,phone,kgs,igs,admin,user,bgamemb,ildiv,ilpaid from player where $q");
 		if (!$ret)
 			throw new PlayerException("Cannot read database for player $q");
 		if (mysql_num_rows($ret) == 0)
@@ -167,6 +176,9 @@ class Player  {
 		$this->Admin = $row["admin"];
 		$this->Userid = $row["user"];
 		$this->OKemail = $row["okmail"];
+		$this->BGAmemb = $row["bgamemb"];
+		$this->ILdiv = $row["ildiv"];
+		$this->ILpaid = $row["ilpaid"];
 	}
 
 	// Get more info about the club
@@ -374,8 +386,9 @@ class Player  {
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
 		$qokemail = $this->OKemail? 1: 0;
+		$qbgamemb = $this->BGAmemb? 1: 0;
 		$r = $this->Rank->Rankvalue;
-		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,okmail,phone,admin) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail',$qokemail,'$qphone','$qadmin')");
+		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,okmail,phone,admin,bgamemb,ildiv) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail',$qokemail,'$qphone','$qadmin',$qbgamemb,{$this->ILdiv}");
 	}
 
 	// Update player record of name
@@ -410,13 +423,21 @@ class Player  {
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
 		$r = $this->Rank->Rankvalue;
-		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',okmail=$qokemail,phone='$qphone',kgs='$qkgs',igs='$qigs',rank=$r where {$this->queryof()}");
+		$qbgamemb = $this->BGAmemb? 1: 0;
+		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',okmail=$qokemail,phone='$qphone',kgs='$qkgs',igs='$qigs',rank=$r,bgamemb=$qbgamemb,ildiv={$this->ILdiv} where {$this->queryof()}");
 		// Fix rank in teams that this player is a member of
 		mysql_query("update teammemb set rank=$r where {$this->queryof('tm')}");
 		// Fix rank in unplayed games where this player is black
 		mysql_query("update game set brank=$r where result='N' and {$this->queryof('b')}");
 		// Ditto for where this player is white
 		mysql_query("update game set wrank=$r where result='N' and {$this->queryof('w')}");
+	}
+
+	//  Paid relates to individual league
+		
+	public function setpaid($v = true) {
+		$vv = $v? 1: 0;
+		mysql_query("update player set ilpaid=$vv where {$this->queryof()}");
 	}
 	
 	public function updrank($r) {

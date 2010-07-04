@@ -57,6 +57,7 @@ $rank = $_POST["rank"];
 $admin = $_POST["admin"];
 $passw = $_POST["passw"];
 $okem = $_POST["okem"];
+$bgamemb = $_POST["bgamemb"];
 
 switch ($action) {
 case 'A':
@@ -73,6 +74,7 @@ case 'A':
 	$player->Club = new Club($club);
 	$player->Email = $email;
 	$player->OKemail = $okem;
+	$player->BGAmemb = $bgamemb;
 	$player->Phone = $phone;
 	$player->KGS = $kgs;
 	$player->IGS = $igs;
@@ -139,6 +141,7 @@ default:
 	$origplayer->Email = $email;
 	$origplayer->Phone = $phone;
 	$origplayer->OKemail = $okem;
+	$origplayer->BGAmemb = $bgamemb;
 	// Leave priv alone unless super-admin
 	if ($userpriv == 'SA')
 		$origplayer->Admin = $admin;

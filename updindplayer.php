@@ -80,6 +80,7 @@ if (strlen($du) != 0)
 if (strlen($dp) != 0)
 	$dp = " value=\"" . $dp . "\"";
 $okemch = $player->OKemail?" checked": "";
+$bgamemb = $player->BGAmemb?" checked": "";
 print <<<EOT
 </p>
 <p>
@@ -89,6 +90,10 @@ Phone:<input type="text" name="phone" size=30 value="{$player->display_phone()}"
 <p>
 <input type="checkbox" name="okem"$okemch>
 Check if player is happy to accept emails about matches to be played
+</p>
+<p>
+<input type="checkbox" name="bgamemb"$bgamemb>
+Player is BGA member.
 </p>
 <p>
 Userid:<input type="text" name="userid"$du>
