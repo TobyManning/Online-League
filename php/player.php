@@ -31,6 +31,7 @@ class Player  {
 	public $BGAmemb;
 	public $ILdiv;
 	public $ILpaid;
+	public $Sortrank;
 	private $Gotrecs;
 	private $Played;
 	private $Won;
@@ -63,6 +64,7 @@ class Player  {
 			$this->BGAmemb = false;
 			$this->ILdiv = 0;
 			$this->ILpaid = false;
+			$this->Sortrank = 0;
 	}
 
 	// Fill in the name of the player from a "get" request
@@ -465,6 +467,7 @@ class Player  {
 		if  ($this->Gotrecs == $l)
 			return;
 		$this->Gotrecs = $l;
+		$lg = $l == 'N'? '': "league='$l' and ";
 		// Get SQL to do all the work
 		$qw = $this->queryof('w');
 		$qb = $this->queryof('b');
@@ -474,28 +477,28 @@ class Player  {
 		$this->Won = $this->get_grec("($qw and $rw) or ($qb and $rb)");
 		$this->Drawn = $this->get_grec("result='J' and ($qw or $qb)");
 		$this->Lost = $this->get_grec("($qw and $rb) or ($qb and $rw)");
-		$this->Playeds = $this->get_grec("league='$l' and current=1 and result!='N' and ($qw or $qb)");
-		$this->Wons = $this->get_grec("league='$l' and current=1 and (($qw and $rw) or ($qb and $rb))");
-		$this->Drawns = $this->get_grec("league='$l' and current=1 and result='J' and ($qw or $qb)");
-		$this->Losts = $this->get_grec("league='$l' and current=1 and (($qw and $rb) or ($qb and $rw))");
+		$this->Playeds = $this->get_grec("${lg}current=1 and result!='N' and ($qw or $qb)");
+		$this->Wons = $this->get_grec("${lg}current=1 and (($qw and $rw) or ($qb and $rb))");
+		$this->Drawns = $this->get_grec("${lg}current=1 and result='J' and ($qw or $qb)");
+		$this->Losts = $this->get_grec("${lg}current=1 and (($qw and $rb) or ($qb and $rw))");
 	}
 	
-	public function won_games($curr=false, $l='T') {
+	public function won_games($curr=false, $l='N') {
 		$this->get_grecs($l);
 		return  $curr? $this->Wons: $this->Won;
 	}
 	
-	public function lost_games($curr=false, $l='T') {
+	public function lost_games($curr=false, $l='N') {
 		$this->get_grecs($l);
 		return  $curr? $this->Losts: $this->Lost;
 	}
 
-	public function drawn_games($curr=false, $l='T') {
+	public function drawn_games($curr=false, $l='N') {
 		$this->get_grecs($l);
 		return  $curr? $this->Drawns: $this->Drawn;
 	}
 	
-	public function played_games($curr=false, $l='T') {
+	public function played_games($curr=false, $l='N') {
 		$this->get_grecs($l);
 		return  $curr? $this->Playeds: $this->Played;
 	}
@@ -520,6 +523,23 @@ class Player  {
 	
 	public function histplayed($si, $l = 'I') {
 		return $this->histgrec("result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
+	}
+	
+	public function get_scores($p = Null, $si = 0, $lg = 'I') {
+		if  ($si == 0)  {		//  Current season
+			$pl = $this->played_games(true, $lg);
+			$w = $this->won_games(true, $lg);
+			$d = $this->drawn_games(true, $lg);
+			$l = $this->lost_games(true, $lg);
+		}
+		else  {
+			$pl = $this->histplayed($si, $lg);
+			$w = $this->histwon($si, $lg);
+			$d = $this->histdrawn($si, $lg);
+			$l = $this->histlost($si, $lg);
+		}
+		if ($p)
+			$this->Sortrank = $pl * $p->Played + $w * $p->Won + $d * $p->Drawn + $l * $p->Lost;
 	}
 	
 	// Count teams this player is a member of
@@ -606,5 +626,15 @@ function list_players_ildiv($div, $order = "last,first,rank desc") {
 	}
 	return $result;
 }
-	
+
+function ilscore_compare($pla, $plb) {
+	// Decide ordering when compiling PWDL then fall back on name order.
+	if ($pla->Sortrank != $plb->Sortrank)
+		return $pla->Sortrank > $plb->Sortrank? -1: 1;
+	if ($pla->Rank->Rankvalue != $plb->Rank->Rankvalue)
+		return $plb->Rank->Rankvalue - $pla->Rank->Rankvalue;
+	if ($pla->Last != $plb->Last)
+		return strcasecmp($pla->Last, $plb->Last);
+	return strcasecmp($pla->First, $plb->First);
+}	
 ?>

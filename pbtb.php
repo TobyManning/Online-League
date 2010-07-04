@@ -109,10 +109,10 @@ if ($ret) {
 <td>{$p->display_name()}</td>
 <td>{$p->display_rank()}</td>
 <td>{$p->display_online()}</td>
-<td>{$p->played_games(true)}</td>
-<td>{$p->won_games(true)}</td>
-<td>{$p->drawn_games(true)}</td>
-<td>{$p->lost_games(true)}</td>
+<td>{$p->played_games(true, 'T')}</td>
+<td>{$p->won_games(true, 'T')}</td>
+<td>{$p->drawn_games(true, 'T')}</td>
+<td>{$p->lost_games(true, 'T')}</td>
 <td>&nbsp;&nbsp;&nbsp;</td>
 <td>{$p->played_games()}</td>
 <td>{$p->won_games()}</td>

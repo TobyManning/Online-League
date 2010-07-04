@@ -52,9 +52,25 @@ EOT;
 	$pl = list_players_ildiv($d);
 	foreach ($pl as $p) {
 		$p->fetchdets();
+		$p->get_scores($pars);
+	}
+	usort($pl, 'ilscore_compare');
+	$maxrank = $pl[0]->Sortrank;
+	$minrank = $pl[count($pl)-1]->Sortrank;
+	// This avoids showing prom/releg if they're all the same as with nothing played.
+	if ($maxrank == $minrank)
+		$maxrank = $minrank = -9999999;
+	foreach ($pl as $p) {
+		$n = $p->display_name(false);
+		if ($p->Sortrank == $maxrank)
+			$n = "<span class=\"prom\">$n</span>";
+		elseif ($p->Sortrank == $minrank)
+			$n = "<span class=\"releg\">$n</span>";
+		//  Do this by hand so span overrides colour of link
+		$n = "<a href=\"playgames.php?{$p->urlof()}\" class=\"name\">$n</a>";
 		print <<<EOT
 <tr>
-<td>{$p->display_name()}</td>
+<td>$n</td>
 <td>{$p->display_rank()}</td>
 <td align="right">{$p->played_games(true,'I')}</td>
 <td align="right">{$p->won_games(true,'I')}</td>

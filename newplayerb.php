@@ -76,7 +76,7 @@ Individual league division:
 <select name="ildiv" size="0">
 <option value="0" selected>Not playing</option>
 <?php
-$maxdivs = max_ildivision();
+$maxdivs = max_ildivision() + 1;
 for ($d = 1;  $d <= $maxdivs;  $d++)
 	print <<<EOT
 <option value="$d">$d</option>
