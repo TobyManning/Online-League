@@ -77,7 +77,7 @@ all indirect.</p>
 <td><input type="text" name="email"></td></tr>
 <tr><td>Phone number(s)</td>
 <td><input type="text" name="phone" size="30"></td></tr>
-<tr><td>Club</td>
+<tr><td>Club (i.e. face-to-face)</td>
 <td>
 <?php
 $player = new Player();

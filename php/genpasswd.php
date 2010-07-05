@@ -1,13 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<title>Name Clash</title>
-</head>
-<body>
-<h1>Name Clash</h1>
-<p>
 <?php
-//   Copyright 2009 John Collins
+
+//   Copyright 2010 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -22,11 +15,12 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-print <<<EOT
-Your value for $column of $value clashes with an existing entry.
-Please go back on your browser and try again.
-EOT;
+function generate_password() {
+	$passw = "";
+	$poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	$lp = strlen($poss) - 1;
+	for ($i = 0; $i < 8; $i++)
+		$passw = $passw . $poss[rand(0,$lp)];
+	return  $passw;
+}
 ?>
-</p>
-</body>
-</html>

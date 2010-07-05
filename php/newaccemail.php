@@ -1,13 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<title>Name Clash</title>
-</head>
-<body>
-<h1>Name Clash</h1>
-<p>
 <?php
-//   Copyright 2009 John Collins
+
+//   Copyright 2010 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -22,11 +15,14 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-print <<<EOT
-Your value for $column of $value clashes with an existing entry.
-Please go back on your browser and try again.
-EOT;
+function newaccemail($email, $userid, $passw)  {
+	if (strlen($email) != 0)  {
+		$fh = popen("mail -s 'BGA League account created' $email", "w");
+		fwrite($fh, "Please DO NOT reply to this message!!!\n\n");
+		fwrite($fh, "A BGA League account has been created for you on http://league.britgo.org\n\n");
+		fwrite($fh, "Your user id is $userid and your password is $passw\n\n"); 
+		fwrite($fh, "Please log in and reset your password if you wish\n");
+		pclose($fh);
+	}
+}
 ?>
-</p>
-</body>
-</html>

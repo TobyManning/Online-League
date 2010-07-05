@@ -636,5 +636,6 @@ function ilscore_compare($pla, $plb) {
 	if ($pla->Last != $plb->Last)
 		return strcasecmp($pla->Last, $plb->Last);
 	return strcasecmp($pla->First, $plb->First);
-}	
+}
+	
 ?>

@@ -23,6 +23,8 @@ include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
+include 'php/genpasswd.php';
+include 'php/newaccemail.php';
 
 function checkclash($column, $value) {
 	if (strlen($value) == 0)
@@ -88,23 +90,11 @@ case 'A':
 	if  ($ilpaid)
 		$player->setpaid(true);
 	// If no password specified, invent one
-	if (strlen($passw) == 0)  {
-		$passw = "";
-		$poss = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-		$lp = strlen($poss) - 1;
-		for ($i = 0; $i < 8; $i++)
-			$passw = $passw . $poss[rand(0,$lp)];
-	}
+	if (strlen($passw) == 0)
+		$passw = generate_password();
 	$player->set_passwd($passw);
 	$Title = "Player {$player->display_name(false)} created OK";
-	if (strlen($email) != 0)  {
-		$fh = popen("mail -s 'BGA League account created' $email", "w");
-		fwrite($fh, "Please DO NOT reply to this message!!!\n\n");
-		fwrite($fh, "A BGA League account has been created for you on http://league.britgo.org\n\n");
-		fwrite($fh, "Your user id is $userid and your password is $passw\n\n"); 
-		fwrite($fh, "Please log in and reset your password if you wish\n");
-		pclose($fh);
-	}
+	newaccemail($email, $userid, $passw);
 	break;
 default:
 	try {
