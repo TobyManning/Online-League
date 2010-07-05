@@ -61,7 +61,8 @@ all indirect.</p>
 <table cellpadding="2" cellspacing="5" border="0">
 <tr><td>Player Name</td>
 <td><input type="text" name="playname"></td></tr>
-<tr><td>League Userid (initials/KGS name acceptable)</td></tr>
+<tr><td>League Userid (initials/KGS name acceptable)</td>
+<td><input type="text" name="userid"></td></tr>
 <tr><td>Password (leave blank to let system set it)</td>
 <td><input type="password" name="passw"></td></tr>
 <tr><td>Email (must have)</td>
@@ -87,11 +88,11 @@ print "</td></tr>\n";
 <td><input type="text" name="kgs" size="10" maxlength="10"></td></tr>
 <tr><td>IGS name</td>
 <td><input type="text" name="igs" size="10" maxlength="10"></td></tr>
-<tr><td>I want to play in individual league</td>
+<tr><td>I want to play in the individual league</td>
 <td><input type="checkbox" name="join"></td></tr>
 <tr><td colspan=2><input type="checkbox" name="turnoff" checked>
-Because I'm not a spammer I'm turning this off</td></tr>
-<tr><td colspan=2>... and this on <input type="checkbox" name="turnon"></td></tr>
+&lt;&lt; Because I'm not a spammer I'm turning this off and this on &gt;&gt;
+<input type="checkbox" name="turnon"></td></tr>
 </table>
 <p>
 <input type="submit" name="subm" value="Create Account">
