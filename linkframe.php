@@ -103,6 +103,10 @@ EOT;
 <tr><td><a href="${a}logout.php">Logout<br>$qu</a></td></tr>
 EOT;
 }
+if (!$login)
+	print <<<EOT
+<tr><td><a href="${a}newacct.php" target="_top">Create account</a></td></tr>
+EOT;
 print "</table>\n";
 if (!$login)  {
 	if (isset($_COOKIE['user_id']))
