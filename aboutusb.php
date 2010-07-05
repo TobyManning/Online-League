@@ -50,7 +50,7 @@ in the "British Room".
 </p>
 <p>
 The winners in each league division are promoted at the end of the season,
-whilst losers face demotion to the league below. There may be more promotions or
+whilst losers face relegation to the league below. There may be more promotions or
 relegations in the individual league, depending upon numbers.
 The champions of the top division will win the League Tournament Shield.
 </p>
@@ -65,11 +65,13 @@ Non-members can join teams at an extra cost.
 As the league is intended to mainly link to clubs,
 please try to form teams from locally-based players.
 </p>
-<p>If you would like to play in the individual league, ask the Online League coordinators
-for an account (you can have the same account if you play in both leagues) and set your
-account as being active in the individual league. You will be given a user id and a password.
+<p>If you would like to play in the individual league, first get an account if you don't have
+one. You should have the same account if you play in both leagues and set your
+account as being active in the individual league. You can get an account online
+using <a href="newacct.php" target="_top">this page</a>.
+You will be given a user id and a password.
 You can set the password to your own choice of characters later. Please set the contact
-details, including your KGS name, on your account.
+details, including your email address (which will never be given out indiscriminately), KGS name, on your account.
 </p>
 <p>You can see the current team league status
 <a href="league.php" target="_top">here</a> and the individual league status
