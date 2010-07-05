@@ -35,7 +35,7 @@ function formvalid()
       	return false;
       }
       if (!form.turnon.checked) {
-      	alert("You didn't turn on the non-spammer box"));
+      	alert("You didn't turn on the non-spammer box");
       	return false;
       }
       if  (!nonblank(form.playname.value))  {
