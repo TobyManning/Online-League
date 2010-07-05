@@ -30,6 +30,14 @@ include 'php/head.php';
 function formvalid()
 {
       var form = document.playform;
+      if (form.turnoff.checked) {
+      	alert("You didn't turn off the non-spammer box");
+      	return false;
+      }
+      if (!form.turnon.checked) {
+      	alert("You didn't turn on the non-spammer box"));
+      	return false;
+      }
       if  (!nonblank(form.playname.value))  {
          alert("No player name given");
          return false;
