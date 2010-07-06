@@ -82,6 +82,7 @@ for ($d = 1;  $d <= $maxdivs;  $d++)
 <option value="$d">$d</option>
 EOT;
 ?>
+<option value="-1">Select by rank</option>
 </select>
 Paid <input type="checkbox" name="ilpaid">
 </p>

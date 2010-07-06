@@ -25,6 +25,7 @@ include 'php/rank.php';
 include 'php/player.php';
 include 'php/genpasswd.php';
 include 'php/newaccemail.php';
+include 'php/assildiv.php';
 
 function checkclash($column, $value) {
 	if (strlen($value) == 0)
@@ -85,6 +86,9 @@ case 'A':
 	// Force Admin priv to N unless Super-admin
 	$player->Admin = $userpriv != 'SA'? $admin: 'N';
 	$player->Userid = $userid;
+	// New player gives div num of -1 to indicate calculate it.
+	if ($ildiv < 0)
+		$ildiv = assign_ildiv($rank);
 	$player->ILdiv = $ildiv;
 	$player->create();
 	if  ($ilpaid)

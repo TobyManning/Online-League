@@ -27,6 +27,7 @@ include 'php/rank.php';
 include 'php/player.php';
 include 'php/genpasswd.php';
 include 'php/newaccemail.php';
+include 'php/assildiv.php';
 
 $playname = $_POST["playname"];
 $userid = $_POST["userid"];
@@ -87,12 +88,8 @@ $player->Phone = $phone;
 $player->KGS = $kgs;
 $player->IGS = $igs;
 $player->Userid = $userid;
-if ($joinil)  {
-	$maxdiv = max_ildivision();
-	if ($maxdiv == 0)
-		$maxdiv++;
-	$player->ILdiv = $maxdiv;
-}
+if ($joinil)
+	$player->ILdiv = assign_ildiv($rank);
 
 $player->create();
 

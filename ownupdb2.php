@@ -19,6 +19,7 @@ include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
+include 'php/assildiv.php';
 
 function checkclash($column, $value) {
 	if (strlen($value) == 0)
@@ -90,12 +91,8 @@ $origplayer->Email = $email;
 $origplayer->OKemail = $okem;
 $origplayer->Phone = $phone;
 if ($origplayer->ILdiv == 0)  {
-	if ($_POST["join"])  {
-		$maxdiv = max_ildivision();
-		if ($maxdiv == 0)
-			$maxdiv++;
-		$origplayer->ILdiv = $maxdiv;
-	}
+	if ($_POST["join"])
+		$origplayer->ILdiv = assign_ildiv($rank);
 }
 else  if  (!$origplayer->ILpaid  &&  !$_POST["stayin"])
 	$origplayer->ILdiv = 0;
