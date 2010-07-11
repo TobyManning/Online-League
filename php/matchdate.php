@@ -186,7 +186,8 @@ class Matchdate {
 
 	public function dateopt($msg = "Date")
 	{
-		print "$msg:";
+		if (strlen($msg) != 0)
+			print "$msg:";
 		$this->dayopt();
 		$this->monopt();
 		$this->yropt();
