@@ -67,7 +67,7 @@ if ($player->ILdiv == 0)  {
 	print <<<EOT
 <html>
 <head>
-<title>Unknown player</title>
+<title>Not in league</title>
 <link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body class="il">
@@ -92,6 +92,19 @@ include 'php/head.php';
 ?>
 <body class="il">
 <script language="javascript">
+function checkform() {
+	var fm = document.ilresf;
+	if (fm.resulttype.selectedIndex < 0)  {
+		alert("No result selected");
+		return  false;
+	}
+	if (fm.opp.selectedIndex < 0)  {
+		alert("No opponent selected");
+		return  false;
+	}
+	return  true;
+}
+	
 function loadkgs() {
 	var fm = document.ilresf;
 	var dayel = fm.day;
@@ -128,12 +141,10 @@ function loadkgs() {
 		return;
 	}
 	var opp = oppel.options[oppel.selectedIndex].value;
-	 
-	//	document.location =
-	alert("loadkgsil.php?plf=" + plf + "&pll=" + pll + "&opp=" + opp +
+	document.location = "loadkgsil.php?pl=" + plf + ":" + pll + "&opp=" + opp +
 							  "&col=" + colour +
 							  "&md=" + year + "-" + month + "-" + day + "&r=" +
-							  res + "&rt=" + restype);
+							  res + "&rt=" + restype;
 }
 </script>
 <h1>Add result for Individual League</h1>
