@@ -152,7 +152,7 @@ EOT;
 <p>To enter the individual league match result, please complete the form below:
 </p>
 <form action="addilresultb2.php" method="post" enctype="multipart/form-data" name="ilresf" onsubmit="javascript: return checkform();">
-<?php $player->save_hidden("pl"); ?>
+<?php print $player->save_hidden("pl"); ?>
 <table cellpadding="2" cellspacing="5" border="0">
 <tr>
 	<td>Match was played on</td>
