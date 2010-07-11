@@ -43,6 +43,15 @@ class Game {
 		$this->Sgf = "";
 		$this->Matchind = $min;
 		$this->League = $l;
+		switch  ($l)  {
+		case  'I':
+			$this->Wteam = new Team('Individual');
+			$this->Bteam = new Team('Individual');
+			break;
+		case  'P':
+			$this->Wteam = new Team('Pairs');
+			$this->Bteam = new Team('Pairs');
+			break;	
 	}
 	
 	public function query_ind() {
@@ -186,6 +195,7 @@ class Game {
 		$qdate = $this->Date->queryof();
 		
 		// These are always going to be 'N' and null but let's be consistent.
+		// (Except for individual league where we get them right first time)
 		
 		$qres = mysql_real_escape_string($this->Result);
 		$qresdat = mysql_real_escape_string($this->Resultdet);
