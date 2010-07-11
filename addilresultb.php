@@ -91,13 +91,50 @@ $Title = "Add result in individual League";
 include 'php/head.php';
 ?>
 <body class="il">
+<script language="javascript">
+function loadkgs() {
+	var fm = document.ilresf;
+	var dayel = fm.day;
+	var monel = fm.month;
+	var yrel = fm.year;
+	var day = dayel.options[dayel.selectedIndex].value;
+	var month = monel.options[monel.selectedIndex].value;
+	var year = yrel.options[yrel.selectedIndex].value;
+	var resel = fm.result;
+	var resty = fm.resulttype;
+	
+	if (resel.selectedIndex < 0 || resty.selectedIndex < 0) {
+		alert("No result selected");
+		return;
+	}
+	var res = resel.options[resel.selectedIndex].value;
+	var restype = resty.options[resty.selectedIndex].value;
+	if (restype == 'N') {
+		alert("Result type not set");
+		return;
+	}
+	var plf = fm.plf.value;
+	var pll = fm.pll.value;
+	var oppel = fm.opp;
+	if  (oppel.selectedIndex < 0)  {
+		alert("No opponent selected");
+		return;
+	}
+	var opp = oppel.options[oppel.selectedIndex.value];
+	 
+	//	document.location =
+	alert("loadkgsil.php?plf=" + plf + "&pll=" + pll + "&opp=" + opp +
+							  "&md=" + year + "-" + month + "-" + day + "&r=" +
+							  res + "&rt=" + restype);
+}
+</script>
 <h1>Add result for Individual League</h1>
 <p>Welcome
 <?php
 print <<<EOT
-{$player->display_name()}
+<b>{$player->display_name()}</b>
 online name
-{$player->display_online()}
+<b>{$player->display_online()}</b>
 from Division
 {$player->ILdiv}.
 
@@ -107,6 +144,7 @@ EOT;
 <p>To enter the individual league match result, please complete the form below:
 </p>
 <form action="addilresultb2.php" method="post" enctype="multipart/form-data" name="ilresf" onsubmit="javascript: return checkform();">
+<?php $player->save_hidden("pl"); ?>
 <table cellpadding="2" cellspacing="5" border="0">
 <tr>
 	<td>Match was played on</td>
@@ -127,9 +165,9 @@ foreach ($pl as $p) {
 		continue;
 	$p->fetchdets();
 	print <<<EOT
-<option value="{$p->urlof()}">
+<option value="{$p->selof()}">
 {$p->display_name(false)}
-({$p->display_rank()}){$p->display_online()}
+({$p->display_rank()}) {$p->display_online()}
 </option>
 
 EOT;
@@ -142,7 +180,7 @@ EOT;
 	<td><input type="radio" name="colour" value="B" checked>Black
 	<input type="radio" name="colour" value="W">White</td>
 </tr>
-<tr><td colspan=2><input type="radio" name="result" value="W" checked>I won
+<tr><td>Outcome</td><td><input type="radio" name="result" value="W" checked>I won
 <input type="radio" name="result" value="J">Jigo
 <input type="radio" name="result" value="L">I lost</td></tr>
 <tr><td>Score was</td>
@@ -164,9 +202,11 @@ for ($v = 0; $v < 50; $v++)
 </tr>
 <tr>
 	<td colspan=2>Click <input type="submit" name="sub" value="Here"> if uploading file
-	or no SGF</td>
+	from my computer or no SGF</td>
 </tr>
 </table>
 </form>
+<p>Or <a href="javascript:loadkgs();"><b>Click here</b></a> if the game was played
+on KGS with the right names - getting the date, result and score right.</p>
 </body>
 </html>
