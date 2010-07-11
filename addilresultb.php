@@ -100,14 +100,26 @@ function loadkgs() {
 	var day = dayel.options[dayel.selectedIndex].value;
 	var month = monel.options[monel.selectedIndex].value;
 	var year = yrel.options[yrel.selectedIndex].value;
-	var resel = fm.result;
 	var resty = fm.resulttype;
 	
 	if (resel.selectedIndex < 0 || resty.selectedIndex < 0) {
 		alert("No result selected");
 		return;
 	}
-	var res = resel.options[resel.selectedIndex].value;
+	var resel = fm.result;
+	var res;
+	if (resel[0].checked)
+		res = resel[0].value;
+	else if (resel[1].checked)
+		res = resel[1].value;
+	else
+		res = resel[2].value;
+	var colel = fm.colour;
+	var colour;
+	if  (colel[0].checked)
+		colour = colel[0].value;
+	else
+		colour = colel[1].value;
 	var restype = resty.options[resty.selectedIndex].value;
 	if (restype == 'N') {
 		alert("Result type not set");
@@ -124,6 +136,7 @@ function loadkgs() {
 	 
 	//	document.location =
 	alert("loadkgsil.php?plf=" + plf + "&pll=" + pll + "&opp=" + opp +
+							  "&col=" + colour +
 							  "&md=" + year + "-" + month + "-" + day + "&r=" +
 							  res + "&rt=" + restype);
 }
