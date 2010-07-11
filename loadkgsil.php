@@ -112,6 +112,12 @@ $myrt = $_GET["rt"];
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
+$Title = "Add Game Result";
+include 'php/head.php';
+?>
+<body class="il">
 <?php
 print <<<EOT
 <h1>Result recording</h1>
