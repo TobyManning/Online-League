@@ -98,10 +98,11 @@ else  {
 if (preg_match('/\d+/', $rtype))
 	$rtype .= '.5';
 if ($result != 'J')
-	$rtype = "$result+$restype";
+	$rtype = "$result+$rtype";
 else
 	$rtype = "Jigo";
-
+$g->Result = $result;
+$g->Resultdet = $rtype;
 if (strlen($sgfdata) != 0)
 	$g->Sgf = $sgfdata;
 $g->Date = $dat;
