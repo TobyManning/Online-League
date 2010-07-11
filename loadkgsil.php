@@ -128,5 +128,7 @@ $myres and $myrt.
 
 EOT;
 ?>
+<p>This is still a testing version and hasn't really done anything.
+</p>
 </body>
 </html>

@@ -75,6 +75,10 @@ print <<<EOT
 <tr><td><a href="${a}ileague.php" target="_top" class="il">Individual League</a></td></tr>
 EOT;
 if ($login) {
+	print <<<EOT
+<tr><td><a href="${a}addilresult.php" target="_top" class="il">Add IL Result</a></td></tr>
+
+EOT;
 	if ($userpriv == 'A' || $userpriv == 'SA')  {
 		print <<<EOT
 <tr><td><a href="${a}admin.php" target="_top" class="memb">Admin menu</a></td></tr>

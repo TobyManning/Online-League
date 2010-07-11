@@ -130,5 +130,7 @@ EOT;
 $n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}", false); 
 // $n->addnews();	
 ?>
+<p>This is still a testing version and hasn't really done anything.
+</p>
 </body>
 </html>
