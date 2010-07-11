@@ -127,7 +127,7 @@ function loadkgs() {
 		alert("No opponent selected");
 		return;
 	}
-	var opp = oppel.options[oppel.selectedIndex.value];
+	var opp = oppel.options[oppel.selectedIndex].value;
 	 
 	//	document.location =
 	alert("loadkgsil.php?plf=" + plf + "&pll=" + pll + "&opp=" + opp +
