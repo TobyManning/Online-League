@@ -41,6 +41,7 @@ include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
+include 'php/team.php';
 include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/news.php';
