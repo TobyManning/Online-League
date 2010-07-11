@@ -15,6 +15,7 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 session_start();
+$userid = $_SESSION['user_id'];
 $username = $_SESSION['user_name'];
 $userpriv = $_SESSION['user_priv'];
 
@@ -44,7 +45,7 @@ include 'php/matchdate.php';
 
 $player = new Player();
 try {
-	$player->fromid($username);
+	$player->fromid($userid);
 }
 catch (PlayerException $e) {
 	print <<<EOT
@@ -54,7 +55,7 @@ catch (PlayerException $e) {
 </head>
 <body>
 <h1>Unknown player</h1>
-<p>Sorry, but player name $username is not known.</p>
+<p>Sorry, but player name $userid is not known.</p>
 </body>
 </html>
 
