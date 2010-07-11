@@ -51,7 +51,8 @@ class Game {
 		case  'P':
 			$this->Wteam = new Team('Pairs');
 			$this->Bteam = new Team('Pairs');
-			break;	
+			break;
+		}
 	}
 	
 	public function query_ind() {
