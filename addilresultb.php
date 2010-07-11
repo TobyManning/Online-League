@@ -101,11 +101,6 @@ function loadkgs() {
 	var month = monel.options[monel.selectedIndex].value;
 	var year = yrel.options[yrel.selectedIndex].value;
 	var resty = fm.resulttype;
-	
-	if (resel.selectedIndex < 0 || resty.selectedIndex < 0) {
-		alert("No result selected");
-		return;
-	}
 	var resel = fm.result;
 	var res;
 	if (resel[0].checked)
