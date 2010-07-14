@@ -105,6 +105,8 @@ EOT;
 EOT;
 	}
 	print "</table>\n";
+	if ($d != $ml)
+		print "<br><br><br>\n";
 }
 ?>
 </div>
