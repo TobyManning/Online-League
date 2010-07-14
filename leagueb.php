@@ -22,6 +22,7 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/match.php';
 include 'php/matchdate.php';
+include 'php/itrecord.php';
 include 'php/params.php';
 ?>
 <html>
@@ -32,9 +33,35 @@ include 'php/head.php';
 <body>
 <h1>Current League Standings</h1>
 <div align="center">
+<?php
+$pars = new Params();
+$pars->fetchvalues();
+$ml = max_division();
+for ($d = 1; $d <= $ml; $d++) {
+	$tl = list_teams($d);
+	$cn = 7 + count($tl);
+	print <<<EOT
 <table class="league">
 <tr>
+<th colspan="$cn" align="center">Division $d</th>
+</tr>
+<tr>
 <th>Team</th>
+
+EOT;
+	
+	foreach ($tl as $t) {
+		$t->get_scores($pars);
+	}
+	usort($tl, 'score_compare');
+	
+	// Insert column header
+	
+	foreach ($tl as $t)  {
+		$hd = substr($t->Name, 0, 3);
+		print "<th>$hd</th>\n";
+	}
+	print <<<EOT
 <th>P</th>
 <th>W</th>
 <th>D</th>
@@ -42,21 +69,9 @@ include 'php/head.php';
 <th>F</th>
 <th>A</th>
 </tr>
-<?php
-$pars = new Params();
-$pars->fetchvalues();
-$ml = max_division();
-for ($d = 1; $d <= $ml; $d++) {
-	print <<<EOT
-<tr>
-<th colspan="7" align="center">Division $d</th>
-</tr>
+
 EOT;
-	$tl = list_teams($d);
-	foreach ($tl as $t) {
-		$t->get_scores($pars);
-	}
-	usort($tl, 'score_compare');
+	
 	$maxrank = $tl[0]->Sortrank;
 	$minrank = $tl[count($tl)-1]->Sortrank;
 	// This avoids showing prom/releg if they're all the same as with nothing played.
@@ -72,6 +87,13 @@ EOT;
 		print <<<EOT
 <tr>
 <td>$n</td>
+
+EOT;
+		foreach ($tl as $ot) {
+			$reca = $t->record_against($ot);
+			print "<td>{$reca->display()}</td>\n";
+		}
+		print <<<EOT
 <td align="right">{$t->Played}</td>
 <td align="right">{$t->Won}</td>
 <td align="right">{$t->Drawn}</td>
@@ -82,9 +104,9 @@ EOT;
 
 EOT;
 	}
+	print "</table>\n";
 }
 ?>
-</table>
 </div>
 <p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost, Games <b>F</b>or and Games <b>A</b>gainst.
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.

@@ -249,6 +249,30 @@ class Team  {
 		}
 		return $result;			
 	}
+	
+	private function getcount($q) {
+		$ret = mysql_query("select count(*) from lgmatch where $q");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return  0;
+		$row = mysql_fetch_array($ret);
+		return $row[0];
+	}
+	
+	public function record_against($opp) {
+		$res = new itrecord();
+		if ($this->is_same($opp))
+			$res->Isself = true;
+		else  {
+			$tth = $this->queryof('hteam');
+			$tta = $this->queryof('ateam');
+			$toh = $opp->queryof('hteam');
+			$toa = $opp->queryof('ateam');
+			$res->Won = $this->getcount("(result='H' and $tth and $toa) or (result='A' and $tta and $toh)");
+			$res->Drawn = $this->getcount("result='D' and (($tth and $toa) or ($tta and $toh))");
+			$res->Lost = $this->getcount("(result='A' and $tth and $toa) or (result='H' and $tta and $toh)");
+		}
+		return $res;
+	}
 }
 
 function list_teams($div = 0, $order = "name", $pl = 1) {
