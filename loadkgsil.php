@@ -41,6 +41,9 @@ include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/matchdate.php';
+include 'php/game.php';
+include 'php/kgsfetchsgf.php';
+include 'php/news.php';
 
 $player = new Player();
 try {
@@ -144,81 +147,15 @@ else  {
 	elseif ($myres == 'L')
 		$result = 'B';
 }
-$rtype = $myrt;
-if (preg_match('/\d+/', $rtype))
-	$rtype .= '.5';
-if ($result != 'J')
-	$rtype = "$result+$rtype";
-else
-	$rtype = "Jigo";
 
-$g->Result = $result;
-$g->Resultdet = $rtype;
-
-// OK do the KGS business
-
-$prog = $_SERVER["DOCUMENT_ROOT"] . '/league/kgsfetchsgf.pl';
-$sgfdata = "";
-$fh = popen("$prog $wkgs $bkgs {$dat->queryof()} $rtype", "r");
-if ($fh)  {
-	while ($part = fread($fh, 200))
-		$sgfdata .= $part;
-	$code = pclose($fh);
-	if ($code != 0 || strlen($sgfdata) == 0)  {
-		switch ($code) {
-		default:
-			$msg = "I cannot tell why code was $code (prog $prog)";
-			break;
-		case 10:
-			$msg = "Could not find games on {$date_played->display()}";
-			break;
-		case 11:
-			$msg = "Confused by which game was meant";
-			break;
-		case 12:
-			$msg = "Found some games but they did not match result";
-			break;
-		case 13:
-			$msg = "Unable to fetch game";
-			break;
-		}
-		$Title - "Could not find game";
-		print "<html>\n";
-		include 'php/head.php';
-		print <<<EOT
-<body>
-<h1>Game result add failed</h1>
-<p>I could not find the game result because: $msg.</p>
-<p>In order to avoid problems I have not updated anything.</p>
-</body>		
-</html>
-EOT;
-		exit(0);
-	}
-}
-$g->Sgf = $sgfdata;
+$g->setup_restype($result, $myrt);
 try {
-	$g->create_game();
+	$g->Sgf = kgsfetchsgf($g);
+	$msg = "";
 }
-catch (GameException $e) {
+catch  (GameException $e)  {
 	$msg = htmlspecialchars($e->getMessage());
-	print <<<EOT
-<html>
-<head>
-<title>Create game failed</title>
-<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
-</head>
-<body class="il">
-<h1>Create game failed</h1>
-<p>Sorry but I was unable to create the game.</p>
-<p>Problem was $msg.</p>
-</body>
-</html>
-
-EOT;
-	exit(0);
 }
-
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -239,6 +176,14 @@ print <<<EOT
 </p>
 
 EOT;
+if (strlen($msg) != 0)  {
+	print <<<EOT
+<p>However the game SGF could not be added because of
+$msg.</p>
+
+EOT;
+}
+
 $n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}"); 
 $n->addnews();	
 ?>

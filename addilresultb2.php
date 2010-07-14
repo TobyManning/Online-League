@@ -76,10 +76,6 @@ $dat->frompost();
 
 $mycolour = $_POST["colour"];
 $myresult = $_POST["result"];
-if ($mycolour == 'B')
-	$result = $myresult == 'W'? 'B': 'W';
-else
-	$result = $myresult == 'W'? 'W': 'B';
 $rtype = $_POST["resulttype"];
 $sgfdata = "";
 $fn = $_FILES["sgffile"];
@@ -87,22 +83,32 @@ if ($fn['error'] == UPLOAD_ERR_OK  &&  preg_match('/.*\.sgf$/i', $fn['name']) &&
 	$sgfdata = file_get_contents($fn['tmp_name']);
 
 $g = new Game(0, 0, $player->ILdiv, 'I');
+$result = $myresult;
 if  ($mycolour == 'B')  {
+	switch  ($myresult)  {
+	case 'W':
+		$result = 'B';
+		break;
+	case 'L':
+		$result = 'W';
+		break;
+	}
 	$g->Bplayer = $player;
 	$g->Wplayer = $opp;
 }
 else  {
+	switch  ($myresult)  {
+	case 'W':
+		$result = 'W';
+		break;
+	case 'L':
+		$result = 'B';
+		break;
+	}
 	$g->Wplayer = $player;
 	$g->Bplayer = $opp;
 }
-if (preg_match('/\d+/', $rtype))
-	$rtype .= '.5';
-if ($result != 'J')
-	$rtype = "$result+$rtype";
-else
-	$rtype = "Jigo";
-$g->Result = $result;
-$g->Resultdet = $rtype;
+$g->setup_restype($result, $rtype);
 if (strlen($sgfdata) != 0)
 	$g->Sgf = $sgfdata;
 $g->Date = $dat;

@@ -29,72 +29,41 @@ include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
+include 'php/kgsfetchsgf.php';
 include 'php/news.php';
 
 $g = new Game();
 try  {
 	$g->fromget();
 	$g->fetchdets();
+	if ($g->Result != 'N')
+		throw new GameException("Game has already been entered");
 }
 catch (GameException $e) {
 	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);	
 }
+
 $date_played = new Matchdate();
 $date_played->fromget();
-$result = $_GET["r"];
-$resulttype = $_GET["rt"];
-$sgfdata = "";
 
-$res = $result . '+' . $resulttype;
-if (preg_match('/\d+/', $resulttype))
-	$res .= '.5';
+//  Change date and set result
 
-$prog = $_SERVER["DOCUMENT_ROOT"] . '/league/kgsfetchsgf.pl';
-
-$fh = popen("$prog {$g->Wplayer->KGS} {$g->Bplayer->KGS} {$date_played->queryof()} $res", "r");
-if ($fh)  {
-	while ($part = fread($fh, 200))
-		$sgfdata .= $part;
-	$code = pclose($fh);
-	if ($code != 0 || strlen($sgfdata) == 0)  {
-		switch ($code) {
-		default:
-			$msg = "I cannot tell why code was $code (prog $prog)";
-			break;
-		case 10:
-			$msg = "Could not find games on {$date_played->display()}";
-			break;
-		case 11:
-			$msg = "Confused by which game was meant";
-			break;
-		case 12:
-			$msg = "Found some games but they did not match result";
-			break;
-		case 13:
-			$msg = "Unable to fetch game";
-			break;
-		}
-		$Title - "Could not find game";
-		print "<html>\n";
-		include 'php/head.php';
-		print <<<EOT
-<body>
-<h1>Game result add failed</h1>
-<p>I could not find the game result because: $msg.</p>
-<p>In order to avoid problems I have not updated anything.</p>
-<p><a href="javascript:history.back()">Click here</a> to go back.</p>
-</body>		
-</html>
-EOT;
-		exit(0);
-	}
-}
 if ($date_played->unequal($g->Date))
 	$g->reset_date($date_played);
-$mtch = $g->set_result($result, $resulttype);
-$g->set_sgf($sgfdata);
+
+$mtch = $g->set_result($_GET["r"], $_GET["rt"]);
+
+//  Try to load KGS file
+
+try  {
+	$g->set_sgf(kgsfetchsgf($g));
+	$msg = "";
+}
+catch  (GameException $e)  {
+	$msg = htmlspecialchars($e->getMessage());
+}
 ?>
 <html>
 <?php
@@ -112,9 +81,18 @@ print <<<EOT
 {$g->Wteam->display_name()} as White and
 <b>{$g->Bplayer->display_name()}</b>
 ({$g->Bplayer->display_rank()}) of
-{$g->Bteam->display_name()} as Black was {$g->display_result()}.
+{$g->Bteam->display_name()} as Black on
+{$g->date_played()} was {$g->display_result()}.
 </p>
+
 EOT;
+if (strlen($msg) != 0)  {
+	print <<<EOT
+<p>However the game SGF could not be added because of
+$msg.</p>
+
+EOT;
+}
 if ($mtch->Result == 'P')  {
 	print <<<EOT
 <p>The match has not been completed yet.

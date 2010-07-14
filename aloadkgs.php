@@ -27,6 +27,8 @@ include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
+include 'php/kgsfetchsgf.php';
+
 $g = new Game();
 try  {
 	$g->fromget();
@@ -38,47 +40,11 @@ catch (GameException $e) {
 	exit(0);	
 }
 
-$sgfdata = "";
-
-if ($g->Result == 'N') {
-	$msg = "Game is not played yet";
+try  {
+	$g->set_sgf(kgsfetchsgf($g));
 }
-elseif (strlen($g->Wplayer->KGS) == 0 || strlen($g->Bplayer->KGS) == 0) {
-	$msg = "Cannot download game as both players need to have KGS names";
-}
-else {
-	$prog = $_SERVER["DOCUMENT_ROOT"] . '/league/kgsfetchsgf.pl';
-	$fh = popen("$prog {$g->Wplayer->KGS} {$g->Bplayer->KGS} {$g->Date->queryof()} {$g->Resultdet}", "r");
-	if ($fh)  {
-		while ($part = fread($fh, 200))
-			$sgfdata .= $part;
-		$code = pclose($fh);
-		if ($code != 0 || strlen($sgfdata) == 0)  {
-			switch ($code) {
-			default:
-				$msg = "I cannot tell why code was $code (prog $prog)";
-				break;
-			case 10:
-				$msg = "Could not find games on {$g->Date->display()}";
-				break;
-			case 11:
-				$msg = "Confused by which game was meant";
-				break;
-			case 12:
-				$msg = "Found some games but they did not match result";
-				break;
-			case 13:
-				$msg = "Unable to fetch game";
-				break;
-			}
-		}
-	}
-	else  {
-		$msg = "Could not start loader";
-	}
-}
-
-if (strlen($sgfdata) == 0)  {
+catch (GameException $e)  {
+	$msg = htmlspecialchars($e->getMessage());
 	$Title - "Could not find game";
 	print "<html>\n";
 	include 'php/head.php';
@@ -92,7 +58,6 @@ if (strlen($sgfdata) == 0)  {
 EOT;
 	exit(0);
 }
-$g->set_sgf($sgfdata);
 ?>
 <html>
 <?php
@@ -110,7 +75,8 @@ print <<<EOT
 {$g->Wteam->display_name()} as White and
 <b>{$g->Bplayer->display_name()}</b>
 ({$g->Bplayer->display_rank()}) of
-{$g->Bteam->display_name()} as Black.
+{$g->Bteam->display_name()} as Black
+on {$g->date_played()}.
 </p>
 EOT;
 ?>

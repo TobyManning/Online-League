@@ -308,7 +308,9 @@ class Game {
 		}
 	}
 	
-	public function set_result($res, $restype) {
+	//  Setup Resultdet as W+whatever or B+whatever or Jigo
+
+	public function setup_restype($res, $restype) {
 		if (preg_match('/\d+/', $restype))
 			$restype .= '.5';
 		if ($res != 'J')
@@ -316,10 +318,20 @@ class Game {
 		else
 			$restype = "Jigo";
 		$this->Resultdet = $restype;
+		$this->Result = $res;
+	}
+	
+	//  This is for recording a result and adjusting the match details
+	//  Only valid for team league.
+	
+	public function set_result($res, $restype) {
 		$mtch = new Match($this->Matchind);
 		$mtch->fetchdets();
+		// Undo whatever we had before (to cope with corrections
 		$this->adj_match($mtch, -1);
-		$this->Result = $res;
+		// Now set the new values
+		$this->setup_restype($res, $restype);
+		// Update match accordingly
 		$this->adj_match($mtch, 1);
 		$mtch->updscore();
 		$qres = mysql_real_escape_string($res);
