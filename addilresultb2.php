@@ -106,7 +106,7 @@ $g->Resultdet = $rtype;
 if (strlen($sgfdata) != 0)
 	$g->Sgf = $sgfdata;
 $g->Date = $dat;
-// $g->create_game();
+$g->create_game();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -127,10 +127,9 @@ print <<<EOT
 </p>
 
 EOT;
-$n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}", false); 
-// $n->addnews();	
+$n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}"); 
+$n->addnews();	
 ?>
-<p>This is still a testing version and hasn't really done anything.
-</p>
+<p>Click <a href="ileague.php" target="_top">here</a> to see the league status now.</p>
 </body>
 </html>

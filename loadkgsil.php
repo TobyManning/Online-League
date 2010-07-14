@@ -45,8 +45,11 @@ include 'php/matchdate.php';
 $player = new Player();
 try {
 	$player->fromid($userid);
+	if (strlen($player->KGS) == 0)
+		throw new PlayerException("You have no KGS name");
 }
 catch (PlayerException $e) {
+	$msg = htmlspecialchars($e->getMessage());
 	print <<<EOT
 <html>
 <head>
@@ -55,6 +58,7 @@ catch (PlayerException $e) {
 <body>
 <h1>Unknown player</h1>
 <p>Sorry, but player name $userid is not known.</p>
+<p>Problem was $msg.</p>
 </body>
 </html>
 
@@ -86,8 +90,12 @@ EOT;
 $opp = new Player();
 try {
 	$opp->fromsel($_GET["opp"]);
+	$opp->fetchdets();
+	if (strlen($opp->KGS) == 0)
+		throw new PlayerException("Opponent has no KGS name");
 }
 catch (PlayerException $e) {
+	$msg = htmlspecialchars($e->getMessage());
 	print <<<EOT
 <html>
 <head>
@@ -96,7 +104,8 @@ catch (PlayerException $e) {
 </head>
 <body class="il">
 <h1>No opponent</h1>
-<p>Sorry but I couldn't work out who your opponent was.</p>
+<p>Sorry but I failed to work out who your opponent was.</p>
+<p>Problem was $msg.</p>
 </body>
 </html>
 
@@ -110,6 +119,106 @@ $dat->fromget();
 $myres = $_GET["r"];
 $myrt = $_GET["rt"];
 
+$g = new Game(0, 0, $player->ILdiv, 'I');
+$g->Date = $dat;
+
+$result = $myres;
+
+if ($mycolour == 'B')  {
+	$g->Wplayer = $opp;
+	$g->Bplayer = $player;
+	$wkgs = $opp->KGS;
+	$bkgs = $player->KGS;
+	if ($myres == 'W')
+		$result = 'B';
+	elseif ($myres == 'L')
+		$result = 'W';
+}
+else  {
+	$g->Wplayer = $player;
+	$g->Bplayer = $opp;
+	$bkgs = $opp->KGS;
+	$wkgs = $player->KGS;
+	if ($myres == 'W')
+		$result = 'W';
+	elseif ($myres == 'L')
+		$result = 'B';
+}
+$rtype = $myrt;
+if (preg_match('/\d+/', $rtype))
+	$rtype .= '.5';
+if ($result != 'J')
+	$rtype = "$result+$rtype";
+else
+	$rtype = "Jigo";
+
+$g->Result = $result;
+$g->Resultdet = $rtype;
+
+// OK do the KGS business
+
+$prog = $_SERVER["DOCUMENT_ROOT"] . '/league/kgsfetchsgf.pl';
+$sgfdata = "";
+$fh = popen("$prog $wkgs $bkgs {$dat->queryof()} $rtype", "r");
+if ($fh)  {
+	while ($part = fread($fh, 200))
+		$sgfdata .= $part;
+	$code = pclose($fh);
+	if ($code != 0 || strlen($sgfdata) == 0)  {
+		switch ($code) {
+		default:
+			$msg = "I cannot tell why code was $code (prog $prog)";
+			break;
+		case 10:
+			$msg = "Could not find games on {$date_played->display()}";
+			break;
+		case 11:
+			$msg = "Confused by which game was meant";
+			break;
+		case 12:
+			$msg = "Found some games but they did not match result";
+			break;
+		case 13:
+			$msg = "Unable to fetch game";
+			break;
+		}
+		$Title - "Could not find game";
+		print "<html>\n";
+		include 'php/head.php';
+		print <<<EOT
+<body>
+<h1>Game result add failed</h1>
+<p>I could not find the game result because: $msg.</p>
+<p>In order to avoid problems I have not updated anything.</p>
+</body>		
+</html>
+EOT;
+		exit(0);
+	}
+}
+$g->Sgf = $sgfdata;
+try {
+	$g->create_game();
+}
+catch (GameException $e) {
+	$msg = htmlspecialchars($e->getMessage());
+	print <<<EOT
+<html>
+<head>
+<title>Create game failed</title>
+<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
+</head>
+<body class="il">
+<h1>Create game failed</h1>
+<p>Sorry but I was unable to create the game.</p>
+<p>Problem was $msg.</p>
+</body>
+</html>
+
+EOT;
+	exit(0);
+}
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -118,17 +227,21 @@ $Title = "Add Game Result";
 include 'php/head.php';
 ?>
 <body class="il">
+<h1>Add Game Result</h1>
+<p>
+Finished adding result with game record for Game between
 <?php
 print <<<EOT
-<h1>Result recording</h1>
-<p>
-Got result of {$player->display_name()} ($mycolour) versus {$opp->display_name()} as
-$myres and $myrt.
+<b>{$g->Wplayer->display_name()}</b>
+({$g->Wplayer->display_rank()}) as White and
+<b>{$g->Bplayer->display_name()}</b>
+({$g->Bplayer->display_rank()}) as Black was {$g->display_result()}.
 </p>
 
 EOT;
+$n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}"); 
+$n->addnews();	
 ?>
-<p>This is still a testing version and hasn't really done anything.
-</p>
+<p>Click <a href="ileague.php" target="_top">here</a> to see the league status now.</p>
 </body>
 </html>
