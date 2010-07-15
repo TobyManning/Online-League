@@ -16,6 +16,7 @@
 
 // Complete "team captain" version of team allocation
 
+ini_set("session.gc_maxlifetime", "18000");
 session_start();
 
 if (!isset($_SESSION['user_id']) || strlen($_SESSION['user_id']) == 0) {

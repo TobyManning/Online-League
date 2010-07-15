@@ -1,17 +1,15 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/seasleague.php
+files: /home/jmc/src/Websites/goleague/php/season.php
+files: /home/jmc/src/Websites/goleague/php/histteam.php
+files: /home/jmc/src/Websites/goleague/php/match.php
+files: /home/jmc/src/Websites/goleague/php/itrecord.php
+files: /home/jmc/src/Websites/goleague/leagueb.php
+files: /home/jmc/src/Websites/goleague/php/team.php
 files: /home/jmc/src/Websites/goleague/php/game.php
-files: /home/jmc/src/Websites/goleague/aloadkgs.php
-files: /home/jmc/src/Websites/goleague/php/kgsfetchsgf.php
-files: /home/jmc/src/Websites/goleague/loadkgs.php
-files: /home/jmc/src/Websites/goleague/php/news.php
-files: /home/jmc/src/Websites/goleague/addilresultb2.php
-files: /home/jmc/src/Websites/goleague/addresult2.php
-files: /home/jmc/src/Websites/goleague/loadkgsil.php
 files: /home/jmc/src/Websites/goleague/addresult.php
 files: /home/jmc/src/Websites/goleague/php/player.php
-files: /home/jmc/src/Websites/goleague/addilresultb.php
 files: /home/jmc/src/Websites/goleague/ileagueb.php
-files: /home/jmc/src/Websites/goleague/ileague.php
 basedir: 
 webdir: 
 template: 
@@ -24,8 +22,8 @@ searchlist: wrong
 searchlist: opener
 searchlist: real_esc
 searchlist: .
-searchlist: same
 searchlist: division
+searchlist: same
 replacelist: strtoupper
 replacelist: $tm
 replacelist: team
@@ -52,23 +50,23 @@ urllist: <?php echo $SCRIPT_NAME ?>
 urllist: teamdisp.php?{$team
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:2956:</li>:6380:
-recent_files: /home/jmc/src/Websites/goleague/php/game.php
-recent_files: /home/jmc/src/Websites/goleague/php/matchdate.php
-recent_files: /home/jmc/src/Websites/goleague/aloadkgs.php
-recent_files: /home/jmc/src/Websites/goleague/linkframe.php
-recent_files: /home/jmc/src/Websites/goleague/loadkgs.php
-recent_files: /home/jmc/src/Websites/goleague/php/news.php
-recent_files: /home/jmc/src/Websites/goleague/addilresultb2.php
-recent_files: /home/jmc/src/Websites/goleague/addresult2.php
-recent_files: /home/jmc/src/Websites/goleague/loadkgsil.php
-recent_files: /home/jmc/src/Websites/goleague/addresult.php
-recent_files: /home/jmc/src/Websites/goleague/php/player.php
-recent_files: /home/jmc/src/Websites/goleague/addilresultb.php
-recent_files: /home/jmc/src/Websites/goleague/ileagueb.php
+recent_files: /home/jmc/src/Websites/goleague/seasleague.php
+recent_files: /home/jmc/src/Websites/goleague/php/season.php
+recent_files: /home/jmc/src/Websites/goleague/php/histteam.php
 recent_files: /home/jmc/src/Websites/goleague/ileague.php
-recent_files: /home/jmc/src/Websites/goleague/tcupdmatch.php
-opendir: /home/jmc/src/Websites/goleague/php
-savedir: /home/jmc/src/Websites/goleague
+recent_files: /home/jmc/src/Websites/goleague/addilresultb.php
+recent_files: /home/jmc/src/Websites/goleague/loadkgsil.php
+recent_files: /home/jmc/src/Websites/goleague/addresult2.php
+recent_files: /home/jmc/src/Websites/goleague/addilresultb2.php
+recent_files: /home/jmc/src/Websites/goleague/php/news.php
+recent_files: /home/jmc/src/Websites/goleague/aloadkgs.php
+recent_files: /home/jmc/src/Websites/goleague/php/kgsfetchsgf.php
+recent_files: /home/jmc/src/Websites/goleague/loadkgs.php
+recent_files: /home/jmc/src/Websites/goleague/php/match.php
+recent_files: /home/jmc/src/Websites/goleague/leagueb.php
+recent_files: /home/jmc/src/Websites/goleague/php/team.php
+opendir: /home/jmc/src/Websites/goleague
+savedir: /home/jmc/src/Websites/goleague/php
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1
