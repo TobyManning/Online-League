@@ -224,6 +224,15 @@ class Player  {
 				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\">$ret</a>";
 		return $ret;
 	}
+	
+	// Display initials
+	
+	public function display_initials($displink = false) {
+		$ret = substr($this->First, 0, 1) . substr($this->Last, 0, 1);
+		if ($displink)
+				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\">$ret</a>";
+		return $ret;		
+	}
 
 	// Display rank in standard format
 		
@@ -550,7 +559,31 @@ class Player  {
 			return 0;
 		$row = mysql_fetch_array($ret);
 		return $row[0];	
-	}		 	
+	}
+
+	private function getcount($seasind, $q) {
+		$ret = mysql_query("select count(*) from game where seasind=$seasind and $q");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return  0;
+		$row = mysql_fetch_array($ret);
+		return $row[0];
+	}
+	
+	public function record_against($opp, $seasind = 0) {
+		$res = new itrecord();
+		if ($this->is_same($opp))
+			$res->Isself = true;
+		else  {
+			$tpb = $this->queryof('b');
+			$tpw = $this->queryof('w');
+			$opb = $opp->queryof('b');
+			$opw = $opp->queryof('w');
+			$res->Won = $this->getcount($seasind, "((result='B' and $tpb and $opw) or (result='W' and $tpw and $opb))");
+			$res->Drawn = $this->getcount($seasind, "result='J' and (($tpb and $opw) or ($tpw and $opb))");
+			$res->Lost = $this->getcount($seasind, "((result='W' and $tpb and $opw) or (result='B' and $tpw and $opb))");
+		}
+		return $res;
+	}
 }
 
 // List all players in specified order
