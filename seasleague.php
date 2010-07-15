@@ -24,6 +24,7 @@ include 'php/histteam.php';
 include 'php/histmatch.php';
 include 'php/matchdate.php';
 include 'php/params.php';
+include 'php/itrecord.php';
 
 try {
 	$seas = new Season();
@@ -55,9 +56,33 @@ This is the final league table for
 EOT;
 ?>
 <div align="center">
+<?php
+$pars = new Params();
+$pars->fetchvalues();
+$ml = hist_max_division($seas);
+for ($d = 1; $d <= $ml; $d++) {
+	$tl = hist_list_teams($seas, $d);
+	$cn = 7 + count($tl);
+	print <<<EOT
 <table class="league">
 <tr>
+<th colspan="$cn" align="center">Division $d</th>
+</tr>
+<tr>
 <th>Team</th>
+
+EOT;
+	foreach ($tl as $t) {
+		$t->get_scores($pars);
+	}
+	usort($tl, 'hist_score_compare');
+		// Insert column header
+	
+	foreach ($tl as $t)  {
+		$hd = substr($t->Name, 0, 3);
+		print "<th>$hd</th>\n";
+	}
+	print <<<EOT
 <th>P</th>
 <th>W</th>
 <th>D</th>
@@ -65,21 +90,8 @@ EOT;
 <th>F</th>
 <th>A</th>
 </tr>
-<?php
-$pars = new Params();
-$pars->fetchvalues();
-$ml = hist_max_division($seas);
-for ($d = 1; $d <= $ml; $d++) {
-	print <<<EOT
-<tr>
-<th colspan="7" align="center">Division $d</th>
-</tr>
+
 EOT;
-	$tl = hist_list_teams($seas, $d);
-	foreach ($tl as $t) {
-		$t->get_scores($pars);
-	}
-	usort($tl, 'hist_score_compare');
 	$maxrank = $tl[0]->Sortrank;
 	$minrank = $tl[count($tl)-1]->Sortrank;
 	// This avoids showing prom/releg if they're all the same as with nothing played.
@@ -95,6 +107,13 @@ EOT;
 		print <<<EOT
 <tr>
 <td>$n</td>
+
+EOT;
+		foreach ($tl as $ot) {
+			$reca = $t->record_against($ot);
+			print "<td>{$reca->display()}</td>\n";
+		}
+		print <<<EOT
 <td align="right">{$t->Played}</td>
 <td align="right">{$t->Won}</td>
 <td align="right">{$t->Drawn}</td>
@@ -105,9 +124,11 @@ EOT;
 
 EOT;
 	}
+	print "</table>\n";
+	if ($d != $ml)
+		print "<br><br><br>\n";
 }
 ?>
-</table>
 </div>
 <p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost, Games <b>F</b>or and Games <b>A</b>gainst.
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
