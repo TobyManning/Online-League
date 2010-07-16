@@ -335,7 +335,7 @@ class Game {
 		$this->adj_match($mtch, 1);
 		$mtch->updscore();
 		$qres = mysql_real_escape_string($res);
-		$qrest = mysql_real_escape_string($restype);
+		$qrest = mysql_real_escape_string($this->Resultdet);
 		mysql_query("update game set result='$qres',reshow='$qrest' where {$this->queryof()}");
 		return $mtch;	// For benefit of news		
 	}
