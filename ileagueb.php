@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2010 John Collins
 
@@ -15,6 +14,17 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+ini_set("session.gc_maxlifetime", "18000");
+session_start();
+
+if (!isset($_SESSION['user_id']) || strlen($_SESSION['user_id']) == 0) {
+	include 'php/horses.php';
+	exit(0);
+}
+$userid = $_SESSION['user_id'];
+$username = $_SESSION['user_name'];
+$logged_in = strlen($username) != 0;
+
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -22,7 +32,21 @@ include 'php/player.php';
 include 'php/matchdate.php';
 include 'php/params.php';
 include 'php/itrecord.php';
+
+$mention = $logged_in;
+if ($logged_in)  {
+	try {
+		$player = new Player();
+		$player->fromid($userid);
+		if ($player->ILdiv != 0)
+			$mention = false;
+	}
+	catch (PlayerException $e) {
+		$mention = false;
+	}
+}
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Individual League Standings";
@@ -112,6 +136,22 @@ EOT;
 <p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost.
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
 </p>
+<?php
+if ($mention)
+	print <<<EOT
+<h2>Joining the Individual League</h2>
+<p>Just select Update Account from <a href="ownupd.php" target="_top">here</a>
+or the left menu and check the box to join the individual league.
+</p>
+<p>You will (at this stage) be put into the division with players nearest your ranking,
+so please make sure that your ranking is correct first.
+</p>
+<p>There is no obligation to play a lot of games so please play as many or as few as you like,
+but please try to vary who you play with as much as you can.
+</p>
+
+EOT;
+?>
 <!-- <h2>Previous Seasons</h2>
 <p><a href="prevleagueb.php">Click here</a> to view previous seasons' league.</p> -->
 </body>
