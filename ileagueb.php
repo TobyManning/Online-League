@@ -17,13 +17,13 @@
 ini_set("session.gc_maxlifetime", "18000");
 session_start();
 
-if (!isset($_SESSION['user_id']) || strlen($_SESSION['user_id']) == 0) {
-	include 'php/horses.php';
-	exit(0);
+if (isset($_SESSION['user_id'])) {
+	$userid = $_SESSION['user_id'];
+	$username = $_SESSION['user_name'];
+	$logged_in = strlen($username) != 0;
 }
-$userid = $_SESSION['user_id'];
-$username = $_SESSION['user_name'];
-$logged_in = strlen($username) != 0;
+else
+	$logged_in = false;
 
 include 'php/opendatabase.php';
 include 'php/club.php';
