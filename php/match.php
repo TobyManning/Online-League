@@ -178,11 +178,24 @@ class Match {
 		return count($this->Games);
 	}
 	
+	// Indicate if both teams are allocated
+	
 	public function is_allocated() {
 		if ($this->ngames() < 3)
 			return false;
 		foreach ($this->Games as $game)
 			if (!$game->is_allocated())
+				return false;
+		return true;
+	}
+	
+	// Indicate if given team is allocated
+	
+	public function team_allocated($t) {
+		if ($this->ngames() < 3)
+			return false;
+		foreach ($this->Games as $game)
+			if (!$game->team_allocated($t))
 				return false;
 		return true;
 	}

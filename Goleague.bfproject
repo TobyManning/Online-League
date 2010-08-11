@@ -1,4 +1,5 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/php/horses.php
 files: /home/jmc/src/Websites/goleague/php/player.php
 files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
 files: /home/jmc/src/Websites/goleague/ileagueb.php
@@ -44,6 +45,7 @@ urllist: playgames.php
 urllist: <?php echo $SCRIPT_NAME ?>
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3297:>Promote {$promo[$nd:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/playingb.php:2956:</li>:6380:
+recent_files: /home/jmc/src/Websites/goleague/php/horses.php
 recent_files: /home/jmc/src/Websites/goleague/php/player.php
 recent_files: /home/jmc/src/Websites/goleague/tcupdmatch2.php
 recent_files: /home/jmc/src/Websites/goleague/ileagueb.php
@@ -58,9 +60,8 @@ recent_files: /home/jmc/src/Websites/goleague/updmembs.php
 recent_files: /home/jmc/src/Websites/goleague/updmatch2.php
 recent_files: /home/jmc/src/Websites/goleague/updmatch.php
 recent_files: /home/jmc/src/Websites/goleague/updindteam2.php
-recent_files: /home/jmc/src/Websites/goleague/updindteam.php
 opendir: /home/jmc/src/Websites/goleague/php
-savedir: /home/jmc/src/Websites/goleague
+savedir: /home/jmc/src/Websites/goleague/php
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1

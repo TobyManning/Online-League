@@ -238,8 +238,17 @@ class Game {
 			throw new GameException(mysql_error()); 
 	}
 	
+	// Indicate if both teams are allocated
+	
 	public function is_allocated() {
 		return $this->Wteam && $this->Bteam;
+	}
+
+	// Indicate if specified team is allocated
+		
+	public function team_allocated($t) {
+		return ($this->Wteam && $this->Wteam->is_same($t)) ||
+				 ($this->Bteam && $this->Bteam->is_same($t));
 	}
 	
 	private function has_sgf() {

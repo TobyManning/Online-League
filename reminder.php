@@ -34,16 +34,22 @@ class tcrems {
 
 	public $Capt;			// The poor sucker
 	public $Unalloc;		// Unallocated matches
+	public $Oppunalloc;	// Opponents unallocated
 	public $Noemail;		// No emails to players
 	
 	public function __construct($c) {
 		$this->Capt = $c;
 		$this->Unalloc = array();
+		$this->Oppunalloc = array();
 		$this->Noemail = array();
 	}
 	
-	public function addmatch($m) {
+	public function adduamatch($m) {
 		array_push($this->Unalloc, $m);
+	}
+	
+	public function addoppuamatch($m) {
+		array_push($this->Oppunalloc, $m);
 	}
 
 	public function addgame($p) {
@@ -175,8 +181,14 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 			}
 		}
 		else {
-			gettcrem($hc)->addmatch($mtch);
-			gettcrem($ac)->addmatch($mtch);
+			if ($mtch->team_allocated($ht))
+				gettcrem($hc)->addoppuamatch($mtch);
+			else
+				gettcrem($hc)->adduamatch($mtch);
+			if ($mtch->team_allocated($at))
+				gettcrem($ac)->addoppuamatch($mtch);
+			else
+				gettcrem($ac)->adduamatch($mtch);
 		}
 	}
 }
@@ -197,13 +209,33 @@ EOT;
 	if (count($capt->Unalloc) != 0)  {
 		$mess = <<<EOT
 
-Please can you complete the allocation of teams to the following matches and/or chase
-the opposing team captain to do so.
+Please can you complete the allocation of teams to the following matches.
 
 
 EOT;
 		fwrite($fh, $mess);
 		foreach ($capt->Unalloc as $m) {
+			$oth = $capt->othercapt($m);
+			$mess = <<<EOT
+Date: {$m->Date->display_month()}
+Between: {$m->Hteam->display_name()} -v- {$m->Ateam->display_name()}
+Other team captain: ({$oth->display_name(false)} {$oth->Email} {$oth->Phone})
+
+
+EOT;
+			fwrite($fh, $mess);
+		}
+	}
+	if (count($capt->Oppunalloc) != 0)  {
+		$mess = <<<EOT
+
+Please can you chase the opposing team captain to complete his/her allocation
+of teams to the following matches.
+
+
+EOT;
+		fwrite($fh, $mess);
+		foreach ($capt->Oppunalloc as $m) {
 			$oth = $capt->othercapt($m);
 			$mess = <<<EOT
 Date: {$m->Date->display_month()}
