@@ -14,16 +14,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-$userid = $_SESSION['user_id'];
-if (strlen($userid) == 0)  {
-	include 'php/timeout.php';
-	exit(0);
-}
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<?php
+include 'php/session.php';
+include 'php/checklogged.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -57,6 +49,7 @@ $mtch = $g->set_result($_POST["result"], $_POST["resulttype"]);
 if (strlen($sgfdata) != 0)
 	$g->set_sgf($sgfdata);
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Game Result Added";

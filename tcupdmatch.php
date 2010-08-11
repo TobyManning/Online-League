@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -19,6 +18,8 @@
 // their own team members in ignorance of what the other team are doing
 // Also they can't change it once the other side have allocated their team.
 
+include 'php/session.php';
+include 'php/checklogged.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -46,6 +47,7 @@ catch (MatchException $e) {
 	exit(0);	
 }
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Edit Match";

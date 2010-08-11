@@ -14,12 +14,9 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-$username = $_SESSION['user_name'];
-$userpriv = $_SESSION['user_priv'];
-$logged_in = strlen($username) != 0;
-if (!$logged_in || ($userpriv != 'A' && $userpriv != 'SA')) {
+include 'php/session.php';
+include 'php/checklogged.php';
+if (!$admin) {
 	$mess = "You have to be logged in as an admin to see this page";
 	include 'php/wrongentry.php';
 	exit(0);

@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -15,6 +14,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/session.php';
+include 'php/checklogged.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -99,8 +100,11 @@ else  if  (!$origplayer->ILpaid  &&  !$_POST["stayin"])
 $origplayer->update();
 if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
 	$origplayer->set_passwd($passw);
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
 $Title = "Player details updated OK";
-print "<html>\n";
 include 'php/head.php';
 print <<<EOT
 <body>

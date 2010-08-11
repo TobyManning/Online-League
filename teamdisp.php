@@ -14,14 +14,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-$username = $_SESSION['user_name'];
-$userpriv = $_SESSION['user_priv'];
-$logged_in = strlen($username) != 0;
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<?php
+include 'php/session.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -42,6 +35,7 @@ catch (TeamException $e) {
 	exit(0);
 }
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Team {$team->display_name()}";
@@ -58,7 +52,7 @@ Team captain is {$team->display_captain()}.
 {$team->display_capt_email($logged_in)}
 </p>
 EOT;
-if (($userpriv == 'A' || $userpriv == 'SA') && !$team->Paid)
+if ($admin && !$team->Paid)
 	print <<<EOT
 <p><b>Team has not paid.</b></p>
 EOT;

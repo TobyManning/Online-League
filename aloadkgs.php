@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -18,6 +17,8 @@
 // Version of loadkgs for where we "believe" the existing match date
 // and just want to get the SGF file for an existing game.
 
+include 'php/session.php';
+include 'php/checklogged.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -59,6 +60,7 @@ EOT;
 	exit(0);
 }
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Add Game SGF Complete";

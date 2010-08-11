@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -18,6 +17,8 @@
 // This is for when an admin wants to edit the match details - members of
 // teams selected on each side for a match
 
+include 'php/session.php';
+include 'php/checklogged.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -40,6 +41,7 @@ catch (MatchException $e) {
 	exit(0);	
 }
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Edit Match";

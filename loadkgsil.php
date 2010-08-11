@@ -14,29 +14,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-$userid = $_SESSION['user_id'];
-$username = $_SESSION['user_name'];
-$userpriv = $_SESSION['user_priv'];
-
-if (strlen($username) == 0)  {
-	print <<<EOT
-<html>
-<head>
-<title>Not logged in</title>
-</head>
-<body>
-<h1>Not logged in</h1>
-<p>Sorry but you need to be logged in to enter this page.</p>
-<p>If you were logged in before, do not worry, your session may have timed out.
-Just start again from the menu on the left.</p>
-</body>
-</html>
-
-EOT;
-	exit(0);
-}
+include 'php/session.php';
+include 'php/checklogged.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';

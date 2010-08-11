@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
 //   Copyright 2009 John Collins
 
@@ -15,6 +14,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/session.php';
 include 'php/opendatabase.php';
 include 'php/rank.php';
 include 'php/player.php';
@@ -51,6 +51,7 @@ else {
 	pclose($fh);
 }
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 include 'php/head.php';

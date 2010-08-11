@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2010 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -14,26 +14,21 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-include 'php/session.php';
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<?php
-$Title = "British Go Association League";
-include 'php/head.php';
-?>
-<body class="nomarg">
-<p class="note">
-This website was designed, authored and programmed by
-<a href="http://www.john.collins.name" target="_blank">John Collins</a>.
-</p>
-<?php
-$dat = date("Y");
-print <<<EOT
-<p class="note">Copyright &copy; John Collins 2009-$dat. Licensed under
+ini_set("session.gc_maxlifetime", "604800");
+session_start();
 
-EOT;
+if (isset($_SESSION['user_id'])) {
+	$userid = $_SESSION['user_id'];
+	$username = $_SESSION['user_name'];
+	$userpriv = $_SESSION['user_priv'];
+	$logged_in = strlen($userid) != 0;
+	$admin = $logged_in && ($userpriv == 'A' || $userpriv == 'SA');
+}
+else {
+	$userid = "";
+	$username = "";
+	$userpriv = "N";
+	$admin = false;
+	$logged_in = false;
+}
 ?>
-<a href="http://www.gnu.org/licenses/" target="_top">GPL v3</a>.</p>
-</body>
-</html>

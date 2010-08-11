@@ -14,16 +14,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-if (isset($_SESSION['user_id'])) {
-	$userid = $_SESSION['user_id'];
-	$username = $_SESSION['user_name'];
-	$userpriv = $_SESSION['user_priv'];
-	$login = true;
-}
-else
-	$login = false;
+include 'php/session.php';
 $bc = "nomarg";
 if ($_GET["il"] == 'y')
 	$bc = "ilnomarg";
@@ -75,12 +66,12 @@ print <<<EOT
 <tr><td><a href="${a}league.php" target="_top">League</a></td></tr>
 <tr><td><a href="${a}ileague.php" target="_top" class="il">Individual League</a></td></tr>
 EOT;
-if ($login) {
+if ($logged_in) {
 	print <<<EOT
 <tr><td><a href="${a}addilresult.php" target="_top" class="il">Add IL Result</a></td></tr>
 
 EOT;
-	if ($userpriv == 'A' || $userpriv == 'SA')  {
+	if ($admin)  {
 		print <<<EOT
 <tr><td><a href="${a}admin.php" target="_top" class="memb">Admin menu</a></td></tr>
 EOT;
@@ -109,7 +100,7 @@ EOT;
 EOT;
 }
 print "</table>\n";
-if (!$login)  {
+if (!$logged_in)  {
 	if (isset($_COOKIE['user_id']))
 		$userid = $_COOKIE['user_id'];
 	print <<<EOT

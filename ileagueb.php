@@ -14,17 +14,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-
-if (isset($_SESSION['user_id'])) {
-	$userid = $_SESSION['user_id'];
-	$username = $_SESSION['user_name'];
-	$logged_in = strlen($username) != 0;
-}
-else
-	$logged_in = false;
-
+include 'php/session.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';

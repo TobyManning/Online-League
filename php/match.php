@@ -273,6 +273,9 @@ class Match {
 		print "</select>\n";
 	}
 	
+	// Is given guy a captain for this match
+	// Return N if not H for "Home" A for "away"
+	
 	public function is_captain($name) {
 		try  {
 			$possp = new Player($name);

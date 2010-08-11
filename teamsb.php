@@ -14,20 +14,14 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-$username = $_SESSION['user_name'];
-$userpriv = $_SESSION['user_priv'];
-$logged_in = strlen($username) != 0;
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<?php
+include 'php/session.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Teams";
@@ -48,7 +42,7 @@ include 'php/head.php';
 
 function printteam($team) {
 	// Set these global seems easier
-	global $userpriv, $logged_in;
+	global $admin, $logged_in;
 	print <<<EOT
 <tr>
 	<td><a href="teamdisp.php?{$team->urlof()}">{$team->display_name()}</a></td>
@@ -58,14 +52,14 @@ function printteam($team) {
 	<td>{$team->display_capt_email($logged_in)}</td>
 
 EOT;
-	if ($userpriv == 'A' || $userpriv == 'SA') {
+	if ($admin) {
 		$pd = $team->Paid? 'Yes': 'No';
 		print "<td>$pd</td>\n";
 	}
 	print "</tr>\n";
 }
 
-if ($userpriv == 'A' || $userpriv == 'SA')
+if ($admin)
 	print "<th>Paid</th>\n";
 print "</tr>\n";
 $teamlist = list_teams(0, "divnum,name");

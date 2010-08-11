@@ -14,11 +14,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-$username = $_SESSION['user_name'];
-$userpriv = $_SESSION['user_priv'];
-$admin = strlen($username) != 0 && ($userpriv == 'A' || $userpriv == 'SA');
+include 'php/session.php';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
@@ -96,7 +92,7 @@ EOT;
 			}
 			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";
 		}
-		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->result == 'D')  {
+		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->Result == 'D')  {
 				$h = $mtch->Hscore + 0;
 				$a = $mtch->Ascore + 0;			
 			print "<td>Played ($h-$a)</td>";

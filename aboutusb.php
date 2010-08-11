@@ -1,5 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
 <?php
 //   Copyright 2009 John Collins
 
@@ -16,6 +14,11 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/session.php';
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
 $Title = "About the League";
 include 'php/head.php';
 ?>
@@ -31,7 +34,8 @@ The purpose of the league is to encourage interaction between players in
 different areas of the country and to encourage online play amongst members of the BGA.
 </p>
 <p>The league was originally a just team-based league, but following the success of this
-an individual league will be introduced in addition from October 2010.</p>
+an individual league will be introduced in addition from October 2010. (It is currently
+on test, please contact us if you want to help test it).</p>
 <p>
 The league is played in six-monthly seasons for both the team and individual leagues,
 starting in October and April.

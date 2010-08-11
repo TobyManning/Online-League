@@ -16,18 +16,11 @@
 
 // Complete "team captain" version of team allocation
 
-ini_set("session.gc_maxlifetime", "18000");
-session_start();
-
-if (!isset($_SESSION['user_id']) || strlen($_SESSION['user_id']) == 0) {
+include 'php/session.php';
+if (!$logged_in) {
 	include 'php/horses.php';
 	exit(0);
 }
-$userid = $_SESSION['user_id'];
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
-<?php
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
@@ -178,6 +171,7 @@ else {
 	}	// End of loop over games
 } // End of else for existing games
 ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Title = "Match Allocation Result";
