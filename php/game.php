@@ -52,6 +52,8 @@ class Game {
 			$this->Wteam = new Team('Pairs');
 			$this->Bteam = new Team('Pairs');
 			break;
+		default:
+			$this->Wteam = $this->Bteam = Null;
 		}
 	}
 	
