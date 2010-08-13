@@ -44,6 +44,12 @@ for ($row = 0; $row < $rows; $row++) {
 			print "&nbsp;";
 		else {
 			$pl = $playerlist[$ind];
+			try {
+				$pl->fetchdets();
+			}
+			catch (PlayerException $e) {
+				;
+			}
 			$dname = $pl->display_name(false);
 			$url = $pl->userid_url();
 			if (strlen($url) != 0)
