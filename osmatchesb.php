@@ -26,6 +26,10 @@ include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/params.php';
 
+$asuser = $userid;
+if ($admin  &&  strlen($_GET["asuser"]) != 0)
+	$asuser = $_GET["asuser"];
+
 // Get parameters to include handicap info
 
 $pars = new Params();
@@ -33,7 +37,7 @@ $pars->fetchvalues();
 
 $player = new Player();
 try {
-	$player->fromid($userid);
+	$player->fromid($asuser);
 }
 catch (PlayerException $e) {
 	$mess = $e->getMessage();
