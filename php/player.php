@@ -291,6 +291,12 @@ class Player  {
 			return "-";
 		return htmlspecialchars($this->Userid);
 	}
+	
+	public function userid_url() {
+		if (strlen($this->Userid) == 0)
+			return "";
+		return urlencode($this->Userid);
+	}
 
 	// Get password
 		
