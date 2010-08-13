@@ -115,7 +115,7 @@ EOT;
 		print <<<EOT
 <h2>Matches to have teams allocated</h2>
 <p>Please can you allocate teams to the following matches</p>
-<table class="matchesd">
+<table class="matchesosd">
 <tr>
 <th>Date</th>
 <th>Team A</th>
@@ -154,7 +154,7 @@ EOT;
 <h2>Matches to have teams allocated by opponents</h2>
 <p>I know that you have allocated teams to the following matches, but please
 can you chase your opponents to do so in the following matches</p>
-<table class="matchesd">
+<table class="matchesosd">
 <tr>
 <th>Date</th>
 <th>Team A</th>
@@ -192,7 +192,7 @@ EOT;
 		print <<<EOT
 <h2>Unfinished matches</h2>
 <p>Please can you organise for the following matches to be completed</p>
-<table class="matchesd">
+<table class="matchesosd">
 <tr>
 <th>Date</th>
 <th>Team A</th>

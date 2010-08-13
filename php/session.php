@@ -15,6 +15,9 @@
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ini_set("session.gc_maxlifetime", "604800");
+$phpsessiondir = $_SERVER["DOCUMENT_ROOT"] . "/league/phpsessions";
+if (is_dir($phpsessiondir))
+	session_save_path($phpsessiondir);
 session_set_cookie_params(604800);
 session_start();
 
