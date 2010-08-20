@@ -57,17 +57,18 @@ function loadkgs() {
 	var resty = fm.resulttype;
 	if (resel.selectedIndex < 0 || resty.selectedIndex < 0) {
 		alert("No result selected");
-		return;
+		return false;
 	}
 	var res = resel.options[resel.selectedIndex].value;
 	var restype = resty.options[resty.selectedIndex].value;
 	if (restype == 'N') {
 		alert("Result type not set");
-		return;
+		return false;
 	}
 	document.location = "loadkgs.php?gn=" + game +
 							  "&md=" + year + "-" + month + "-" + day + "&r=" +
 							  res + "&rt=" + restype;
+	return false;
 }
 </script>
 <h1>Add Game Result</h1>
@@ -82,16 +83,6 @@ print <<<EOT
 ({$g->Bplayer->display_rank()}) of
 {$g->Bteam->display_name()} as Black.
 </p>
-EOT;
-if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
-	print <<<EOT
-<p><b>If the game was played on KGS</b> using the online names
-{$g->Wplayer->display_online()} and
-{$g->Bplayer->display_online()}, get the date played and result correct in the form
-below and <a href="javascript:loadkgs();"><b>Click here</b></a>.</p>
-EOT;
-}
-print <<<EOT
 <form name="resform" action="addresult2.php" method="post" enctype="multipart/form-data">
 {$g->save_hidden()}
 <p>
@@ -120,12 +111,23 @@ for ($v = 0; $v < 50; $v++)
 </select>
 </p>
 <p>
-If you can please browse on your computer for an SGF file of the game to
-upload <input type=file name=sgffile>
+If you have the game available on your computer as an SGF file to
+upload browse for it here <input type=file name=sgffile>
+and click here <input type="submit" value="Add result">
 </p>
-<p>When done, press this:
-<input type="submit" value="Add result">
+<p>Also click above without browsing for a file if there is no SGF record available.</p>
+<?php
+if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
+	print <<<EOT
+<p><b>Preferably</b> if the game was played on KGS using the online names
+{$g->Wplayer->display_online()} and
+{$g->Bplayer->display_online()}, get the date played and result correct above and
+click here to download the SGF from the KGS records.
+<input type="submit" value="Load SGF from KGS" onclick="javascript:loadkgs();">
 </p>
+EOT;
+}
+?>
 </form>
 <p>If you never meant to get to this page
 <a href="javascript:history.back()">click here</a> to go back.</p>
