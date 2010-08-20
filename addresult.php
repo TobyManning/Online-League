@@ -123,7 +123,7 @@ if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
 {$g->Wplayer->display_online()} and
 {$g->Bplayer->display_online()}, get the date played and result correct above and
 click here to download the SGF from the KGS records.
-<input type="submit" value="Load SGF from KGS" onclick="javascript:loadkgs();">
+<input type="submit" value="Load SGF from KGS" onclick="javascript:return loadkgs();">
 </p>
 EOT;
 }
