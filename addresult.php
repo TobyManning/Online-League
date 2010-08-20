@@ -113,9 +113,11 @@ for ($v = 0; $v < 50; $v++)
 <p>
 If you have the game available on your computer as an SGF file to
 upload browse for it here <input type=file name=sgffile>
-and click here <input type="submit" value="Add result">
 </p>
-<p>Also click above without browsing for a file if there is no SGF record available.</p>
+<p>If you don't have the file available as an SGF anywhere just leave the above blank.
+</p>
+<p>In either case click here <input type="submit" value="Add result">
+</p>
 <?php
 if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
 	print <<<EOT
