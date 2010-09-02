@@ -111,10 +111,10 @@ else
 	print <<<EOT
 <tr><td>Join individual league</td>
 <td><input type="checkbox" name="join">Join</td></tr>
-<tr><td>Notes</td>
 
 EOT;
 print <<<EOT
+<tr><td>Notes</td>
 <td><input type="text" name="notes" value="{$player->display_notes()}" size="40"></td></tr>
 
 EOT;
