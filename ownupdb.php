@@ -83,7 +83,11 @@ print <<<EOT
 <td><input type="checkbox" name="okem"$okemch></td></tr>
 <tr><td>Phone</td>
 <td><input type="text" name="phone" value="{$player->display_phone()}" size="30"></td></tr>
-<tr><td>Latest time to phone</td><td><?php $player->latestopt(); ?></td></tr>
+<tr><td>Latest time to phone</td><td>
+EOT;
+$player->latestopt();
+print <<<EOT
+</td></tr>
 <tr><td>Password</td><td><input type="password" name="passw"$dp></td></tr>
 <tr><td>KGS</td>
 <td><input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10"></td></tr>
@@ -108,6 +112,9 @@ else
 <tr><td>Join individual league</td>
 <td><input type="checkbox" name="join">Join</td></tr>
 <tr><td>Notes</td>
+
+EOT;
+print <<<EOT
 <td><input type="text" name="notes" value="{$player->display_notes()}" size="40"></td></tr>
 
 EOT;
