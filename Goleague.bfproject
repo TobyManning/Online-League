@@ -1,4 +1,5 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/addresult.php
 files: /home/jmc/src/Websites/goleague/playingb.php
 files: /home/jmc/src/Websites/goleague/playing.php
 basedir: 
@@ -42,6 +43,7 @@ urllist: playgames.php
 urllist: <?php echo $SCRIPT_NAME ?>
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:0:\n<?php:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3704:
+recent_files: /home/jmc/src/Websites/goleague/addresult.php
 recent_files: /home/jmc/src/Websites/goleague/playingb.php
 recent_files: /home/jmc/src/Websites/goleague/playing.php
 recent_files: /home/jmc/src/Websites/goleague/php/club.php
@@ -56,7 +58,6 @@ recent_files: /home/jmc/src/Websites/goleague/php/session.php
 recent_files: /home/jmc/src/Websites/goleague/linkframe.php
 recent_files: /home/jmc/src/Websites/goleague/login.php
 recent_files: /home/jmc/src/Websites/goleague/logout.php
-recent_files: /home/jmc/src/Websites/goleague/showmtch.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

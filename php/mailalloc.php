@@ -28,6 +28,10 @@ EOT;
 	}
 	if (strlen($opp->Email) != 0)
 		fwrite($fhh, "\nThe email address for {$opp->display_name(false)} is {$opp->display_email_nolink()}\n");
+	if (strlen($opp->Phone) != 0)
+		fwrite($fhh, "You can also reach him/her by phone - {$opp->display_phone(true)}.\n");
+	if (strlen($opp->Notes) != 0)
+		fwrite($fhh, "Notes for player: {$opp->Notes}\n");
 	fwrite($fhh, "\nIf you have any questions please contact your team captain {$pc->display_name(false)} email {$pc->display_email_nolink()}\n");
 	pclose($fhh);
 	return "";
@@ -143,9 +147,9 @@ For {$at->display_name()}: {$at->display_captain()}, {$ac->display_email_nolink(
 EOT;
 		fwrite($fh, "$mess");
 	if (strlen($hc->Phone) != 0)
-		fwrite($fh, "You can reach {$ht->display_captain()} on {$hc->display_phone()}.\n");
+		fwrite($fh, "You can reach {$ht->display_captain()} on {$hc->display_phone(true)}.\n");
 	if (strlen($ac->Phone) != 0)
-		fwrite($fh, "You can reach {$at->display_captain()} on {$ac->display_phone()}.\n");
+		fwrite($fh, "You can reach {$at->display_captain()} on {$ac->display_phone(true)}.\n");
 	pclose($fh);
 }
 ?>

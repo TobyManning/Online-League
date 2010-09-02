@@ -40,6 +40,8 @@ $okem = $_POST["okem"];
 $kgs = $_POST["kgs"];
 $igs = $_POST["igs"];
 $joinil = $_POST["join"];
+$notes = $_POST["notes"];
+$latest = $_POST["latesttime"];
 
 if  (strlen($playname) == 0)  {
 	$mess = "No player name given";
@@ -88,6 +90,8 @@ $player->Phone = $phone;
 $player->KGS = $kgs;
 $player->IGS = $igs;
 $player->Userid = $userid;
+$player->Notes = $notes;
+$player->Latestcall = $latest == "None"? "": $latest;
 if ($joinil)
 	$player->ILdiv = assign_ildiv($rank);
 

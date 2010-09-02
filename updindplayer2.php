@@ -60,6 +60,8 @@ $okem = $_POST["okem"];
 $bgamemb = $_POST["bgamemb"];
 $ildiv = $_POST["ildiv"];
 $ilpaid = $_POST["ilpaid"];
+$notes = $_POST["notes"];
+$latest = $_POST["latesttime"];
 
 switch ($action) {
 case 'A':
@@ -78,6 +80,8 @@ case 'A':
 	$player->OKemail = $okem;
 	$player->BGAmemb = $bgamemb;
 	$player->Phone = $phone;
+	$player->Notes = $notes;
+	$player->Latestcall = $latest == "None"? "": $latest;
 	$player->KGS = $kgs;
 	$player->IGS = $igs;
 	// Force Admin priv to N unless Super-admin
@@ -136,6 +140,8 @@ default:
 	$origplayer->Club = new Club($club);
 	$origplayer->Email = $email;
 	$origplayer->Phone = $phone;
+	$origplayer->Notes = $notes;
+	$origplayer->Latestcall = $latest == "None"? "": $latest;
 	$origplayer->OKemail = $okem;
 	$origplayer->BGAmemb = $bgamemb;
 	$origplayer->ILdiv = $ildiv;

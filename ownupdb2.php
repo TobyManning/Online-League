@@ -52,6 +52,8 @@ $club = $_POST["club"];
 $rank = $_POST["rank"];
 $passw = $_POST["passw"];
 $okem = $_POST["okem"];
+$notes = $_POST["notes"];
+$latest = $_POST["latesttime"];
 
 try {
 	$origplayer = new Player();
@@ -91,6 +93,9 @@ $origplayer->Club = new Club($club);
 $origplayer->Email = $email;
 $origplayer->OKemail = $okem;
 $origplayer->Phone = $phone;
+$origplayer->Notes = $notes;
+$origplayer->Latestcall = $latest == "None"? "": $latest;
+
 if ($origplayer->ILdiv == 0)  {
 	if ($_POST["join"])
 		$origplayer->ILdiv = assign_ildiv($rank);

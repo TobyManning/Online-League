@@ -32,6 +32,8 @@ class Player  {
 	public $ILdiv;
 	public $ILpaid;
 	public $Sortrank;
+	public $Notes;
+	public $Latestcall;
 	private $Gotrecs;
 	private $Played;
 	private $Won;
@@ -94,7 +96,7 @@ class Player  {
 	
 	public function fromid($id) {
 		$qid = mysql_real_escape_string($id);
-		$ret = mysql_query("select first,last,rank,club,email,okmail,phone,kgs,igs,admin,bgamemb,ildiv,ilpaid from player where user='$qid'");
+		$ret = mysql_query("select first,last,rank,club,email,okmail,phone,kgs,igs,admin,bgamemb,ildiv,ilpaid,notes,latestcall from player where user='$qid'");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			throw new PlayerException("Unknown player userid $id");
 		$row = mysql_fetch_assoc($ret);
@@ -112,6 +114,8 @@ class Player  {
 		$this->BGAmemb = $row["bgamemb"];
 		$this->ILdiv = $row["ildiv"];
 		$this->ILpaid = $row["ilpaid"];
+		$this->Notes = $row["notes"];
+		$this->Latestcall = $row["latestcall"];
 	}
 
 	// Generate a MySQL query from a player object
@@ -163,7 +167,7 @@ class Player  {
 		
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select rank,club,email,okmail,phone,kgs,igs,admin,user,bgamemb,ildiv,ilpaid from player where $q");
+		$ret = mysql_query("select rank,club,email,okmail,phone,kgs,igs,admin,user,bgamemb,ildiv,ilpaid,notes,latestcall from player where $q");
 		if (!$ret)
 			throw new PlayerException("Cannot read database for player $q");
 		if (mysql_num_rows($ret) == 0)
@@ -181,6 +185,8 @@ class Player  {
 		$this->BGAmemb = $row["bgamemb"];
 		$this->ILdiv = $row["ildiv"];
 		$this->ILpaid = $row["ilpaid"];
+		$this->Notes = $row["notes"];
+		$this->Latestcall = $row["latestcall"];
 	}
 
 	// Get more info about the club
@@ -342,10 +348,16 @@ class Player  {
 		return htmlspecialchars($this->Email);
 	}
 
-	public function display_phone() {
-		return htmlspecialchars($this->Phone);
+	public function display_phone($lc = false) {
+		$ret = htmlspecialchars($this->Phone);
+		if ($lc && strlen($this->Latestcall) != 0)
+			$ret .= " not after " . $this->Latestcall;
+		return  $ret;
 	}
-
+	
+	public function display_notes() {
+		return htmlspecialchars($this->Notes);
+	}
 	// Identify player as hidden item in a form
 		
 	public function save_hidden($prefix = "") {
@@ -389,6 +401,27 @@ class Player  {
 		}
 		print "</select>\n";	
 	}
+	
+	public function latestopt() {
+		print "<select name=\"latesttime\">\n";
+		if  (strlen($this->Latestcall) == 0)
+			print "<option selected>None</option>\n";
+		else
+			print "<option>None</option>\n";
+		for ($t = 19; $t < 24; $t++)  {
+			$v = $t . ':00';
+			if ($this->Latestcall == $v)
+				print "<option selected>$v</option>\n";
+			else
+				print "<option>$v</option>\n";
+			$v = $t . ':30';
+			if ($this->Latestcall == $v)
+				print "<option selected>$v</option>\n";
+			else
+				print "<option>$v</option>\n";
+		}
+		print "</select>\n";
+	}
 
 	// Add player record to database
 		
@@ -402,10 +435,12 @@ class Player  {
 		$qphone = mysql_real_escape_string($this->Phone);
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
+		$qnotes = mysql_real_escape_string($this->Notes);
+		$qcall = mysql_real_escape_string($this->Latestcall);
 		$qokemail = $this->OKemail? 1: 0;
 		$qbgamemb = $this->BGAmemb? 1: 0;
 		$r = $this->Rank->Rankvalue;
-		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,okmail,phone,admin,bgamemb,ildiv) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail',$qokemail,'$qphone','$qadmin',$qbgamemb,{$this->ILdiv})");
+		mysql_query("insert into player (first,last,rank,club,user,kgs,igs,email,okmail,phone,admin,bgamemb,ildiv,notes,latestcall) values ('$qfirst','$qlast',$r,'$qclub','$quser','$qkgs','$qigs','$qemail',$qokemail,'$qphone','$qadmin',$qbgamemb,{$this->ILdiv},'$qnotes','$qcall')");
 	}
 
 	// Update player record of name
@@ -439,9 +474,11 @@ class Player  {
 		$qphone = mysql_real_escape_string($this->Phone);
 		$qkgs = mysql_real_escape_string($this->KGS);
 		$qigs = mysql_real_escape_string($this->IGS);
+		$qnotes = mysql_real_escape_string($this->Notes);
+		$qcall = mysql_real_escape_string($this->Latestcall);
 		$r = $this->Rank->Rankvalue;
 		$qbgamemb = $this->BGAmemb? 1: 0;
-		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',okmail=$qokemail,phone='$qphone',kgs='$qkgs',igs='$qigs',rank=$r,bgamemb=$qbgamemb,ildiv={$this->ILdiv} where {$this->queryof()}");
+		mysql_query("update player set club='$qclub',user='$quser',admin='$qadmin',email='$qemail',okmail=$qokemail,phone='$qphone',kgs='$qkgs',igs='$qigs',rank=$r,bgamemb=$qbgamemb,ildiv={$this->ILdiv},notes='$qnotes',latestcall='$qcall' where {$this->queryof()}");
 		// Fix rank in teams that this player is a member of
 		mysql_query("update teammemb set rank=$r where {$this->queryof('tm')}");
 		// Fix rank in unplayed games where this player is black

@@ -77,10 +77,15 @@ all indirect.</p>
 <td><input type="text" name="email"></td></tr>
 <tr><td>Phone number(s)</td>
 <td><input type="text" name="phone" size="30"></td></tr>
+<tr><td>Latest time to phone</td><td>
+<?php
+$player = new Player();
+$player->latestopt();
+?>
+</td></tr>
 <tr><td>Club (i.e. face-to-face)</td>
 <td>
 <?php
-$player = new Player();
 $player->Club = new Club('NoC');
 $player->clubopt();
 print <<<EOT
@@ -98,6 +103,8 @@ print "</td></tr>\n";
 <td><input type="text" name="igs" size="10" maxlength="10"></td></tr>
 <tr><td>I want to play in the individual league</td>
 <td><input type="checkbox" name="join"></td></tr>
+<tr><td>Notes regarding account</td>
+<td><input type="text" name="notes" size="30"></td></tr>
 <tr><td colspan=2><input type="checkbox" name="turnoff" checked>
 &lt;&lt; Because I'm not a spammer I'm turning this off and this on &gt;&gt;
 <input type="checkbox" name="turnon"></td></tr>

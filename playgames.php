@@ -64,6 +64,14 @@ if (strlen($pon) > 1)
 
 EOT;
 
+$pnotes = $player->display_notes();
+if (strlen($pnotes) != 0)
+	print <<<EOT
+<h2>Notes for player</h2>
+<p>$pnotes</p>
+
+EOT;
+
 $total_games = $player->played_games();
 $current_games = $player->played_games(true);
 if ($total_games == 0)  {
@@ -191,7 +199,7 @@ EOT;
 
 if ($logged_in) {
 	$em = $player->display_email_link();
-	$ph = $player->display_phone();
+	$ph = $player->display_phone(true);
 		print <<<EOT
 <h2>Player Contact Information - $Name</h2>
 

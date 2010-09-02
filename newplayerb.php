@@ -50,33 +50,24 @@ function formvalid()
 <h1>Add Player</h1>
 <p>Please set up the details of the player as required using the form below.</p>
 <form name="playform" action="updindplayer2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
-<p>
-Player Name:
-<input type="text" name="playname">
-Club:
-<?php
-$player->clubopt();
-print "Rank:";
-$player->rankopt();
-?>
-</p>
-<p>
-Email:<input type="text" name="email">
-Userid:<input type="text" name="userid">
-Password:<input type="password" name="passw">
-KGS:<input type="text" name="kgs" size="10" maxlength="10">
-IGS:<input type="text" name="igs" size="10" maxlength="10">
-</p>
-<p>
+<table cellpadding="2" cellspacing="5" border="0">
+<tr><td>Player Name</td><td><input type="text" name="playname"></td></tr>
+<tr><td>Club</td><td><?php $player->clubopt(); ?></td></tr>
+<tr><td>Rank</td><td><?php $player->rankopt(); ?></td></tr>
+<tr><td>Userid</td><td><input type="text" name="userid"></td></tr>
+<tr><td>Password</td><td><input type="password" name="passw"></td></tr>
+<tr><td>Email</td><td><input type="text" name="email"></td></tr>
+<tr><td colspan="2">
 <input type="checkbox" name="okem">
-Check if player is happy to accept emails about matches to be played
-</p>
-<p>
-<input type="checkbox" name="bgamemb">
-Player is BGA member
-</p>
-<p>
-Individual league division:
+Check if player is happy to accept emails about matches to be played</td></tr>
+<tr><td>Phone</td><td><input type="text" name="phone" size="30"></td></tr>
+<tr><td>Latest time to phone</td><td><?php $player->latestopt(); ?></td></tr>
+<tr><td>Notes</td><td><input type="text" name="notes" size="40"></td></tr>
+<tr><td>KGS Id</td><td><input type="text" name="kgs" size="10" maxlength="10"></td></tr>
+<tr><td>IGS Id</td><td><input type="text" name="igs" size="10" maxlength="10"></td></tr>
+<tr><td colspan="2"><input type="checkbox" name="bgamemb">Player is BGA member</td></tr>
+<tr><td>Individual league division</td>
+<td>
 <select name="ildiv" size="0">
 <option value="0" selected>Not playing</option>
 <?php
@@ -87,18 +78,11 @@ for ($d = 1;  $d <= $maxdivs;  $d++)
 EOT;
 ?>
 <option value="-1">Select by rank</option>
-</select>
-Paid <input type="checkbox" name="ilpaid">
-</p>
-<p>
-Admin Privs:
-<?php
-$player->adminopt();
-?>
-</p>
-<p>
-<input type="submit" name="subm" value="Add Player">
-</p>
+</select></td></tr>
+<tr><td>Paid I.L subs</td><td><input type="checkbox" name="ilpaid"></td></tr>
+<tr><td>Admin Privs</td><td><?php $player->adminopt(); ?></td></tr>
+<tr><td colspan="2" align="center"><input type="submit" name="subm" value="Add Player"></td></tr>
+</table>
 </form>
 </body>
 </html>
