@@ -248,7 +248,9 @@ class Match {
 	
 	public function updscore() {
 		$tot = $this->Hscore + $this->Ascore;
-		if ($tot < 3)
+		if ($tot <= 0)
+			$this->Result = 'N';
+		else  if ($tot < 3)
 			$this->Result = 'P';
 		else if ($this->Hscore == $this->Ascore)
 			$this->Result = 'D';

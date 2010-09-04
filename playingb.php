@@ -52,6 +52,7 @@ specification at
 <a href="http://league.britgo.org/doc/LeagueDescription.pdf" target="_blank">this document</a>).
 </p>
 <p>Differences for the individual league are noted as they arise.</p>
+<p><b>If something goes wrong</b> please see <a href="#wrong">here</a>.</p>
 <h2>Standard Even Games</h2>
 <p>Games should be played with the following parameters on KGS
 </p>
@@ -172,5 +173,44 @@ with an agreed adjudicator.</p>
 <p>If it is impossible to resume the game and it appears very close, record the game as
 a draw (Jigo). (This is why a column has been provided for draws in the tables -
 and potentially a team match could be drawn also).</p>
+<a name="wrong"></a>
+<h1>Something wrong?</h1>
+<p>If something goes wrong, please don't flounder.
+Please don't enter any results that may be trouble to unravel.
+Here's what to do.
+</p>
+<h2>Disputes about playing games</h2>
+<p>A dispute may arise about people not turning up for games or some irregularity during a
+game. Perhaps the komi was wrong and the game was close enough for this to matter. Perhaps the
+rules were wrong.
+</p>
+<p>If this happens please contact an admin person or BGA council member as soon as possible as
+referee. The person chosen should not have any direct involvement with the match in question
+and should refuse to act as referee if he/she believes that there is any such involvement.
+</p>
+<p>The person may decide:
+</p>
+<ul>
+<li>To award the game to one side or another.</li>
+<li>To declare the game to be a draw (Jigo). Note that this may cause the match itself
+to be drawn.</li>
+<li>To declare the game void and order its replay. The replay should be with the same
+colours, handicap or komi as the original game should have been.</li>
+</ul>
+<p>In the last case, the referee may supplement his/her decision
+with a rider that a replay be made within a certain time or one of the other
+outcomes shall apply.
+</p>
+<p>If you think that the decision of the referee was wrong, or that the referee had
+an undeclared interest in the result, then you should appeal to the BGA council for
+a final decision.</p>
+<h2>Errors entering results</h2>
+<p>If you realise that the game has been played with the wrong colours or other settings
+incorrect <u>do not enter the result</u>. Doing so may create a "news item" on the main BGA website
+or RSS feed which will be wrong.</p>
+<p><b>If at all possible</b>, please replay the game with the correct settings.</p>
+<p>If not possible, please contact a referee as above.</p>
+<p>Whatever you do, please don't change any of the settings of the other games in the match
+to try to "compensate".</p>
 </body>
 </html>

@@ -1,4 +1,10 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/ownupdb.php
+files: /home/jmc/src/Websites/goleague/playgames.php
+files: /home/jmc/src/Websites/goleague/php/mailalloc.php
+files: /home/jmc/src/Websites/goleague/ownupdb2.php
+files: /home/jmc/src/Websites/goleague/newacctb.php
+files: /home/jmc/src/Websites/goleague/php/player.php
 files: /home/jmc/src/Websites/goleague/addresult.php
 files: /home/jmc/src/Websites/goleague/playingb.php
 files: /home/jmc/src/Websites/goleague/playing.php
@@ -43,21 +49,21 @@ urllist: playgames.php
 urllist: <?php echo $SCRIPT_NAME ?>
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:0:\n<?php:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3704:
+recent_files: /home/jmc/src/Websites/goleague/ownupdb.php
+recent_files: /home/jmc/src/Websites/goleague/playgames.php
+recent_files: /home/jmc/src/Websites/goleague/php/mailalloc.php
+recent_files: /home/jmc/src/Websites/goleague/updindplayer2.php
+recent_files: /home/jmc/src/Websites/goleague/updindplayer.php
+recent_files: /home/jmc/src/Websites/goleague/newacctb2.php
+recent_files: /home/jmc/src/Websites/goleague/newplayerb.php
+recent_files: /home/jmc/src/Websites/goleague/ownupdb2.php
+recent_files: /home/jmc/src/Websites/goleague/updindteam2.php
+recent_files: /home/jmc/src/Websites/goleague/newacctb.php
+recent_files: /home/jmc/src/Websites/goleague/php/player.php
 recent_files: /home/jmc/src/Websites/goleague/addresult.php
 recent_files: /home/jmc/src/Websites/goleague/playingb.php
 recent_files: /home/jmc/src/Websites/goleague/playing.php
 recent_files: /home/jmc/src/Websites/goleague/php/club.php
-recent_files: /home/jmc/src/Websites/goleague/playupd.php
-recent_files: /home/jmc/src/Websites/goleague/getosplayer.php
-recent_files: /home/jmc/src/Websites/goleague/getosplayerb.php
-recent_files: /home/jmc/src/Websites/goleague/php/player.php
-recent_files: /home/jmc/src/Websites/goleague/playupdb.php
-recent_files: /home/jmc/src/Websites/goleague/bgaleague-style.css
-recent_files: /home/jmc/src/Websites/goleague/osmatchesb.php
-recent_files: /home/jmc/src/Websites/goleague/php/session.php
-recent_files: /home/jmc/src/Websites/goleague/linkframe.php
-recent_files: /home/jmc/src/Websites/goleague/login.php
-recent_files: /home/jmc/src/Websites/goleague/logout.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1
