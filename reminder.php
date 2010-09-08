@@ -149,6 +149,15 @@ You can reach $oppname on the phone at $phone.
 EOT;
 		fwrite($fh, $mess);
 	}
+	$nts = $opp->Notes;
+	if (strlen($nts) != 0) {
+		$mess = <<<EOT
+
+$oppname has provided the following notes: $nts
+
+EOT;
+		fwrite($fh, $mess);
+	}
 	$capt = $mt->Captain;
 	if (!$capt->is_same($play))  {
 		$mess = <<<EOT

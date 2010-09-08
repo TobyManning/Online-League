@@ -191,11 +191,11 @@ and should refuse to act as referee if he/she believes that there is any such in
 <p>The person may decide:
 </p>
 <ul>
-<li>To award the game to one side or another.</li>
+<li>To award the game to one side or the other.</li>
 <li>To declare the game to be a draw (Jigo). Note that this may cause the match itself
 to be drawn.</li>
 <li>To declare the game void and order its replay. The replay should be with the same
-colours, handicap or komi as the original game should have been.</li>
+colours, handicap or komi and time controls as the original game should have been.</li>
 </ul>
 <p>In the last case, the referee may supplement his/her decision
 with a rider that a replay be made within a certain time or one of the other
@@ -204,9 +204,12 @@ outcomes shall apply.
 <p>If you think that the decision of the referee was wrong, or that the referee had
 an undeclared interest in the result, then you should appeal to the BGA council for
 a final decision.</p>
+<p>Games decided in this fashion are entered as <b>W+N</b> or <b>B+N</b>
+or <b>Jigo</b> as appropriate and no SGF file should be included.</p>
 <h2>Errors entering results</h2>
 <p>If you realise that the game has been played with the wrong colours or other settings
-incorrect <u>do not enter the result</u>. Doing so may create a "news item" on the main BGA website
+incorrect <u>do not enter the result</u>.
+Doing so may create a "news item" on the main BGA website
 or RSS feed which will be wrong.</p>
 <p><b>If at all possible</b>, please replay the game with the correct settings.</p>
 <p>If not possible, please contact a referee as above.</p>
