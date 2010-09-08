@@ -83,6 +83,7 @@ function mailplayer($play, $opp, $col, $mt, $ot, $m, $g)
 		return new aboutplayer($play, $opp, $m, $g, "has given no email address");
 	if  (!$play->OKemail)
 		return new aboutplayer($play, $opp, $m, $g, "has not agreed to auto-email");
+	$oppname = $opp->display_name(false);
 	$dest = $play->Email;
 	$fh = popen("mail -s 'Online league match reminder' $dest", "w");
 	$mess = <<<EOT
@@ -91,7 +92,7 @@ Dear {$play->display_name(false)}
 Please can we remind you that your are due to play in the online league match
 playing for {$mt->display_name()} against {$ot->display_name()}.
 
-Your opponent is {$opp->display_name(false)} {$opp->display_rank()}.
+Your opponent is $oppname {$opp->display_rank()}.
 
 You are playing as $col.
 
@@ -111,6 +112,42 @@ EOT;
 			fwrite($fh, "\nPlease note this game is played with No Komi\n");
 		else
 			fwrite($fh, "\nPlease note this game is played with a $hstones stone handicap\n");
+	}
+	if (strlen($opp->Email) != 0)
+		$mess = <<<EOT
+
+$oppname has an email address of {$opp->Email}.
+
+EOT;
+	else
+		$mess = <<<EOT
+
+Sorry we have no email address for $oppname.
+
+EOT;
+	fwrite($fh, $mess);
+	$onl = $opp->display_online();
+	if ($onl == "-")
+		$mess = <<<EOT
+
+Sorry but we have no online name for $oppname.
+
+EOT;
+	else
+		$mess = <<<EOT
+
+The online name for $oppname is $onl.
+
+EOT;
+	fwrite($fh, $mess);
+	$phone = $opp->display_phone(true);
+	if  (strlen($phone) != 0)  {
+		$mess = <<<EOT
+
+You can reach $oppname on the phone at $phone.
+
+EOT;
+		fwrite($fh, $mess);
 	}
 	$capt = $mt->Captain;
 	if (!$capt->is_same($play))  {

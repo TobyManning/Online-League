@@ -1,13 +1,6 @@
 name: Go League
-files: /home/jmc/src/Websites/goleague/ownupdb.php
-files: /home/jmc/src/Websites/goleague/playgames.php
-files: /home/jmc/src/Websites/goleague/php/mailalloc.php
-files: /home/jmc/src/Websites/goleague/ownupdb2.php
-files: /home/jmc/src/Websites/goleague/newacctb.php
-files: /home/jmc/src/Websites/goleague/php/player.php
-files: /home/jmc/src/Websites/goleague/addresult.php
 files: /home/jmc/src/Websites/goleague/playingb.php
-files: /home/jmc/src/Websites/goleague/playing.php
+files: /home/jmc/src/Websites/goleague/php/match.php
 basedir: 
 webdir: 
 template: 
@@ -37,6 +30,7 @@ classlist: memb
 targetlist: _parent
 targetlist: _blank
 targetlist: _top
+urllist: #wrong
 urllist: /home/jmc/src/Websites/goleague/index.php
 urllist: ileague.php
 urllist: '.$SCRIPT_NAME.'
@@ -46,24 +40,23 @@ urllist: ${a}newacct.php
 urllist: ${a}ileague.php
 urllist: playing.php
 urllist: playgames.php
-urllist: <?php echo $SCRIPT_NAME ?>
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:0:\n<?php:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3704:
+recent_files: /home/jmc/src/Websites/goleague/playingb.php
+recent_files: /home/jmc/src/Websites/goleague/php/match.php
 recent_files: /home/jmc/src/Websites/goleague/ownupdb.php
 recent_files: /home/jmc/src/Websites/goleague/playgames.php
 recent_files: /home/jmc/src/Websites/goleague/php/mailalloc.php
+recent_files: /home/jmc/src/Websites/goleague/ownupdb2.php
+recent_files: /home/jmc/src/Websites/goleague/newacctb.php
+recent_files: /home/jmc/src/Websites/goleague/php/player.php
+recent_files: /home/jmc/src/Websites/goleague/addresult.php
+recent_files: /home/jmc/src/Websites/goleague/playing.php
 recent_files: /home/jmc/src/Websites/goleague/updindplayer2.php
 recent_files: /home/jmc/src/Websites/goleague/updindplayer.php
 recent_files: /home/jmc/src/Websites/goleague/newacctb2.php
 recent_files: /home/jmc/src/Websites/goleague/newplayerb.php
-recent_files: /home/jmc/src/Websites/goleague/ownupdb2.php
 recent_files: /home/jmc/src/Websites/goleague/updindteam2.php
-recent_files: /home/jmc/src/Websites/goleague/newacctb.php
-recent_files: /home/jmc/src/Websites/goleague/php/player.php
-recent_files: /home/jmc/src/Websites/goleague/addresult.php
-recent_files: /home/jmc/src/Websites/goleague/playingb.php
-recent_files: /home/jmc/src/Websites/goleague/playing.php
-recent_files: /home/jmc/src/Websites/goleague/php/club.php
 opendir: /home/jmc/src/Websites/goleague
 savedir: /home/jmc/src/Websites/goleague
 view_html_toolbar: 1

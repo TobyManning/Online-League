@@ -350,7 +350,7 @@ class Player  {
 
 	public function display_phone($lc = false) {
 		$ret = htmlspecialchars($this->Phone);
-		if ($lc && strlen($this->Latestcall) != 0)
+		if ($lc && strlen($ret) != 0 && strlen($this->Latestcall) != 0)
 			$ret .= " not after " . $this->Latestcall;
 		return  $ret;
 	}
