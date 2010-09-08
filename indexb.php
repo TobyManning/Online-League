@@ -29,7 +29,8 @@ include 'php/head.php';
 season and is well into its second.</p>
 <p>The British Go Association League Tournament was originally a team-based Go league
 designed to be played mainly over the Internet. Following the success of this, an individual
-league is to be introduced as well in October 2010.</p>
+league is to be introduced as well in January 2011 (with a trial version running
+currently).</p>
 <p>The purpose of the league is to encourage interaction between players
 in different areas of the country and to encourage online play amongst members of the BGA.</p>
 <p>To learn more about the league, click <a href="aboutus.php" target="_top">here</a>.

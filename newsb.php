@@ -166,7 +166,12 @@ that the game has been played with incorrect colours,
 please do not try to fix it yourself or alter any other games
 but contact an admin person as soon as possible.
 This may possibly entail a decision as per a referee in some cases.</p>
-<h1>News Items</h1>
+<h1>Comments and Suggestions</h1>
+<p>If you have comments or suggestions regarding this or any aspect of the league and
+this website, please <a href="sendmail.php?f=John&l=Collins">contact John Collins</a>
+before the end of October 2010.</p>
+<a name="log"></a>
+<h1>News Log</h1>
 <p>The following is a list in reverse date order of events on the league and
 the website.</p>
 <p>The userid is that of the person who made the update and the date is when the

@@ -18,10 +18,13 @@
 
 $Title = "News";
 include 'php/head.php';
+$p = $_GET["p"];
+if (strlen($p) != 0)
+	$p = "#$p";
 print <<<EOT
 <frameset cols="15%,*">
 <frame src="linkframe.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
-<frame src="newsb.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
+<frame src="newsb.php$p" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
 </frameset>
 EOT;
 ?>

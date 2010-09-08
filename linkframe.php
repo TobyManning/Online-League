@@ -53,7 +53,7 @@ print <<<EOT
 <tr><td><a href="${a}aboutus.php" target="_top">About The League</a></td></tr>
 <tr><td><a href="${a}extmatch.php" target="_top">Outside matches</a></td></tr>
 <tr><td><a href="${a}playing.php" target="_top">Rules Summary</a></td></tr>
-<tr><td><a href="${a}news.php" target="_top" class="news">News updates</a></td></tr>
+<tr><td><a href="${a}news.php" target="_top" class="news">News</a> <a href="${a}news.php?p=log" target="_top">Log</a></td></tr>
 <tr><td><a href="${a}clubs.php" target="_top">Clubs</a></td></tr>
 <tr><td><a href="${a}teams.php" target="_top">Teams</a></td></tr>
 <tr><td><a href="${a}players.php" target="_top">Players</a></td></tr>
