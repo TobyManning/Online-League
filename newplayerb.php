@@ -58,7 +58,7 @@ function formvalid()
 <tr><td>Password</td><td><input type="password" name="passw"></td></tr>
 <tr><td>Email</td><td><input type="text" name="email"></td></tr>
 <tr><td colspan="2">
-<input type="checkbox" name="okem">
+<input type="checkbox" name="okem" checked>
 Check if player is happy to accept emails about matches to be played</td></tr>
 <tr><td>Phone</td><td><input type="text" name="phone" size="30"></td></tr>
 <tr><td>Latest time to phone</td><td><?php $player->latestopt(); ?></td></tr>

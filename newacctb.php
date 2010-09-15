@@ -96,7 +96,7 @@ $player->rankopt();
 print "</td></tr>\n";
 ?>
 <tr><td>OK to send emails about pending matches</td>
-<td><input type="checkbox" name="okem"></td></tr>
+<td><input type="checkbox" name="okem" checked></td></tr>
 <tr><td>KGS name</td>
 <td><input type="text" name="kgs" size="10" maxlength="10"></td></tr>
 <tr><td>IGS name</td>
