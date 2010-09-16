@@ -70,6 +70,21 @@ function loadkgs() {
 							  res + "&rt=" + restype;
 	return false;
 }
+<?php
+print <<<EOT
+var white="{$g->Wplayer->KGS}";
+var black="{$g->Bplayer->KGS}";
+
+EOT;
+?>
+function checknokgs() {
+	var fm = document.resform;
+	if (fm.sgffile.value.length != 0)
+		return true;
+	if (white.length == 0 || black.length == 0)
+		return true;
+	return confirm("Are you sure that this match was not played on KGS between " + white + " and " + black);
+}
 </script>
 <h1>Add Game Result</h1>
 <p>
@@ -116,7 +131,7 @@ upload browse for it here <input type=file name=sgffile>
 </p>
 <p>If you don't have the file available as an SGF anywhere just leave the above blank.
 </p>
-<p>In either case click here <input type="submit" value="Add result">
+<p>In either case click here <input type="submit" value="Add result" onclick="javascript:return checknokgs();">
 </p>
 <?php
 if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
