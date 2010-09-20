@@ -22,7 +22,22 @@
 //  ALSO MAKE SURE that magic_quotes_gpc is turned off in your php init!!!!
 //  **********************************************************************
 
-if  (!mysql_connect("db48c.pair.com", "maproom_4", "QeWwhsLj")  ||  !mysql_select_db("maproom_bgaleague")) {
+switch ($_SERVER['SERVER_ADDR']) {
+case "212.110.185.203":
+	$dbserver = "localhost";
+	$dbuser = "www-data";
+	$dbpassw = "BGA league access";
+	$dbname = "bgaleague";
+	break;
+default:
+	$dbserver = "db48c.pair.com";
+	$dbuser = "maproom_4";
+	$dbpassw = "QeWwhsLj";
+	$dbname = "maproom_bgaleague";
+	break;
+}
+
+if  (!mysql_connect($dbserver, $dbuser, $dbpassw)  ||  !mysql_select_db($dbname)) {
 
 	$mess = mysql_error();
 
