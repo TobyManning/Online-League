@@ -1,4 +1,5 @@
 name: Go League
+files: /home/jmc/src/Websites/goleague/php/opendatabase.php
 files: /home/jmc/src/Websites/goleague/updtmemb.php
 files: /home/jmc/src/Websites/goleague/updmembs.php
 files: /home/jmc/src/Websites/goleague/teamsupdb.php
@@ -49,23 +50,23 @@ urllist: newacct.php
 urllist: ${a}newacct.php
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:0:\n<?php:3704:
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3704:
+recent_files: /home/jmc/src/Websites/goleague/php/opendatabase.php
 recent_files: /home/jmc/src/Websites/goleague/updtmemb.php
-recent_files: /home/jmc/src/Websites/goleague/teamsupd.php
 recent_files: /home/jmc/src/Websites/goleague/updmembs.php
 recent_files: /home/jmc/src/Websites/goleague/teamsupdb.php
 recent_files: /home/jmc/src/Websites/goleague/updindteam2.php
 recent_files: /home/jmc/src/Websites/goleague/updindteam.php
 recent_files: /home/jmc/src/Websites/goleague/addresult.php
 recent_files: /home/jmc/src/Websites/goleague/addilresultb2.php
+recent_files: /home/jmc/src/Websites/goleague/teamsupd.php
 recent_files: /home/jmc/src/Websites/goleague/ownupdb.php
 recent_files: /home/jmc/src/Websites/goleague/newacctb.php
 recent_files: /home/jmc/src/Websites/goleague/newplayerb.php
 recent_files: /home/jmc/src/Websites/goleague/indexb.php
 recent_files: /home/jmc/src/Websites/goleague/playersb.php
 recent_files: /home/jmc/src/Websites/goleague/news.php
-recent_files: /home/jmc/src/Websites/goleague/newsb.php
-opendir: /home/jmc/src/Websites/goleague
-savedir: /home/jmc/src/Websites/goleague
+opendir: /home/jmc/src/Websites/goleague/php
+savedir: /home/jmc/src/Websites/goleague/php
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1

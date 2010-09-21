@@ -22,19 +22,24 @@
 //  ALSO MAKE SURE that magic_quotes_gpc is turned off in your php init!!!!
 //  **********************************************************************
 
-switch ($_SERVER['SERVER_ADDR']) {
-case "212.110.185.203":
+// Can't use "gethostname" function don't know why
+
+$gh = popen('hostname', 'r');
+$servername = fread($gh, 1024);
+pclose($gh);
+$servername = rtrim($servername);
+
+if (preg_match('/baduk/', $servername))  {
 	$dbserver = "localhost";
 	$dbuser = "www-data";
 	$dbpassw = "BGA league access";
 	$dbname = "bgaleague";
-	break;
-default:
+}
+else  {
 	$dbserver = "db48c.pair.com";
 	$dbuser = "maproom_4";
 	$dbpassw = "QeWwhsLj";
 	$dbname = "maproom_bgaleague";
-	break;
 }
 
 if  (!mysql_connect($dbserver, $dbuser, $dbpassw)  ||  !mysql_select_db($dbname)) {
