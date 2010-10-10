@@ -11,7 +11,7 @@ use XML::LibXML;
 use DBD::mysql;
 use Time::Local;
 
-$Database = DBI->connect("DBI:mysql:database=bgaleague;host=localhost", "www_data", "BGA league access") or die "Cannot open DB";
+$Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
 
 $doc = XML::LibXML::Document->createDocument;
 $docel = $doc->createElement("rss");
@@ -21,7 +21,7 @@ $chel = XML::LibXML::Element->new("channel");
 $docel->appendChild($chel);
 
 @Days = ('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
-@Months = ('Jan', 'Feb', 'Mar', 'Apr', 'May'. 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+@Months = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
 
 $sfh = $Database->prepare("select ndate,item,link from news where rss=1 order by ndate desc limit 15");
 $sfh->execute;
@@ -47,4 +47,4 @@ while (my ($d,$i,$lnk) = $sfh->fetchrow_array)  {
     $itemel->appendTextChild("pubDate", $d);
 }
 $doc->toFile("rss.xml", 1);
-system("scp rss.xml maproom\@ur.pair.com:/usr/www/users/maproom/league");
+system("scp -q rss.xml maproom\@ur.pair.com:/usr/www/users/maproom/league")a;
