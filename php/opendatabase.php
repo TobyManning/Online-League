@@ -24,23 +24,15 @@
 
 // Can't use "gethostname" function don't know why
 
-$gh = popen('hostname', 'r');
-$servername = fread($gh, 1024);
-pclose($gh);
-$servername = rtrim($servername);
+// $gh = popen('hostname', 'r');
+// $servername = fread($gh, 1024);
+// pclose($gh);
+// $servername = rtrim($servername);
 
-if (preg_match('/baduk/', $servername))  {
-	$dbserver = "localhost";
-	$dbuser = "www-data";
-	$dbpassw = "BGA league access";
-	$dbname = "bgaleague";
-}
-else  {
-	$dbserver = "db48c.pair.com";
-	$dbuser = "maproom_4";
-	$dbpassw = "QeWwhsLj";
-	$dbname = "maproom_bgaleague";
-}
+$dbserver = "localhost";
+$dbuser = "www-data";
+$dbpassw = "BGA league access";
+$dbname = "bgaleague";
 
 if  (!mysql_connect($dbserver, $dbuser, $dbpassw)  ||  !mysql_select_db($dbname)) {
 
