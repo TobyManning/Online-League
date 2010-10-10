@@ -47,4 +47,4 @@ while (my ($d,$i,$lnk) = $sfh->fetchrow_array)  {
     $itemel->appendTextChild("pubDate", $d);
 }
 $doc->toFile("rss.xml", 1);
-system("scp -q rss.xml maproom\@ur.pair.com:/usr/www/users/maproom/league")a;
+system("scp -q rss.xml maproom\@ur.pair.com:/usr/www/users/maproom/league");
