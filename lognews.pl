@@ -2,7 +2,7 @@
 
 use DBD::mysql;
 
-$Database = DBI->connect("DBI:mysql:database=maproom_bgaleague;host=db48c.pair.com", "maproom_4", "QeWwhsLj");
+$Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
 
 die "Cannot open git" unless open(LG, "git log --no-color -n 1|");
 
