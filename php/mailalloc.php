@@ -104,36 +104,41 @@ Board $board:
 	Black: {$bp->display_name(false)} {$bp->display_rank()} of {$bt->display_name()}
 EOT;
 		fwrite($fh, "$mess\n");
-		$hstones = 0;
-		if ($hcapable) {
-			$hstones = $wp->Rank->Rankvalue - $bp->Rank->Rankvalue - $hred;
-			if ($hstones > 9)
-				$hstones = 9;
-			if ($hstones > 0)  {
-				$hmess = "$hstones stones";
-				if ($hstones == 1)
-					$hmess = "No komi";
-				$mess = <<<EOT
+		if ($g->Result != 'N')
+			fwrite($fh, "This game has already been played.\n");
+		else {
+			$hstones = 0;
+			if ($hcapable) {
+				$hstones = $wp->Rank->Rankvalue - $bp->Rank->Rankvalue - $hred;
+				if ($hstones > 9)
+					$hstones = 9;
+				if ($hstones > 0)  {
+					$hmess = "$hstones stones";
+					if ($hstones == 1)
+						$hmess = "No komi";
+					$mess = <<<EOT
 	Handicap: $hmess
 EOT;
-				fwrite($fh, "$mess\n");
+					fwrite($fh, "$mess\n");
+				}
 			}
-		}
-		$hreason = mail_player($board, $hp, $ht, $hc, $hcol, $ap, $at, $hstones);
-		$areason = mail_player($board, $ap, $at, $ac, $acol, $hp, $ht, $hstones);
-		if (strlen($hreason) != 0)  {
-			$mess = <<<EOT
+		
+			$hreason = mail_player($board, $hp, $ht, $hc, $hcol, $ap, $at, $hstones);
+			$areason = mail_player($board, $ap, $at, $ac, $acol, $hp, $ht, $hstones);
+			if (strlen($hreason) != 0)  {
+				$mess = <<<EOT
 	{$ht->display_captain()} please contact as $hreason
 
 EOT;
-			fwrite($fh, $mess);
-		}
-		if (strlen($areason) != 0)  {
-			$mess = <<<EOT
+				fwrite($fh, $mess);
+			}
+			if (strlen($areason) != 0)  {
+				$mess = <<<EOT
 	{$at->display_captain()} please contact as $areason
 
 EOT;
-			fwrite($fh, $mess);
+				fwrite($fh, $mess);
+			}
 		}
 		$board++;
 	}

@@ -110,20 +110,27 @@ function loadkgs() {
 	var restype = resty.options[resty.selectedIndex].value;
 	if (restype == 'N') {
 		alert("Result type not set");
-		return;
+		return  false;
 	}
 	var plf = fm.plf.value;
 	var pll = fm.pll.value;
 	var oppel = fm.opp;
 	if  (oppel.selectedIndex < 0)  {
 		alert("No opponent selected");
-		return;
+		return  false;
 	}
 	var opp = oppel.options[oppel.selectedIndex].value;
 	document.location = "loadkgsil.php?pl=" + plf + ":" + pll + "&opp=" + opp +
 							  "&col=" + colour +
 							  "&md=" + year + "-" + month + "-" + day + "&r=" +
 							  res + "&rt=" + restype;
+	return  false;
+}
+function checknokgs() {
+	var fm = document.ilresf;
+	if (fm.sgffile.value.length != 0)
+		return true;
+	return confirm("Are you sure that this game was not played on KGS so you can download it?");
 }
 </script>
 <h1>Add result for Individual League</h1>
@@ -199,12 +206,17 @@ for ($v = 0; $v < 50; $v++)
 	<td><input type=file name=sgffile></td>
 </tr>
 <tr>
-	<td colspan=2>Click <input type="submit" name="sub" value="Here"> if uploading file
-	from my computer or no SGF</td>
+	<td colspan=2>
+	Click <input type="submit" name="sub" value="Here" onclick="javascript:return checknokgs();">
+	if uploading file from my computer or no SGF</td>
+</tr>
+<tr>
+	<td colspan=2>
+	Or <input type="submit" value="click here to load result from KGS" onclick="javascript:return loadkgs();">
+	getting the date, result and score right.
+	</td>
 </tr>
 </table>
 </form>
-<p>Or <a href="javascript:loadkgs();"><b>Click here</b></a> if the game was played
-on KGS with the right names - getting the date, result and score right.</p>
 </body>
 </html>
