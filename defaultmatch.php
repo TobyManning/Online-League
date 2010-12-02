@@ -61,9 +61,8 @@ The match between
 <?php
 $wteam = $mtch->Result == 'H'? $mtch->Hteam: $mtch->Ateam;
 print <<<EOT
-{$mtch->Hteam->display_name()} ({$mtch->Hteam->display_description()})
-and
-{$mtch->Ateam->display_name()} ({$mtch->Ateam->display_description()})
+{$mtch->Hteam->display_name()} and
+{$mtch->Ateam->display_name()}
 on
 {$mtch->Date->display()} has been defaulted in favour of {$wteam->display_name()}.
 </p>
