@@ -30,6 +30,7 @@ class HistMatch {
 	public  $Ascore;		// "Away" Score
 	public  $Result;		// N (not played) P (part played) D Draw H Home Win A Away win
 	public  $Games;		// Array of game objects
+	public  $Defaulted;	// Match defaulted
 	
 	public function __construct($s, $in = 0, $d = 1) {
 		$this->Seas = $s;
@@ -42,6 +43,7 @@ class HistMatch {
 		$this->Ascore = 0;
 		$this->Result = 'N';
 		$this->Games = array();
+		$this->Defaulted = false;
 	}
 	
 	public function query_ind() {
@@ -97,7 +99,7 @@ class HistMatch {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hscore,ascore,result from histmatch where $q");
+		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hscore,ascore,result,defaulted from histmatch where $q");
 		if (!$ret)
 			throw new HistMatchException("Cannot read database for match $q");
 		if (mysql_num_rows($ret) == 0)
@@ -110,6 +112,7 @@ class HistMatch {
 		$this->Hscore = $row["hscore"];
 		$this->Ascore = $row["ascore"];
 		$this->Result = $row["result"];
+		$this->Defaulted = $row["defaulted"];
 	}
 	
 	// Get the team details for a match
@@ -127,19 +130,21 @@ class HistMatch {
 	// Fetch the game list (not including score)
 		
 	public function fetchgames() {
-		$ret = mysql_query("select ind from game where {$this->queryof('match')} order by ind");
-		if (!$ret)
-			throw new HistMatchException("Game read fail " . mysql_error());
 		$result = array();
-		try  {
-			while ($row = mysql_fetch_array($ret))  {
-				$g = new Game($row[0], $this->Ind, $this->Division);
-				$g->fetchhistdets($this->Seas);
-				array_push($result, $g);
+		if  (!$this->Defaulted)  {
+			$ret = mysql_query("select ind from game where {$this->queryof('match')} order by ind");
+			if (!$ret)
+				throw new HistMatchException("Game read fail " . mysql_error());
+			try  {
+				while ($row = mysql_fetch_array($ret))  {
+					$g = new Game($row[0], $this->Ind, $this->Division);
+					$g->fetchhistdets($this->Seas);
+					array_push($result, $g);
+				}
 			}
-		}
-		catch (GameException $e) {
-			throw new HistMatchException($e->getMessage());
+			catch (GameException $e) {
+				throw new HistMatchException($e->getMessage());
+			}
 		}
 		$this->Games = $result;
 	}
@@ -156,6 +161,8 @@ class HistMatch {
 	}
 	
 	public function is_allocated() {
+		if ($this->Defaulted)
+			return true;
 		if ($this->ngames() < 3)
 			return false;
 		foreach ($this->Games as $game)
@@ -165,6 +172,8 @@ class HistMatch {
 	}
 	
 	public function teamalloc()  {
+		if ($this->Defaulted)
+			return true;
 		$ret = mysql_query("select count(*) from game where {$this->queryof('match')}");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			return false;
@@ -177,7 +186,8 @@ class HistMatch {
 		$qaway = $this->Ateam->queryname();
 		$qdate = $this->Date->queryof();
 		$qres = mysql_real_escape_string($this->Result);
-		$ret = mysql_query("insert into histmatch (ind,divnum,hteam,ateam,matchdate,hscore,ascore,result,seasind) values ({$this->Ind},{$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres',{$this->Seas->Ind})");
+		$qdef = $this->Defaulted? 1: 0;
+		$ret = mysql_query("insert into histmatch (ind,divnum,hteam,ateam,matchdate,hscore,ascore,result,seasind,defaulted) values ({$this->Ind},{$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres',{$this->Seas->Ind},$qdef)");
 		if (!$ret)
 			throw new HistMatchException(mysql_error());
 	}

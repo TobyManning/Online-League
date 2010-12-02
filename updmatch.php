@@ -254,5 +254,23 @@ Set colours to "Nigiri" throughout to randomly pick a colour which will be assig
 1 and 3 and the opposite to board 2.
 </p>
 </form>
+<h2>Defaulting whole matches</h2>
+<p>If you want to default a match please select one of the following. Note that this will
+wipe all game records already played so it's fairly irreversible! If you mean to just
+default a single game this is not the right place.
+</p>
+<?php
+print <<<EOT
+<p>To default the match against {$mtch->Hteam->display_name()}
+and in favour of {$mtch->Ateam->display_name()},
+<a href="defaultmatch.php?{$mtch->urlof()}&w=H">click here</a>.
+</p>
+<p>To default the match against {$mtch->Ateam->display_name()}
+and in favour of {$mtch->Hteam->display_name()},
+<a href="defaultmatch.php?{$mtch->urlof()}&w=A">click here</a>.
+</p>
+
+EOT;
+?>
 </body>
 </html>

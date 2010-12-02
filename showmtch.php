@@ -77,55 +77,63 @@ and {$mtch->Ateam->display_captain(true)} for {$mtch->Ateam->display_name()}.
 </p>
 
 EOT;
-if ($mtch->Result=='H' || $mtch->Result=='A' || $mtch->Result=='D') {
-	$h = $mtch->Hscore + 0;
-	$a = $mtch->Ascore + 0;
+if ($mtch->Defaulted) {
+	$wdef = $mtch->Result == 'A'? $mtch->Ateam: $mtch->Hteam;
 	print <<<EOT
-<p>The final score was $h-$a.</p>
-<p>Player and board assignments were:</p>
+<p>This match was defaulted in favour of {$wdef->display_name()}.</p>
 
 EOT;
 }
 else {
-	if ($mtch->Result=='P') {
+   if ($mtch->Result=='H' || $mtch->Result=='A' || $mtch->Result=='D') {
 		$h = $mtch->Hscore + 0;
-		$a = $mtch->Ascore + 0;
-		print "<p>Score to date is $h-$a</p>\n";
+	   $a = $mtch->Ascore + 0;
+		print <<<EOT
+<p>The final score was $h-$a.</p>
+<p>Player and board assignments were:</p>
+
+EOT;
 	}
-	print <<<EOT
+	else {
+		if ($mtch->Result=='P') {
+			$h = $mtch->Hscore + 0;
+			$a = $mtch->Ascore + 0;
+			print "<p>Score to date is $h-$a</p>\n";
+		}
+		print <<<EOT
 <p>Player and board assignments are as follows:</p>
 
 EOT;
-}
-print <<<EOT
+	}
+	print <<<EOT
 <table class="showmatch">
 <tr><th colspan="5" align="center">White</th><th colspan="4" align="center">Black</th><th>Result</th></tr>
 <tr><th>Date</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th><th>Player</th><th>Rank</th><th>Online</th><th>Team</th></tr>
 
 EOT;
-$hcaps = array();
-$boards = array();
-$board = 1;
-foreach ($mtch->Games as $g) {
-	$bpre = $bpost = $wpre = $wpost = "";
-	switch ($g->Result)  {
-	case 'W':
-		$wpre = "<b>";
-		$wpost = "</b>";
-		break;
-	case 'B':
-		$bpre = "<b>";
-		$bpost = "</b>";
-		break;
-	}
-	$hstones = $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue - $hred;
-	if ($hstones > 9)
-		$hstones = 9;
-	if ($hcapable && $hstones > 0)  {
-		array_push($hcaps, $hstones);
-		array_push($boards, $board);
-	}
-	print <<<EOT
+	$hcaps = array();
+	$boards = array();
+	$board = 1;
+	foreach ($mtch->Games as $g) {
+		$bpre = $bpost = $wpre = $wpost = "";
+		switch ($g->Result)  {
+		case 'W':
+			$wpre = "<b>";
+			$wpost = "</b>";
+			break;
+		case 'B':
+			$bpre = "<b>";
+			$bpost = "</b>";
+			break;
+		}
+		$hstones = $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue - $hred;
+		if ($hstones > 9)
+			$hstones = 9;
+		if ($hcapable && $hstones > 0)  {
+			array_push($hcaps, $hstones);
+			array_push($boards, $board);
+		}
+		print <<<EOT
 <tr>
 <td>{$g->date_played()}</td>
 <td>$wpre{$g->Wplayer->display_name()}$wpost</td>
@@ -139,38 +147,40 @@ foreach ($mtch->Games as $g) {
 <td>{$g->display_result($editok)}</td>
 </tr>
 EOT;
-	$board++;
-}
-?>
-</table>
-<?php
-if (count($boards) > 0)  {
-	$n = count($boards);
+		$board++;
+	}
 	print <<<EOT
+</table>
+
+EOT;
+	if (count($boards) > 0)  {
+		$n = count($boards);
+		print <<<EOT
 <h2>Handicaps</h2>
 <p>Handicaps apply to
 
 EOT;
-	if ($n == 1)
-		print "1 board\n";
-	else
-		print "$n boards\n";
-	print <<<EOT
+		if ($n == 1)
+			print "1 board\n";
+		else
+			print "$n boards\n";
+		print <<<EOT
 in this match as follows:</p>
 <table class="showmatch">
 <tr><th>Board</th><th>Handicap</th></tr>
 
 EOT;
-	for ($board = 0; $board < $n;  $board++)  {
-		print "<tr><td>$boards[$board]</td>\n<td>";
-		$h = $hcaps[$board];
-		if ($h == 1)
-			print	"No komi";
-		else
-			print "$h stones";
-		print "</td></tr>\n";
+		for ($board = 0; $board < $n;  $board++)  {
+			print "<tr><td>$boards[$board]</td>\n<td>";
+			$h = $hcaps[$board];
+			if ($h == 1)
+				print	"No komi";
+			else
+				print "$h stones";
+			print "</td></tr>\n";
+		}
+		print "</table>\n";
 	}
-	print "</table>\n";
 }
 ?>
 <p>Click <a href="javascript:history.back()">here</a> to return to your previous page

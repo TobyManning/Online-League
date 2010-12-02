@@ -39,6 +39,7 @@ class Match {
 	public  $Ascore;		// "Away" Score
 	public  $Result;		// N (not played) P (part played) D Draw H Home Win A Away win
 	public  $Games;		// Array of game objects
+	public  $Defaulted;	// Boolean if whole match defaulted
 	
 	public function __construct($in = 0, $d = 1) {
 		$this->Ind = $in;
@@ -51,6 +52,7 @@ class Match {
 		$this->Ascore = 0;
 		$this->Result = 'N';
 		$this->Games = array();
+		$this->Defaulted = false;
 	}
 	
 	// Just a few places where we need the ind but we don't want people fiddling
@@ -115,7 +117,7 @@ class Match {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays from lgmatch where $q");
+		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays,defaulted from lgmatch where $q");
 		if (!$ret)
 			throw new MatchException("Cannot read database for match $q");
 		if (mysql_num_rows($ret) == 0)  {
@@ -133,6 +135,7 @@ class Match {
 		$this->Hscore = $row["hscore"];
 		$this->Ascore = $row["ascore"];
 		$this->Result = $row["result"];
+		$this->Defaulted = $row["defaulted"];
 	}
 	
 	// Get the team details for a match
@@ -150,19 +153,22 @@ class Match {
 	// Fetch the game list (not including score)
 		
 	public function fetchgames() {
-		$ret = mysql_query("select ind from game where {$this->queryof('match')} order by ind");
-		if (!$ret)
-			throw new MatchException("Game read fail " . mysql_error());
 		$result = array();
-		try  {
-			while ($row = mysql_fetch_array($ret))  {
-				$g = new Game($row[0], $this->Ind, $this->Division);
-				$g->fetchdets();
-				array_push($result, $g);
+		if  (!$this->Defaulted)  {
+			$ret = mysql_query("select ind from game where {$this->queryof('match')} order by ind");
+			if (!$ret)
+				throw new MatchException("Game read fail " . mysql_error());
+
+			try  {
+				while ($row = mysql_fetch_array($ret))  {
+					$g = new Game($row[0], $this->Ind, $this->Division);
+					$g->fetchdets();
+					array_push($result, $g);
+				}	
 			}
-		}
-		catch (GameException $e) {
-			throw new MatchException($e->getMessage());
+			catch (GameException $e) {
+				throw new MatchException($e->getMessage());
+			}
 		}
 		$this->Games = $result;
 	}
@@ -181,6 +187,8 @@ class Match {
 	// Indicate if both teams are allocated
 	
 	public function is_allocated() {
+		if ($this->Defaulted)
+			return true;
 		if ($this->ngames() < 3)
 			return false;
 		foreach ($this->Games as $game)
@@ -192,6 +200,8 @@ class Match {
 	// Indicate if given team is allocated
 	
 	public function team_allocated($t) {
+		if  ($this->Defaulted)
+			return true;
 		if ($this->ngames() < 3)
 			return false;
 		foreach ($this->Games as $game)
@@ -201,6 +211,8 @@ class Match {
 	}
 	
 	public function teamalloc()  {
+		if  ($this->Defaulted)
+			return true;
 		$ret = mysql_query("select count(*) from game where {$this->queryof('match')}");
 		if (!$ret || mysql_num_rows($ret) == 0)
 			return false;
@@ -259,7 +271,27 @@ class Match {
 		else
 			$this->Result = 'H';
 		mysql_query("update lgmatch set result='{$this->Result}',hscore={$this->Hscore},ascore={$this->Ascore} where {$this->queryof()}");
-	}					
+	}
+	
+	public function set_defaulted($hora) {
+		switch  ($hora)  {
+		default:
+			return;
+		case  'H':
+			$this->Result= 'A';
+			$this->Hscore = 0;
+			$this->Ascore = 3;
+			break;
+		case  'A':
+			$this->Result = 'H';
+			$this->Hscore = 3;
+			$this->Ascore = 0;
+			break;
+		}
+		$this->Defaulted = true;
+		mysql_query("update lgmatch set defaulted=1,result='{$this->Result}',hscore={$this->Hscore},ascore={$this->Ascore} where {$this->queryof()}");
+		mysql_query("delete from game where {$this->queryof('match')}");
+	}	
 
 	// Push out a selection option for the number of spare days
 			
