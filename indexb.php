@@ -25,20 +25,20 @@ include 'php/head.php';
 <body>
 <h1>British Go Association League</h1>
 <div align="center"><img src="images/go2.jpeg" width="500" height="375" border="0" alt="Go Board Picture" align="middle"></div>
-<p>Welcome to the British Go Association League Website which has now completed its first
-season and is well into its second.</p>
+<p>Welcome to the British Go Association League Website which has now completed its second
+season.</p>
 <p>The British Go Association League Tournament was originally a team-based Go league
 designed to be played mainly over the Internet. Following the success of this, an individual
-league is to be introduced as well in January 2011 (with a trial version running
-currently).</p>
+league is starting as well in January 2011.</p>
 <p>The purpose of the league is to encourage interaction between players
 in different areas of the country and to encourage online play amongst members of the BGA.</p>
 <p>To learn more about the league, click <a href="aboutus.php" target="_top">here</a>.
 </p>
-<p>We congratulate the <b>Cambridge Team</b> on winning the first season championship.</p>
+<p>We congratulate the <b>Dundee</b> Team on winning the second season championship taking
+the title from the Cambridge Team who won the first season championship.</p>
 <p>To see the current and previous league tables
 <a href="league.php" target="_top">click here</a>. The Individual League tables
-are to be found <a href="ileague.php" target="_top">click here</a>.
+are to be found <a href="ileague.php" target="_top">here</a>.
 </p>
 </body>
 </html>
