@@ -508,7 +508,9 @@ class Player  {
 	// MySQL juggling to get Played/Won/Drawn/Lost	
 	private function get_grec($query) {
 		$ret = mysql_query("select count(*) from game where $query");
-		if  (!$ret || mysql_num_rows($ret) == 0)
+		if (!$ret)
+			throw new PlayerException(mysql_error());
+		if  (mysql_num_rows($ret) == 0)
 			return  0;
 		$row = mysql_fetch_array($ret);
 		return $row[0];
@@ -570,11 +572,11 @@ class Player  {
 	}
 	
 	public function histdrawn($si, $l = 'I') {
-		return $this->histgrec($si, $l, "result='J' and ({$this->queryof('w')} or {$this->queryof('b')})");
+		return $this->histgrec($si, $l, "result='J' and (({$this->queryof('w')}) or ({$this->queryof('b')}))");
 	}
 	
 	public function histplayed($si, $l = 'I') {
-		return $this->histgrec($si, $l, "result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
+		return $this->histgrec($si, $l, "result!='N' and (({$this->queryof('w')}) or ({$this->queryof('b')}))");
 	}
 	
 	public function get_scores($p = Null, $si = 0, $lg = 'I') {
