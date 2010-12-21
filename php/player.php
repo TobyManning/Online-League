@@ -713,7 +713,7 @@ function list_players_ildiv($div, $order = "last,first,rank desc") {
 
 function list_hist_players_ildiv($div, $seas) {
 	$resultk = array();
-	$ret = mysql_query("select wfirst,wlast,bfirst,blast from game where league='I' and seasind={$seas->ind} and divnum=$div");
+	$ret = mysql_query("select wfirst,wlast,bfirst,blast from game where league='I' and seasind={$seas->Ind} and divnum=$div");
 	if ($ret)  {
 		while ($row = mysql_fetch_assoc($ret))  {
 			$f = $row['wfirst'];
