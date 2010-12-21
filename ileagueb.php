@@ -22,6 +22,7 @@ include 'php/player.php';
 include 'php/matchdate.php';
 include 'php/params.php';
 include 'php/itrecord.php';
+include 'php/season.php';
 
 $mention = $logged_in;
 if ($logged_in)  {
@@ -142,7 +143,40 @@ but please try to vary who you play with as much as you can.
 
 EOT;
 ?>
-<!-- <h2>Previous Seasons</h2>
-<p><a href="prevleagueb.php">Click here</a> to view previous seasons' league.</p> -->
+<h2>Previous Seasons</h2>
+<?php
+$seasons = list_seasons('I');
+if (count($seasons) == 0) {
+	print <<<EOT
+<p>No previous seasons to display data for.</p>
+
+EOT;
+}
+else {
+		print <<<EOT
+<table class="teamsb">
+<tr>
+	<th>Season Name</th>
+	<th>Start Date</th>
+	<th>End Date</th>
+	<th>League table</th>
+</tr>
+
+EOT;
+	foreach ($seasons as $seas) {
+		$seas->fetchdets();
+		print <<<EOT
+<tr>
+	<td>{$seas->display_name()}</td>
+	<td>{$seas->display_start()}</td>
+	<td>{$seas->display_end()}</td>
+	<td><a href="seasileague.php?{$seas->urlof()}">Click</a></td>
+</tr>
+
+EOT;
+	}
+	print "</table>\n";
+}
+?>
 </body>
 </html>

@@ -96,7 +96,7 @@ class Season  {
 	}
 }
 
-function list_seasons($l = 'T', $desc = true) {
+function list_seasons($l = 'T', $desc = false) {
 	$ord = $desc? " desc": "";
 	$ret = mysql_query("select ind from season where league='$l' order by enddate$ord");
 	$result = array();
