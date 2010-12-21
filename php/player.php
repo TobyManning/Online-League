@@ -685,12 +685,20 @@ function list_player_ranks() {
 }
 
 function max_ildivision() {
+	$result = 1;
 	$ret = mysql_query("select max(ildiv) from player");
 	if ($ret && mysql_num_rows($ret) > 0) {
 		$row = mysql_fetch_array($ret);
-		return $row[0];
+		if ($row[0] > $result)
+			$result = $row[0];
 	}
-	return 1;	
+	$ret = mysql_query("select max(divnum) from game where league='I'");
+	if ($ret && mysql_num_rows($ret) > 0) {
+		$row = mysql_fetch_array($ret);
+		if ($row[0] > $result)
+			$result = $row[0];
+	}
+	return $result;	
 }
 
 function list_players_ildiv($div, $order = "last,first,rank desc") {
@@ -701,6 +709,26 @@ function list_players_ildiv($div, $order = "last,first,rank desc") {
 			array_push($result, new player($row['first'], $row['last']));
 	}
 	return $result;
+}
+
+function list_hist_players_ildiv($div, $seas) {
+	$resultk = array();
+	$ret = mysql_query("select wfirst,wlast,bfirst,blast from game where league='I' and seasind={$seas->ind} and divnum=$div");
+	if ($ret)  {
+		while ($row = mysql_fetch_assoc($ret))  {
+			$f = $row['wfirst'];
+			$l = $row['wlast'];
+			$name = "$f $l";
+			if (!array_key_exists($name, $resultk))
+				$resultk[$name] = new Player($f, $l);
+			$f = $row['bfirst'];
+			$l = $row['blast'];
+			$name = "$f $l";
+			if (!array_key_exists($name, $resultk))
+				$resultk[$name] = new Player($f, $l);
+		}
+	}
+	return array_keys($resultk);
 }
 
 function ilscore_compare($pla, $plb) {
