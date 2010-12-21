@@ -123,10 +123,10 @@ EOT;
 			}
 
 			print <<<EOT
-<td align="right">{$p->played_games(true,'I')}</td>
-<td align="right">{$p->won_games(true,'I')}</td>
-<td align="right">{$p->drawn_games(true,'I')}</td>
-<td align="right">{$p->lost_games(true,'I')}</td>
+<td align="right">{$p->histplayed($Season->Ind)}</td>
+<td align="right">{$p->histwon($Season->Ind)}</td>
+<td align="right">{$p->histdrawn($Season->Ind)}</td>
+<td align="right">{$p->histlost($Season->Ind)}</td>
 </tr>
 
 EOT;
