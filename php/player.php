@@ -562,19 +562,19 @@ class Player  {
 	}
 	
 	public function histwon($si, $l = 'I') {
-		return $this->histgrec("((result='W' and {$this->queryof('w')}) or (result='B' and {$this->queryof('b')}))");
+		return $this->histgrec($si, $l, "((result='W' and {$this->queryof('w')}) or (result='B' and {$this->queryof('b')}))");
 	}
 	
 	public function histlost($si, $l = 'I') {
-		return $this->histgrec("((result='B' and {$this->queryof('w')}) or (result='W' and {$this->queryof('b')}))");
+		return $this->histgrec($si, $l, "((result='B' and {$this->queryof('w')}) or (result='W' and {$this->queryof('b')}))");
 	}
 	
 	public function histdrawn($si, $l = 'I') {
-		return $this->histgrec("result='J' and ({$this->queryof('w')} or {$this->queryof('b')})");
+		return $this->histgrec($si, $l, "result='J' and ({$this->queryof('w')} or {$this->queryof('b')})");
 	}
 	
 	public function histplayed($si, $l = 'I') {
-		return $this->histgrec("result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
+		return $this->histgrec($si, $l, "result!='N' and ({$this->queryof('w')} or {$this->queryof('b')})");
 	}
 	
 	public function get_scores($p = Null, $si = 0, $lg = 'I') {
