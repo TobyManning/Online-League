@@ -139,6 +139,7 @@ try {
 			$hmtch->Hscore = $mtch->Hscore;
 			$hmtch->Ascore = $mtch->Ascore;
 			$hmtch->Result = $mtch->Result;
+			$hmtch->Defaulted = $mtch->Defaulted;
 			$hmtch->create();
 		}
 	}
@@ -160,7 +161,7 @@ catch (HistMatchException $e) {
 
 mysql_query("delete from game where result='N'");
 mysql_query("delete from lgmatch");
-mysql_query("delete from news where user!='ADMINS'");
+mysql_query("delete from news");
 
 // I think that just about does it. Create a news item
 
