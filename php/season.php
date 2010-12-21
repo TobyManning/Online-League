@@ -84,6 +84,7 @@ class Season  {
 			throw new SeasonException("Cannot locate season record id");
 		$row = mysql_fetch_array($ret);
 		$this->Ind = $row[0];
+		return  $this->Ind;
 	}
 	
 	public function update() {

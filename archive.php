@@ -74,7 +74,7 @@ else  {
 		if ($row)
 			$latest->enctime($row[0]);	
 	}
-	$ret = mysql_query("select count(*) from season");
+	$ret = mysql_query("select count(*) from season where league='T'");
 	if ($ret && mysql_num_rows($ret) > 0) {
 		$row = mysql_fetch_array($ret);
 		if ($row)
