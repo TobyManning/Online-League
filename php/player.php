@@ -728,7 +728,7 @@ function list_hist_players_ildiv($div, $seas) {
 				$resultk[$name] = new Player($f, $l);
 		}
 	}
-	return array_keys($resultk);
+	return array_values($resultk);
 }
 
 function ilscore_compare($pla, $plb) {
