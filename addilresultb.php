@@ -160,6 +160,7 @@ $dat->dateopt("");
 ?>
 	</td>
 </tr>
+<tr><td></td><td>NB Date <b>started</b> if it crosses midnight</td></tr>
 <tr>
 	<td>Opponent was</td>
 	<td><select name="opp">
