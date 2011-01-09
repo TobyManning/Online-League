@@ -34,6 +34,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>Current League Standings</h1>
+<p>Click <a href="#prev">here</a> to view previous seasons.</p>
 <div align="center">
 <?php
 $pars = new Params();
@@ -116,6 +117,7 @@ EOT;
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
 </p>
 <h2>Previous Seasons</h2>
+<a name="prev"></a>
 <?php
 $seasons = list_seasons();
 if (count($seasons) == 0) {
