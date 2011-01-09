@@ -45,6 +45,7 @@ include 'php/head.php';
 ?>
 <body class="il">
 <h1>Current Individual League Standings</h1>
+<p>Click <a href="#prev">here</a> to view previous seasons.</p>
 <div align="center">
 <?php
 $pars = new Params();
@@ -144,6 +145,7 @@ but please try to vary who you play with as much as you can.
 EOT;
 ?>
 <h2>Previous Seasons</h2>
+<a name="prev"></a>
 <?php
 $seasons = list_seasons('I');
 if (count($seasons) == 0) {
