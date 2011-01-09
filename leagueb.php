@@ -24,6 +24,7 @@ include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/itrecord.php';
 include 'php/params.php';
+include 'php/season.php';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -115,6 +116,45 @@ EOT;
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
 </p>
 <h2>Previous Seasons</h2>
-<p><a href="prevleagueb.php">Click here</a> to view previous seasons' league.</p>
+<?php
+$seasons = list_seasons();
+if (count($seasons) == 0) {
+	print <<<EOT
+<p>There are currently no past seasons to display.
+Please come back soon!
+</p>
+<p>Please <a href="javascript:history.back()">click here</a> to go back.
+</p>
+
+EOT;
+}
+else {
+	print <<<EOT
+<table class="teamsb">
+<tr>
+	<th>Season Name</th>
+	<th>Start Date</th>
+	<th>End Date</th>
+	<th>League table</th>
+	<th>Matches</th>
+</tr>
+
+EOT;
+	foreach ($seasons as $seas) {
+		$seas->fetchdets();
+		print <<<EOT
+<tr>
+	<td>{$seas->display_name()}</td>
+	<td>{$seas->display_start()}</td>
+	<td>{$seas->display_end()}</td>
+	<td><a href="seasleague.php?{$seas->urlof()}">Click</a></td>
+	<td><a href="seasmatches.php?{$seas->urlof()}">Click</a></td>
+</tr>
+
+EOT;
+	}
+	print "</table>\n";
+}
+?>
 </body>
 </html>
