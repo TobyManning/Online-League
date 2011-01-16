@@ -27,5 +27,5 @@ while (<STDIN>) {
 	print MOUT $_;
 }
 close MOUT;
-#system("/usr/sbin/exim -t -oi <$tmpfile");
-#unlink $tmpfile;
+system("/usr/sbin/exim -t -oi <$tmpfile");
+unlink $tmpfile;
