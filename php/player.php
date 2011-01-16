@@ -61,6 +61,7 @@ class Player  {
 				throw new PlayerException("Cannot parse name");
 			}
 			$Gotrecs = '';
+			$this->Admin = 'N';
 			$this->Rank = new Rank();
 			$this->OKemail = false;
 			$this->BGAmemb = false;
