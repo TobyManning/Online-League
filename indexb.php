@@ -63,9 +63,9 @@ The winners in each league division are promoted at the end of the season,
 whilst losers face relegation to the league below. There may be more promotions or
 relegations in the individual league, depending upon numbers.
 The champions of the top division in the team league will win the League Tournament Shield,
-shown above and in addition
-will be receive three copies of the
-GoGoD Database and Encyclopaedia to the Division 1 winning teams for the first 5 years.</p>
+shown above and in addition for the first 5 years
+will receive three copies of the
+GoGoD Database and Encyclopaedia.</p>
 <p>The champions of the individual league will win credits
 at <a href="http://internetgoschool.com" target="_top">Guo Juan's internet Go school</a>.
 </p>
