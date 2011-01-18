@@ -21,7 +21,7 @@ $lastline = "Software update: $lastline";
 $auth = "ADMINS" unless $auth;
 $qlog = $Database->quote($lastline);
 $quser = $Database->quote($auth);
-$sfh = $Database->prepare("insert into news (ndate,user,item) values (current_date,$quser,$qlog)");
+$sfh = $Database->prepare("insert into news (ndate,user,item,trivial) values (current_date,$quser,$qlog,1)");
 $sfh->execute();
 exit 0;
 
