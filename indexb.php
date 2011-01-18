@@ -25,7 +25,7 @@ include 'php/head.php';
 <body>
 <h1>British Go Association League</h1>
 <div align="center">
-<img src="images/gogod_shield.medium.jpg" width="50%" height="50%" alt="Shield picture" align="middle" border="0">
+<img src="images/gogod_shield.medium.jpg" width="269" height="300" alt="Shield picture" align="middle" border="0">
 </div>
 <p>Welcome to the British Go Association League Website.</p>
 <p>Congratulations to the <b>Dundee</b> team (Yohei Negi, David Lee and Robby Geotschalckx)
