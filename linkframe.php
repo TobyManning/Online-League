@@ -40,7 +40,8 @@ function lostpw() {
    window.open("rempwbyuid.php?uid=" + l, "Password Reminder", "width=450,height=200,resizeable=yes,scrollbars=yes");
 }
 </script>
-<h2>Places</h2>
+<a href="http://www.britgo.org" target="_top">
+<img src="images/gohead12.gif" width="134" height="50" alt="BGA Logo"></a>
 <?php
 $a = $_GET["abs"];
 if ($a != "")
@@ -48,12 +49,11 @@ if ($a != "")
 $adm = $_GET["adm"];
 print <<<EOT
 <table>
-<tr><td><a href="${a}index.php" target="_top">Home</a></td></tr>
-<tr><td><a href="http://www.britgo.org" target="_top">BGA Home</a></td></tr>
+<tr><td><a href="${a}index.php" target="_top">League Home</a></td></tr>
 <tr><td><a href="${a}aboutus.php" target="_top">About The League</a></td></tr>
-<tr><td><a href="${a}extmatch.php" target="_top">Outside matches</a></td></tr>
-<tr><td><a href="${a}playing.php" target="_top">Rules Summary</a></td></tr>
-<tr><td><a href="${a}news.php" target="_top" class="news">News</a> <a href="${a}news.php?p=log" target="_top">Log</a></td></tr>
+<tr><td><a href="${a}playing.php" target="_top">Rules</a></td></tr>
+<tr><td><a href="${a}news.php" target="_top" class="news">News</a>
+<a href="${a}news.php?p=log" target="_top">Log</a></td></tr>
 <tr><td><a href="${a}clubs.php" target="_top">Clubs</a></td></tr>
 <tr><td><a href="${a}teams.php" target="_top">Teams</a></td></tr>
 <tr><td><a href="${a}players.php" target="_top">Players</a></td></tr>
@@ -62,8 +62,9 @@ print <<<EOT
 <tr><td class="subind"><a href="${a}players.php?by=clubrank" target="_top">By club/rank</a></td></tr>
 <tr><td><a href="${a}pbt.php" target="_top">Players by team</a></td></tr>
 <tr><td><a href="${a}matches.php" target="_top">Matches</a></td></tr>
-<tr><td><a href="${a}results.php" target="_top">Results</a></td></tr>
-<tr><td><a href="${a}league.php" target="_top">League</a></td></tr>
+<tr><td><a href="${a}results.php" target="_top">Match Results</a></td></tr>
+<tr><th colspan="2">Standings</th></tr>
+<tr><td><a href="${a}league.php" target="_top">Team League</a></td></tr>
 <tr><td><a href="${a}ileague.php" target="_top" class="il">Individual League</a></td></tr>
 EOT;
 if ($logged_in) {

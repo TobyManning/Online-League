@@ -24,21 +24,21 @@ include 'php/head.php';
 ?>
 <body>
 <h1>British Go Association League</h1>
-<div align="center"><img src="images/go2.jpeg" width="500" height="375" border="0" alt="Go Board Picture" align="middle"></div>
-<p>Welcome to the British Go Association League Website which has now completed its second
-season.</p>
-<p>The British Go Association League Tournament was originally a team-based Go league
-designed to be played mainly over the Internet. Following the success of this, an individual
-league is starting as well in January 2011.</p>
-<p>The purpose of the league is to encourage interaction between players
-in different areas of the country and to encourage online play amongst members of the BGA.</p>
-<p>To learn more about the league, click <a href="aboutus.php" target="_top">here</a>.
+<div align="center">
+<img src="images/gogod_shield.medium.jpg" width="538" height="600" alt="Shield picture" align="middle" border="0">
+</div>
+<p>Welcome to the British Go Association League Website.</p>
+<p>Congratulations to the <b>Dundee</b> team (Yohei Negi, David Lee and Robby Geotschalckx)
+on winning the second season championship
+taking the GoGoD Shield and the title from the previous winners - Cambridge.
 </p>
-<p>We congratulate the <b>Dundee</b> Team on winning the second season championship taking
-the title from the Cambridge Team who won the first season championship.</p>
-<p>To see the current and previous league tables
-<a href="league.php" target="_top">click here</a>. The Individual League tables
-are to be found <a href="ileague.php" target="_top">here</a>.
+<p>The British Go Association League Tournament is a team-based
+Go league designed to be played over the Internet.
+Following the success of this in 2010, an individual league is starting in 2011.
+The leagues run throughout the calendar year.</p>
+<p>The purpose of the league is to encourage interaction between players
+in different areas of the country and to
+encourage online play amongst members of the BGA.</p>
 </p>
 </body>
 </html>

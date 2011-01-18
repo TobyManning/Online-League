@@ -117,11 +117,13 @@ body {
 	background-color: #FFFFB3;
 	color: #000000;
 	text-align: justify;
+	font-size: 10pt;
 }
 body.nomarg {
-	background-color: #FFFFB3;
-	color: #000000;
+	font-size: 10pt;
 	text-align: justify;
+	color: #000000;
+	background-color: #FFFFB3;
 }
 body.il {
 	background-color: #C9F1C9;
@@ -129,11 +131,13 @@ body.il {
 	color: #000000;
 	margin-left: 0.25in;
 	margin-right: 0.25in;
+	font-size: 10pt;
 }
 body.ilnomarg {
-	background-color: #C9F1C9;
-	text-align: justify;
+	font-size: 10pt;
 	color: #000000;
+	text-align: justify;
+	background-color: #C9F1C9;
 }
 p.note {
 	text-align: center;
