@@ -45,6 +45,7 @@ played mainly over the Internet.
 The purpose of the league is to encourage interaction between players in
 different areas of the country and to encourage online play amongst members of the BGA.
 </p>
+<h2>History</h2>
 <p>The league was originally a just team-based league, but following the success of this
 an individual league will be introduced in addition from October 2010. (It is currently
 on test, please contact us if you want to help test it).</p>
