@@ -58,9 +58,9 @@ print <<<EOT
 <tr><td class="subind"><a href="${a}players.php?by=club" target="_top">By club</a></td></tr>
 <tr><td class="subind"><a href="${a}players.php?by=rank" target="_top">By rank</a></td></tr>
 <tr><td class="subind"><a href="${a}players.php?by=clubrank" target="_top">By club/rank</a></td></tr>
-<tr><td><a href="${a}pbt.php" target="_top">Players by team</a></td></tr>
-<tr><td><a href="${a}matches.php" target="_top">Matches</a></td></tr>
-<tr><td><a href="${a}results.php" target="_top">Match Results</a></td></tr>
+<tr><td class="subind"><a href="${a}pbt.php" target="_top">Players by team</a></td></tr>
+<tr><td><a href="${a}matches.php" target="_top">Team Matches</a></td></tr>
+<tr><td><a href="${a}results.php" target="_top">Team Results</a></td></tr>
 <tr><th colspan="2">Standings</th></tr>
 <tr><td class="subind"><a href="${a}league.php" target="_top">Team League</a></td></tr>
 <tr><td class="subind"><a href="${a}ileague.php" target="_top" class="il">Individual League</a></td></tr>

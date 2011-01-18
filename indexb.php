@@ -39,16 +39,7 @@ The leagues run throughout the calendar year.</p>
 <p>The purpose of the league is to encourage interaction between players
 in different areas of the country and to
 encourage online play amongst members of the BGA.</p>
-<p>
-The British Go Association League Tournaments are a pair of Go leagues designed to be
-played mainly over the Internet.
-The purpose of the league is to encourage interaction between players in
-different areas of the country and to encourage online play amongst members of the BGA.
-</p>
 <h2>League format</h2>
-<p>The league was originally a just team-based league, but following the success of this
-an individual league will be introduced in addition from October 2010. (It is currently
-on test, please contact us if you want to help test it).</p>
 <p>
 The league is played in annual seasons for both the team and individual leagues,
 starting in January and ending in December (although the last two months, November and
@@ -66,16 +57,24 @@ they can within their division.
 Games are played online on the <a href="http://www.gokgs.com" target="_blank">KGS Go Server</a>
 in the "British Room".
 </p>
+<h2>Prizes</h2>
 <p>
 The winners in each league division are promoted at the end of the season,
 whilst losers face relegation to the league below. There may be more promotions or
 relegations in the individual league, depending upon numbers.
 The champions of the top division in the team league will win the League Tournament Shield,
-shown above. The champions of the individual league will win credits
+shown above and in addition
+will be receive three copies of the
+GoGoD Database and Encyclopaedia to the Division 1 winning teams for the first 5 years.</p>
+<p>The champions of the individual league will win credits
 at <a href="http://internetgoschool.com" target="_top">Guo Juan's internet Go school</a>.
 </p>
+<p>The BGA Council wishes to express its gratitude to Games of Go on Disk
+for their generous donation of the online league shield.</p>
+<h2>Rules</h2>
 <p>A full description of playing games is to be found
 under <a href="playing.php" target="_top">rules</a>.</p>
+<h2>Joining</h2>
 <p>If you would like to form a team, please contact
 the Online League coordinators at online-league at britgo.org.
 Players wishing to captain a team must be members of the British Go Association,
@@ -93,6 +92,12 @@ You will be given a user id and a password.
 You can set the password to your own choice of characters later. Please set the contact
 details, including your email address (which will never be given out indiscriminately), KGS name, on your account.
 </p>
+<h2>Subscriptions</h2>
+<p>We charge &pound;10 per season for each team in the team league, together with
+an extra &pound;5 each non-BGA member in each team.</p>
+<p>We charge &pound;5 per season for each player in the individual league, or &pound;8
+for each non-BGA member.</p>
+
 <p>You can see the current team league status using the menu items to the left.
 For any further questions, please contact
 the Online League coordinators at online-league at britgo.org.</p>
