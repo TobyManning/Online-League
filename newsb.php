@@ -38,7 +38,23 @@ update was made not necessarily when a game was played.</p>
 <th>Item</th>
 </tr>
 <?php
-$ret = mysql_query("select ndate,user,item,link  from news order by ndate desc");
+if ($logged_in) {
+	try {
+		$player = new Player();
+		$player->fromid($userid);
+		$triv = $player->Trivia;
+	}
+	catch (PlayerException $e) {
+		$triv = false;
+	}
+}
+else
+	$triv = false;
+if ($triv)
+	$triv = "";
+else
+	$triv = " where trivial=0";
+$ret = mysql_query("select ndate,user,item,link from news$triv order by ndate desc");
 if ($ret && mysql_num_rows($ret) > 0)  {
 	while ($row = mysql_fetch_assoc($ret))  {
 		$n = new News();

@@ -52,6 +52,7 @@ $club = $_POST["club"];
 $rank = $_POST["rank"];
 $passw = $_POST["passw"];
 $okem = $_POST["okem"];
+$trivia = $_POST["trivia"];
 $notes = $_POST["notes"];
 $latest = $_POST["latesttime"];
 
@@ -92,6 +93,7 @@ $origplayer->Rank = new Rank($rank);
 $origplayer->Club = new Club($club);
 $origplayer->Email = $email;
 $origplayer->OKemail = $okem;
+$origplayer->Trivia = $trivia;
 $origplayer->Phone = $phone;
 $origplayer->Notes = $notes;
 $origplayer->Latestcall = $latest == "None"? "": $latest;

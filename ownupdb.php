@@ -76,6 +76,7 @@ $dp = $player->disp_passwd();
 if (strlen($dp) != 0)
 	$dp = " value=\"" . $dp . "\"";
 $okemch = $player->OKemail?" checked": "";
+$trivch = $player->Trivia? " checked": "";
 print <<<EOT
 <tr><td>Email</td>
 <td><input type="text" name="email" value="{$player->display_email_nolink()}"></td></tr>
@@ -93,6 +94,8 @@ print <<<EOT
 <td><input type="text" name="kgs" value="{$player->display_kgs()}" size="10" maxlength="10"></td></tr>
 <tr><td>IGS</td>
 <td><input type="text" name="igs" value="{$player->display_igs()}" size="10" maxlength="10"></td></tr>
+<tr><td>Display minor news items</td>
+<td><input type="checkbox" name="trivia"$trivch></td></tr>
 EOT;
 if ($player->ILdiv != 0) {
 	if ($player->ILpaid)
