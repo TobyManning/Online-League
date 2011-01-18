@@ -51,8 +51,7 @@ print <<<EOT
 <table>
 <tr><td><a href="${a}index.php" target="_top">League Home</a></td></tr>
 <tr><td><a href="${a}playing.php" target="_top">Rules</a></td></tr>
-<tr><td><a href="${a}news.php" target="_top" class="news">News</a>
-<a href="${a}news.php?p=log" target="_top">Log</a></td></tr>
+<tr><td><a href="${a}news.php" target="_top" class="news">News</a></td></tr>
 <tr><td><a href="${a}clubs.php" target="_top">Clubs</a></td></tr>
 <tr><td><a href="${a}teams.php" target="_top">Teams</a></td></tr>
 <tr><td><a href="${a}players.php" target="_top">Players</a></td></tr>
