@@ -42,7 +42,7 @@ include 'php/head.php';
 <body>
 <script language="javascript">
 function checkok() {
-	return confirm("Are you sure you want to this - it is pretty well irreversible");
+	return confirm("Are you sure you want to do this - it is pretty well irreversible");
 }
 </script>
 <h1>Promotion and Relegation / Archive</h1>
