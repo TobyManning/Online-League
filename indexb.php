@@ -24,9 +24,7 @@ include 'php/head.php';
 ?>
 <body>
 <h1>British Go Association League</h1>
-<div align="center">
-<img src="images/gogod_shield.medium.jpg" width="269" height="300" alt="Shield picture" align="middle" border="0">
-</div>
+<img src="images/gogod_shield.medium.jpg" width="538" height="600" alt="Shield picture" align="middle" border="0">
 <p>Welcome to the British Go Association League Website.</p>
 <p>Congratulations to the <b>Dundee</b> team (Yohei Negi, David Lee and Robby Geotschalckx)
 on winning the second season championship
@@ -70,11 +68,13 @@ GoGoD Database and Encyclopaedia.</p>
 at <a href="http://internetgoschool.com" target="_top">Guo Juan's internet Go school</a>.
 </p>
 <p>The BGA Council wishes to express its gratitude to Games of Go on Disk
-for their generous donation of the online league shield.</p>
+for their generous donation of the online league shield and copies of the GoGoD CD.</p>
 <h2>Rules</h2>
 <p>A full description of playing games is to be found
 under <a href="playing.php" target="_top">rules</a>.</p>
 <h2>Joining</h2>
+<p>Please join either league before 24th January 2011 if you want to play in the
+current seasons, which start properly on 1st February 2011.</p>
 <p>If you would like to form a team, please contact
 the Online League coordinators at online-league at britgo.org.
 Players wishing to captain a team must be members of the British Go Association,
