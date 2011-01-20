@@ -24,8 +24,8 @@ include 'php/head.php';
 ?>
 <body>
 <h1>British Go Association League</h1>
-<img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="10" vspace="5">
-<p>Welcome to the British Go Association League Website.</p>
+<img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
+<p><strong>Welcome to the British Go Association League Website.</strong></p>
 <p>Congratulations to the <b>Dundee</b> team (Yohei Negi, David Lee and Robby Geotschalckx)
 on winning the second season championship
 taking the GoGoD Shield and the title from the previous winners - Cambridge.
