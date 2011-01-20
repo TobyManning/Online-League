@@ -118,9 +118,11 @@ body {
 	color: #000000;
 	text-align: justify;
 	font-size: 10pt;
+	line-height: 1.2;
 }
 body.nomarg {
 	font-size: 10pt;
+	line-height: 1.2;
 	text-align: justify;
 	color: #000000;
 	background-color: #FFFFB3;
@@ -132,9 +134,11 @@ body.il {
 	margin-left: 0.25in;
 	margin-right: 0.25in;
 	font-size: 10pt;
+	line-height: 1.2;
 }
 body.ilnomarg {
 	font-size: 10pt;
+	line-height: 1.2;
 	color: #000000;
 	text-align: justify;
 	background-color: #C9F1C9;
@@ -142,6 +146,7 @@ body.ilnomarg {
 p.note {
 	text-align: center;
 	font-size: 8pt;
+	line-height: 1.2;
 }
 p.forms {
 	text-indent: 1.5cm;
@@ -168,6 +173,7 @@ span.releg {
 }
 li.nav {
 	font-size: 8pt;
+	line-height: 1.2;
 }
 td.subind {
 	padding-left: 0.25in;
