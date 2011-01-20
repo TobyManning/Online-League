@@ -51,14 +51,14 @@ print <<<EOT
 <table>
 <tr><td><a href="${a}index.php" target="_top">League Home</a></td></tr>
 <tr><td><a href="${a}playing.php" target="_top">Rules</a></td></tr>
-<tr><td><a href="${a}news.php" target="_top" class="news">News</a></td></tr>
+<tr><td><a href="${a}news.php" target="_top">News</a></td></tr>
 <tr><td><a href="${a}clubs.php" target="_top">Clubs</a></td></tr>
 <tr><td><a href="${a}teams.php" target="_top">Teams</a></td></tr>
 <tr><td><a href="${a}players.php" target="_top">Players</a></td></tr>
 <tr><td class="subind"><a href="${a}players.php?by=club" target="_top">By club</a></td></tr>
 <tr><td class="subind"><a href="${a}players.php?by=rank" target="_top">By rank</a></td></tr>
 <tr><td class="subind"><a href="${a}players.php?by=clubrank" target="_top">By club/rank</a></td></tr>
-<tr><td class="subind"><a href="${a}pbt.php" target="_top">Players by team</a></td></tr>
+<tr><td class="subind"><a href="${a}pbt.php" target="_top">By team</a></td></tr>
 <tr><td><a href="${a}matches.php" target="_top">Team Matches</a></td></tr>
 <tr><td><a href="${a}results.php" target="_top">Team Results</a></td></tr>
 <tr><th colspan="2">Standings</th></tr>
