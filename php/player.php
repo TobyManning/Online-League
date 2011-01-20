@@ -461,6 +461,8 @@ class Player  {
 		mysql_query("update team set captfirst='$qfirst',captlast='$qlast' where {$this->queryof('capt')}");
 		// Likewise any team memberships
 		mysql_query("update teammemb set tmfirst='$qfirst',tmlast='$qlast' where {$this->queryof('tm')}");
+		// Likewise any historic team memberships
+		mysql_query("update histteammemb set tmfirst='$qfirst',tmlast='$qlast' where {$this->queryof('tm')}");
 		// Any games as White
 		mysql_query("update game set wfirst='$qfirst',wlast='$qlast' where {$this->queryof('w')}");
 		// And as black
