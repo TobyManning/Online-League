@@ -41,7 +41,7 @@ function lostpw() {
 }
 </script>
 <a href="http://www.britgo.org" target="_top">
-<img src="images/gohead12.gif" width="134" height="50" alt="BGA Logo"></a>
+<img src="images/gohead12.gif" width="133" height="47" alt="BGA Logo" border="0" hspace="0" vspace="0"></a>
 <?php
 $a = $_GET["abs"];
 if ($a != "")
