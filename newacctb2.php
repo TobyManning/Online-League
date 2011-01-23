@@ -57,7 +57,15 @@ if  (strlen($userid) == 0)  {
 
 //  Get player name and check he doesn't clash
 
-$player = new Player($playname);
+try {
+	$player = new Player($playname);
+}
+catch (PlayerException $e) {
+   $mess = $e->getMessage();
+   include 'php/wrongentry.php';
+   exit(0);
+}
+
 $ret = mysql_query("select first,last from player where {$player->queryof()}");
 if ($ret && mysql_num_rows($ret) != 0)  {
 	$column = "name";
