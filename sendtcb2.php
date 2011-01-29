@@ -31,7 +31,7 @@ $tlist = list_teams();
 $mlist = array();
 foreach ($tlist as $team) {
 	$team->fetchdets();
-	if (strlen($team->Captain->Email) != 0)
+	if ($team->Playing && strlen($team->Captain->Email) != 0)
 		$mlist[$team->Captain->Email] = 1;
 }
 if (strlen($cc) != 0) {

@@ -2,7 +2,7 @@
 
 use DBD::mysql;
 $Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
-$sfh = $Database->prepare("select player.email from player,team where team.captfirst=player.first and team.captlast=player.last and length(player.email)>0");
+$sfh = $Database->prepare("select player.email from player,team where team.playing!=0 and team.captfirst=player.first and team.captlast=player.last and length(player.email)>0");
 $sfh->execute;
 
 while (@row = $sfh->fetchrow_array) {
