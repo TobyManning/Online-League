@@ -25,6 +25,7 @@ include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/params.php';
+include 'php/hcp_message.php';
 
 $pars = new Params();
 $pars->fetchvalues();
@@ -47,12 +48,6 @@ catch (MatchException $e) {
 	exit(0);	
 }
 $editok = $admin || $mtch->is_captain($username) != 'N';
-
-// Is this a "handicappable" division
-
-$hcapable = $mtch->Division >= $pars->Hdiv;
-$hred = $pars->Hreduct;
-
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -126,11 +121,9 @@ EOT;
 			$bpost = "</b>";
 			break;
 		}
-		$hstones = $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue - $hred;
-		if ($hstones > 9)
-			$hstones = 9;
-		if ($hcapable && $g->Result == 'N' && $hstones > 0)  {
-			array_push($hcaps, $hstones);
+		$hmsg = hcp_message($g, $pars);
+		if ($hmsg)  {
+			array_push($hcaps, $hmsg);
 			array_push($boards, $board);
 		}
 		print <<<EOT
@@ -171,13 +164,9 @@ in this match as follows:</p>
 
 EOT;
 		for ($board = 0; $board < $n;  $board++)  {
-			print "<tr><td>$boards[$board]</td>\n<td>";
+			$b = $boards[$board];
 			$h = $hcaps[$board];
-			if ($h == 1)
-				print	"No komi";
-			else
-				print "$h stones";
-			print "</td></tr>\n";
+			print "<tr><td>$b</td><td>$h></td></tr>\n";
 		}
 		print "</table>\n";
 	}

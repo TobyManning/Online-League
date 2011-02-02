@@ -25,6 +25,7 @@ include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/params.php';
+include 'php/hcp_message.php';
 
 $asuser = $userid;
 if ($admin  &&  strlen($_GET["asuser"]) != 0)
@@ -282,21 +283,9 @@ else  {
 
 EOT;
 	foreach ($osgames as $g) {
-		$hcapable = $g->Division >= $pars->Hdiv;
-		$hred = $pars->Hreduct;
-		$hstones = 0;
-		$hcp = "None";
-		if ($hcapable)  {
-			$hstones = $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue - $hred;
-			if ($hstones > 9)
-				$hstones = 9;
-			if ($hstones > 0)  {
-				if ($hstones == 1)
-					$hcp = "No komi";
-				else
-					$hcp = "$hstones stones";
-			}
-		}
+		$hcp = hcp_message($g, $pars);
+		if (!$hcp)
+			$hcp = "None";
 		print <<<EOT
 <tr>
 <td>{$g->Wplayer->display_name()}</td>

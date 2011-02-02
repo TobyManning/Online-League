@@ -1,6 +1,6 @@
 <?php
 
-function mail_player($board, $pl, $pt, $pc, $col, $opp, $ot, $hstones)
+function mail_player($board, $pl, $pt, $pc, $col, $opp, $ot, $hcp)
 {
 	if (strlen($pl->Email) == 0)
 		return "email for {$pl->display_name(false)} is not known";
@@ -20,12 +20,8 @@ You are playing as $col.
 
 EOT;
 	fwrite($fhh, $mess);
-	if ($hstones > 0)  {
-		if ($hstones == 1)
-			fwrite($fhh, "\nNote that this game is pleayed with no komi\n");
-		else
-			fwrite($fhh, "\nThis game is played with a handicap of $hstones stones\n");
-	}
+	if ($hcp)
+		fwrite($fhh, "\nThis game is played with $hcp\n");
 	if (strlen($opp->Email) != 0)
 		fwrite($fhh, "\nThe email address for {$opp->display_name(false)} is {$opp->display_email_nolink()}\n");
 	if (strlen($opp->Phone) != 0)
@@ -46,11 +42,6 @@ function mail_allocated($mtch, $pars, $byadmin = false) {
 	
 	if (!$mtch->is_allocated())
 			return;
-
-	// Record whether handicaps apply
-			
-	$hcapable = $mtch->Division >= $pars->Hdiv;
-	$hred = $pars->Hreduct;
 	
 	// Get hold of the first and second teams and their captains
 
@@ -107,24 +98,11 @@ EOT;
 		if ($g->Result != 'N')
 			fwrite($fh, "This game has already been played.\n");
 		else {
-			$hstones = 0;
-			if ($hcapable) {
-				$hstones = $wp->Rank->Rankvalue - $bp->Rank->Rankvalue - $hred;
-				if ($hstones > 9)
-					$hstones = 9;
-				if ($hstones > 0)  {
-					$hmess = "$hstones stones";
-					if ($hstones == 1)
-						$hmess = "No komi";
-					$mess = <<<EOT
-	Handicap: $hmess
-EOT;
-					fwrite($fh, "$mess\n");
-				}
-			}
-		
-			$hreason = mail_player($board, $hp, $ht, $hc, $hcol, $ap, $at, $hstones);
-			$areason = mail_player($board, $ap, $at, $ac, $acol, $hp, $ht, $hstones);
+			$hcp = hcp_message($g, $pars);
+			if ($hcp)
+				fwrite($fh, "Game is played with $hcp\n");		
+			$hreason = mail_player($board, $hp, $ht, $hc, $hcol, $ap, $at, $hcp);
+			$areason = mail_player($board, $ap, $at, $ac, $acol, $hp, $ht, $hcp);
 			if (strlen($hreason) != 0)  {
 				$mess = <<<EOT
 	{$ht->display_captain()} please contact as $hreason

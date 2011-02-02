@@ -33,6 +33,7 @@ include 'php/game.php';
 include 'php/sortrank.php';
 include 'php/news.php';
 include 'php/params.php';
+include 'php/hcp_message.php';
 include 'php/mailalloc.php';
 
 $pars = new Params();

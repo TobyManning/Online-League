@@ -9,6 +9,7 @@ include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
 include 'php/params.php';
+include 'php/hcp_message.php';
 
 // Remember about player we can't email to bleat at team captain about instead
 
@@ -99,20 +100,9 @@ You are playing as $col.
 EOT;
 	fwrite($fh, $mess);
 	
-	$hcapable = $m->Division >= $pars->Hdiv;
-	$hred = $pars->Hreduct;
-	$hstones = 0;
-	if ($hcapable)  {
-		$hstones = $g->Wplayer->Rank->Rankvalue - $g->Bplayer->Rank->Rankvalue - $hred;
-		if ($hstones > 9)
-			$hstones = 9;
-	}
-	if ($hstones > 0)  {
-		if ($hstones == 1)
-			fwrite($fh, "\nPlease note this game is played with No Komi\n");
-		else
-			fwrite($fh, "\nPlease note this game is played with a $hstones stone handicap\n");
-	}
+	$hcp = hcp_message($g, $pars);
+	if ($hcp)  {
+		fwrite($fh, "\nPlease note this game is played with $hcp\n");
 	if (strlen($opp->Email) != 0)
 		$mess = <<<EOT
 

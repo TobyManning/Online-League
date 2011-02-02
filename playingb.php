@@ -27,8 +27,10 @@ function phcp($hred, $diff) {
 		print "the game is played with no komi.";
 	elseif ($diff <= 9)
 		print "a handicap of $diff is used.";
-	else
-		print "a handicap of 9 is used.";
+	else  {
+		$rkomi = ($diff - 9) * 10;
+		print "a handicap of 9 plus $rkomi reverse komi is used.";
+	}
 }
 
 $md = max_division();
@@ -145,6 +147,14 @@ EOT;
 EOT;
 }
 ?>
+<h3>Handicaps beyond 9</h3>
+<p>If the handicap "would be" more than 9, then the white player gives 9 stones plus 10 points
+of reverse komi for each stone beyond 9.</p>
+<p>So for example if a 1K player plays a 20K player then
+<?php
+phcp($hred, 19);
+?>
+</p>
 <h2>The Individual League</h2>
 <p>Games in the individual league are always played without handicaps regardless of the players'
 strengths. Colours should be accepted according to whatever the server proposes and the game
