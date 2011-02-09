@@ -101,7 +101,7 @@ EOT;
 	fwrite($fh, $mess);
 	
 	$hcp = hcp_message($g, $pars);
-	if ($hcp)  {
+	if ($hcp)
 		fwrite($fh, "\nPlease note this game is played with $hcp\n");
 	if (strlen($opp->Email) != 0)
 		$mess = <<<EOT
