@@ -166,7 +166,7 @@ EOT;
 		for ($board = 0; $board < $n;  $board++)  {
 			$b = $boards[$board];
 			$h = $hcaps[$board];
-			print "<tr><td>$b</td><td>$h></td></tr>\n";
+			print "<tr><td>$b</td><td>$h</td></tr>\n";
 		}
 		print "</table>\n";
 	}
