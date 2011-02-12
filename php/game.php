@@ -385,7 +385,7 @@ class Game {
 
 function list_nosgf_games() {
 	$result = array();
-	$ret = mysql_query("select ind from game where result!='N' and length(sgf)=0 order by matchdate,wrank desc,brank desc");
+	$ret = mysql_query("select ind from game where result!='N' and length(sgf)=0 and current=1 order by matchdate,wrank desc,brank desc");
 	if ($ret) {
 		while ($row = mysql_fetch_array($ret)) {
 			$r = new game($row[0]);
