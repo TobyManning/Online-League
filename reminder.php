@@ -90,6 +90,9 @@ function mailplayer($play, $opp, $col, $mt, $ot, $m, $g)
 	$mess = <<<EOT
 Dear {$play->display_name(false)}
 
+(Please note that this is an automatically-generated message. Please do not
+reply to the apparent sender - thanks).
+
 Please can we remind you that your are due to play in the online league match
 playing for {$mt->display_name()} against {$ot->display_name()}.
 
