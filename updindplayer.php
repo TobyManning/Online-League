@@ -57,9 +57,13 @@ function formvalid()
 </script>
 <h1>Update Player {$player->display_name(false)}</h1>
 <p>Please update the details of the player as required using the form below.</p>
+EOT;
+if ($player->played_games() == 0 && $player->count_teams() == 0 && $player->count_hist_teams() == 0)  {
+	print <<<EOT
 <p>Alternatively <a href="delplayer.php?{$player->urlof()}">Click here</a> to remove
 details of the player.</p>
 EOT;
+}
 ?>
 <p>To enter a new player, you can adjust the fields appropriately
 and press the "Add player" button or you can select the "New Player" menu entry on the left.

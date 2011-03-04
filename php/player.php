@@ -614,6 +614,16 @@ class Player  {
 		$row = mysql_fetch_array($ret);
 		return $row[0];	
 	}
+	
+	// Count historic teams this player is a member of
+	
+	public function count_hist_teams() {
+		$ret = mysql_query("select count(*) from histteammemb where {$this->queryof('tm')}");
+		if (!$ret || mysql_num_rows($ret) == 0)
+			return 0;
+		$row = mysql_fetch_array($ret);
+		return $row[0];	
+	}	
 
 	private function getcount($seasind, $q) {
 		$ret = mysql_query("select count(*) from game where league='I' and seasind=$seasind and $q");
