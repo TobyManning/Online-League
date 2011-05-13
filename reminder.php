@@ -103,6 +103,21 @@ You are playing as $col.
 EOT;
 	fwrite($fh, $mess);
 	
+	$onl = $opp->display_online();
+	if ($onl == '-')
+		$mess = <<<EOT
+Sorry, but we have no record of an online name for $oppname.
+
+
+EOT;
+	else
+		$mess = <<<EOT
+The online name for $oppname is $onl.
+
+
+EOT;
+	fwrite($fh, $mess)
+	
 	$hcp = hcp_message($g, $pars);
 	if ($hcp)
 		fwrite($fh, "\nPlease note this game is played with $hcp\n");

@@ -8,18 +8,34 @@ function mail_player($board, $pl, $pt, $pc, $col, $opp, $ot, $hcp)
 		return "{$pl->display_name(false)} does not want email";
 
 	$fhh = popen("mail -s 'Go League match assignment' {$pl->Email}", "w");
+	$oppname = $opp->display_name(false);
 	$mess = <<<EOT
 Dear {$pl->display_name(false)}
 
 Please note that you have been assigned to board $board in the online league match
 playing for {$pt->display_name()} against {$ot->display_name()}.
 
-Your opponent is {$opp->display_name(false)} {$opp->display_rank()}.
+Your opponent is $oppname {$opp->display_rank()}.
 
 You are playing as $col.
 
 EOT;
 	fwrite($fhh, $mess);
+	$onl = $opp->display_online();
+	if ($onl == '-')
+		$mess = <<<EOT
+Sorry, but we have no record of an online name for $oppname.
+
+
+EOT;
+	else
+		$mess = <<<EOT
+The online name for $oppname is $onl.
+
+
+EOT;
+	fwrite($fhh, $mess)
+
 	if ($hcp)
 		fwrite($fhh, "\nThis game is played with $hcp\n");
 	if (strlen($opp->Email) != 0)
