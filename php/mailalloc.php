@@ -34,7 +34,7 @@ The online name for $oppname is $onl.
 
 
 EOT;
-	fwrite($fhh, $mess)
+	fwrite($fhh, $mess);
 
 	if ($hcp)
 		fwrite($fhh, "\nThis game is played with $hcp\n");

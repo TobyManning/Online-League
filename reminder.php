@@ -116,7 +116,7 @@ The online name for $oppname is $onl.
 
 
 EOT;
-	fwrite($fh, $mess)
+	fwrite($fh, $mess);
 	
 	$hcp = hcp_message($g, $pars);
 	if ($hcp)
