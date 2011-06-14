@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -20,10 +20,7 @@ include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<?php
+
 try {
 	$player = new Player();
 	$player->fromget();
@@ -46,17 +43,27 @@ if ($nrows == 0) {
 	include 'php/dataerror.php';
 	exit(0);
 }
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
 $Title = "Deletion of {$player->display_name(false)} complete";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+print <<<EOT
 <h1>Deletion of {$player->display_name(false)} complete</h1>
 <p>
 Deletion of player {$player->display_name(false)} was successful.</p>
+
 EOT;
 ?>
-<p>
-Click <a href="playupd.php" target="_top">here</a> to return to the player update menu.
-</p>
+<p>Click <a href="playupd.php">here</a> to return to the player update menu.</p>
+</div>
+</div>
 </body>
 </html>

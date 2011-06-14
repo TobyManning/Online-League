@@ -66,7 +66,10 @@ $Title = "Add Match division $div OK";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <?php
+$showadmmenu = true;
+include 'php/nav.php';
 print <<<EOT
 <h1>Create Match division $div successful</h1>
 <p>
@@ -75,10 +78,11 @@ Successfully completed creation of Match between
 {$mtch->Ateam->display_name()} set for
 {$mtch->Date->display()}.
 </p>
-<p>
-<a href="updmatch.php?{$mtch->urlof()}</a>">Click here</a> to add team members.
-</p>
+<p><a href="updmatch.php?{$mtch->urlof()}</a>">Click here</a> to add team members.</p>
+
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

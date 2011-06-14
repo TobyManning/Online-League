@@ -40,11 +40,16 @@ $Title = "Promotion and Relegation / Archive";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function checkok() {
 	return confirm("Are you sure you want to do this - it is pretty well irreversible");
 }
 </script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Promotion and Relegation / Archive</h1>
 <?php
 if (count($messages) > 0)  {
@@ -121,5 +126,7 @@ Please <input type="submit" name="submit" value="Click Here"> when ready.
 EOT;
 }
 ?>
+</div>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -115,15 +115,23 @@ $Title = "Player details updated OK";
 include 'php/head.php';
 print <<<EOT
 <body>
+<script language="javascript" src="webfn.js"></script>
+
+EOT;
+include 'php/nav.php';
+print <<<EOT
 <h1>$Title</h1>
 <p>$Title.</p>
+
 EOT;
 if ($chname)
 	print <<<EOT
 <p>As you changed your name, you should probably logout and log back in again using the
-menu on the left. This will reset any "cookies" with your original name in.
-</p>
+menu on the left. This will reset any "cookies" with your original name in.</p>
+
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

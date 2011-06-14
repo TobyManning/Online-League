@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ catch (TeamException $e) {
 <?php
 $Title = "Update Team {$team->display_name()}";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
@@ -55,16 +55,20 @@ function formvalid()
 		return true;
 }
 </script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+print <<<EOT
 <h1>Update Team {$team->display_name()}</h1>
 <p>Please update the details of the team as required using the form below.</p>
 <p>Alternatively <a href="delteam.php?{$team->urlof()}">Click here</a> to remove
 details of the team.</p>
 <p>To update the team members, <a href="updtmemb.php?{$team->urlof()}">Click here</a>.</p>
+
 EOT;
 ?>
 <p>You can enter a new team here by adjusting the fields appropriately and
-pressing the "Add team" button.
-</p>
+pressing the "Add team" button.</p>
 <?php
 if ($team->Playing)
 	print "<p>The team is marked as playing in this season.\n";
@@ -101,5 +105,7 @@ $team->captainopt();
 <input type="submit" name="subm" value="Update Team">
 </p>
 </form>
+</div>
+</div>
 </body>
 </html>

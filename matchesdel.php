@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -32,13 +32,19 @@ $Title = "Delete Matches complete";
 include 'php/head.php';
 ?>
 <body>
-
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Delete Matches Completed</h1>
 <?php
 print <<<EOT
 <p>Finished deleting matches for Division $div</p>
 EOT;
 ?>
-<p>Click <a href="matchupdb.php">here</a> to return to the match editing page.</p>
+<p>Click <a href="matchupd.php">here</a> to return to the match editing page.</p>
+</div>
+</div>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <h1>Session has timed out</h1>
 <p>
 Sorry but your login session has timed out.
-Please go to the start page <a href="/league/index.php" target="_top">here</a> and log in again.
+Please go to the start page <a href="/league/index.php">here</a> and log in again.
 </p>
 </body>
 </html>

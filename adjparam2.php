@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -43,8 +43,15 @@ $Title = "Adjustment of Parameters Complete";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Adjusting parameters Complete</h1>
 <p>Finished adjusting parameters.</p>
-<p><a href="leagueb.php">Click here</a> to see what the league looks like now.</p>
+<p><a href="league.php">Click here</a> to see what the league looks like now.</p>
+</div>
+</div>
 </body>
 </html>

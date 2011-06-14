@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -103,15 +103,22 @@ default:
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
+$Title = "Team update complete";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+print <<<EOT
 <h1>$Title</h1>
 <p>$Title.</p>
+
 EOT;
 ?>
-<p>
-Click <a href="teamsupd.php" target="_top">here</a> to return to the team update menu.
-</p>
+<p>Click <a href="teamsupd.php">here</a> to return to the team update menu.</p>
+</div>
+</div>
 </body>
 </html>

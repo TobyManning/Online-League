@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -37,8 +37,13 @@ catch (TeamException $e) {
 <?php
 $Title = "Update Paid status for Team {$team->display_name()}";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+print <<<EOT
 <h1>Update Paid for Team {$team->display_name()}</h1>
 EOT;
 if ($team->Paid) {
@@ -60,8 +65,8 @@ EOT;
 }
 $team->setpaid($v);
 ?>
-<p>
-Click <a href="teamsupd.php" target="_top">here</a> to return to the team update menu.
-</p>
+<p>Click <a href="teamsupd.php">here</a> to return to the team update menu.</p>
+</div>
+</div>
 </body>
 </html>

@@ -1,7 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -16,13 +14,59 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/session.php';
+include 'php/checklogged.php';
+include 'php/opendatabase.php';
+include 'php/rank.php';
+include 'php/player.php';
+include 'php/club.php';
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
 $Title = "Get outstanding matches for player";
 include 'php/head.php';
-print <<<EOT
-<frameset cols="15%,*">
-<frame src="linkframe.php?adm=y" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
-<frame src="getosplayerb.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
-</frameset>
-EOT;
 ?>
+<body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
+<h1>Get outstanding matches for player</h1>
+<p>Please select the player concerned from the following list.</p>
+<p>If name is not a link, player hasn't got a userid</p>
+<table class="plupd">
+<?php
+$playerlist = list_players();
+$countplayers = count($playerlist);
+$rows = floor(($countplayers + 3) / 4);
+for ($row = 0; $row < $rows; $row++) {
+	print "<tr>\n";
+	for ($col = 0; $col < 4;  $col++)  {
+		$ind = $row + $col * $rows;
+		print "<td>";
+		if ($ind >= $countplayers)
+			print "&nbsp;";
+		else {
+			$pl = $playerlist[$ind];
+			try {
+				$pl->fetchdets();
+			}
+			catch (PlayerException $e) {
+				;
+			}
+			$dname = $pl->display_name(false);
+			$url = $pl->userid_url();
+			if (strlen($url) != 0)
+				print "<a href=\"osmatches.php?asuser=$url\">$dname</a>";
+			else
+				print $dname;		
+		}
+		print "</td>";
+	}
+	print "</tr>\n";
+}
+?>
+</table>
+</div>
+</div>
+</body>
 </html>

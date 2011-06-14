@@ -31,7 +31,7 @@ if (strlen($div) == 0)  {
 	$mess = "No division?";
 	include 'php/wrongentry.php';
 	exit(0);	
-}	
+}
 $mtch = new Match(0, $div);
 $teams = list_teams($div);
 ?>
@@ -42,6 +42,7 @@ $Title = "Add Match - Division $div";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function checkteamsvalid() {
 	var form = document.matchform;
@@ -77,6 +78,10 @@ EOT;
 	print "</select>\n";
 }
 ?>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Create Match</h1>
 <p>
 Please select teams and date for the required match.
@@ -99,11 +104,12 @@ $mtch->Date->dateopt("Date of match");
 print "with";
 $mtch->slackdopt();
 ?>
-days to play the games.
-</p>
+days to play the games.</p>
 <p>
 <input type="submit" value="Click here"> when done.
 </p>
 </form>
+</div>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -47,6 +47,8 @@ $Title = "Historic Match Details";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Historic Match Details</h1>
 <p>
 Match was between
@@ -104,5 +106,7 @@ EOT;
 }
 ?>
 <p>Click <a href="javascript:history.back()">here</a> to view some other match.</p>
+</div>
+</div>
 </body>
 </html>

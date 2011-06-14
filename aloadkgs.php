@@ -46,14 +46,14 @@ try  {
 }
 catch (GameException $e)  {
 	$msg = htmlspecialchars($e->getMessage());
-	$Title - "Could not find game";
+	$Title = "Could not find game";
 	print "<html>\n";
 	include 'php/head.php';
 	print <<<EOT
 <body>
 <h1>Game score add failed</h1>
 <p>I could not find the game result because: $msg.</p>
-<p><a href="javascript:history.back()">Click here</a> to go back.</p>
+<p>Just start again from the top by <a href="index.php">clicking here</a>.</p>
 </body>		
 </html>
 EOT;
@@ -67,6 +67,11 @@ $Title = "Add Game SGF Complete";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Add Game SGF complete</h1>
 <p>
 Finished adding SGF for Game between
@@ -82,5 +87,7 @@ on {$g->date_played()}.
 </p>
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

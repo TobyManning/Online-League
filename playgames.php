@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -41,6 +41,8 @@ $Title = "Player Games";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Player Results</h1>
 <?php
 $Name = $player->display_name(false);
@@ -224,5 +226,7 @@ EOT;
 }
 ?>
 <p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
+</div>
+</div>
 </body>
 </html>

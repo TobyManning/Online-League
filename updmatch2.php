@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -220,6 +220,11 @@ $Title = "Match Edit Result";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Match Edit Result</h1>
 <p>
 Match is set up between
@@ -274,6 +279,8 @@ print <<<EOT
 <p>Click <a href="updmatch.php?{$mtch->urlof()}">here</a> to change any details of the match.</p>
 EOT;
 ?>
-<p>Click <a href="matchupdb.php">here</a> to edit some other match.</p>
+<p>Click <a href="matchupd.php">here</a> to edit some other match.</p>
+</div>
+</div>
 </body>
 </html>

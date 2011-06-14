@@ -43,6 +43,7 @@ $Title = "Add Game Result";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function loadkgs() {
 	var fm = document.resform;
@@ -86,6 +87,7 @@ function checknokgs() {
 	return confirm("Are you sure that this match was not played on KGS between " + white + " and " + black);
 }
 </script>
+<?php include 'php/nav.php'; ?>
 <h1>Add Game Result</h1>
 <p>
 Adding result for Game between
@@ -148,5 +150,7 @@ EOT;
 </form>
 <p>If you never meant to get to this page
 <a href="javascript:history.back()">click here</a> to go back.</p>
+</div>
+</div>
 </body>
 </html>

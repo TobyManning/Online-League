@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -76,6 +76,11 @@ $Title = "Messages sent";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Messages sent</h1>
 <p>Your message regarding unpaid subscriptions has been sent to the following people:
 </p>
@@ -97,5 +102,7 @@ EOT;
 }
 ?>
 </table>
+</div>
+</div>
 </body>
 </html>

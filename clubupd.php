@@ -1,7 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -16,13 +14,48 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/session.php';
+include 'php/opendatabase.php';
+include 'php/club.php';
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
 $Title = "Update clubs";
 include 'php/head.php';
-print <<<EOT
-<frameset cols="15%,*">
-<frame src="linkframe.php?adm=y" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
-<frame src="clubupdb.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
-</frameset>
-EOT;
 ?>
+<body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
+<h1>Update Clubs</h1>
+<p>Please select the club to be updated from the following list.</p>
+<p>To add a club click on one at random and just change the entries on the form or
+select the "new club" menu option</p>
+<table class="clubupd">
+<tr>
+<th>Abbrev</th>
+<th>Name</th>
+</tr>
+<?php
+$ret = mysql_query("select code from club order by name");
+if ($ret && mysql_num_rows($ret)) {
+	while ($row = mysql_fetch_assoc($ret)) {
+		$p = new Club($row["code"]);
+		$p->fetchdets();
+		print <<<EOT
+<tr>
+<td><a href="updindclub.php?{$p->urlof()}">{$p->display_code()}</a></td>
+<td><a href="updindclub.php?{$p->urlof()}">{$p->display_name()}</a></td>
+</tr>
+EOT;
+	}
+}
+?>
+</table>
+</div>
+</div>
+</body>
 </html>

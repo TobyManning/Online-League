@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -38,11 +38,13 @@ catch (PlayerException $e) {
 <html>
 <head>
 <title>Unknown player</title>
+<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body>
 <h1>Unknown player</h1>
 <p>Sorry, but player name $userid is not known.</p>
 <p>Problem was $msg.</p>
+<p>Please start again from the top by <a href="index.php">clicking here</a>.</p>
 </body>
 </html>
 
@@ -62,7 +64,8 @@ if ($player->ILdiv == 0)  {
 <p>Sorry, but you, {$player->display_name(false)} are not currently in the individual
 league.</p>
 <p>If you want to join it, please update your account
-<a href="ownupd.php" target="_top">here</a>.
+<a href="ownupd.php">here</a>, otherwise
+start again from the top by <a href="index.php">clicking here</a>.</p>
 </p>
 </body>
 </html>
@@ -90,6 +93,7 @@ catch (PlayerException $e) {
 <h1>No opponent</h1>
 <p>Sorry but I failed to work out who your opponent was.</p>
 <p>Problem was $msg.</p>
+<p>Please start again from the top by <a href="index.php">clicking here</a>.</p>
 </body>
 </html>
 
@@ -146,6 +150,8 @@ $Title = "Add Game Result";
 include 'php/head.php';
 ?>
 <body class="il">
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Add Game Result</h1>
 <p>
 Finished adding result with game record for Game between
@@ -169,6 +175,8 @@ EOT;
 $n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}"); 
 $n->addnews();	
 ?>
-<p>Click <a href="ileague.php" target="_top">here</a> to see the league status now.</p>
+<p>Click <a href="ileague.php">here</a> to see the league status now.</p>
+</div>
+</div>
 </body>
 </html>

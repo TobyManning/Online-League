@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -52,6 +52,10 @@ function formvalid()
 		return true;
 }
 </script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Update Club {$club->display_name()}</h1>
 <p>Please update the details of the club as required using the form below.</p>
 <p>Alternatively <a href="delclub.php?{$club->urlof()}">Click here</a> to remove
@@ -91,5 +95,7 @@ print <<<EOT
 EOT;
 ?>
 </form>
+</div>
+</div>
 </body>
 </html>

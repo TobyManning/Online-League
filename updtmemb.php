@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -42,6 +42,7 @@ $Title = "Update Team Members for {$team->display_name()}";
 include 'php/head.php';
 print <<<EOT
 <body onload="javascript:loadtab()" onunload="javascript:killwind()">
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 var playerlist = new Array();
 var currteam = new Array();
@@ -154,8 +155,11 @@ function savemembs() {
 
 </script>
 <?php
+$showadmmenu = true;
+include 'php/nav.php';
 print <<<EOT
 <h1>Update Team Members for {$team->display_name()}</h1>
+
 EOT;
 ?>
 <p>
@@ -179,5 +183,7 @@ del against the player.
 <p>When done <a href="javascript:savemembs()">click here</a> or to forget the changes
 click somewhere else.</p>
 <p id="changepara">There are no changes at present.</p>
+</div>
+</div>
 </body>
 </html>

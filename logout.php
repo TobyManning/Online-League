@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -31,8 +31,10 @@ unset($_SESSION['user_priv']);
 <body onload="onl();">
 <script language="javascript">
 function onl() {
-	top.frames[1].location.reload();
-	document.location='linkframe.php';
+	$prev = $_SERVER['HTTP_REFERER'];
+	if (strlen($prev) == 0)
+		$prev = 'index.php';
+	document.location = $prev;
 }
 </script>
 </body>

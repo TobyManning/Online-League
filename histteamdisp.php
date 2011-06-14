@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -50,8 +50,12 @@ catch (HistteamException $e) {
 <?php
 $Title = "Historic Team {$team->display_name()}";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+include 'php/nav.php';
+print <<<EOT
 <h1>Historic Team {$team->display_name()}</h1>
 <p>
 This is the record for
@@ -71,6 +75,7 @@ running from
 	<th>Drawn</th>
 	<th>Lost</th>
 </tr>
+
 EOT;
 $membs = $team->list_members();
 foreach ($membs as $m) {
@@ -85,6 +90,7 @@ foreach ($membs as $m) {
 	<td align="right">{$m->drawn_games()}</td>
 	<td align="right">{$m->lost_games()}</td>
 </tr>
+
 EOT;
 }
 ?>
@@ -155,5 +161,7 @@ EOT;
 }
 ?>
 <p><b>Please note</b> you can click on players, opposing teams and results for more details.</p>
+</div>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -31,12 +31,17 @@ $Title = "Adjust Matches";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function okdel(mi, teama, teamb, date) {
 	if (confirm("OK to delete match: " + teama + " -v- " + teamb + " on " + date))
 		location = "delmatch.php?mi=" + mi;
 }
 </script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Update Matches</h1>
 <p>Click on one of the team names to update details of the specified match, or click
 delete match to delete that match, add match to create a new match.
@@ -115,5 +120,7 @@ if (strlen($div) != 0)
 EOT;
 ?>
 </table>
+</div>
+</div>
 </body>
 </html>

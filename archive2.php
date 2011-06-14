@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -165,7 +165,7 @@ mysql_query("delete from news");
 
 // I think that just about does it. Create a news item
 
-$nws = new News('ADMINS', "Season now closed and archived as $Sname.", true, "leagueb.php");
+$nws = new News('ADMINS', "Season now closed and archived as $Sname.", true, "league.php");
 $nws->addnews();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -175,6 +175,11 @@ $Title = "End of season complete";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>End of season complete</h1>
 <?php
 $Sname = htmlspecialchars($Sname);
@@ -200,5 +205,7 @@ else {
 EOT;
 }
 ?>
+</div>
+</div>
 </body>
 </html>

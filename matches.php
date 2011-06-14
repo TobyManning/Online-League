@@ -1,7 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -16,13 +14,152 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/session.php';
+include 'php/opendatabase.php';
+include 'php/club.php';
+include 'php/rank.php';
+include 'php/player.php';
+include 'php/team.php';
+include 'php/match.php';
+include 'php/matchdate.php';
+include 'php/game.php';
+include 'php/season.php';
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
 $Title = "Matches";
 include 'php/head.php';
-print <<<EOT
-<frameset cols="15%,*">
-<frame src="linkframe.php?edres=y" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
-<frame src="matchesb.php" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
-</frameset>
-EOT;
 ?>
+<body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
+<h1>Matches</h1>
+<table class="matchesd">
+<tr>
+<th>Date</th>
+<th>Team A</th>
+<th>Team B</th>
+<th>Status</th>
+</tr>
+<?php
+$ret = mysql_query("select ind from lgmatch order by divnum,matchdate,hteam,ateam");
+if ($ret && mysql_num_rows($ret) > 0)  {
+	$lastdiv = -99;
+	while ($row = mysql_fetch_array($ret))  {
+		$ind = $row[0];
+		$mtch = new Match($ind);
+		$mtch->fetchdets();
+		try {
+			$mtch->fetchteams();
+			$mtch->fetchgames();
+		}
+		catch (MatchException $e) {
+			continue;
+		}
+		if ($mtch->Division != $lastdiv)  {
+			$lastdiv = $mtch->Division;
+			print "<tr><th colspan=\"3\" align=\"center\">Division $lastdiv</th></tr>\n";
+		}
+		print <<<EOT
+<tr>
+<td>{$mtch->Date->display_month()}</td>
+EOT;
+		$ht = $mtch->Hteam->display_name();
+		$at = $mtch->Ateam->display_name();
+		if  ($mtch->is_allocated())  {
+			if ($mtch->Result == 'H')
+				$ht = "<b>$ht</b>";
+			else if ($mtch->Result == 'A')
+				$at = "<b>$at</b>";
+			$ref = "<a href=\"showmtch.php?{$mtch->urlof()}\" class=\"noundd\">";
+			print "<td>$ref$ht</a></td><td>$ref$at</a></td>\n";
+		}
+		else  {
+			$href = $aref = $hndref = $andref = '';
+			if ($admin)  {
+				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"noundm\">";
+				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
+				$hndref = $andref = "</a>";
+			}
+			$c = $mtch->is_captain($username);
+			if ($c == 'H')  {
+				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"noundm\">";
+				$hndref = "</a>";
+			}
+			elseif ($c == 'A') {
+				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
+				$andref = "</a>";
+			}
+			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";
+		}
+		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->Result == 'D')  {
+				$h = $mtch->Hscore + 0;
+				$a = $mtch->Ascore + 0;			
+			print "<td>Played ($h-$a)</td>";
+		}
+		elseif ($mtch->is_allocated())  {
+			if ($mtch->Result == 'P') {
+				$h = $mtch->Hscore + 0;
+				$a = $mtch->Ascore + 0;
+				print "<td>Part played ($h-$a)</td>";
+			}
+			else
+				print "<td>Not played</td>";
+		}
+		else
+			print "<td>TBA</td>";
+		print "</tr>\n";
+	}
+}
+else {
+	print "<tr><td colspan=\"3\" align=\"center\">No matches yet for the current season</td></tr>\n";
+}
+?>
+</table>
+<h2>Previous Seasons</h2>
+<a name="prev"></a>
+<?php
+$seasons = list_seasons();
+if (count($seasons) == 0) {
+	print <<<EOT
+<p>There are currently no past seasons to display.
+Please come back soon!
+</p>
+<p>Please <a href="javascript:history.back()">click here</a> to go back.
+</p>
+
+EOT;
+}
+else {
+	print <<<EOT
+<table class="teamsb">
+<tr>
+	<th>Season Name</th>
+	<th>Start Date</th>
+	<th>End Date</th>
+	<th>League table</th>
+	<th>Matches</th>
+</tr>
+
+EOT;
+	foreach ($seasons as $seas) {
+		$seas->fetchdets();
+		print <<<EOT
+<tr>
+	<td>{$seas->display_name()}</td>
+	<td>{$seas->display_start()}</td>
+	<td>{$seas->display_end()}</td>
+	<td><a href="seasleague.php?{$seas->urlof()}">Click</a></td>
+	<td><a href="seasmatches.php?{$seas->urlof()}">Click</a></td>
+</tr>
+
+EOT;
+	}
+	print "</table>\n";
+}
+?>
+</div>
+</div>
+</body>
 </html>

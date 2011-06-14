@@ -5,11 +5,7 @@
 </head>
 <body>
 <h1>Please be patient</h1>
-<p>
-This page has not been entered correctly possibly because you are rushing.
-</p>
-<p>
-If you were waiting for something and clicked again, please be patient!
-</p>
+<p>This page has not been entered correctly possibly because you are rushing.</p>
+<p>If you were waiting for something and clicked again, please be patient!</p>
 </body>
 </html>

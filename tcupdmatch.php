@@ -54,6 +54,7 @@ $Title = "Edit Match";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function checkteamvalid() {
 	var 	form = document.matchform;
@@ -92,7 +93,7 @@ Sorry but there are not enough members in {$team->display_name()} yet to
 make up a match with.
 </p>
 <p>Please <a href="javascript:history.back()">click here</a> to go back
-or <a href="teamsupd.php" target="_top">here</a> to update teams.</p>
+or <a href="teamsupd.php">here</a> to update teams.</p>
 </body>
 </html>
 EOT;
@@ -114,6 +115,8 @@ else  {
 }
 $Tmemb = checkteam($Myteam);  
 ?>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Allocate team members to match</h1>
 <?php
 print <<<EOT
@@ -193,5 +196,7 @@ Colours will be assigned randomly. Note again that teams will be sorted into des
 Click on the link above if you need to adjust these.
 </p>
 </form>
+</div>
+</div>
 </body>
 </html>

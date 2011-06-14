@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ $Ngames = mysql_affected_rows();
 // I think that just about does it. Create a news item unless we didn't do anything.
 
 if  ($Ngames > 0)  {
-	$nws = new News('ADMINS', "Individual League season now closed and archived as $Sname.", true, "ileagueb.php");
+	$nws = new News('ADMINS', "Individual League season now closed and archived as $Sname.", true, "ileague.php");
 	$nws->addnews();
 }
 ?>
@@ -75,6 +75,11 @@ $Title = "End of individual league season complete";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>End of individual league season complete</h1>
 <?php
 $Sname = htmlspecialchars($Sname);
@@ -84,5 +89,7 @@ print <<<EOT
 
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

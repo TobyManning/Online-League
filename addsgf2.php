@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -46,10 +46,15 @@ if (strlen($sgfdata) != 0)
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
-$Title = "Game Result Added";
+$Title = "Game SGF Added";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Add SGF Result</h1>
 <p>
 <?php
@@ -63,5 +68,7 @@ Sorry unable to add SGF data. Please try again later.
 EOT;
 ?>
 </p>
+</div>
+</div>
 </body>
 </html>

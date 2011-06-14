@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -44,9 +44,13 @@ $Title = "Game Result Delete";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Deleted Game Result</h1>
-<p>
-Finished deleting result for Game between
+<p>Finished deleting result for Game between
 <?php
 print <<<EOT
 <b>{$g->Wplayer->display_name(false)}</b>
@@ -54,9 +58,11 @@ print <<<EOT
 {$g->Wteam->display_name()} as White and
 <b>{$g->Bplayer->display_name(false)}</b>
 ({$g->Bplayer->display_rank()}) of
-{$g->Bteam->display_name()} as Black.
-</p>
+{$g->Bteam->display_name()} as Black.</p>
+
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

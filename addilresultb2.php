@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -39,17 +39,61 @@ catch (PlayerException $e)  {
 <html>
 <head>
 <title>Trouble with player details</title>
+<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body>
 <h1>Trouble fetching player details</h1>
-<p>Sorry something has gone wrong with your player detail posting.
-</p>
+<p>Sorry something has gone wrong with your player detail posting.</p>
+<p>Please start again from the top by <a href="index.php">clicking here</a>.</p>
 </body>
 </html>
 
 EOT;
 	exit(0);
 }
+if ($player->ILdiv == 0)  {
+	print <<<EOT
+<html>
+<head>
+<title>Not in league</title>
+<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
+</head>
+<body class="il">
+<h1>Not in individual league</h1>
+<p>Sorry, but you, {$player->display_name(false)} are not currently in the individual
+league.</p>
+<p>If you want to join it, please update your account
+<a href="ownupd.php">here</a>, otherwise please
+go back to the top by  <a href="index.php">clicking here</a>.</p>
+<p>Actually I do not really know how you got here.</p>
+</body>
+</html>
+
+EOT;
+	exit(0);
+}
+if ($player->ILdiv != $opp->ILdiv) {
+	print <<<EOT
+<html>
+<head>
+<title>Not in same division</title>
+<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
+</head>
+<body class="il">
+<h1>Not in individual league</h1>
+<p>Sorry, but {$player->display_name(false)} in {$player->ILdiv} 
+is not currently in the same individual league division as
+{$opp->display_name(false)} who is in division {$opp->ILdiv}.</p>
+<p>Please
+go back to the top by  <a href="index.php">clicking here</a>.</p>
+<p>Actually I do not really know how you got here.</p>
+</body>
+</html>
+
+EOT;
+	exit(0);
+}
+
 $dat = new Matchdate();
 $dat->frompost();
 
@@ -100,14 +144,16 @@ $Title = "Game Result Added";
 include 'php/head.php';
 ?>
 <body class="il">
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Add Game Result</h1>
 <p>
 Finished adding result for Game between
 <?php
 print <<<EOT
-<b>{$g->Wplayer->display_name(false)}</b>
+<b>{$g->Wplayer->display_name()}</b>
 ({$g->Wplayer->display_rank()}) as White and
-<b>{$g->Bplayer->display_name(false)}</b>
+<b>{$g->Bplayer->display_name()}</b>
 ({$g->Bplayer->display_rank()}) as Black was {$g->display_result()}.
 </p>
 
@@ -115,6 +161,8 @@ EOT;
 $n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}"); 
 $n->addnews();	
 ?>
-<p>Click <a href="ileague.php" target="_top">here</a> to see the league status now.</p>
+<p>Click <a href="ileague.php">here</a> to see the league status now.</p>
+</div>
+</div>
 </body>
 </html>

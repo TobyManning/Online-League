@@ -42,6 +42,7 @@ print <<<EOT
 <html>
 <head>
 <title>Database error</title>
+<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body>
 <h1>Database Error</h1>
@@ -51,8 +52,8 @@ Database error message was $mess.
 <p>
 Please tell John Collins
 <a href="mailto:jmc@xisl.com">jmc@xisl.com</a> about this ASAP, and advise the context
-wherein it occurred. Thank you.
-</p>
+wherein it occurred. Thank you.</p>
+<p>Please now go to the top of the site by <a href="index.php">clicking here</a>.</p>
 </body>
 </html>
 EOT;

@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ catch (PlayerException $e) {
 <?php
 $Title = "Update Player {$player->display_name(false)}";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
@@ -55,13 +55,19 @@ function formvalid()
 		return true;
 }
 </script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+print <<<EOT
 <h1>Update Player {$player->display_name(false)}</h1>
 <p>Please update the details of the player as required using the form below.</p>
+
 EOT;
 if ($player->played_games() == 0 && $player->count_teams() == 0 && $player->count_hist_teams() == 0)  {
 	print <<<EOT
 <p>Alternatively <a href="delplayer.php?{$player->urlof()}">Click here</a> to remove
 details of the player.</p>
+
 EOT;
 }
 ?>
@@ -76,6 +82,7 @@ print <<<EOT
 <tr><td>Player Name</td>
 <td><input type="text" name="playname" value="{$player->display_name(false)}"></td></tr>
 <tr><td>Club</td><td>
+
 EOT;
 $player->clubopt();
 ?>
@@ -103,6 +110,7 @@ Check if player has agreed to accept automatic emails</td></tr>
 <tr><td>Phone</td>
 <td><input type="text" name="phone" size=30 value="{$player->display_phone()}"></td></tr>
 <tr><td>Latest time to phone</td><td>
+
 EOT;
 $player->latestopt();
 print <<<EOT
@@ -134,6 +142,7 @@ print <<<EOT
 <tr><td>Paid I.L subs</td><td><input type="checkbox" name="ilpaid"$ilpaid></td></tr>
 <tr><td>Admin Privs</td>
 <td>
+
 EOT;
 $player->adminopt();
 ?>
@@ -142,5 +151,7 @@ $player->adminopt();
 <td><input type="submit" name="subm" value="Update Player"></td></tr>
 </table>
 </form>
+</div>
+</div>
 </body>
 </html>

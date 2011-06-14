@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -59,10 +59,13 @@ $Title = "Update member ranks complete";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Rank adjustments complete</h1>
 <p>
 Finished making rank adjustments.</p>
-<p><a href="matchesb.php">Click here</a> if you want to go to match assignments.
-</p>
+<p><a href="matches.php">Click here</a> if you want to go to match assignments.</p>
+</div>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -40,8 +40,11 @@ catch (TeamException $e) {
 <?php
 $Title = "Team {$team->display_name()}";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php';
+print <<<EOT
 <h1>Team {$team->display_name()}</h1>
 <p>
 Team {$team->display_name()} - {$team->display_description()} - division
@@ -51,6 +54,7 @@ Team {$team->display_name()} - {$team->display_description()} - division
 Team captain is {$team->display_captain()}.
 {$team->display_capt_email($logged_in)}
 </p>
+
 EOT;
 if ($admin && !$team->Paid)
 	print <<<EOT
@@ -68,6 +72,7 @@ print <<<EOT
 	<th>Drawn</th>
 	<th>Lost</th>
 </tr>
+
 EOT;
 $membs = $team->list_members();
 foreach ($membs as $m) {
@@ -83,6 +88,7 @@ foreach ($membs as $m) {
 	<td align="right">{$m->drawn_games()}</td>
 	<td align="right">{$m->lost_games()}</td>
 </tr>
+
 EOT;
 }
 ?>
@@ -173,5 +179,7 @@ EOT;
 EOT;
 }
 ?>
+</div>
+</div>
 </body>
 </html>

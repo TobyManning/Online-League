@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ if (!$ret || mysql_num_rows($ret) == 0)  {
 <body class="nomarg">
 <h1>Unknown User</h1>
 <p>User $userid is not known.
-Please <a href="index.php" target="_top">click here</a> to return to the top.
+Please <a href="index.php">click here</a> to return to the top.
 </p>
 </body>
 </html>
@@ -50,7 +50,7 @@ if ($passwd != $row['password'])  {
 <body class="nomarg">
 <h1>Incorrect Password</h1>
 <p>The password is not correct.
-Please <a href="index.php" target="_top">click here</a> to return to the top.
+Please <a href="index.php">click here</a> to return to the top.
 </p>
 </body>
 </html>
@@ -78,8 +78,10 @@ setcookie("user_name", $username, time()+60*60*24*60, "/");
 <body onload="onl();">
 <script language="javascript">
 function onl() {
-	top.frames[1].location.reload();
-	document.location='linkframe.php';
+	$prev = $_SERVER['HTTP_REFERER'];
+	if (strlen($prev) == 0)
+		$prev = 'index.php';
+	document.location = $prev;
 }
 </script>
 </body>

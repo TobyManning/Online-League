@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -55,6 +55,11 @@ $Title = "Match Defaulted";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Match Defaulted</h1>
 <p>
 The match between
@@ -69,6 +74,8 @@ on
 
 EOT;
 ?>
-<p>Click <a href="matchupdb.php">here</a> to edit some other match.</p>
+<p>Click <a href="matchupd.php">here</a> to edit some other match.</p>
+</div>
+</div>
 </body>
 </html>

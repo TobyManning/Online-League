@@ -2,12 +2,13 @@
 <html>
 <head>
 <title>Data error</title>
+<link href="/league/bgaleague-style.css" type="text/css" rel="stylesheet"></link>
 </head>
 <body>
 <h1>Data or program error.</h1>
 <?php
 
-//   Copyright 2009 John Collins
+//   Copyright 2010 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -28,6 +29,8 @@ print <<<EOT
 Sorry but there has been a database or program error.
 Message was $qmess.
 </p>
+<p>Please restart at the top by <a href="index.php">clicking here</a>.</p>
+
 EOT;
 ?>
 <p>

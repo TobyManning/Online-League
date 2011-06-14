@@ -26,7 +26,7 @@ if (!$logged_in) {
 <h1>Not logged in</h1>
 <p>Sorry but you need to be logged in to enter this page.</p>
 <p>If you were logged in before, do not worry, your session may have timed out.
-Just start again from the menu on the left.</p>
+Just start again from the top by <a href="index.php">clicking here</a>.</p>
 </body>
 </html>
 

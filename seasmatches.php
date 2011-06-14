@@ -44,6 +44,8 @@ $Title = "Historic Matches";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Matches</h1>
 <?php
 print <<<EOT
@@ -110,8 +112,8 @@ else {
 ?>
 </table>
 <h2>Other Seasons</h2>
-<p>Please <a href="javascript:history.back()">click here</a> to go back.
-</p>
-
+<p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
+</div>
+</div>
 </body>
 </html>

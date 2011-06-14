@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -56,6 +56,11 @@ $Title = "Game Result Amended";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Amended Game Result</h1>
 <p>
 Finished amending result for Game between
@@ -72,5 +77,7 @@ EOT;
 $n = new News($userid, "Amended result in {$mtch->Hteam->Name} -v- {$mtch->Ateam->Name} match in Division {$mtch->Division}", false, $mtch->showmatch());
 $n->addnews();
 ?>
+</div>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -48,6 +48,7 @@ $Title = "Edit Match";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function checkteamsvalid() {
 	var 	form = document.matchform;
@@ -90,6 +91,8 @@ function checkteamsvalid() {
 }
 </script>
 <?php
+$showadmmenu = true;
+include 'php/nav.php';
 
 // Load members of team and at the same time check we've got enough
 
@@ -103,7 +106,9 @@ Sorry but there are not enough members in {$team->display_name()} yet to
 make up a match with.
 </p>
 <p>Please <a href="javascript:history.back()">click here</a> to go back
-or <a href="teamsupd.php" target="_top">here</a> to update teams.</p>
+or <a href="teamsupd.php">here</a> to update teams.</p>
+</div>
+</div>
 </body>
 </html>
 EOT;
@@ -272,5 +277,7 @@ and in favour of {$mtch->Hteam->display_name()},
 
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

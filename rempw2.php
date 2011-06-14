@@ -54,12 +54,21 @@ else {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
+$Title = "Remind password completed";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+print <<<EOT
 <h1>$Title</h1>
 <p>$Mess</p>
+
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

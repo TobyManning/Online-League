@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -120,12 +120,18 @@ newaccemail($email, $userid, $passw);
 <?php
 $Title = "New account $userid created OK";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php';
+print <<<EOT
 <h1>$Title</h1>
 <p>Your account $userid has been successfully created and you should be receiving
 a confirmatory email.</p>
+
 EOT;
 ?>
+</div>
+</div>
 </body>
 </html>

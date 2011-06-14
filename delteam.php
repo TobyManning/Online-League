@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -21,10 +21,7 @@ include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<?php
+
 try {
 	$team = new Team();
 	$team->fromget();
@@ -48,17 +45,26 @@ if ($nrows == 0) {
 }
 //  Next is no error if nothing gets deleted.
 mysql_query("delete from teammemb where {$team->queryof('teamname')}");
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<?php
 $Title = "Deletion of {$team->display_name()} complete";
 include 'php/head.php';
-print <<<EOT
+?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+print <<<EOT
 <h1>Deletion of {$team->display_name()} complete</h1>
-<p>
-Deletion of team {$team->display_name()} was successful.</p>
+<p>Deletion of team {$team->display_name()} was successful.</p>
+
 EOT;
 ?>
-<p>
-Click <a href="teamsupdb.php">here</a> to return to the team update menu.
-</p>
+<p>Click <a href="teamsupd.php">here</a> to return to the team update menu.</p>
+</div>
+</div>
 </body>
 </html>

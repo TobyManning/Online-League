@@ -16,57 +16,59 @@
 
 include 'php/session.php';
 include 'php/checklogged.php';
-include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/team.php';
-$team = new Team();
+include 'php/opendatabase.php';
+
+$subj = $_POST["subject"];
+$emailrep = $_POST["emailrep"];
+$mess = $_POST["messagetext"];
+$admins = $_POST["admintoo"];
+$cc = $_POST["ccto"];
+$tlist = list_teams();
+$mlist = array();
+foreach ($tlist as $team) {
+	$team->fetchdets();
+	if ($team->Playing && strlen($team->Captain->Email) != 0)
+		$mlist[$team->Captain->Email] = 1;
+}
+if (strlen($cc) != 0) {
+	foreach (preg_split("/[\s,]+/", $cc) as $m)
+		$mlist[$m] = 1;
+}
+if ($admins) {
+	$la = list_admins();
+	foreach ($la as $p)
+		if (strlen($p->Email) != 0)
+			$mlist[$p->Email] = 1;
+}
+// Set up reply to address.
+$rt = "";
+if (strlen($emailrep) != 0)
+	$rt = "REPLYTO='$emailrep' ";
+foreach (array_keys($mlist) as $dest) {
+	$fh = popen("{$rt}mail -s 'Go League email - $subj' $dest", "w");
+	fwrite($fh, "$mess\n");
+	pclose($fh);
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
-$Title = "New Team";
+$Title = "Message Sent to team captains";
 include 'php/head.php';
 ?>
 <body>
 <script language="javascript" src="webfn.js"></script>
-<script language="javascript">
-function formvalid()
-{
-      var form = document.teamform;
-      if  (!nonblank(form.teamname.value))  {
-         alert("No team name given");
-         return false;
-      }
-      if  (!nonblank(form.teamdescr.value))  {
-         alert("No team description given");
-         return false;
-      }
-		return true;
-}
-</script>
-<h1>Create New Team</h1>
-<p>Please set up the details of the team as required using the form below.</p>
-<p>You can set up the team members once the team has been created.</p>
-<form name="teamform" action="updindteam2.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript:return formvalid();">
-<p>
-Team Name:
-<input type="text" name="teamname" size=20>
-Full Name:
-<input type="text" name="teamdescr" size=40>
-</p>
-<p>
-Division:
 <?php
-$team->divopt();
-print "Captain:";
-$team->captainopt();
+$showadmmenu = true;
+include 'php/nav.php';
 ?>
-</p>
-<p>
-<input type="submit" name="subm" value="Add Team">
-</p>
-</form>
+<h1>Message sent to team captains</h1>
+<p>I think your message was sent OK to team captains.</p>
+</div>
+</div>
 </body>
 </html>

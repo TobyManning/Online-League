@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -43,6 +43,7 @@ $Title = "Edit Game Result";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 function loadkgs() {
 	var fm = document.resform;
@@ -70,6 +71,10 @@ function loadkgs() {
 							  res + "&rt=" + restype;
 }
 </script>
+<?php
+$showadmmenu = true;
+include 'php/nav.php';
+?>
 <h1>Edit Game Result</h1>
 <p>
 Editing result for Game between
@@ -166,6 +171,7 @@ by
 <option value="N"$seln>Not known</option>
 <option value="R"$selr>Resign</option>
 <option value="T"$selt>Time</option>
+
 EOT;
 for ($v = 0; $v < 50; $v++)
 	if ($v == $selnum)
@@ -176,16 +182,13 @@ print <<<EOT
 <option value="H"$selh>Over 50</option>
 EOT;
 ?>
-</select>
-</p>
-<p>
-SGF file of the game to upload or replace <input type=file name=sgffile>
-</p>
-<p>When done, press this:
-<input type="submit" value="Edit result">
-</p>
+</select></p>
+<p>SGF file of the game to upload or replace <input type=file name=sgffile></p>
+<p>When done, press this:<input type="submit" value="Edit result"></p>
 </form>
 <p>If you never meant to get to this page
 <a href="javascript:history.back()">click here</a> to go back.</p>
+</div>
+</div>
 </body>
 </html>

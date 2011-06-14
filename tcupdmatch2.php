@@ -179,6 +179,8 @@ $Title = "Match Allocation Result";
 include 'php/head.php';
 ?>
 <body>
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Match Allocation Result</h1>
 <?php
 
@@ -229,6 +231,8 @@ change it until we've received it.</p>
 EOT;
 }
 ?>
-<p>Click <a href="matchesb.php">here</a> to edit some other match.</p>
+<p>Click <a href="matches.php">here</a> to edit some other match.</p>
+</div>
+</div>
 </body>
 </html>

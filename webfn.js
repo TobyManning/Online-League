@@ -21,3 +21,12 @@ function nonblank(s)  {
         }
         return  false;
 }
+function lostpw() {
+	var uidv = document.getElementById('user_id');
+	var l = uidv.value;
+	if (!nonblank(l)) {
+		 alert("No userid given");
+       return;
+   }
+   window.open("rempwbyuid.php?uid=" + l, "Password Reminder", "width=450,height=200,resizeable=yes,scrollbars=yes");
+}

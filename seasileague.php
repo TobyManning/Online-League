@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2010 John Collins
+//   Copyright 2011 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -42,6 +42,8 @@ $Title = "Historical Individual League Results";
 include 'php/head.php';
 ?>
 <body class="il">
+<script language="javascript" src="webfn.js"></script>
+<?php include 'php/nav.php'; ?>
 <h1>Historical Individual League Standings</h1>
 <?php
 print <<<EOT
@@ -141,5 +143,9 @@ EOT;
 <p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost.
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
 </p>
+<h2>Other Seasons</h2>
+<p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
+</div>
+</div>
 </body>
 </html>
