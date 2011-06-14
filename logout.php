@@ -31,10 +31,15 @@ unset($_SESSION['user_priv']);
 <body onload="onl();">
 <script language="javascript">
 function onl() {
-	$prev = $_SERVER['HTTP_REFERER'];
-	if (strlen($prev) == 0)
-		$prev = 'index.php';
-	document.location = $prev;
+<?php
+$prev = $_SERVER['HTTP_REFERER'];
+if (strlen($prev) == 0)
+	$prev = 'index.php';
+print <<<EOT
+	document.location = "$prev";
+
+EOT;
+?>
 }
 </script>
 </body>
