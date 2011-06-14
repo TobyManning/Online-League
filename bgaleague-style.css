@@ -141,13 +141,13 @@ body.il {
     position: absolute;
     top: 0;
     float: left;
-    width: 180px;
+    width: 160px;
     height: 100%;
 }
 #Content {
     position: fixed;
     top: 0;
-    left: 180px;
+    left: 160px;
     height: 100%;
     overflow: auto;
 }
