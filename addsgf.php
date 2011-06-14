@@ -33,7 +33,7 @@ include 'php/head.php';
 ?>
 <body>
 <script language="javascript" src="webfn.js"></script>
-script language="javascript">
+<script language="javascript">
 function gkgs() {
 	var gns = document.gnum.gn;
 	if (gns.selectedIndex < 0) {
