@@ -92,6 +92,29 @@ include 'php/head.php';
 ?>
 <body>
 <script language="javascript" src="webfn.js"></script>
+<script language="javascript">
+function fillinvals() {
+	var vform = document.payform;
+	var asl = vform.actselect;
+	var ind = asl.selectedIndex;
+	if (ind < 0)
+		return;
+	var str = asl.options[ind].value;
+	var pieces = str.split(':');
+	if (pieces.length == 4) {
+		vform.ltype.value = "Team";
+		vform.nam.value = pieces[1];
+		vform.nbga.value = pieces[2];
+		vform.total.value = pices[3];
+	}
+	else {
+		vform.ltype.value = "Individual";
+		vform.nam.value = pieces[1] + ' ' + pieces[2];
+		vform.nbga.value = pieces[3];
+		vform.total.value = pieces[4];
+	}
+}
+</script>
 <?php include 'php/nav.php'; ?>
 <h1>Payment of subscriptions</h1>
 <?php
@@ -108,7 +131,7 @@ if (count($unpaid_teams) + count($unpaid_il) <= 0)
 EOT;
 else {
 	print <<<EOT
-<form action="paymentres.php" method="post" enctype="application/x-www-form-urlencoded">
+<form name="payform" action="paymentres.php" method="post" enctype="application/x-www-form-urlencoded">
 <table>
 <tr><td>Required action</td>
 <td><select name="actselect" size="0" onchange="fillinvals();">
@@ -131,7 +154,7 @@ foreach ($unpaid_teams as $team) {
 	}
 	print <<<EOT
 <option$seld value="T:{$team->display_name()}:{$team->Nonbga}:{$team->Subs}">
-{$team->display_name()} subs {$team->Subs}</option>
+{$team->display_name()} - subs is {$team->Subs}</option>
 
 EOT;
 }
@@ -150,7 +173,7 @@ foreach ($unpaid_il as $pl) {
 	}
 	print <<<EOT
 <option$seld value="I:{$pl->First}:{$pl->Last}:$nbgan:{$pl->ILsubs}">
-{$pl->display_name(false)} subs {$pl->ILsubs}</option>
+{$pl->display_name(false)} - I.L. subs is {$pl->ILsubs}</option>
 
 EOT;
 }
@@ -159,7 +182,7 @@ print <<<EOT
 <tr><td>League</td><td><input type="text" name="ltype" value="$linit" size="15"></td></tr>
 <tr><td>Name</td><td><input type="text" name="nam" value="$ninit" size="30"></td></tr>
 <tr><td>Non-BGA</td><td><input type="text" name="nbga" value="$nbgainit" size="2"></td></tr>
-<tr><td>Total</td><td><input type="text" name="total" value="$totinit" size="6"></td></tr>
+<tr><td>Total &pound;</td><td><input type="text" name="total" value="$totinit" size="6"></td></tr>
 <tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
 </table>
 </form>
