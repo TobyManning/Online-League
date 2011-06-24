@@ -156,11 +156,11 @@ EOT;
 }
 print <<<EOT
 </select></td></tr>
-<tr><td>League</td><input type="text" name="ltype" value="$linit" size="15"><td></td></tr>
-<tr><td>Name</td><input type="text" name="nam" value="$ninit" size="30"><td></td></tr>
-<tr><td>Non-BGA</td><input type="text" name="nbga" value="$nbgainit" size="2"><td></td></tr>
-<tr><td>Total</td><input type="text" name="total" value="$totinit" size="6"><td></td></tr>
-<tr><td colspan="2"><input type="submit" name="pay" value="Pay"></td></tr>
+<tr><td>League</td><td><input type="text" name="ltype" value="$linit" size="15"></td></tr>
+<tr><td>Name</td><td><input type="text" name="nam" value="$ninit" size="30"></td></tr>
+<tr><td>Non-BGA</td><td><input type="text" name="nbga" value="$nbgainit" size="2"></td></tr>
+<tr><td>Total</td><td><input type="text" name="total" value="$totinit" size="6"></td></tr>
+<tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
 </table>
 </form>
 
