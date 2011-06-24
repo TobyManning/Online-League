@@ -105,7 +105,7 @@ function fillinvals() {
 		vform.ltype.value = "Team";
 		vform.nam.value = pieces[1];
 		vform.nbga.value = pieces[2];
-		vform.total.value = pices[3];
+		vform.total.value = pieces[3];
 	}
 	else {
 		vform.ltype.value = "Individual";
