@@ -29,6 +29,8 @@ class Team  {
 	public $Scoref;		// Scores for
 	public $Scorea;		// Scores against
 	public $Paid;			// Paid
+	public $Nonbga;		// Number of non-BGA members
+	public $Subs;			// Subscription
 	public $Playing;		// Playing
 	public $Sortrank;		// Ranking for league sort
 	
@@ -38,6 +40,8 @@ class Team  {
 		$this->Division = 1;
 		$this->Sortrank = 0;
 		$this->Playing = true;
+		$this->Subs = 0;
+		$this->Nonbga = 0;
 	}
 	
 	public function fromget() {

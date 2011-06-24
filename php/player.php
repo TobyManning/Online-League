@@ -35,6 +35,7 @@ class Player  {
 	public $Notes;
 	public $Latestcall;
 	public $Trivia;
+	public $ILsubs;
 	private $Gotrecs;
 	private $Played;
 	private $Won;
@@ -70,6 +71,7 @@ class Player  {
 			$this->ILpaid = false;
 			$this->Sortrank = 0;
 			$this->Trivia = true;
+			$this->ILsubs = 0;
 	}
 
 	// Fill in the name of the player from a "get" request
