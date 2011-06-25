@@ -13,34 +13,31 @@ searchlist: division
 searchlist: same
 wrap_text_default: 0
 outputb_scroll_mode: 0
-files: /home/jmc/src/Websites/goleague/php/opendatabase.php
-files: /home/jmc/src/Websites/goleague/updtmemb.php
-files: /home/jmc/src/Websites/goleague/updmembs.php
-files: /home/jmc/src/Websites/goleague/updindteam.php
-files: /home/jmc/src/Websites/goleague/reminder.php
+files: /home/jmc/src/Websites/goleague/payments.php
+files: /home/jmc/src/Websites/goleague/ownupd.php
+files: /home/jmc/src/Websites/goleague/osmatches.php
+files: /home/jmc/src/Websites/goleague/php/team.php
+files: /home/jmc/src/Websites/goleague/php/teammemb.php
 files: /home/jmc/src/Websites/goleague/php/player.php
-files: /home/jmc/src/Websites/goleague/php/mailalloc.php
-files: /home/jmc/src/Websites/goleague/linkframe.php
-files: /home/jmc/src/Websites/goleague/php/session.php
-files: /home/jmc/src/Websites/goleague/news.php
-files: /home/jmc/src/Websites/goleague/index.php
-files: /home/jmc/src/Websites/goleague/php/head.php
+files: /home/jmc/src/Websites/goleague/remindunpaid.php
+files: /home/jmc/src/Websites/goleague/php/dataerror.php
+files: /home/jmc/src/Websites/goleague/players.php
 c2e.convert_iso: 0
-recent_files: file:///home/jmc/src/Websites/goleague/bgaleague-style2.css
+recent_files: file:///home/jmc/src/Websites/goleague/players.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/dataerror.php
+recent_files: file:///home/jmc/src/Websites/goleague/remindunpaid.php
+recent_files: file:///home/jmc/src/Websites/goleague/archive.php
+recent_files: file:///home/jmc/src/Websites/goleague/playgames.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/teammemb.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/team.php
+recent_files: file:///home/jmc/src/Websites/goleague/osmatches.php
+recent_files: file:///home/jmc/src/Websites/goleague/ownupd.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/head.php
 recent_files: file:///home/jmc/src/Websites/goleague/index.php
-recent_files: file:///home/jmc/src/Websites/goleague/linkframe.php
 recent_files: file:///home/jmc/src/Websites/goleague/news.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/session.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/mailalloc.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
-recent_files: file:///home/jmc/src/Websites/goleague/reminder.php
-recent_files: file:///home/jmc/src/Websites/goleague/updindteam.php
-recent_files: file:///home/jmc/src/Websites/goleague/updmembs.php
-recent_files: file:///home/jmc/src/Websites/goleague/updtmemb.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/opendatabase.php
-recent_files: file:///home/jmc/src/Websites/goleague/bgaleague-style.css
-recent_files: file:///home/jmc/src/Websites/goleague/teamsupdb.php
+recent_files: file:///home/jmc/src/Websites/goleague/linkframe.php
 snippets_show_as_menu: 1
 show_mbhl: 1
 adv_open_recursive: 0
@@ -77,6 +74,7 @@ c2e.IE_apos_workaround: 0
 name: Go League
 last_filefilter: 
 view_main_toolbar: 1
+urllist: <?php echo $SCRIPT_NAME ?>
 urllist: sendmail.php?f=John&l=Collins
 urllist: addilresult.php
 urllist: ${a}news.php
@@ -86,14 +84,13 @@ urllist: ileague.php
 urllist: '.$SCRIPT_NAME.'
 urllist: ownupd.php
 urllist: newacct.php
-urllist: ${a}newacct.php
 htmlbar_view: 1
 autoindent: 1
 targetlist: _parent
 targetlist: _blank
 targetlist: _top
-bmarks: ::/home/jmc/src/Websites/goleague/archive.php:0:\n<?php:3704:
-bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3704:
+bmarks: ::/home/jmc/src/Websites/goleague/archive.php:1187:\n<?php:3904:
+bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3904:
 c2e.convert_special: 0
 editor_tab_width: 3
 view_left_panel: 1
@@ -105,6 +102,6 @@ charmap_block: 1
 outputb_show_all_output: 0
 spell_check_default: 0
 fb_show_backup_f: 0
-opendir: file:///home/jmc/src/Websites/goleague/php
+opendir: file:///home/jmc/src/Websites/goleague
 savedir: file:///home/jmc/src/Websites/goleague
 adv_open_matchname: 0

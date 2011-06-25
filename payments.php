@@ -101,18 +101,37 @@ function fillinvals() {
 		return;
 	var str = asl.options[ind].value;
 	var pieces = str.split(':');
+	var pftab = document.getElementById('pftab');
+	var typev,namev,bgav,totv;
 	if (pieces.length == 4) {
-		vform.ltype.value = "Team";
-		vform.nam.value = pieces[1];
-		vform.nbga.value = pieces[2];
-		vform.total.value = pieces[3];
+		typev = "Team";
+		namev = pieces[1];
+		var nm = parseInt(pieces[2]);
+		if (nm == 0)
+			bgav = "All BGA members";
+		else if (nm == 1)
+			bgav = "One non-BGA member";
+		else
+			bgav = nm + " non-BGA members";
+		totv = pieces[3];			
 	}
 	else {
-		vform.ltype.value = "Individual";
-		vform.nam.value = pieces[1] + ' ' + pieces[2];
-		vform.nbga.value = pieces[3];
-		vform.total.value = pieces[4];
+		typev = "Individual";
+		namev = pieces[1] + ' ' + pieces[2];
+		if (parseInt(pieces[3]) != 0)
+			bgav = "Not BGA member";
+		else
+			bgav = "BGA member";
+		totv = pieces[4];
 	}
+	typev = document.createTextNode(typev);
+	namev = document.createTextNode(namev);
+	bgav = document.createTextNode(bgav);
+	totv = document.createTextNode("&pound;" + totv);
+	pftab.rows[1].replaceChild(typev, pftab.rows[1].cells[1]);
+	pftab.rows[2].replaceChild(namev, pftab.rows[2].cells[1]);
+	pftab.rows[3].replaceChild(bgav, pftab.rows[3].cells[1]);
+	pftab.rows[4].replaceChild(totv, pftab.rows[4].cells[1]);
 }
 </script>
 <?php include 'php/nav.php'; ?>
@@ -132,8 +151,8 @@ EOT;
 else {
 	print <<<EOT
 <form name="payform" action="paymentres.php" method="post" enctype="application/x-www-form-urlencoded">
-<table>
-<tr><td>Required action</td>
+<table id="pftab">
+<tr><td>Paying for</td>
 <td><select name="actselect" size="0" onchange="fillinvals();">
 
 EOT;
@@ -148,8 +167,13 @@ foreach ($unpaid_teams as $team) {
 			$hadm = true;
 			$linit = "Team";
 			$ninit = $team->display_name();
-			$nbgainit = $team->Nonbga;
-			$totinit = $team->Subs;
+			if ($team->Nonbga == 0)
+				$nbgainit = "All BGA members";
+			elsif ($team->Nonbga == 1) {
+				$nbgainit = "One non-BGA member";
+			else
+				$nbgainit = "{$team->Nonbga} non-BGA members";
+			$totinit = "&pound;{$team->Subs}";
 		}
 	}
 	print <<<EOT
@@ -167,8 +191,8 @@ foreach ($unpaid_il as $pl) {
 			$hadm = true;
 			$linit = "Individual";
 			$ninit = $pl->display_name(false);
-			$nbgainit = $nbgan;
-			$totinit = $pl->ILsubs;
+			$nbgainit = $nbgan? "Not BGA member": "BGA member";
+			$totinit = "&pound;{$pl->ILsubs}";
 		}
 	}
 	print <<<EOT
@@ -179,10 +203,10 @@ EOT;
 }
 print <<<EOT
 </select></td></tr>
-<tr><td>League</td><td><input type="text" name="ltype" value="$linit" size="15"></td></tr>
-<tr><td>Name</td><td><input type="text" name="nam" value="$ninit" size="30"></td></tr>
-<tr><td>Non-BGA</td><td><input type="text" name="nbga" value="$nbgainit" size="2"></td></tr>
-<tr><td>Total &pound;</td><td><input type="text" name="total" value="$totinit" size="6"></td></tr>
+<tr><td>League</td><td>$linit></td></tr>
+<tr><td>For</td><td>$ninit</td></tr>
+<tr><td>BGA Membs</td><td>$nbgainit</td></tr>
+<tr><td>Subs</td><td>$totinit</td></tr>
 <tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
 </table>
 </form>
