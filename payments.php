@@ -169,7 +169,7 @@ foreach ($unpaid_teams as $team) {
 			$ninit = $team->display_name();
 			if ($team->Nonbga == 0)
 				$nbgainit = "All BGA members";
-			elsif ($team->Nonbga == 1) {
+			elseif ($team->Nonbga == 1)
 				$nbgainit = "One non-BGA member";
 			else
 				$nbgainit = "{$team->Nonbga} non-BGA members";
