@@ -14,6 +14,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/checksecure.php';
 include 'php/session.php';
 include 'php/checklogged.php';
 include 'php/opendatabase.php';
@@ -89,8 +90,11 @@ if ($ret) {
 <?php
 $Title = "Payment of subscriptions";
 include 'php/head.php';
+if (count($unpaid_teams) + count($unpaid_il) <= 0)
+	print "<body>\n";
+else
+   print "<body onload=\"fillinvals();\">\n";
 ?>
-<body>
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 
@@ -167,8 +171,7 @@ else {
 <td><select name="actselect" size="0" onchange="fillinvals();">
 
 EOT;
-$linit = $ninit = "";
-$nbgainit = $totinit = $total = 0;
+$total = 0;
 $hadm = false;
 foreach ($unpaid_teams as $team) {
 	$seld = "";
@@ -176,15 +179,6 @@ foreach ($unpaid_teams as $team) {
 		if ($team->Captain->is_same($player))  {
 			$seld = " selected";
 			$hadm = true;
-			$linit = "Team";
-			$ninit = $team->display_name();
-			if ($team->Nonbga == 0)
-				$nbgainit = "All BGA members";
-			elseif ($team->Nonbga == 1)
-				$nbgainit = "One non-BGA member";
-			else
-				$nbgainit = "{$team->Nonbga} non-BGA members";
-			$totinit = "&pound;{$team->Subs}";
 			$total = $team->Subs;
 		}
 	}
@@ -201,10 +195,6 @@ foreach ($unpaid_il as $pl) {
 		if ($pl->is_same($player)) {
 			$seld = " selected";
 			$hadm = true;
-			$linit = "Individual";
-			$ninit = $pl->display_name(false);
-			$nbgainit = $nbgan? "Not BGA member": "BGA member";
-			$totinit = "&pound;{$pl->ILsubs}";
 			$total = $pl->ILsubs;
 		}
 	}
@@ -216,10 +206,10 @@ EOT;
 }
 print <<<EOT
 </select></td></tr>
-<tr><td>League</td><td>$linit</td></tr>
-<tr><td>For</td><td>$ninit</td></tr>
-<tr><td>BGA Membs</td><td>$nbgainit</td></tr>
-<tr><td>Subs</td><td>$totinit</td></tr>
+<tr><td>League</td><td>None</td></tr>
+<tr><td>For</td><td>None</td></tr>
+<tr><td>BGA Membs</td><td>None</td></tr>
+<tr><td>Subs</td><td>$total</td></tr>
 <tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
 </table>
 <input type="hidden" name="amount" value="$total">
