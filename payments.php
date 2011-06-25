@@ -94,10 +94,16 @@ include 'php/head.php';
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
 
-function replacecell(tab, row, val)  {
+function replacecell(tab, row, val, hl)  {
 	var trow = tab.rows[row];
 	var tcell = trow.cells[1];
-	var vnode = document.createTextNode(val);
+	var vnode;
+	if (hl)  {
+		vnode = document.createElement('span');
+		vnode.innerHTML = val;
+	}
+	else
+		vnode = document.createTextNode(val);
 	tcell.replaceChild(vnode, tcell.firstChild);
 }	
 
@@ -132,10 +138,10 @@ function fillinvals() {
 			bgav = "BGA member";
 		totv = pieces[4];
 	}
-	replacecell(pftab, 1, typev);
-	replacecell(pftab, 2, namev);
-	replacecell(pftab, 3, bgav);
-	replacecell(pftab, 4, "&pound;" + totv);
+	replacecell(pftab, 1, typev, 0);
+	replacecell(pftab, 2, namev, 0);
+	replacecell(pftab, 3, bgav, 0);
+	replacecell(pftab, 4, "&pound;" + totv, 1);
 }
 </script>
 <?php include 'php/nav.php'; ?>
@@ -182,7 +188,7 @@ foreach ($unpaid_teams as $team) {
 	}
 	print <<<EOT
 <option$seld value="T:{$team->display_name()}:{$team->Nonbga}:{$team->Subs}">
-{$team->display_name()} - subs is {$team->Subs}</option>
+Team: {$team->display_name()}</option>
 
 EOT;
 }
@@ -201,13 +207,13 @@ foreach ($unpaid_il as $pl) {
 	}
 	print <<<EOT
 <option$seld value="I:{$pl->First}:{$pl->Last}:$nbgan:{$pl->ILsubs}">
-{$pl->display_name(false)} - I.L. subs is {$pl->ILsubs}</option>
+Individual: {$pl->display_name(false)}</option>
 
 EOT;
 }
 print <<<EOT
 </select></td></tr>
-<tr><td>League</td><td>$linit></td></tr>
+<tr><td>League</td><td>$linit</td></tr>
 <tr><td>For</td><td>$ninit</td></tr>
 <tr><td>BGA Membs</td><td>$nbgainit</td></tr>
 <tr><td>Subs</td><td>$totinit</td></tr>
