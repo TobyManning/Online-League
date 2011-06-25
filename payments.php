@@ -93,6 +93,14 @@ include 'php/head.php';
 <body>
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
+
+function replacecell(tab, row, val)  {
+	var trow = tab.rows[row];
+	var tcell = trow.cells[1];
+	var vnode = document.createTextNode(val);
+	tcell.replaceChild(vnode, tcell.firstChild);
+}	
+
 function fillinvals() {
 	var vform = document.payform;
 	var asl = vform.actselect;
@@ -124,14 +132,10 @@ function fillinvals() {
 			bgav = "BGA member";
 		totv = pieces[4];
 	}
-	typev = document.createTextNode(typev);
-	namev = document.createTextNode(namev);
-	bgav = document.createTextNode(bgav);
-	totv = document.createTextNode("&pound;" + totv);
-	pftab.rows[1].replaceChild(typev, pftab.rows[1].cells[1]);
-	pftab.rows[2].replaceChild(namev, pftab.rows[2].cells[1]);
-	pftab.rows[3].replaceChild(bgav, pftab.rows[3].cells[1]);
-	pftab.rows[4].replaceChild(totv, pftab.rows[4].cells[1]);
+	replacecell(pftab, 1, typev);
+	replacecell(pftab, 2, namev);
+	replacecell(pftab, 3, bgav);
+	replacecell(pftab, 4, "&pound;" + totv);
 }
 </script>
 <?php include 'php/nav.php'; ?>
