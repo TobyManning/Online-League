@@ -142,6 +142,7 @@ function fillinvals() {
 	replacecell(pftab, 2, namev, 0);
 	replacecell(pftab, 3, bgav, 0);
 	replacecell(pftab, 4, "&pound;" + totv, 1);
+	vform.amount.value = totv;
 }
 </script>
 <?php include 'php/nav.php'; ?>
@@ -167,7 +168,7 @@ else {
 
 EOT;
 $linit = $ninit = "";
-$nbgainit = $totinit = 0;
+$nbgainit = $totinit = $total = 0;
 $hadm = false;
 foreach ($unpaid_teams as $team) {
 	$seld = "";
@@ -184,6 +185,7 @@ foreach ($unpaid_teams as $team) {
 			else
 				$nbgainit = "{$team->Nonbga} non-BGA members";
 			$totinit = "&pound;{$team->Subs}";
+			$total = $team->Subs;
 		}
 	}
 	print <<<EOT
@@ -203,6 +205,7 @@ foreach ($unpaid_il as $pl) {
 			$ninit = $pl->display_name(false);
 			$nbgainit = $nbgan? "Not BGA member": "BGA member";
 			$totinit = "&pound;{$pl->ILsubs}";
+			$total = $pl->ILsubs;
 		}
 	}
 	print <<<EOT
@@ -219,6 +222,7 @@ print <<<EOT
 <tr><td>Subs</td><td>$totinit</td></tr>
 <tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
 </table>
+<input type="hidden" name="amount" value="$total">
 </form>
 
 EOT;
