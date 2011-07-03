@@ -354,13 +354,18 @@ class Game {
 	// Delete wrongly entered result
 	
 	public function delete_result() {
-		$mtch = new Match($this->Matchind);
-		$mtch->fetchdets();
-		$this->adj_match($mtch, -1);
-		$this->Result = 'N';
-		$this->Resultdet = '';
-		$mtch->updscore();
-		mysql_query("update game set result='N',reshow='',sgf='' where {$this->queryof()}");
+		if ($this->League == 'I')  {
+			mysql_query("delete from game where {$this->queryof()}");
+		}
+		else  {
+			$mtch = new Match($this->Matchind);
+			$mtch->fetchdets();
+			$this->adj_match($mtch, -1);
+			$this->Result = 'N';
+			$this->Resultdet = '';
+			$mtch->updscore();
+			mysql_query("update game set result='N',reshow='',sgf='' where {$this->queryof()}");
+		}
 	}
 	
 	public function get_sgf() {
