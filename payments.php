@@ -122,24 +122,26 @@ function fillinvals() {
 	var pftab = document.getElementById('pftab');
 	var typev,namev,bgav,totv;
 	if (pieces.length == 4) {
-		typev = "Team";
+		typev = "Team &pound;10";
 		namev = pieces[1];
 		var nm = parseInt(pieces[2]);
 		if (nm == 0)
 			bgav = "All BGA members";
 		else if (nm == 1)
-			bgav = "One non-BGA member";
-		else
-			bgav = nm + " non-BGA members";
+			bgav = "One non-BGA member &pound;5";
+		else  {
+			surch = 5 * nm;
+			bgav = nm + " non-BGA members &pound; " + surch;
+		}
 		totv = pieces[3];			
 	}
 	else {
-		typev = "Individual";
+		typev = "Individual &pound;5";
 		namev = pieces[1] + ' ' + pieces[2];
 		if (parseInt(pieces[3]) != 0)
-			bgav = "Not BGA member";
+			bgav = "Not BGA member &pound;3";
 		else
-			bgav = "BGA member";
+			bgav = "None";
 		totv = pieces[4];
 	}
 	replacecell(pftab, 1, typev, 0);
@@ -208,7 +210,7 @@ print <<<EOT
 </select></td></tr>
 <tr><td>League</td><td>None</td></tr>
 <tr><td>For</td><td>None</td></tr>
-<tr><td>BGA Membs</td><td>None</td></tr>
+<tr><td>Surcharge</td><td>None</td></tr>
 <tr><td>Subs</td><td>$total</td></tr>
 <tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
 </table>

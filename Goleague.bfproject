@@ -1,6 +1,7 @@
 fb_focus_follow: 1
 view_cline: 1
 e2c.convert_iso: 0
+searchlist: League
 searchlist: club
 searchlist: strtolower
 searchlist: $pl
@@ -10,7 +11,6 @@ searchlist: opener
 searchlist: real_esc
 searchlist: .
 searchlist: division
-searchlist: same
 wrap_text_default: 0
 outputb_scroll_mode: 0
 files: /home/jmc/src/Websites/goleague/payments.php
@@ -24,7 +24,12 @@ files: /home/jmc/src/Websites/goleague/php/dataerror.php
 files: /home/jmc/src/Websites/goleague/players.php
 files: /home/jmc/src/Websites/goleague/php/checklogged.php
 files: /home/jmc/src/Websites/goleague/php/checksecure.php
+files: /home/jmc/src/Websites/goleague/delres.php
+files: /home/jmc/src/Websites/goleague/php/game.php
 c2e.convert_iso: 0
+recent_files: file:///home/jmc/src/Websites/goleague/php/game.php
+recent_files: file:///home/jmc/src/Websites/goleague/delres.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/checksecure.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/checklogged.php
 recent_files: file:///home/jmc/src/Websites/goleague/players.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/dataerror.php
@@ -37,9 +42,6 @@ recent_files: file:///home/jmc/src/Websites/goleague/ownupd.php
 recent_files: file:///home/jmc/src/Websites/goleague/payments.php
 recent_files: file:///home/jmc/src/Websites/goleague/archive.php
 recent_files: file:///home/jmc/src/Websites/goleague/playgames.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/head.php
-recent_files: file:///home/jmc/src/Websites/goleague/index.php
-recent_files: file:///home/jmc/src/Websites/goleague/news.php
 snippets_show_as_menu: 1
 show_mbhl: 1
 adv_open_recursive: 0
