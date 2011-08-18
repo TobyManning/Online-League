@@ -144,9 +144,9 @@ function fillinvals() {
 			bgav = "None";
 		totv = pieces[4];
 	}
-	replacecell(pftab, 1, typev, 0);
+	replacecell(pftab, 1, typev, 1);
 	replacecell(pftab, 2, namev, 0);
-	replacecell(pftab, 3, bgav, 0);
+	replacecell(pftab, 3, bgav, 1);
 	replacecell(pftab, 4, "&pound;" + totv, 1);
 	vform.amount.value = totv;
 }
