@@ -131,7 +131,7 @@ function fillinvals() {
 			bgav = "One non-BGA member &pound;5";
 		else  {
 			surch = 5 * nm;
-			bgav = nm + " non-BGA members &pound; " + surch;
+			bgav = nm + " non-BGA members &pound;" + surch;
 		}
 		totv = pieces[3];			
 	}
