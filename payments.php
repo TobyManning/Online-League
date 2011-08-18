@@ -131,7 +131,7 @@ function fillinvals() {
 			bgav = "One non-BGA member &pound;5";
 		else  {
 			surch = 5 * nm;
-			bgav = nm + " non-BGA members &pound;" + surch;
+			bgav = nm + " non-BGA members @ &pound;5 per non-member - &pound;" + surch;
 		}
 		totv = pieces[3];			
 	}
@@ -211,7 +211,7 @@ print <<<EOT
 <tr><td>League</td><td>None</td></tr>
 <tr><td>For</td><td>None</td></tr>
 <tr><td>Surcharge</td><td>None</td></tr>
-<tr><td>Subs</td><td>$total</td></tr>
+<tr><td>Total</td><td>$total</td></tr>
 <tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
 </table>
 <input type="hidden" name="amount" value="$total">
