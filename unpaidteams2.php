@@ -30,6 +30,11 @@ if (strlen($mess) == 0)  {
 	include 'php/wrongentry.php';
 	exit(0);
 }
+if (!isset($_POST['tnum']))  {
+	$mess = "No teams selected";
+	include 'php/wrongentry.php';
+	exit(0);
+}	
 $tar = $_POST['tnum'];
 if (empty($tar))  {
 	$mess = "No teams selected";

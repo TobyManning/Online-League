@@ -25,7 +25,7 @@ include 'php/opendatabase.php';
 $subj = $_POST["subject"];
 $emailrep = $_POST["emailrep"];
 $mess = $_POST["messagetext"];
-$admins = $_POST["admintoo"];
+$admins = isset($_POST["admintoo"]);
 $cc = $_POST["ccto"];
 $tlist = list_teams();
 $mlist = array();

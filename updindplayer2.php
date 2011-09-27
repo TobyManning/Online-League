@@ -56,10 +56,10 @@ $club = $_POST["club"];
 $rank = $_POST["rank"];
 $admin = $_POST["admin"];
 $passw = $_POST["passw"];
-$okem = $_POST["okem"];
-$bgamemb = $_POST["bgamemb"];
+$okem = isset($_POST["okem"]);
+$bgamemb = isset($_POST["bgamemb"]);
 $ildiv = $_POST["ildiv"];
-$ilpaid = $_POST["ilpaid"];
+$ilpaid = isset($_POST["ilpaid"]);
 $notes = $_POST["notes"];
 $latest = $_POST["latesttime"];
 

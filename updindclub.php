@@ -86,8 +86,10 @@ Club website:
 Meeting night:
 EOT;
 $club->nightopt();
+$schchk = $club->Schools? " checked": "";
 print <<<EOT
 </p>
+<p>Set this <input type="checkbox" name="schools"$schchk> if the club is in BGA schools.</p>
 <p>
 <input type="submit" name="subm" value="Add Club">
 <input type="submit" name="subm" value="Update Club">

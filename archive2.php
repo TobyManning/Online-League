@@ -102,7 +102,7 @@ foreach ($Full_teams as $team) {
 
 for ($d = 1; $d < $ml; $d++)  {
 	$nd = $d + 1;
-	if ($_POST["pd$d"])  {
+	if (isset($_POST["pd$d"]))  {
 		array_push($messages,
 		"Promoted {$promo[$nd]->display_name()} from division $nd and relegated {$releg[$d]->display_name()} from division $d");
 		$promo[$nd]->updatediv($d);

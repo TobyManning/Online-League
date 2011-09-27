@@ -16,7 +16,7 @@
 
 // Clog up the works for spammers
 
-if ($_POST["turnoff"] || !$_POST["turnon"])  {
+if (isset($_POST["turnoff"]) || !isset($_POST["turnon"]))  {
 	system("sleep 60");
 	exit(0);
 }
@@ -36,11 +36,11 @@ $email = $_POST["email"];
 $phone = $_POST["phone"];
 $club = $_POST["club"];
 $rank = $_POST["rank"];
-$okem = $_POST["okem"];
-$trivia = $_POST["trivia"];
+$okem = isset($_POST["okem"]);
+$trivia = isset($_POST["trivia"]);
 $kgs = $_POST["kgs"];
 $igs = $_POST["igs"];
-$joinil = $_POST["join"];
+$joinil = isset($_POST["join"]);
 $notes = $_POST["notes"];
 $latest = $_POST["latesttime"];
 

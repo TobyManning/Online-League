@@ -26,11 +26,13 @@ class Club {
 	public $Website;			// Club website if any
 	public $Night;				// Usual night for playing Sun=0 .. Sat=6
 	public $Region;			// Region (not used at present)
+	public $Schools;			// BGA Schools (members treated as BGA memb for fee calc)
 	
 	public function __construct($n="") {
 		if (strlen($n) != 0)
 			$this->Code = $n;
 		$this->Night = -1;
+		$this->Schools = false;
 	}
 	
 	// Get club code from a get request ?cl=xyz
@@ -67,7 +69,7 @@ class Club {
 		
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select name,contactfirst,contactlast,contactemail,contactphone,website,meetnight,region from club where $q");
+		$ret = mysql_query("select name,contactfirst,contactlast,contactemail,contactphone,website,meetnight,region,bgaschools from club where $q");
 		if (!$ret)
 			throw new ClubException("Cannot read database for club");
 		if (mysql_num_rows($ret) == 0)
@@ -81,6 +83,7 @@ class Club {
 		$this->Website = $row["website"];
 		$this->Night = $row["meetnight"];
 		$this->Region = $row["region"];
+		$this->Schools = $row["bgaschools"];
 	}
 
 	// These functions put together fields for display on a web page
@@ -180,7 +183,8 @@ class Club {
 		$qweb = mysql_real_escape_string($this->Website);
 		$qreg = mysql_real_escape_string($this->Region);
 		$n = $this->Night;
-		mysql_query("insert into club (code,name,contactfirst,contactlast,contactemail,contactphone,website,meetnight,region) values ('$qcode','$qname','$qcfirst','$qclast','$qemail','$qphone','$qweb',$n,'$qreg')");
+		$s = $this->Schools? 1: 0;
+		mysql_query("insert into club (code,name,contactfirst,contactlast,contactemail,contactphone,website,meetnight,region,bgaschools) values ('$qcode','$qname','$qcfirst','$qclast','$qemail','$qphone','$qweb',$n,'$qreg',$s)");
 	}
 
 	// Update club
@@ -194,7 +198,8 @@ class Club {
 		$qweb = mysql_real_escape_string($this->Website);
 		$qreg = mysql_real_escape_string($this->Region);
 		$n = $this->Night;
-		mysql_query("update club set name='$qname',contactfirst='$qcfirst',contactlast='$qclast',contactemail='$qemail',contactphone='$qphone',website='$qweb',meetnight=$n,region='$qreg' where {$this->queryof()}");			
+		$s = $this->Schools? 1: 0;
+		mysql_query("update club set name='$qname',contactfirst='$qcfirst',contactlast='$qclast',contactemail='$qemail',contactphone='$qphone',website='$qweb',meetnight=$n,region='$qreg',bgaschools=$s where {$this->queryof()}");			
 	}
 }
 

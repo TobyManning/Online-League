@@ -37,6 +37,7 @@ include 'php/head.php';
 <th>Email</th>
 <th>Website</th>
 <th>Night</th>
+<th>Schools</th>
 </tr>
 <?php
 $pemail = strlen($username) != 0;
@@ -45,6 +46,7 @@ if ($ret && mysql_num_rows($ret)) {
 	while ($row = mysql_fetch_assoc($ret)) {
 		$p = new Club($row["code"]);
 		$p->fetchdets();
+		$sch = $p->Schools? 'Yes': '-';
 		print <<<EOT
 <tr>
 <td>{$p->display_code()}</td>
@@ -54,6 +56,7 @@ if ($ret && mysql_num_rows($ret)) {
 <td>{$p->display_contemail($pemail)}</td>
 <td>{$p->display_website()}</td>
 <td>{$p->display_night()}</td>
+<td>$sch</td>
 </tr>
 EOT;
 	}

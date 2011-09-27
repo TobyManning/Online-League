@@ -107,5 +107,5 @@ outputb_show_all_output: 0
 spell_check_default: 0
 fb_show_backup_f: 0
 opendir: file:///home/jmc/src/Websites/goleague/php
-savedir: file:///home/jmc/src/Websites/goleague/php
+savedir: file:///home/jmc/src/Websites/goleague
 adv_open_matchname: 0

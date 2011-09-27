@@ -38,6 +38,7 @@ $contphone = $_POST["contphone"];
 $contemail = $_POST["contemail"];
 $website = $_POST["website"];
 $night = $_POST["night"];
+$sch = isset($_POST["schools"]);
 
 if (preg_match("/(.*)\s+(.*)/", $contname, $matches)) {
 	$contfirst = $matches[1];
@@ -66,6 +67,7 @@ case 'A':
 	$club->Contactphone = $contphone;
 	$club->Website = $website;
 	$club->Night = $night;
+	$club->Schools = $sch;
 	$club->create();
 	$Title = "Club {$club->display_name()} created OK";
 	break;	
@@ -94,6 +96,7 @@ default:
 	$club->Contactphone = $contphone;
 	$club->Website = $website;
 	$club->Night = $night;
+	$club->Schools = $sch;
 	$club->update();
 	$Title = "Club {$club->display_name()} updated OK";
 	break;

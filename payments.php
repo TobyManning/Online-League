@@ -64,8 +64,11 @@ foreach ($unpaid_teams as $team)  {
 	foreach ($membs as $memb) {
 		$memb->fetchdets();
 		if (!$memb->BGAmemb)  {
-			$team->Nonbga += 1;
-			$team->Subs += 5;
+			$memb->fetchclub();
+			if  (!$memb->Club->Schools)  {
+				$team->Nonbga += 1;
+				$team->Subs += 5;
+			}
 		}
 	}
 }
@@ -79,8 +82,11 @@ if ($ret) {
 		$pl = new Player($row[0], $row[1]);
 		$pl->fetchdets();
 		$pl->ILsubs = 5;
-		if (!$pl->BGAmemb)
-			$pl->ILsubs = 8;
+		if (!$pl->BGAmemb)  {
+			$pl->fetchclub();
+			if (!$pl->Club->Schools)
+				$pl->ILsubs = 8;
+		}
 		array_push($unpaid_il, $pl);
 	}
 }

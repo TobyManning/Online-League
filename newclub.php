@@ -69,6 +69,8 @@ Meeting night:
 $club->nightopt();
 ?>
 </p>
+<p>Set this <input type="checkbox" name="schools"> if the club is in BGA schools.
+</p>
 <p>
 <input type="submit" name="subm" value="Add Club">
 </p>

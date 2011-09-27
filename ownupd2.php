@@ -51,8 +51,8 @@ $igs = $_POST["igs"];
 $club = $_POST["club"];
 $rank = $_POST["rank"];
 $passw = $_POST["passw"];
-$okem = $_POST["okem"];
-$trivia = $_POST["trivia"];
+$okem = isset($_POST["okem"]);
+$trivia = isset($_POST["trivia"]);
 $notes = $_POST["notes"];
 $latest = $_POST["latesttime"];
 
@@ -99,10 +99,10 @@ $origplayer->Notes = $notes;
 $origplayer->Latestcall = $latest == "None"? "": $latest;
 
 if ($origplayer->ILdiv == 0)  {
-	if ($_POST["join"])
+	if (isset($_POST["join"]))
 		$origplayer->ILdiv = assign_ildiv($rank);
 }
-else  if  (!$origplayer->ILpaid  &&  !$_POST["stayin"])
+else  if  (!$origplayer->ILpaid  &&  !isset($_POST["stayin"]))
 	$origplayer->ILdiv = 0;
 $origplayer->update();
 if (strlen($passw) != 0  &&  $passw != $origplayer->get_passwd())
