@@ -237,7 +237,8 @@ print <<<EOT
 <li>For each match drawn (this can happen if some games were drawn),
 we give {$pars->Drawn} points.</li>
 <li>For each match lost, we give {$pars->Lost} points.</li>
-<li>For each match played, whatever the outcome, we give {$pars->Played} points.</li>
+<li>For each match played and completed, whatever the outcome,
+we give {$pars->Played} points.</li>
 <li>For each individual game, we give {$pars->For} point(s) for each won game and
 {$pars->Against} for each lost game. Drawn games are given halfway in between,
 or
@@ -245,6 +246,7 @@ or
 EOT;
 print ($pars->For + $pars->Against) / 2.0;
 print <<<EOT
+
 point(s).</li>
 
 EOT;
