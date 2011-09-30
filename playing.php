@@ -227,6 +227,40 @@ or RSS feed which will be wrong.</p>
 <p>If not possible, please contact a referee as above.</p>
 <p>Whatever you do, please don't change any of the settings of the other games in the match
 to try to "compensate".</p>
+<h1>Ordering of league tables</h1>
+<p>To clarify how the league tables are ordered, the rules are as follows:</p>
+<h2>Team League</h2>
+<ul>
+<?php
+print <<<EOT
+<li>For each match won, we give {$pars->Won} points.</li>
+<li>For each match drawn (this can happen if some games were drawn),
+we give {$pars->Drawn} points.</li>
+<li>For each match lost, we give {$pars->Lost} points.</li>
+<li>For each match played, whatever the outcome, we give {$pars->Played} points.</li>
+<li>For each individual game, we give {$pars->For} point(s) for each won game and
+{$pars->Against} for each lost game. Drawn games are given halfway in between,
+or
+
+EOT;
+print ($pars->For + $pars->Against) / 2.0;
+print <<<EOT
+point(s).</li>
+
+EOT;
+?>
+</ul>
+<p>The intention of this is to give most credit for matches completed and won. If those
+compare equal, we use the number of individual games won. However we try to give
+some credit to matches actually completed even if they are lost.</p>
+<p>Nevertheless, we would suggest that the league tables should not be taken
+too seriously in the early parts of the season.</p>
+<p>Towards the end of the season, we try to encourage teams to complete matches
+and may mark games as drawn or defaulted by one side as appropriate.</p>
+<h2>Individual League</h2>
+<p>For the individual league, each game is a separate match. We use the parameters for
+matches played, won, drawn or lost shown above for the team league. So players who play
+a reasonable number of games and win a good proportion will do well in the rankings.</p>
 </div>
 </div>
 </body>
