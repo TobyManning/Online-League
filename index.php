@@ -98,9 +98,9 @@ details, including your email address
 (which will never be given out indiscriminately), KGS name, on your account.
 </p>
 <h2>Subscriptions</h2>
-<p>We charge &pound;10 per season for each team in the team league, together with
+<p>We charge &pound;15 per season for each team in the team league, together with
 an extra &pound;5 each non-BGA member in each team.</p>
-<p>We charge &pound;5 per season for each player in the individual league, or &pound;8
+<p>We charge &pound;10 per season for each player in the individual league, or &pound;15
 for each non-BGA member.</p>
 <p>You can see the current team league status using the menu items to the left.
 For any further questions, please contact

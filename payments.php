@@ -56,7 +56,7 @@ catch (TeamException $e) {
 // Go over each team and calculate subs for each
 
 foreach ($unpaid_teams as $team)  {
-	$team->Subs = 10;
+	$team->Subs = 15;
 	$membs = $team->list_members();
 	
 	// Add £5 for each non BGA member
@@ -81,11 +81,11 @@ if ($ret) {
 	while ($row = mysql_fetch_array($ret))  {
 		$pl = new Player($row[0], $row[1]);
 		$pl->fetchdets();
-		$pl->ILsubs = 5;
+		$pl->ILsubs = 10;
 		if (!$pl->BGAmemb)  {
 			$pl->fetchclub();
 			if (!$pl->Club->Schools)
-				$pl->ILsubs = 8;
+				$pl->ILsubs = 15;
 		}
 		array_push($unpaid_il, $pl);
 	}
@@ -128,7 +128,7 @@ function fillinvals() {
 	var pftab = document.getElementById('pftab');
 	var typev,namev,bgav,totv;
 	if (pieces.length == 4) {
-		typev = "Team &pound;10";
+		typev = "Team &pound;15";
 		namev = pieces[1];
 		var nm = parseInt(pieces[2]);
 		if (nm == 0)
@@ -142,10 +142,10 @@ function fillinvals() {
 		totv = pieces[3];			
 	}
 	else {
-		typev = "Individual &pound;5";
+		typev = "Individual &pound;10";
 		namev = pieces[1] + ' ' + pieces[2];
 		if (parseInt(pieces[3]) != 0)
-			bgav = "Not BGA member &pound;3";
+			bgav = "Not BGA member &pound;5";
 		else
 			bgav = "None";
 		totv = pieces[4];
