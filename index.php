@@ -19,7 +19,7 @@ include 'php/session.php';
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
-$Title = "British Go Association Online Leagues";
+$Title = "BGA Online Leagues";
 include 'php/head.php';
 ?>
 <body>
@@ -27,16 +27,14 @@ include 'php/head.php';
 <?php
 $hasfoot = true;
 include 'php/nav.php'; ?>
-<h1>British Go Association League</h1>
+<h1>BGA Online Leagues</h1>
 <img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
-<p><strong>Welcome to the British Go Association League Website.</strong></p>
 <p>Congratulations to the <b>Dundee</b> team (Yohei Negi, David Lee and Robby Geotschalckx)
 on winning the second season championship, held during 2010,
 taking the GoGoD Shield and the title from the previous winners - Cambridge.
 </p>
-<p>The British Go Association League Tournaments are a pair of leagues played over the Internet,
-a team league
-and an individual league.
+<p>The BGA League Tournaments are a pair of leagues with games
+played over the Internet: a team league and an individual league.
 The leagues run throughout the calendar year.</p>
 <p>The purpose of the league is to encourage interaction between players
 in different areas of the country and to
@@ -55,8 +53,8 @@ Each season, teams play a round robin tournament within their league.</p>
 discretion.</p>
 <p>In the individual league, players are assigned to a division of roughly the same standard of players
 and play each other on a "self-pairing" basis. Players may play each other as often as they like
-but are encouraged to play as many different opponents as they can within their division.</p>
-<p>The top player in each division is promoted and the bottom player relegated at the end of the season.</p>
+but are encouraged to play as many different opponents as they can within their division.
+The top player in each division is promoted and the bottom player relegated at the end of the season.</p>
 <p>New entrant players are placed in a division with the most players of a similar rank to theirs.</p>
 <p>Games are played online, usually on the <a href="http://www.gokgs.com" target="_blank">KGS Go Server</a>
 in the "British Room".</p>
