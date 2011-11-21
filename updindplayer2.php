@@ -49,7 +49,7 @@ $action = substr($_POST["subm"], 0, 1);
 $playname = $_POST["playname"];
 $email = $_POST["email"];
 $phone = $_POST["phone"];
-$userid = $_POST["userid"];
+$fuserid = $_POST["userid"];
 $kgs = $_POST["kgs"];
 $igs = $_POST["igs"];
 $club = $_POST["club"];
@@ -65,13 +65,13 @@ $latest = $_POST["latesttime"];
 
 switch ($action) {
 case 'A':
-	if (strlen($playname) == 0 || strlen($userid) == 0)  {
+	if (strlen($playname) == 0 || strlen($fuserid) == 0)  {
 		include 'php/wrongentry.php';
 		exit(0);
 	}
 	$player = new Player($playname);
 	checkname($player);
-	checkclash('user', $userid);
+	checkclash('user', $fuserid);
 	checkclash('kgs', $kgs);
 	checkclash('igs', $igs); 
 	$player->Rank = new Rank($rank);
@@ -86,7 +86,7 @@ case 'A':
 	$player->IGS = $igs;
 	// Force Admin priv to N unless Super-admin
 	$player->Admin = $userpriv != 'SA'? $admin: 'N';
-	$player->Userid = $userid;
+	$player->Userid = $fuserid;
 	// New player gives div num of -1 to indicate calculate it.
 	if ($ildiv < 0)
 		$ildiv = assign_ildiv($rank);
@@ -99,7 +99,7 @@ case 'A':
 		$passw = generate_password();
 	$player->set_passwd($passw);
 	$Title = "Player {$player->display_name(false)} created OK";
-	newaccemail($email, $userid, $passw);
+	newaccemail($email, $fuserid, $passw);
 	break;
 default:
 	try {
@@ -123,9 +123,9 @@ default:
 	
 	// Check user kgs and igs clashes
 	
-	if ($origplayer->Userid != $userid)  {
-		checkclash('user', $userid);
-		$origplayer->Userid = $userid;
+	if ($origplayer->Userid != $fuserid)  {
+		checkclash('user', $fuserid);
+		$origplayer->Userid = $fuserid;
 	}
 	if ($origplayer->KGS != $kgs) {
 		checkclash("kgs", $kgs);
