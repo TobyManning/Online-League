@@ -29,9 +29,10 @@ $hasfoot = true;
 include 'php/nav.php'; ?>
 <h1>BGA Online Leagues</h1>
 <img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
-<p>Congratulations to the <b>Cambridge</b> team (Alex Selby, Andrew Simons, Graham Lamburn and John Richardson)
-on winning the third season championship of the online team league, regaining the title they won in the
-first season and taking the GoGoD shield back from the Dundee team.</p>
+<p>Congratulations to the <b>Central London Go Club A</b> team (Nick Krempel, Fanciso Divers, Chuck Fisher
+and Michael Webster)
+on winning the third season championship of the online team league and
+taking the GoGoD shield from the Dundee team.</p>
 <p>Congratulations also to Andrew Simons on winning the championship in first
 full season of the Individual online league, taking the <i>Xinyi Lu</i> prize.</p>
 <p>The BGA League Tournaments are a pair of leagues with games
