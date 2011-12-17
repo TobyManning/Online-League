@@ -29,10 +29,11 @@ $hasfoot = true;
 include 'php/nav.php'; ?>
 <h1>BGA Online Leagues</h1>
 <img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
-<p>Congratulations to the <b>Dundee</b> team (Yohei Negi, David Lee and Robby Geotschalckx)
-on winning the second season championship, held during 2010,
-taking the GoGoD Shield and the title from the previous winners - Cambridge.
-</p>
+<p>Congratulations to the <b>Cambridge</b> team (Alex Selby, Andrew Simons, Graham Lamburn and John Richardson)
+on winning the third season championship of the online team league, regaining the title they won in the
+first season and taking the GoGoD shield back from the Dundee team.</p>
+<p>Congratulations also to Andrew Simons on winning the championship in first
+full season of the Individual online league, taking the <i>Xinyi Lu</i> prize.</p>
 <p>The BGA League Tournaments are a pair of leagues with games
 played over the Internet: a team league and an individual league.
 The leagues run throughout the calendar year.</p>
@@ -64,7 +65,10 @@ of games to assist player development.</p>
 <p>The champions of the top division in the team league will win the League Tournament Shield,
 shown above and in addition for the first 5 years will receive three copies of the GoGoD Database
 and Encyclopaedia.</p>
-<p>The winner of each division in the individual league will win credits at
+<p>The winner of each division in the individual league will win the <i>Xinyi Lu Prize</i>, named after
+Xinyi Lu, who whilst leading (and ultimately still winning) the division 2 in the first full season
+of the Individual Leauge, was tragically killed whilst on holiday in China in October 2011.
+The Xinyi Lu prize consists of credits at
 <a href="http://internetgoschool.com">Guo Juan's internet Go school</a>.</p>
 <p>The BGA Council wishes to express its gratitude to Games of Go on Disk
 for their generous donation of the online league shield and copies of the GoGoD CD.</p>

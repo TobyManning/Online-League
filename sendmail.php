@@ -33,7 +33,7 @@ try {
 	case "club":
 		$club = new Club();
 		$club->fromget();
-		include 'php/opendatbase.php';
+		include 'php/opendatabase.php';
 		$club->fetchdets();
 		$name = $club->display_contact();
 		$hidden = $club->save_hidden();
