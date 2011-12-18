@@ -121,7 +121,7 @@ EOT;
 EOT;
 			foreach ($players as $op) {
 				$reca = $p->record_against($op, $Season->Ind);
-				print "<td>{$reca->display()}</td>\n";
+				print "<td>{$reca->display(false)}</td>\n";
 			}
 
 			print <<<EOT

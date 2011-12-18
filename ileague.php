@@ -109,7 +109,7 @@ EOT;
 EOT;
 		foreach ($pl as $op) {
 			$reca = $p->record_against($op);
-			print "<td>{$reca->display()}</td>\n";
+			print "<td>{$reca->display(false)}</td>\n";
 		}
 
 		print <<<EOT

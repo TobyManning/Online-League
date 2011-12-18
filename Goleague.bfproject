@@ -31,7 +31,7 @@ searchlist: player
 searchlist: wrong
 last_filefilter: 
 spell_check_default: 0
-savedir: file:///home/jmc/src/Websites/goleague
+savedir: file:///home/jmc/src/Websites/goleague/php
 files: /home/jmc/src/Websites/goleague/payments.php
 files: /home/jmc/src/Websites/goleague/ownupd.php
 files: /home/jmc/src/Websites/goleague/osmatches.php
@@ -62,6 +62,11 @@ files: /home/jmc/src/Websites/goleague/unpaidteams2.php
 files: /home/jmc/src/Websites/goleague/sendmail2.php
 files: /home/jmc/src/Websites/goleague/index.php
 files: /home/jmc/src/Websites/goleague/sendmail.php
+files: /home/jmc/src/Websites/goleague/league.php
+files: /home/jmc/src/Websites/goleague/php/itrecord.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/team.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/itrecord.php
+recent_files: file:///home/jmc/src/Websites/goleague/league.php
 recent_files: file:///home/jmc/src/Websites/goleague/sendmail.php
 recent_files: file:///home/jmc/src/Websites/goleague/index.php
 recent_files: file:///home/jmc/src/Websites/goleague/sendmail2.php
@@ -74,9 +79,6 @@ recent_files: file:///home/jmc/src/Websites/goleague/newacct2.php
 recent_files: file:///home/jmc/src/Websites/goleague/archive2.php
 recent_files: file:///home/jmc/src/Websites/goleague/archive.php
 recent_files: file:///home/jmc/src/Websites/goleague/updindclub.php
-recent_files: file:///home/jmc/src/Websites/goleague/updindclub2.php
-recent_files: file:///home/jmc/src/Websites/goleague/newclub.php
-recent_files: file:///home/jmc/src/Websites/goleague/clubupd.php
 charmap_block: 1
 e2c.convert_iso: 0
 outputb_scroll_mode: 0
@@ -109,7 +111,7 @@ name: Go League
 view_blocks: 1
 bookmarks_filename_mode: 1
 e2c.convert_xml: 1
-opendir: file:///home/jmc/src/Websites/goleague
+opendir: file:///home/jmc/src/Websites/goleague/php
 wrap_text_default: 0
 default_mime_type: text/plain
 view_left_panel: 1
