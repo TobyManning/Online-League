@@ -13,14 +13,26 @@ class itrecord {
 		$this->Isself = false;
 	}
 	
+	public function dispsc($wl) {
+		if ($wl == 0  &&  $this->Drawn == 1)
+			return '&frac12;';
+		return  preg_replace('/\.5/', '&frac12;', $wl + 0.5 * $this->Drawn);
+	}
+	
 	public function display() {
 		if ($this->Isself)
 			return "X";
-		$sf = $this->Won + 0.5 * $this->Drawn;
-		$sa = $this->Lost + 0.5 * $this->Drawn;
-		if ($sf == 0 && $sa == 0)
+		$played = $this->Won + $this->Drawn + $this->Lost;
+		if ($played == 0)
 			return "-";
-		return "$sf-$sa";
+		if ($played == 1)  {
+			if ($this->Won == 1)
+				return "Won";
+			if ($this->Lost == 1)
+				return "Lost";
+			return "Drawn";
+		}
+		return $this->dispsc($this->Won) . "-" . $this->dispsc($this->Lost);
 	}
 }
 
