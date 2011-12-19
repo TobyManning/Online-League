@@ -22,17 +22,15 @@ class itrecord {
 	public function display($sumwdl = true) {
 		if ($this->Isself)
 			return "X";
-		if ($sumwdl) {
-			$played = $this->Won + $this->Drawn + $this->Lost;
-			if ($played == 0)
+		$played = $this->Won + $this->Drawn + $this->Lost;
+		if ($played == 0)
 				return "-";
-			if ($played == 1)  {
-				if ($this->Won == 1)
-					return "Won";
-				if ($this->Lost == 1)
-					return "Lost";
-				return "Drawn";
-			}
+		if ($sumwdl && $played == 1)  {
+			if ($this->Won == 1)
+				return "Won";
+			if ($this->Lost == 1)
+				return "Lost";
+			return "Drawn";
 		}
 		return $this->dispsc($this->Won) . "-" . $this->dispsc($this->Lost);
 	}
