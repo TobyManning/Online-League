@@ -174,12 +174,8 @@ $row = mysql_fetch_array($ret);
 $ind = $row[0];
 
 // OK now we are ready to do the PayPal stuff.
-// HERE ARE THE CREDENTIALS
 
-$API_UserName = urlencode('jmc_1326312017_biz_api1.xisl.com');
-$API_Password = urlencode('1326312045');
-$API_Signature = urlencode('AFcWxV21C7fd0v3bYYYRCpSSRl31AIiKoYf.QsZ4OwXr2K59wxqse3Jq');
-$API_Endpoint = "https://api-3t.sandbox.paypal.com/nvp";
+include 'php/credentials.php';
 
 // Step 1 is to Set it up
 
@@ -216,12 +212,13 @@ $parsedresp = array();
 foreach ($responses as $r) {
 	$ra = explode('=', $r);
 	if (count($ra) > 1)
-		$parsedresp[$ra[0]] = urldecode($ra[1]);
+		$parsedresp[strtoupper($ra[0])] = urldecode($ra[1]);
 }
 
 // Check success
 
-if ($parsedresp["ACK"] != 'Success')  {
+$ret = strtoupper($parsedresp["ACK"]);
+if ($ret != 'SUCCESS' && $ret != "SUCCESSWITHWARNING")  {
 	$mess = "API error in Set Express Checkout";
 	mysql_query("delete from pendpay where ind=$ind");
 	include 'php/probpay.php';
@@ -235,10 +232,8 @@ $qtok = mysql_real_escape_string($tok);
 mysql_query("update pendpay set token='$qtok' where ind=$ind");
 
 // Now for stage 2, invoke PayPal with the token
-// FIXME to stop using the Sandbox
 
 $enctoken = urlencode($tok);
-$PPurl = "https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=$enctoken";
-header("Location: $PPurl");
+header("Location: $PPurl&cmd=_express-checkout&token=$enctoken");
 exit(0);
 ?>

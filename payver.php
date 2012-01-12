@@ -126,12 +126,8 @@ catch (TeamException $e) {
 }
 
 // OK now we are ready to do the PayPal stuff stage 3.
-// HERE ARE THE CREDENTIALS
 
-$API_UserName = urlencode('jmc_1326312017_biz_api1.xisl.com');
-$API_Password = urlencode('1326312045');
-$API_Signature = urlencode('AFcWxV21C7fd0v3bYYYRCpSSRl31AIiKoYf.QsZ4OwXr2K59wxqse3Jq');
-$API_Endpoint = "https://api-3t.sandbox.paypal.com/nvp";
+include 'php/credentials.php';
 
 // Step 3 is to get the details
 
@@ -165,18 +161,20 @@ $parsedresp = array();
 foreach ($responses as $r) {
 	$ra = explode('=', $r);
 	if (count($ra) > 1)
-		$parsedresp[$ra[0]] = urldecode($ra[1]);
+		$parsedresp[strtoupper($ra[0])] = urldecode($ra[1]);
 }
 
 // Check success
 
-if ($parsedresp["ACK"] != 'Success')  {
+$ret = strtoupper($parsedresp["ACK"]);
+if ($ret != 'SUCCESS' && $ret != "SUCCESSWITHWARNING")  {
 	$mess = "API error in Set Express Checkout";
 	mysql_query("delete from pendpay where ind=$ind");
 	include 'php/probpay.php';
 	exit(0);
 }
-
+$payerid = $parsedresp["PAYERID"];
+$qpayerid = htmlspecialchars($payerid);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -212,6 +210,7 @@ print <<<EOT
 <form action="payok.php" method="post" enctype="application/x-www-form-urlencoded">
 <input type="hidden" name="ind" value="$ind" />
 <input type="hidden" name="token" value="$utok" />
+<input type="hidden" name="payerid" value="$qpayerid" />
 <p>Choose option <input type="submit" name="Confirm" value="Confirm payment" /> or
 <a href="http://league.britgo.org/paycanc.php?ind=$ind">Cancel the payment</a>.</p>
 </form>

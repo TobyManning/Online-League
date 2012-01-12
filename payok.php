@@ -24,6 +24,10 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/teammemb.php';
 
+function apiapp(&$arr, $k, $v) {
+	array_push($arr, "$k=$v");
+}
+
 try {
 	$player = new Player();
 	$player->fromid($userid);
@@ -36,8 +40,9 @@ catch (PlayerException $e) {
 
 $ind = $_POST["ind"];
 $tok = $_POST["token"];
-if (strlen($ind) == 0 || strlen($tok) == 0)  {
-	$mess = "No indicator given ind=$ind tok=$tok???";
+$payerid = $_POST["payerid"];
+if (strlen($ind) == 0 || strlen($tok) == 0 || strlen($payerid) == 0)  {
+	$mess = "No indicator given ind=$ind tok=$tok pid=$payerid???";
 	include 'php/wrongentry.php';
 	exit(0);
 }
@@ -92,10 +97,6 @@ try {
 			include 'php/wrongentry.php';
 			exit(0);
 		}
-
-		// Set team as having paid
-		
-		$team->setpaid();
 	}
 	else  {
 		$pplayer = new Player($first, $last);
@@ -108,10 +109,6 @@ try {
 			include 'php/wrongentry.php';
 			exit(0);
 		}
-
-		// Set player as having paid
-		
-		$pplayer->setpaid();
 	}
 }
 catch (PlayerException $e) {
@@ -123,6 +120,67 @@ catch (TeamException $e) {
 	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);
+}
+
+// OK now perform the final PayPal phase to record the payment
+
+include 'php/credentials.php';
+
+// Step 1 is to Set it up
+
+$Req_array = array();
+apiapp($Req_array, "METHOD", "DoExpressCheckoutPayment");
+apiapp($Req_array, "VERSION", urlencode('51.0'));
+apiapp($Req_array, "USER", $API_UserName);
+apiapp($Req_array, "PWD", $API_Password);
+apiapp($Req_array, "SIGNATURE", $API_Signature);
+apiapp($Req_array, "AMT", $amount);
+apiapp($Req_array, "PAYMENTACTION", "Sale");
+apiapp($Req_array, "CURRENCYCODE", "GBP");
+apiapp($Req_array, "TOKEN", urlencode($tok));
+apiapp($Req_array, "PAYERID", urlencode($payerid));
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $API_Endpoint);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, join('&', $Req_array));
+$chresp = curl_exec($ch);
+if  (!$chresp)  {
+	$mess = "Curl failed: " . curl_error($ch) . " (" . curl_errno($ch) . ")";
+	include 'php/probpay.php';
+	exit(0);
+}
+
+// Make an array of the response
+
+$responses = explode('&', $chresp);
+$parsedresp = array();
+foreach ($responses as $r) {
+	$ra = explode('=', $r);
+	if (count($ra) > 1)
+		$parsedresp[strtoupper($ra[0])] = urldecode($ra[1]);
+}
+
+// Check success
+
+$ret = strtoupper($parsedresp["ACK"]);
+if ($ret != 'SUCCESS' && $ret != "SUCCESSWITHWARNING")  {
+	$mess = "API error in Do Express Checkout";
+	mysql_query("delete from pendpay where ind=$ind");
+	include 'php/probpay.php';
+	exit(0);
+}
+
+// Set paid marker
+
+if ($type == 'T')  {
+	$team->setpaid();
+}
+else  {
+	$pplayer->setpaid();
 }
 
 // Finally delete pending payment
