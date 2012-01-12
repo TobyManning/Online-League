@@ -49,7 +49,7 @@ if (strlen($ind) == 0 || strlen($tok) == 0)  {
 	exit(0);
 }
 
-$ret = mysql_query("select league,descr1,descr2,token from pendpay where ind=$ind");
+$ret = mysql_query("select league,descr1,descr2,token,amount from pendpay where ind=$ind");
 if (!$ret)  {
 	$mess = mysql_error();
 	include 'php/dataerror.php';
@@ -65,6 +65,7 @@ $row = mysql_fetch_assoc($ret);
 // Verify that the token matches up (change this later not to display them)
 
 $rtok = $row["token"];
+$amount = $row["amount"];
 if ($tok != $rtok) {
 	$mess = "Mismatch tokens r=$tok, d=$rtok";
 	include 'php/wrongentry.php';
@@ -188,13 +189,13 @@ include 'php/head.php';
 <?php
 if ($type == 'T') {
 	print <<<EOT
-<p>Recording payment on behalf of {$team->display_name()}.</p>
+<p>Recording payment of $amount on behalf of {$team->display_name()}.</p>
 
 EOT;
 }
 else {
 	print <<<EOT
-<p>Recording payment on behalf of {$pplayer->display_name()}.</p>
+<p>Recording payment of $amount on behalf of {$pplayer->display_name()}.</p>
 
 EOT;
 }

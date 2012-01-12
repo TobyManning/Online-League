@@ -107,7 +107,7 @@ try {
 		// We will have to update it with the token later
 		
 		$qteam = mysql_real_escape_string($teamname);
-		$ret = mysql_query("insert into pendpay (league,descr1) values ('T','$qteam')");
+		$ret = mysql_query("insert into pendpay (league,descr1,amount) values ('T','$qteam',$amount)");
 		if (!$ret)  {
 			$mess = mysql_error();
 			include 'php/dataerror.php';
@@ -145,7 +145,7 @@ try {
 		
 		$qfirst = mysql_real_escape_string($first);
 		$qlast = mysql_real_escape_string($last);
-		$ret = mysql_query("insert into pendpay (league,descr1,descr2) values ('I','$qfirst','$qlast')");
+		$ret = mysql_query("insert into pendpay (league,descr1,descr2,amount) values ('I','$qfirst','$qlast',$amount)");
 		if (!$ret)  {
 			$mess = mysql_error();
 			include 'php/dataerror.php';
