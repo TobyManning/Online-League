@@ -203,16 +203,17 @@ EOT;
 print <<<EOT
 <p>The payment has been entered by {$player->display_name(false)}, PayPal account details are for
 EOT;
+print " ";
 print htmlspecialchars($parsedresp["FIRSTNAME"] . " " . $parsedresp["LASTNAME"]);
 print <<<EOT
 .</p>
 
-<p>Please confirm this is OK and click the button below</p>
+<p>Please confirm this is OK and click the button below:</p>
 <form action="payok.php" method="post" enctype="application/x-www-form-urlencoded">
 <input type="hidden" name="ind" value="$ind" />
 <input type="hidden" name="token" value="$utok" />
-<p>Choose option <button name="confirm" value="Confirm Payment" type="submit"></button>
-<button name="Cancel" value="Cancel transaction" type="submit" onclick="javascript:document.location='http://league.britgo.org/paycanc.php?ind=$ind'"></button>
+<p>Choose option <input type="submit" name="Confirm" value="Confirm payment" /> or
+<input type="submit" name="Cancel" value="Cancel transaction" onclick="javascript:document.location='http://league.britgo.org/paycanc.php?ind=$ind'" />
 </p>
 </form>
 
