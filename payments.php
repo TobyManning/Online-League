@@ -34,6 +34,38 @@ catch (PlayerException $e) {
 	exit(0);
 }
 
+// Grab ourselves a list of pending payments so we don't get mixed up with someone else
+// trying to pay the same thing.
+// However we delete payments more than 2 days old first.
+
+$ret = mysql_query("delete from pendpay where paywhen < date_sub(current_timestamp, interval 2 day)");
+if (!$ret)  {
+    $mess = mysql_error();
+    include 'php/dataerror.php';
+    exit(0);
+}
+
+// Get ourselves an array of pending teams and pending individuals
+
+$pend_teams = array();
+$pend_indiv = array();
+
+$ret = mysql_query("select ind,league,descr1,descr2 from pendpay");
+if ($ret and mysql_num_rows($ret) > 0)  {
+	while ($row = mysql_fetch_assoc($ret))  {
+		switch ($row["league"])  {
+		case "T":
+			$pend_teams[$row["descr1"]] = $row["ind"];
+			break;
+		case "I":
+			$f = $row["descr1"];
+			$l = $row["descr2"];
+			$pend_indiv["$f $l"] = $row["ind"];
+			break;
+		}
+	}
+}
+
 // First get ourselves a list of unpaid teams
 
 $unpaid_teams = array();
@@ -41,7 +73,10 @@ $ret = mysql_query("select name from team where paid=0 and playing!=0 order by n
 try {
 	if ($ret and mysql_num_rows($ret) > 0)  {
 		while ($row = mysql_fetch_array($ret))  {
-			$team = new Team($row[0]);
+			$name = $row[0];
+			if (isset($pend_teams[$name]))		// Cream out "pending" teams
+				continue;
+			$team = new Team($name);
 			$team->fetchdets();
 			array_push($unpaid_teams, $team);
 		}
@@ -79,7 +114,11 @@ $unpaid_il = array();
 $ret = mysql_query("select first,last from player where ildiv!=0 and ilpaid=0 order by last,first");
 if ($ret) {
 	while ($row = mysql_fetch_array($ret))  {
-		$pl = new Player($row[0], $row[1]);
+		$f = $row[0];
+		$l = $row[1];
+		if (isset($pend_indiv["$f $l"]))		// Cream out "pending" players
+			continue;
+		$pl = new Player($f, $l);
 		$pl->fetchdets();
 		$pl->ILsubs = 10;
 		if (!$pl->BGAmemb)  {
@@ -179,7 +218,7 @@ else {
 <tr><td align="center">
 <a href="#" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');"><img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_180x113.gif" border="0" alt="Acceptance Mark"></a></td></tr>
 </table><!-- PayPal Logo -->
-<form name="payform" action="paymentres.php" method="post" enctype="application/x-www-form-urlencoded">
+<form name="payform" action="pppayment.php" method="post" enctype="application/x-www-form-urlencoded">
 <table id="pftab">
 <tr><td>Paying for</td>
 <td><select name="actselect" size="0" onchange="fillinvals();">
@@ -224,11 +263,15 @@ print <<<EOT
 <tr><td>For</td><td>None</td></tr>
 <tr><td>Surcharge</td><td>None</td></tr>
 <tr><td>Total</td><td>$total</td></tr>
-<tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription"></td></tr>
+<tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription by PayPal"></td></tr>
 </table>
 <input type="hidden" name="amount" value="$total">
 </form>
 
+<h2>Please note</h2>
+<p><strong>Please be sure to check the subscription amount shown is correct before clicking the Pay button!</strong>
+You might want to check that the surcharge for non-BGA members is correct, if need be by going to the
+<a href="teams.php" title="Bring up list of teams">teams list</a> and checking.</p>
 EOT;
 }
 ?>
