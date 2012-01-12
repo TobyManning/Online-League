@@ -213,8 +213,7 @@ print <<<EOT
 <input type="hidden" name="ind" value="$ind" />
 <input type="hidden" name="token" value="$utok" />
 <p>Choose option <input type="submit" name="Confirm" value="Confirm payment" /> or
-<input type="submit" name="Cancel" value="Cancel transaction" onclick="javascript:document.location='http://league.britgo.org/paycanc.php?ind=$ind'" />
-</p>
+<a href="http://league.britgo.org/paycanc.php?ind=$ind">Cancel the payment</a>.</p>
 </form>
 
 EOT;
