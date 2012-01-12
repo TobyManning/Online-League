@@ -208,12 +208,29 @@ if  (!$chresp)  {
 	include 'php/probpay.php';
 	exit(0);
 }
+
+// Make an array of the response
+
 $responses = explode('&', $chresp);
 $parsedresp = array();
 foreach ($responses as $r) {
 	$ra = explode('=', $r);
 	if (count($ra) > 1)
 		$parsedresp[$ra[0]] = urldecode($ra[1]);
+}
+
+// Check success
+
+if ($parsedresp["ACK"] != 'Success')  {
+	//$mess = $chresp;
+	mysql_query("delete from pendpay where ind=$ind");
+	//include 'php/probpay.php';
+	//exit(0);
+}
+else {
+$tok = $parsedresp["TOKEN"];
+$qtok = mysql_real_escape_string($tok);
+mysql_query("update pendpay set token='$qtok' where ind=$ind");
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
