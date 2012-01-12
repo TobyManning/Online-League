@@ -81,10 +81,6 @@ try {
 			include 'php/wrongentry.php';
 			exit(0);
 		}
-
-		// Set team as having paid
-		
-		$team->setpaid();
 	}
 	else  {
 		$pplayer = new Player($first, $last);
@@ -97,10 +93,6 @@ try {
 			include 'php/wrongentry.php';
 			exit(0);
 		}
-
-		// Set player as having paid
-		
-		$pplayer->setpaid();
 	}
 }
 catch (PlayerException $e) {
@@ -126,7 +118,7 @@ if (!$ret)  {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
-$Title = "Payment OK";
+$Title = "Payment Cancelled";
 include 'php/head.php';
 ?>
 <body>
@@ -135,18 +127,19 @@ include 'php/head.php';
 <?php
 if ($type == 'T') {
 	print <<<EOT
-<p>Recorded payment on behalf of {$team->display_name()}.</p>
+<p>Payment on behalf of {$team->display_name()} has been cancelled.</p>
 
 EOT;
 }
 else {
 	print <<<EOT
-<p>Recorded payment on behalf of {$pplayer->display_name()}.</p>
+<p>Payment on behalf of {$pplayer->display_name()} has been cancelled.</p>
 
 EOT;
 }
 ?>
-<p><strong>Thank you!</strong></p>
+<p>Please re-enter the <a href="https://league.britgo.org/payments.php">payments page</a>
+when you are ready to start again.</p>
 </div>
 </div>
 </body>
