@@ -234,51 +234,11 @@ $tok = $parsedresp["TOKEN"];
 $qtok = mysql_real_escape_string($tok);
 mysql_query("update pendpay set token='$qtok' where ind=$ind");
 
+// Now for stage 2, invoke PayPal with the token
+// FIXME to stop using the Sandbox
+
+$enctoken = urlencode($tok);
+$PPurl = "https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=$enctoken";
+header("Location: $PPurl");
+exit(0);
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<?php
-$Title = "Payment of subscriptions part 2";
-include 'php/head.php';
-?>
-<body>
-<?php include 'php/nav.php'; ?>
-<h1>Payment of subscriptions (part 2)</h1>
-<?php
-if ($type == 'T') {
-	print <<<EOT
-<p>This is going to be a payment of &pound;$amount on behalf of {$team->display_name()}.</p>
-
-EOT;
-}
-else {
-	print <<<EOT
-<p>This is going to be a payment of &pound;$amount on behalf of {$pplayer->display_name()}.</p>
-
-EOT;
-}
-print <<<EOT
-<p>The person making the payment is {$player->display_name()}.</p>
-
-<p>Indicator was $ind.</p>
-
-<p>Parsed responses from PayPal are:</p>
-<table>
-<tr><th>Param</th><th>Value</th></tr>
-
-EOT;
-
-foreach ($parsedresp as $k => $v) {
-	$qk = htmlspecialchars($k);
-	$qv = htmlspecialchars($v);
-	print <<<EOT
-<tr><td>$qk</td><td>$qv</td></tr>
-
-EOT;
-}
-?>
-</table>
-</div>
-</div>
-</body>
-</html>
