@@ -213,7 +213,7 @@ $parsedresp = array();
 foreach ($responses as $r) {
 	$ra = explode('=', $r);
 	if (count($ra) > 1)
-		$parsedresp[$ra[0]] = $ra[1];
+		$parsedresp[$ra[0]] = urldecode($ra[1]);
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
