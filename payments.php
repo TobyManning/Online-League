@@ -272,7 +272,7 @@ print <<<EOT
 
 <h2>Please note</h2>
 <p><strong>Please be sure to check the subscription amount shown is correct before clicking the Pay button!</strong>
-You might want to check that the surcharge for non-BGA members is correct, if need be by going to the
+You might, in particular, want to check that the surcharge for non-BGA members is correct, if need be by going to the
 <a href="teams.php" title="Bring up list of teams">teams list</a> and checking.</p>
 EOT;
 }

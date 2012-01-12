@@ -234,7 +234,7 @@ class Player  {
 		$l = $this->Last;
 		$ret = htmlspecialchars("$f $l");
 		if ($displink)
-				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\">$ret</a>";
+				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\" title="Show details">$ret</a>";
 		return $ret;
 	}
 	
