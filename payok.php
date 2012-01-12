@@ -63,11 +63,14 @@ $row = mysql_fetch_assoc($ret);
 // Verify that the token matches up (change this later not to display them)
 
 $rtok = $row["token"];
+
 if ($tok != $rtok) {
 	$mess = "Mismatch tokens r=$tok, d=$rtok";
 	include 'php/wrongentry.php';
 	exit(0);
 }
+
+$amount = $row["amount"];
 
 switch  ($row["league"])  {
 default:
