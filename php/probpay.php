@@ -23,18 +23,27 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+// If from API, grab codes from parsed response array
+
+$apimsg = "";
+if (isset($parsedresp))
+	$apimsg = $parsedresp["L_SHORTMESSAGE0"] . ":" . $parsedresp["L_LONGMESSAGE0"] . " (" . $parsedresp["L_ERRORCODE0"] . ")";
 $qmess = htmlspecialchars($mess);
 print <<<EOT
 <p>
 Sorry but there was a problem setting up your payment.
 Message was $qmess.
 </p>
-<p>Please restart at the top by <a href="index.php">clicking here</a>.</p>
+
+EOT;
+if (strlen($apimsg) != 0)
+	print <<<EOT
+<p>The PayPal API reported: $apimsg</p>
 
 EOT;
 ?>
-<p>
-If necessary, please tell John Collins
+<p>Please restart at the top by <a href="index.php">clicking here</a>.</p>
+<p>If necessary, please tell John Collins
 <a href="mailto:jmc@xisl.com">jmc@xisl.com</a> about this.
 </p>
 </body>

@@ -222,16 +222,18 @@ foreach ($responses as $r) {
 // Check success
 
 if ($parsedresp["ACK"] != 'Success')  {
-	//$mess = $chresp;
+	$mess = "API error in Set Express Checkout";
 	mysql_query("delete from pendpay where ind=$ind");
-	//include 'php/probpay.php';
-	//exit(0);
+	include 'php/probpay.php';
+	exit(0);
 }
-else {
+
+// Get token from response and put into pending payment record
+
 $tok = $parsedresp["TOKEN"];
 $qtok = mysql_real_escape_string($tok);
 mysql_query("update pendpay set token='$qtok' where ind=$ind");
-}
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
