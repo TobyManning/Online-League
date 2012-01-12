@@ -42,7 +42,7 @@ catch (PlayerException $e) {
 }
 
 $ind = $_GET["ind"];
-$tok = $_GET["TOKEN"];
+$tok = $_GET["token"];
 if (strlen($ind) == 0 || strlen($tok) == 0)  {
 	$mess = "No indicator given ind=$ind tok=$tok???";
 	include 'php/wrongentry.php';
