@@ -141,7 +141,8 @@ apiapp($Req_array, "VERSION", urlencode('51.0'));
 apiapp($Req_array, "USER", $API_UserName);
 apiapp($Req_array, "PWD", $API_Password);
 apiapp($Req_array, "SIGNATURE", $API_Signature);
-apiapp($Req_array, "TOKEN", urlencode($tok));
+$utok = urlencode($tok);
+apiapp($Req_array, "TOKEN", $utok);
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $API_Endpoint);
@@ -185,35 +186,37 @@ include 'php/head.php';
 ?>
 <body>
 <?php include 'php/nav.php'; ?>
-<h1>Payment OK</h1>
+<h1>Please Confirm Payment OK</h1>
 <?php
 if ($type == 'T') {
 	print <<<EOT
-<p>Recording payment of $amount on behalf of {$team->display_name()}.</p>
+<p>About to record payment of &pound;$amount on behalf of {$team->display_name()}.</p>
 
 EOT;
 }
 else {
 	print <<<EOT
-<p>Recording payment of $amount on behalf of {$pplayer->display_name()}.</p>
+<p>About to record payment of &pound;$amount on behalf of {$pplayer->display_name()}.</p>
 
 EOT;
 }
 print <<<EOT
-<p>Parsed responses from PayPal are:</p>
-<table>
-<tr><th>Param</th><th>Value</th></tr>
+<p>The payment has been entered by {$player->display_name(false)}, PayPal account details are for
+EOT;
+print htmlspecialchars($parsedresp["FIRSTNAME"] . " " . $parsedresp["LASTNAME"]);
+print <<<EOT
+.</p>
+
+<p>Please confirm this is OK and click the button below</p>
+<form action="payok.php" method="post" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="ind" value="$ind" />
+<input type="hidden" name="token" value="$utok" />
+<p><button name="confirm" value="Confirm Payment" type="submit"></button>
+<button name="Cancel" value="Cancel" type="submit" onclick="javascript:document.location='http://league.britgo.org/paycanc.php?ind=$ind'"></button>
+</p>
+</form>
 
 EOT;
-
-foreach ($parsedresp as $k => $v) {
-	$qk = htmlspecialchars($k);
-	$qv = htmlspecialchars($v);
-	print <<<EOT
-<tr><td>$qk</td><td>$qv</td></tr>
-
-EOT;
-}
 ?>
 </table>
 </div>

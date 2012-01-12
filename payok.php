@@ -14,6 +14,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+include 'php/checksecure.php';
 include 'php/session.php';
 include 'php/checklogged.php';
 include 'php/opendatabase.php';
@@ -33,15 +34,15 @@ catch (PlayerException $e) {
 	exit(0);
 }
 
-$ind = $_GET["ind"];
-$tok = $_GET["TOKEN"];
+$ind = $_POST["ind"];
+$tok = $_POST["token"];
 if (strlen($ind) == 0 || strlen($tok) == 0)  {
-	$mess = "No indicator given???";
+	$mess = "No indicator given ind=$ind tok=$tok???";
 	include 'php/wrongentry.php';
 	exit(0);
 }
 
-$ret = mysql_query("select league,descr1,descr2,token from pendpay where ind=$ind");
+$ret = mysql_query("select league,descr1,descr2,token,amount from pendpay where ind=$ind");
 if (!$ret)  {
 	$mess = mysql_error();
 	include 'php/dataerror.php';
