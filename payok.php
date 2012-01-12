@@ -34,13 +34,14 @@ catch (PlayerException $e) {
 }
 
 $ind = $_GET["ind"];
-if (strlen($ind) == 0)  {
+$tok = $_GET["TOKEN"];
+if (strlen($ind) == 0 || strlen($tok) == 0)  {
 	$mess = "No indicator given???";
 	include 'php/wrongentry.php';
 	exit(0);
 }
 
-$ret = mysql_query("select league,descr1,descr2 from pendpay where ind=$ind");
+$ret = mysql_query("select league,descr1,descr2,token from pendpay where ind=$ind");
 if (!$ret)  {
 	$mess = mysql_error();
 	include 'php/dataerror.php';
@@ -52,6 +53,15 @@ if (mysql_num_rows($ret) == 0)  {
 	exit(0);
 }
 $row = mysql_fetch_assoc($ret);
+
+// Verify that the token matches up (change this later not to display them)
+
+$rtok = $row["token"];
+if ($tok != $rtok) {
+	$mess = "Mismatch tokens r=$tok, d=$rtok";
+	include 'php/wrongentry.php';
+	exit(0);
+}
 
 switch  ($row["league"])  {
 default:

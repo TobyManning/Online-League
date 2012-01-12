@@ -24,6 +24,10 @@ include 'php/player.php';
 include 'php/team.php';
 include 'php/teammemb.php';
 
+function apiapp(&$arr, $k, $v) {
+	array_push($arr, "$k=$v");
+}
+
 try {
 	$player = new Player();
 	$player->fromid($userid);
@@ -100,6 +104,7 @@ try {
 		}
 		
 		// Create a payment record for the team
+		// We will have to update it with the token later
 		
 		$qteam = mysql_real_escape_string($teamname);
 		$ret = mysql_query("insert into pendpay (league,descr1) values ('T','$qteam')");
@@ -113,7 +118,7 @@ try {
 		$pplayer = new Player($first, $last);
 		$pplayer->fetchdets();
 		
-		// Error if this team has paid
+		// Error if this player has paid
 		
 		if ($pplayer->ILpaid)  {
 			$mess = "$first $last is already paid??";
@@ -136,6 +141,7 @@ try {
 		}
 		
 		// Create a payment record for the person
+		// We will have to update it with the token later
 		
 		$qfirst = mysql_real_escape_string($first);
 		$qlast = mysql_real_escape_string($last);
@@ -165,7 +171,50 @@ if (!$ret || mysql_num_rows($ret) == 0)  {
 	exit(0);
 }
 $row = mysql_fetch_array($ret);
-$ind = $row[0];					
+$ind = $row[0];
+
+// OK now we are ready to do the PayPal stuff.
+// HERE ARE THE CREDENTIALS
+
+$API_UserName = urlencode('jmc_1326312017_biz_api1.xisl.com');
+$API_Password = urlencode('1326312045');
+$API_Signature = urlencode('AFcWxV21C7fd0v3bYYYRCpSSRl31AIiKoYf.QsZ4OwXr2K59wxqse3Jq');
+$API_Endpoint = "https://api-3t.sandbox.paypal.com/nvp";
+
+// Step 1 is to Set it up
+
+$Req_array = array();
+apiapp($Req_array, "METHOD", "SetExpressCheckout");
+apiapp($Req_array, "VERSION", urlencode('51.0'));
+apiapp($Req_array, "USER", $API_UserName);
+apiapp($Req_array, "PWD", $API_Password);
+apiapp($Req_array, "SIGNATURE", $API_Signature);
+apiapp($Req_array, "AMT", "$amount.00");
+apiapp($Req_array, "PAYMENTACTION", "Sale");
+apiapp($Req_array, "CURRENCYCODE", "GBP");
+apiapp($Req_array, "RETURNURL", urlencode("https://league.britgo.org/payver.php?ind=$ind"));
+apiapp($Req_array, "CANCELURL", urlencode("http://league.britgo.org/paycanc.php?ind=$ind"));
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $API_Endpoint);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+curl_setopt($ch, CURLOPT_RETUNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, join('&', $Req_array));
+$chresp = curl_exec($ch);
+if  (!$chresp)  {
+	$mess = "Curl failed: " . curl_error($ch) . " (" . curl_errno($ch) . ")";
+	include 'php/probpay.php';
+	exit(0);
+}
+$responses = explode('&', $chresp);
+$parsedresp = array();
+foreach ($responses as $r) {
+	$ra = explode('=', $r);
+	if (count($ra) > 1)
+		$parsedresp[$ra[0]] = $ra[1];
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -194,8 +243,22 @@ print <<<EOT
 
 <p>Indicator was $ind.</p>
 
+<p>Parsed responses from PayPal are:</p>
+<table>
+<tr><th>Param</th><th>Value</th></tr>
+
 EOT;
+
+foreach ($parsedresp as $k => $v) {
+	$qk = htmlspecialchars($k);
+	$qv = htmlspecialchars($v);
+	print <<<EOT
+<tr><td>$qk</td><td>$qv</td></tr>
+
+EOT;
+}
 ?>
+</table>
 </div>
 </div>
 </body>
