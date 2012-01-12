@@ -211,8 +211,8 @@ print <<<EOT
 <form action="payok.php" method="post" enctype="application/x-www-form-urlencoded">
 <input type="hidden" name="ind" value="$ind" />
 <input type="hidden" name="token" value="$utok" />
-<p><button name="confirm" value="Confirm Payment" type="submit"></button>
-<button name="Cancel" value="Cancel" type="submit" onclick="javascript:document.location='http://league.britgo.org/paycanc.php?ind=$ind'"></button>
+<p>Choose option <button name="confirm" value="Confirm Payment" type="submit"></button>
+<button name="Cancel" value="Cancel transaction" type="submit" onclick="javascript:document.location='http://league.britgo.org/paycanc.php?ind=$ind'"></button>
 </p>
 </form>
 
