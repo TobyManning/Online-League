@@ -219,6 +219,7 @@ else {
 <a href="#" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');"><img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_180x113.gif" border="0" alt="Acceptance Mark"></a></td></tr>
 </table><!-- PayPal Logo -->
 <form name="payform" action="pppayment.php" method="post" enctype="application/x-www-form-urlencoded">
+<div align="center">
 <table id="pftab">
 <tr><td>Paying for</td>
 <td><select name="actselect" size="0" onchange="fillinvals();">
@@ -265,6 +266,7 @@ print <<<EOT
 <tr><td>Total</td><td>$total</td></tr>
 <tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription by PayPal"></td></tr>
 </table>
+</div>
 <input type="hidden" name="amount" value="$total">
 </form>
 
