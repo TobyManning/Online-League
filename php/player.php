@@ -234,7 +234,7 @@ class Player  {
 		$l = $this->Last;
 		$ret = htmlspecialchars("$f $l");
 		if ($displink)
-				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\" title=\"Show details\">$ret</a>";
+				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\" title=\"Show details and games\">$ret</a>";
 		return $ret;
 	}
 	
@@ -243,7 +243,7 @@ class Player  {
 	public function display_initials($displink = false) {
 		$ret = substr($this->First, 0, 1) . substr($this->Last, 0, 1);
 		if ($displink)
-				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\">$ret</a>";
+				$ret = "<a href=\"playgames.php?{$this->urlof()}\" class=\"name\" title=\"Show details and games\">$ret</a>";
 		return $ret;		
 	}
 
@@ -339,7 +339,7 @@ class Player  {
 	public function display_email() {
 		if (strlen($this->Email) == 0)
 			return "-";
-		return "<a href=\"sendmail.php?{$this->urlof()}\" target=\"_blank\">Send email</a>";
+		return "<a href=\"sendmail.php?{$this->urlof()}\" title=\"Send mail to player\" target=\"_blank\">Send email</a>";
 	}
 	
 	// Display email address
