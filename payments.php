@@ -173,6 +173,12 @@ if (count($unpaid_teams) + count($unpaid_il) <= 0)
 EOT;
 else {
 	print <<<EOT
+<!-- PayPal Logo -->
+<table border="0" cellpadding="10" cellspacing="0" align="center">
+<tr><td align="center"></td></tr>
+<tr><td align="center">
+<a href="#" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');"><img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_180x113.gif" border="0" alt="Acceptance Mark"></a></td></tr>
+</table><!-- PayPal Logo -->
 <form name="payform" action="paymentres.php" method="post" enctype="application/x-www-form-urlencoded">
 <table id="pftab">
 <tr><td>Paying for</td>

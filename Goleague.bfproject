@@ -31,7 +31,7 @@ searchlist: player
 searchlist: wrong
 last_filefilter: 
 spell_check_default: 0
-savedir: file:///home/jmc/src/Websites/goleague
+savedir: file:///home/jmc/src/Websites/goleague/php
 files: /home/jmc/src/Websites/goleague/payments.php
 files: /home/jmc/src/Websites/goleague/ownupd.php
 files: /home/jmc/src/Websites/goleague/osmatches.php
