@@ -157,6 +157,15 @@ catch (TeamException $e) {
 	include 'php/wrongentry.php';
 	exit(0);
 }
+
+$ret = mysql_query("select last_insert_id()");
+if (!$ret || mysql_num_rows($ret) == 0)  {
+	$mess = "Cannot get insert id";
+	include 'php/dataerror.php';
+	exit(0);
+}
+$row = mysql_fetch_array($ret);
+$ind = $row[0];					
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -182,6 +191,8 @@ EOT;
 }
 print <<<EOT
 <p>The person making the payment is {$player->display_name()}.</p>
+
+<p>Indicator was $ind.</p>
 
 EOT;
 ?>
