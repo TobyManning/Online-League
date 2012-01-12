@@ -207,13 +207,13 @@ include 'php/head.php';
 <?php
 if ($type == 'T') {
 	print <<<EOT
-<p>Recorded payment on behalf of {$team->display_name()}.</p>
+<p>Recorded payment of &pound;$amount on behalf of {$team->display_name()}.</p>
 
 EOT;
 }
 else {
 	print <<<EOT
-<p>Recorded payment on behalf of {$pplayer->display_name()}.</p>
+<p>Recorded payment of &pound;$amount on behalf of {$pplayer->display_name()}.</p>
 
 EOT;
 }
