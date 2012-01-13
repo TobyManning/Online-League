@@ -91,7 +91,7 @@ try {
 
 		// Check we haven't already got a pending payment for this team
 		
-		$ret = mysql_query("select ind from pendpay where league='T' and {$team->queryof('descr1')} and paywhen >= date_sub(current_timestamp, interval 1 day)");
+		$ret = mysql_query("select ind from pendpay where league='T' and {$team->queryof('descr1')}");
 		if (!$ret)  {
 			$mess = mysql_error();
 			include 'php/dataerror.php';
@@ -113,6 +113,8 @@ try {
 			include 'php/dataerror.php';
 			exit(0);
 		}
+		
+		$Pdescr = "Online Team League payment of subscription $amount GBP for $teamname";
 	}
 	else  {
 		$pplayer = new Player($first, $last);
@@ -128,7 +130,7 @@ try {
 
 		// Check we haven't already got a pending payment for this person
 		
-		$ret = mysql_query("select ind from pendpay where league='I' and descr1='{$pplayer->queryfirst()}' and descr2='{$pplayer->querylast()}' and paywhen >= date_sub(current_timestamp, interval 1 day)");
+		$ret = mysql_query("select ind from pendpay where league='I' and descr1='{$pplayer->queryfirst()}' and descr2='{$pplayer->querylast()}'");
 		if (!$ret)  {
 			$mess = mysql_error();
 			include 'php/dataerror.php';
@@ -151,6 +153,8 @@ try {
 			include 'php/dataerror.php';
 			exit(0);
 		}
+		
+		$Pdescr = "Online Individual League payment of subscription $amount GBP for $first $last";
 	}
 }
 catch (PlayerException $e) {
@@ -188,6 +192,7 @@ apiapp($Req_array, "SIGNATURE", $API_Signature);
 apiapp($Req_array, "AMT", "$amount.00");
 apiapp($Req_array, "PAYMENTACTION", "Sale");
 apiapp($Req_array, "CURRENCYCODE", "GBP");
+apiapp($Req_array, "DESC", urlencode($Pdescr));
 apiapp($Req_array, "RETURNURL", urlencode("https://league.britgo.org/payver.php?ind=$ind"));
 apiapp($Req_array, "CANCELURL", urlencode("http://league.britgo.org/paycanc.php?ind=$ind"));
 

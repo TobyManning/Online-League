@@ -36,9 +36,9 @@ catch (PlayerException $e) {
 
 // Grab ourselves a list of pending payments so we don't get mixed up with someone else
 // trying to pay the same thing.
-// However we delete payments more than 2 days old first.
+// However we delete payments more than 15 minutes old first.
 
-$ret = mysql_query("delete from pendpay where paywhen < date_sub(current_timestamp, interval 2 day)");
+$ret = mysql_query("delete from pendpay where paywhen < date_sub(current_timestamp, interval 15 minute)");
 if (!$ret)  {
     $mess = mysql_error();
     include 'php/dataerror.php';
