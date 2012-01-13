@@ -224,8 +224,16 @@ else {
 <tr><td align="center"></td></tr>
 <tr><td align="center" valign="middle">
 <a href="#" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');">
-<img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_180x113.gif" border="0" alt="Acceptance Mark">
-<img src="images/cc_accept.gif" width="316" height="65" alt="CC images" longdesc="Credit card images" /></a></td></tr>
+<img src="images/PayPal_mark_60x38.gif" width="60" height="38" alt="Acceptance Mark" border="0" /></a></td>
+<td align="center" valign="middle">
+<a href="http://www.mastercard.com" target="_blank" title="Visit Mastercard Site"><img src="images/mastercard.gif" width="104" height="65" alt="Mastercard logo" /></a>
+</td>
+<td align="center" valign="middle">
+<a href="http://www.maestrocard.com" target="_blank" title="Visit Maestro Site"><img src="images/maestro.gif" width="105" height="65" alt="Maestro Logo" /></a>
+</td>
+<td align="center" valign="middle">
+<a href="http://www.visa.com" target="_blank" title="Visit VISA site"><img src="images/visa.gif" width="104" height="65" alt="VISA Logo" /></a>
+</td></tr>
 </table><!-- PayPal Logo -->
 <form name="payform" action="pppayment.php" method="post" enctype="application/x-www-form-urlencoded">
 <div align="center">
