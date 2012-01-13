@@ -63,7 +63,7 @@ print <<<EOT
 
 EOT;
 ?>
-<p>Click <a href="teamsupd.php">here</a> to return to the team update menu.</p>
+<p>Click <a href="teamsupd.php" title="Go back to editing teams">here</a> to return to the team update menu.</p>
 </div>
 </div>
 </body>

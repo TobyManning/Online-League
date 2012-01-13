@@ -75,7 +75,7 @@ The Xinyi Lu prize consists of credits at
 for their generous donation of the online league shield and copies of the GoGoD CD.</p>
 <h2>Rules</h2>
 <p>A full description of playing games is to be found
-under <a href="playing.php">rules</a>.</p>
+under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
 <h2>Joining</h2>
 <p>Please join either league before 23rd January 2012 if you want to play in the
 next season, which will start properly on 1st February 2012.</p>
@@ -83,15 +83,15 @@ next season, which will start properly on 1st February 2012.</p>
 <p>If you would like to form a team, please contact
 the Online League coordinators at online-league at britgo.org.
 Players wishing to captain a team must be members of the British Go Association,
-which can be joined <a href="http://www.britgo.org/join" target="_blank">here</a>.
+which can be joined <a href="http://www.britgo.org/join" target="_blank" title="Join the BGA">here</a>.
 Non-members can join teams or play in the individual league at an extra cost. (Please note, however,
 that from 2013 only BGA members may play in the individual league).
 As the league is intended to mainly link to clubs,
 please try to form teams from locally-based players.
 </p>
 <h3>Individual League</h3>
-<p>You need to get an account using <a href="newacct.php">this page</a> if you don't have
-one.
+<p>You need to get an account using <a href="newacct.php" title="Create a new account">this page</a>
+if you don't have one.
 You should have the same account if you play in both leagues and set your account as being active
 in the individual league.
 You will be given a user id and a password. You can set the password to your own choice of characters later.

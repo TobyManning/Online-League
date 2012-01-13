@@ -67,7 +67,8 @@ EOT;
 <tr><td class="subind"><a href="teamsupd.php" class="memb" title="Update teams">Update teams</a></td></tr>
 <tr><td class="subind"><a href="matchupd.php" class="memb" title="Update matches">Update matches</a></td></tr>
 <tr><td class="subind"><a href="getosplayer.php" class="memb" title="View outstanding games in team league for player">O/S matches</a></td></tr>
-<tr><td class="subind"><a href="sendtc.php" class="memb" title="Send message to team captains">Message to team captains</a></td></tr>
+<tr><td class="subind"><a href="sendtc.php" class="memb" title="Send message to team captains">Message team captains</a></td></tr>
+<tr><td class="subind"><a href="sendilp.php" class="memb" title="Send message to individual league players">Message IL players</a></td></tr>
 <tr><td class="subind"><a href="unpaidteams.php" class="memb" title="Set message about teams being unpaid">Unpaid message</a></td></tr>	
 <tr><td class="subind"><a href="fixres.php" class="memb" title="Edit/amend result">Amend result</a></td></tr>
 <tr><td class="subind"><a href="ilarchive.php" class="memb" title="Archive Individual League at end of season">Archive Ind League</a></td></tr>	

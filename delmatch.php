@@ -58,7 +58,7 @@ Successfully completed deletion of Match between
 {$mtch->Date->display()}.
 </p>
 <p>
-<a href="matchtmupd.php?div={$mtch->Division}">Click here</a> to go back
+<a href="matchtmupd.php?div={$mtch->Division}" title="Go back to editing matches">Click here</a> to go back
 to editing matches for division {$mtch->Division}.
 </p>
 

@@ -62,7 +62,7 @@ Deletion of player {$player->display_name(false)} was successful.</p>
 
 EOT;
 ?>
-<p>Click <a href="playupd.php">here</a> to return to the player update menu.</p>
+<p>Click <a href="playupd.php" title="Go back to editing players">here</a> to return to the player update menu.</p>
 </div>
 </div>
 </body>

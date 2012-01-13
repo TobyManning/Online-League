@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2011 John Collins
+//   Copyright 2012 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ include 'php/checklogged.php';
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
-$Title = "Send a message to team captains";
+$Title = "Send a message to individual league players";
 include 'php/head.php';
 ?>
 <body>
@@ -44,15 +44,17 @@ function formvalid()
 $showadmmenu = true;
 include 'php/nav.php';
 ?>
-<h1>Send a message to team captains</h1>
-<p>Please use the form below to compose a message to all team captains.</p>
+<h1>Send a message to individual league players</h1>
+<p>Please use the form below to compose a message to individual league players.</p>
 <p>If you are expecting replies please put your email address in the
 "Reply to" box.</p>
-<form name="mailform" action="sendtc2.php" method="post" enctype="application/x-www-form-urlencoded"  onsubmit="javascript:return formvalid();">
+<form name="mailform" action="sendilp2.php" method="post" enctype="application/x-www-form-urlencoded"  onsubmit="javascript:return formvalid();">
 <p>Subject:<input type="text" name="subject"></p>
 <p>Reply to:<input type="text" name="emailrep"></p>
 <p>CC to:<input type="text" name="ccto"> (comma or space sep)</p>
-<p><input type="checkbox" name="actonly" checked="checked" />Active teams only</p>
+<p><input type="radio" name="active" value="A" checked="checked" />All players
+<input type="radio" name="active" value="P" />Active players
+<input type="radio" name="active" value="I" />Inactive players</p>
 <p><input type="radio" name="paid" value="A" checked="checked" />Paid or unpaid
 <input type="radio" name="paid" value="U" />Only unpaid
 <input type="radio" name="paid" value="P" />Only paid</p>

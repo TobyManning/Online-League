@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2012 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -19,43 +19,84 @@ include 'php/checklogged.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
-include 'php/team.php';
+
 include 'php/opendatabase.php';
 
 $subj = $_POST["subject"];
 $emailrep = $_POST["emailrep"];
 $mess = $_POST["messagetext"];
 $admins = isset($_POST["admintoo"]);
-$actonly = isset($_POST["actonly"]);
+$active = $_POST["active"];
 $paid = $_POST["paid"];
 $cc = $_POST["ccto"];
-$tlist = list_teams();
+
+// Need number of divisions to run over
+
+$ml = max_ildivision();
+$allilpl = array();
+for ($d = 1; $d <= $ml; $d++) {
+	$pl = list_players_ildiv($d);
+	foreach ($pl as $p)
+		array_push($allilpl, $p);
+}
+
+// This will be the list of email addresses to send to
+
 $mlist = array();
-foreach ($tlist as $team) {
-	$team->fetchdets();
-	if (strlen($team->Captain->Email) == 0)
+
+foreach ($allilpl as $p)  {
+	// Get details of player
+	$p->fetchdets();
+	
+	// If no email, nothing to do
+	if (strlen($p->Email) == 0)
 		continue;
-	if ($actonly && !$team->Playing)
-		continue;
-	if ($team->Paid)  {
+	
+	// If person has paid and we are only messaging unpaid or vice versa, skip him
+	
+	if ($p->ILpaid)  {
 		if ($paid == 'U')
 			continue;
 	}
-	elseif ($paid == 'P')
+	elseif  ($paid == 'P')
 		continue;
-	$mlist[$team->Captain->Email] = 1;
+		
+	// If we are sending to active or inactive players, we have to get scores
+	
+	if ($active != "A")  {
+		$p->get_scores();
+		$ng = $p->played_games(true, 'I');
+		if ($ng == 0)  {  // Nothing played
+			if ($active == 'P')  // Skip him if he's played some
+				continue;
+		}
+		elseif ($active == 'I')  // Played, skip if he hasn't
+			continue;
+	}
+	
+	// Record player by email address
+	
+	$mlist[$p->Email] = 1;
 }
+
+// Add in CC to
+
 if (strlen($cc) != 0) {
 	foreach (preg_split("/[\s,]+/", $cc) as $m)
 		$mlist[$m] = 1;
 }
+
+//  Add in admins if required
+
 if ($admins) {
 	$la = list_admins();
 	foreach ($la as $p)
 		if (strlen($p->Email) != 0)
 			$mlist[$p->Email] = 1;
 }
+
 // Set up reply to address.
+
 $rt = "";
 if (strlen($emailrep) != 0)
 	$rt = "REPLYTO='$emailrep' ";
@@ -68,7 +109,7 @@ foreach (array_keys($mlist) as $dest) {
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
-$Title = "Message Sent to team captains";
+$Title = "Message Sent to individual league players";
 include 'php/head.php';
 ?>
 <body>
@@ -77,8 +118,8 @@ include 'php/head.php';
 $showadmmenu = true;
 include 'php/nav.php';
 ?>
-<h1>Message sent to team captains</h1>
-<p>I think your message was sent OK to team captains.</p>
+<h1>Message sent to individual league players</h1>
+<p>I think your message was sent OK to individual league players.</p>
 </div>
 </div>
 </body>
