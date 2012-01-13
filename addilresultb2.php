@@ -44,7 +44,7 @@ catch (PlayerException $e)  {
 <body>
 <h1>Trouble fetching player details</h1>
 <p>Sorry something has gone wrong with your player detail posting.</p>
-<p>Please start again from the top by <a href="index.php">clicking here</a>.</p>
+<p>Please start again from the top by <a href="index.php" title="Go back to home page">clicking here</a>.</p>
 </body>
 </html>
 
@@ -63,8 +63,8 @@ if ($player->ILdiv == 0)  {
 <p>Sorry, but you, {$player->display_name(false)} are not currently in the individual
 league.</p>
 <p>If you want to join it, please update your account
-<a href="ownupd.php">here</a>, otherwise please
-go back to the top by  <a href="index.php">clicking here</a>.</p>
+<a href="ownupd.php" title="Edit your own details, including whether you want to join the Individual League">here</a>,
+otherwise please go back to the top by  <a href="index.php" title="Go back to the home page">clicking here</a>.</p>
 <p>Actually I do not really know how you got here.</p>
 </body>
 </html>
@@ -85,7 +85,7 @@ if ($player->ILdiv != $opp->ILdiv) {
 is not currently in the same individual league division as
 {$opp->display_name(false)} who is in division {$opp->ILdiv}.</p>
 <p>Please
-go back to the top by  <a href="index.php">clicking here</a>.</p>
+go back to the top by  <a href="index.php" title="Go back to the home page">clicking here</a>.</p>
 <p>Actually I do not really know how you got here.</p>
 </body>
 </html>
@@ -161,7 +161,8 @@ EOT;
 $n = new News($userid, "Individual League game completed between {$player->display_name(false)} and {$opp->display_name(false)} in Division {$player->ILdiv}"); 
 $n->addnews();	
 ?>
-<p>Click <a href="ileague.php">here</a> to see the league status now.</p>
+<p>Click <a href="ileague.php" title="View the individual league standings">here</a>
+to see the league status now.</p>
 </div>
 </div>
 </body>

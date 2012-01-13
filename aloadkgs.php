@@ -53,7 +53,7 @@ catch (GameException $e)  {
 <body>
 <h1>Game score add failed</h1>
 <p>I could not find the game result because: $msg.</p>
-<p>Just start again from the top by <a href="index.php">clicking here</a>.</p>
+<p>Just start again from the top by <a href="index.php" title="Go back to home page">clicking here</a>.</p>
 </body>		
 </html>
 EOT;

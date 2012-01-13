@@ -50,7 +50,8 @@ include 'php/nav.php';
 ?>
 <h1>Adjusting parameters Complete</h1>
 <p>Finished adjusting parameters.</p>
-<p><a href="league.php">Click here</a> to see what the league looks like now.</p>
+<p><a href="league.php" title="View the league table to see what the changes did">Click here</a>
+to see what the league looks like now.</p>
 </div>
 </div>
 </body>

@@ -61,9 +61,8 @@ EOT;
 else {
 	print <<<EOT
 <p>
-Select a game from below and <a href="javascript:gkgs();">click here</a>
-to try to load it from KGS archives. Otherwise load from an SGF file
-on your computer.
+Select a game from below and <a href="javascript:gkgs();" title="Try to find game on KGS archives">click here</a>
+to try to load it from KGS archives. Otherwise load from an SGF file on your computer.
 </p>
 <form name="gnum" action="addsgf2.php" method="post" enctype="multipart/form-data">
 <p>

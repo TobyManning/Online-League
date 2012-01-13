@@ -78,7 +78,8 @@ Successfully completed creation of Match between
 {$mtch->Ateam->display_name()} set for
 {$mtch->Date->display()}.
 </p>
-<p><a href="updmatch.php?{$mtch->urlof()}</a>">Click here</a> to add team members.</p>
+<p><a href="updmatch.php?{$mtch->urlof()}" title="Add team members to match">Click here</a>
+to add team members.</p>
 
 EOT;
 ?>

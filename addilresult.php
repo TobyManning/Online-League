@@ -36,7 +36,7 @@ catch (PlayerException $e) {
 <body>
 <h1>Unknown player</h1>
 <p>Sorry, but player name $userid is not known.</p>
-<p>Please start again from the top by <a href="index.php">clicking here</a>.</p>
+<p>Please start again from the top by <a href="index.php" title="Go back to home page">clicking here</a>.</p>
 </body>
 </html>
 
@@ -55,8 +55,8 @@ if ($player->ILdiv == 0)  {
 <p>Sorry, but you, {$player->display_name(false)} are not currently in the individual
 league.</p>
 <p>If you want to join it, please update your account
-<a href="ownupd.php">here</a>, otherwise please
-go back to the top by  <a href="index.php">clicking here</a>.</p>
+<a href="ownupd.php" title="Edit you own details, including joining the Individual League">here</a>,
+otherwise please go back to the top by  <a href="index.php" title="Go back to home page">clicking here</a>.</p>
 </body>
 </html>
 

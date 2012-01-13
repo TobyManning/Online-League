@@ -81,7 +81,7 @@ EOT;
 	print <<<EOT
 <tr><td><a href="osmatches.php" title="Display your outstanding games in team league">Outstanding</a></td></tr>
 <tr><td><a href="ownupd.php" title="Update your own account - rank etc">Update account</a></td></tr>
-<tr><td><a href="https://league.britgo.org/payments.php" title="Pay league subscriptions with Paypal">Pay subscriptions</a></td></tr>
+<tr><td><a href="https://league.britgo.org/payments.php" title="Pay league subscriptions via PayPal">Pay subscriptions</a></td></tr>
 <tr><td><a href="logout.php" title="Log yourself out">Logout<br>$qu</a></td></tr>
 
 EOT;

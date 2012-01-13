@@ -201,7 +201,9 @@ function fillinvals() {
 <?php
 $Name = $player->display_name(false);
 print <<<EOT
-<p>Thank you, $Name, for entering the payments page.</p>
+<p>Welcome, $Name, to the payments page. We manage payments via Paypal, which accepts major
+credit and debit cards as well as payments via a Paypal account.</p>
+<p>You <strong>do not</strong> have to have a Paypal account, or use it if you have one, to use this.</p>
 
 EOT;
 if (count($unpaid_teams) + count($unpaid_il) <= 0)
@@ -264,7 +266,7 @@ print <<<EOT
 <tr><td>For</td><td>None</td></tr>
 <tr><td>Surcharge</td><td>None</td></tr>
 <tr><td>Total</td><td>$total</td></tr>
-<tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription by PayPal"></td></tr>
+<tr><td colspan="2"><input type="submit" name="pay" value="Pay Subscription via PayPal"></td></tr>
 </table>
 </div>
 <input type="hidden" name="amount" value="$total">
