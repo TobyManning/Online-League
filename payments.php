@@ -201,9 +201,14 @@ function fillinvals() {
 <?php
 $Name = $player->display_name(false);
 print <<<EOT
-<p>Welcome, $Name, to the payments page. We manage payments via Paypal, which accepts major
-credit and debit cards as well as payments via a Paypal account.</p>
-<p>You <strong>do not</strong> have to have a Paypal account, or use it if you have one, to use this.</p>
+<p>Welcome, $Name, to the payments page.</p>
+<p>We manage payments via PayPal, which accepts major
+credit and debit cards (not including Amex in the UK, however)
+as well as payments via a PayPal account.</p>
+<p>You <strong>do not</strong> have to have a PayPal account to use this.</p>
+<p>You do not have to use your PayPal account if you do have one, you may prefer instead to use your
+credit or debit card (and avoid an immediate debit of your bank account). To do this,
+just change the Payment Method once you are on the PayPal screen.</p>
 
 EOT;
 if (count($unpaid_teams) + count($unpaid_il) <= 0)
@@ -217,9 +222,9 @@ else {
 <!-- PayPal Logo -->
 <table border="0" cellpadding="10" cellspacing="0" align="center">
 <tr><td align="center"></td></tr>
-<tr><td align="center">
+<tr><td align="center" valign="middle">
 <a href="#" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');">
-<img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_180x113.gif" border="0" alt="Acceptance Mark">
+<img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_180x113.gif" border="0" alt="Acceptance Mark">
 <img src="images/cc_accept.gif" width="183" height="38" alt="CC images" longdesc="Credit card images" /></a></td></tr>
 </table><!-- PayPal Logo -->
 <form name="payform" action="pppayment.php" method="post" enctype="application/x-www-form-urlencoded">
@@ -276,8 +281,9 @@ print <<<EOT
 
 <h2>Please note</h2>
 <p><strong>Please be sure to check the subscription amount shown is correct before clicking the Pay button!</strong>
-You might, in particular, want to check that the surcharge for non-BGA members is correct, if need be by going to the
-<a href="teams.php" title="Bring up list of teams">teams list</a> and checking.</p>
+You might, in particular, want to check that the surcharge for non-BGA members is correct,
+if need be by going to the <a href="teams.php" title="Bring up list of teams">teams list</a> and checking.</p>
+
 EOT;
 }
 ?>
