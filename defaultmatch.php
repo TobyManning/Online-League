@@ -74,7 +74,7 @@ on
 
 EOT;
 ?>
-<p>Click <a href="matchupd.php">here</a> to edit some other match.</p>
+<p>Click <a href="matchupd.php" title="Edit some other match">here</a> to edit some other match.</p>
 </div>
 </div>
 </body>

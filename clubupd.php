@@ -47,8 +47,8 @@ if ($ret && mysql_num_rows($ret)) {
 		$p->fetchdets();
 		print <<<EOT
 <tr>
-<td><a href="updindclub.php?{$p->urlof()}">{$p->display_code()}</a></td>
-<td><a href="updindclub.php?{$p->urlof()}">{$p->display_name()}</a></td>
+<td><a href="updindclub.php?{$p->urlof()}" title="Update club details">{$p->display_code()}</a></td>
+<td><a href="updindclub.php?{$p->urlof()}" title="Update club details">{$p->display_name()}</a></td>
 </tr>
 EOT;
 	}

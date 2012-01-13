@@ -59,7 +59,7 @@ print <<<EOT
 Deletion of club {$club->display_name()} was successful.</p>
 EOT;
 ?>
-<p>Click <a href="clubupd.php">here</a> to return to the club update menu.</p>
+<p>Click <a href="clubupd.php" title="Resume club update">here</a> to return to the club update menu.</p>
 </div>
 </div>
 </body>
