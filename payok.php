@@ -177,14 +177,20 @@ if ($ret != 'SUCCESS' && $ret != "SUCCESSWITHWARNING")  {
 	exit(0);
 }
 
-// Set paid marker
+// Set paid marker and add payment record to database
 
+$qtype =  mysql_real_escape_string($type);
 if ($type == 'T')  {
 	$team->setpaid();
+	$qdescr1 =  mysql_real_escape_string($teamname);
+	$qdescr2 = '';
 }
 else  {
 	$pplayer->setpaid();
+	$qdescr1 =  mysql_real_escape_string($first);
+	$qdescr2 =  mysql_real_escape_string($last);
 }
+mysql_query("insert into paycompl (league,descr1,descr2,amount) values ('$qtype','$qdescr1','$qdescr2',$amount)");
 
 // Finally delete pending payment
 
