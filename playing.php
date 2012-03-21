@@ -87,7 +87,7 @@ if ($luh > 0)  {
 	if ($hdiv <= $md)  {		//  Some have handicaps
 		print "<h2>Team League Division";
 		if ($luh == 1)
-			 print "1</h2>\n";
+			 print " 1</h2>\n";
 		elseif ($luh == 2)
 			print "s 1 and 2</h2>\n";
 		else

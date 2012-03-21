@@ -71,6 +71,14 @@ print <<<EOT
 	<th>Won</th>
 	<th>Drawn</th>
 	<th>Lost</th>
+
+EOT;
+if ($admin)
+	print <<<EOT
+<th>BGA</th>
+
+EOT;
+print <<<EOT
 </tr>
 
 EOT;
@@ -87,6 +95,17 @@ foreach ($membs as $m) {
 	<td align="right">{$m->won_games()}</td>
 	<td align="right">{$m->drawn_games()}</td>
 	<td align="right">{$m->lost_games()}</td>
+
+EOT;
+if ($admin)  {
+	print "<td>";
+	if ($m->BGAmemb)
+		print "Yes";
+	else
+		print "No";
+	print "</td>\n";
+}
+print <<<EOT
 </tr>
 
 EOT;

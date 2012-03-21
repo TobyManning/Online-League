@@ -19,6 +19,7 @@ snippets_show_as_menu: 1
 bookmarks_show_mode: 0
 outputb_show_all_output: 0
 autocomplete: 1
+searchlist: $q
 searchlist: href
 searchlist: amount
 searchlist: setpaid
@@ -28,11 +29,17 @@ searchlist: $userid
 searchlist: stayin
 searchlist: pd
 searchlist: schools
-searchlist: League
 last_filefilter: 
 spell_check_default: 0
 savedir: file:///home/jmc/src/Websites/goleague
 files: /home/jmc/src/Websites/goleague/captmail.pl
+files: /home/jmc/src/Websites/goleague/pppayment.php
+files: /home/jmc/src/Websites/goleague/payok.php
+files: /home/jmc/src/Websites/goleague/php/team.php
+files: /home/jmc/src/Websites/goleague/paydone.pl
+recent_files: file:///home/jmc/src/Websites/goleague/php/team.php
+recent_files: file:///home/jmc/src/Websites/goleague/payok.php
+recent_files: file:///home/jmc/src/Websites/goleague/pppayment.php
 recent_files: file:///home/jmc/src/Websites/goleague/captmail.pl
 recent_files: file:///home/jmc/src/Websites/goleague/sendilp2.php
 recent_files: file:///home/jmc/src/Websites/goleague/sendilp.php
@@ -40,14 +47,11 @@ recent_files: file:///home/jmc/src/Websites/goleague/ileague.php
 recent_files: file:///home/jmc/src/Websites/goleague/sendtc2.php
 recent_files: file:///home/jmc/src/Websites/goleague/sendtc.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
-recent_files: file:///home/jmc/src/Websites/goleague/payok.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/game.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/probpay.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/dataerror.php
-recent_files: file:///home/jmc/src/Websites/goleague/pppayment.php
 recent_files: file:///home/jmc/src/Websites/goleague/updindplayer2.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/team.php
 charmap_block: 1
 e2c.convert_iso: 0
 outputb_scroll_mode: 0
@@ -80,7 +84,7 @@ name: Go League
 view_blocks: 1
 bookmarks_filename_mode: 1
 e2c.convert_xml: 1
-opendir: file:///home/jmc/src/Websites/goleague
+opendir: file:///home/jmc/src/Websites/goleague/php
 wrap_text_default: 0
 default_mime_type: text/plain
 view_left_panel: 1
