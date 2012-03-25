@@ -18,9 +18,13 @@
 class Matchdate {
 	private $timestamp;
 			
-	public function __construct() {
-		$dat = getdate();
-		$this->timestamp = mktime(12,0,0,$dat["mon"], $dat["mday"], $dat["year"]);
+	public function __construct($t = null) {
+		if ($t)
+			$this->timestamp = $t->timestamp;
+		else  {
+			$dat = getdate();
+			$this->timestamp = mktime(12,0,0,$dat["mon"], $dat["mday"], $dat["year"]);
+		}
 	}
 	
 	public function enctime($ds) {
@@ -207,6 +211,11 @@ class Matchdate {
 	public function haschanged($omd)
 	{
 		return $this->timestamp != $omd->timestamp;
+	}
+	
+	public function sortby($omd)
+	{
+		return $this->timestamp - $omd->timestamp;
 	}
 }
 

@@ -19,6 +19,9 @@ snippets_show_as_menu: 1
 bookmarks_show_mode: 0
 outputb_show_all_output: 0
 autocomplete: 1
+searchlist: rand
+searchlist: $starting_team
+searchlist: $current_period
 searchlist: $q
 searchlist: href
 searchlist: amount
@@ -26,9 +29,6 @@ searchlist: setpaid
 searchlist: paid
 searchlist: urlof
 searchlist: $userid
-searchlist: stayin
-searchlist: pd
-searchlist: schools
 last_filefilter: 
 spell_check_default: 0
 savedir: file:///home/jmc/src/Websites/goleague
@@ -37,6 +37,17 @@ files: /home/jmc/src/Websites/goleague/pppayment.php
 files: /home/jmc/src/Websites/goleague/payok.php
 files: /home/jmc/src/Websites/goleague/php/team.php
 files: /home/jmc/src/Websites/goleague/paydone.pl
+files: /home/jmc/src/Websites/goleague/matchinit.php
+files: /home/jmc/src/Websites/goleague/testdraw.php
+files: /home/jmc/src/Websites/goleague/teamdisp.php
+files: /home/jmc/src/Websites/goleague/php/player.php
+recent_files: file:///home/jmc/src/Websites/goleague/playing.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/session.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
+recent_files: file:///home/jmc/src/Websites/goleague/teamdisp.php
+recent_files: file:///home/jmc/src/Websites/goleague/testdraw.php
+recent_files: file:///home/jmc/src/Websites/goleague/matchinit.php
+recent_files: file:///home/jmc/src/Websites/goleague/paydone.pl
 recent_files: file:///home/jmc/src/Websites/goleague/php/team.php
 recent_files: file:///home/jmc/src/Websites/goleague/payok.php
 recent_files: file:///home/jmc/src/Websites/goleague/pppayment.php
@@ -45,13 +56,6 @@ recent_files: file:///home/jmc/src/Websites/goleague/sendilp2.php
 recent_files: file:///home/jmc/src/Websites/goleague/sendilp.php
 recent_files: file:///home/jmc/src/Websites/goleague/ileague.php
 recent_files: file:///home/jmc/src/Websites/goleague/sendtc2.php
-recent_files: file:///home/jmc/src/Websites/goleague/sendtc.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/game.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/probpay.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/dataerror.php
-recent_files: file:///home/jmc/src/Websites/goleague/updindplayer2.php
 charmap_block: 1
 e2c.convert_iso: 0
 outputb_scroll_mode: 0
@@ -68,6 +72,8 @@ urllist: osmatches.php
 urllist: adjparam.php
 c2e.IE_apos_workaround: 0
 fb_show_hidden_f: 0
+replacelist: $Hometeam
+replacelist: $Period
 replacelist: strtoupper
 replacelist: $tm
 replacelist: team
