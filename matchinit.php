@@ -238,7 +238,7 @@ else  {
 	foreach ($Matchlist as $rm)  {
 		if ($sdat->haschanged($rm->Date))  {
 			$sdat = $rm->Date;
-			print "<h2>{$sdat->display_month()}</h2>\n";
+			print "<h2>{$sdat->display()}</h2>\n";
 		}
 		print "<p>{$rm->Hteam->display_name()} -v- {$rm->Ateam->display_name()}</p>\n";
 	}

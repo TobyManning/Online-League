@@ -77,7 +77,7 @@ for their generous donation of the online league shield and copies of the GoGoD 
 <p>A full description of playing games is to be found
 under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
 <h2>Joining</h2>
-<p>It is now too late to join the team league, which will get under way on 1st April 2012 (probably after
+<p>It is now too late to join the 2012 team league, which will get under way on 1st April 2012 (probably after
 mid-day!). However if you would like to join the 2013 team league, please let us know.</p>
 <p>It is not too late to join the individual league.</p>
 <h3>Team League</h3>
