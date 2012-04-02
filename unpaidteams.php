@@ -43,7 +43,7 @@ include 'php/nav.php';
 ?>
 <h1>Teams which have not paid</h1>
 <?php
-$ret = mysql_query("select name from team where paid=0 order by divnum,name");
+$ret = mysql_query("select name from team where paid=0 and playing!=0 order by divnum,name");
 if (!$ret || mysql_num_rows($ret) == 0)  {
 	print <<<EOT
 <p>There does not seem to be any team which has not paid.</p>
