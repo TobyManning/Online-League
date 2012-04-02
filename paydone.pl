@@ -6,20 +6,26 @@ $Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access")
 open(MAILOUT, "|REPLYTO=jmc\@xisl.com mail -s 'Online league payments' treasurer\@britgo.org jmc\@xisl.com") or die "Cannot open Mail";
 select MAILOUT;
 
-$sfh = $Database->prepare("SELECT league,descr1,descr2,paywhen,amount FROM paycompl WHERE paywhen>DATE_SUB(CURRENT_TIMESTAMP(),INTERVAL 1 MONTH) ORDER BY paywhen");
+$sfh = $Database->prepare("SELECT league,descr1,descr2,paywhen,amount,paypal FROM paycompl WHERE paywhen>DATE_SUB(CURRENT_TIMESTAMP(),INTERVAL 1 MONTH) ORDER BY paywhen");
 $sfh->execute;
 
 print "Payments received for online league during past month\n\n";
 
 while (@row = $sfh->fetchrow_array) {
-	my ($league, $descr1, $descr2, $when, $amt) = @row;
+	my ($league, $descr1, $descr2, $when, $amt, $pp) = @row;
 	$when =~ s;(\d+)-(\d+)-(\d+)\s+.*;$3/$2/$1;;
 	print "$when\t$amt\t";
 	if ($league eq 'T') {
-		print "Team League payment for $descr1\n";
+		print "Team League payment for $descr1 (";
 	}
 	else {
-		print "Individual league payment for $descr1 $descr2\n";
+		print "Individual league payment for $descr1 $descr2 (";
+	}
+	if ($pp)  {
+		print "Paypal)\n";
+	}
+	else  {
+		print "Cheque)\n";
 	}
 }
 
