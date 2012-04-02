@@ -32,7 +32,44 @@ include 'php/nav.php';
 <h1>Administration</h1>
 <p>This menu is only intended for administration purposes.
 Team captains can assign teams and update results on the matches selection.</p>
-<p>Otherwise, please select the appropriate option on the left highlighted in red.</p>
+<table class="admin">
+<tr>
+<th>Clubs</th>
+<th>Players</th>
+<th>Teams</th>
+<th>Maintenance</th>
+</tr>
+<tr>
+<td><a href="newclub.php" class="memb" title="Add a new club to the list">New club</a></td>
+<td><a href="newplayer.php" class="memb" title="Add a new player">New player</a></td>
+<td><a href="newteam.php" class="memb" title="Add a new team">New team</a></td>
+<td><a href="getosplayer.php" class="memb" title="View outstanding games in team league for player">O/S matches</a></td>
+</tr>
+<tr>
+<td><a href="clubupd.php" class="memb" title="Update club details">Update clubs</a></td>
+<td><a href="playupd.php" class="memb" title="Update player details">Update players</a></td>
+<td><a href="teamsupd.php" class="memb" title="Update teams">Update teams</a></td>
+<td><a href="matchupd.php" class="memb" title="Update matches">Update matches</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="rempw.php" class="memb" title="Remind user of password">Remind password</a></td>
+<td><a href="sendtc.php" class="memb" title="Send message to team captains">Message team captains</a></td>
+<td><a href="fixres.php" class="memb" title="Edit/amend result">Amend result</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="sendilp.php" class="memb" title="Send message to individual league players">Message IL players</a></td>
+<td><a href="unpaidteams.php" class="memb" title="Set message about teams being unpaid">Unpaid message</a></td>
+<td><a href="addsgf.php" class="memb" title="Add SGF to game result">Add sgf</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="ilarchive.php" class="memb" title="Archive Individual League at end of season">Archive Ind League</a></td>
+<td></td>
+<td><a href="adjparam.php" class="memb" title="Adjust system parameters">Adjust parameters</a></td>
+</tr>
+</table>
 </div>
 </div>
 </body>

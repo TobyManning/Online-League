@@ -56,27 +56,6 @@ EOT;
 <tr><td><a href="admin.php" class="memb" title="Administer the leagues">Admin menu</a></td></tr>
 
 EOT;
-		if (isset($showadmmenu))  {
-			print <<<EOT
-<tr><td class="subind"><a href="newclub.php" class="memb" title="Add a new club to the list">New club</a></td></tr>
-<tr><td class="subind"><a href="newplayer.php" class="memb" title="Add a new player">New player</a></td></tr>
-<tr><td class="subind"><a href="newteam.php" class="memb" title="Add a new team">New team</a></td></tr>
-<tr><td class="subind"><a href="clubupd.php" class="memb" title="Update club details">Update clubs</a></td></tr>
-<tr><td class="subind"><a href="playupd.php" class="memb" title="Update player details">Update players</a></td></tr>
-<tr><td class="subind"><a href="rempw.php" class="memb" title="Remind user of password">Remind password</a></td></tr>
-<tr><td class="subind"><a href="teamsupd.php" class="memb" title="Update teams">Update teams</a></td></tr>
-<tr><td class="subind"><a href="matchupd.php" class="memb" title="Update matches">Update matches</a></td></tr>
-<tr><td class="subind"><a href="getosplayer.php" class="memb" title="View outstanding games in team league for player">O/S matches</a></td></tr>
-<tr><td class="subind"><a href="sendtc.php" class="memb" title="Send message to team captains">Message team captains</a></td></tr>
-<tr><td class="subind"><a href="sendilp.php" class="memb" title="Send message to individual league players">Message IL players</a></td></tr>
-<tr><td class="subind"><a href="unpaidteams.php" class="memb" title="Set message about teams being unpaid">Unpaid message</a></td></tr>	
-<tr><td class="subind"><a href="fixres.php" class="memb" title="Edit/amend result">Amend result</a></td></tr>
-<tr><td class="subind"><a href="ilarchive.php" class="memb" title="Archive Individual League at end of season">Archive Ind League</a></td></tr>	
-<tr><td class="subind"><a href="addsgf.php" class="memb" title="Add SGF to game result">Add sgf</a></td></tr>
-<tr><td class="subind"><a href="adjparam.php" class="memb" title="Adjust system parameters">Adjust parameters</a></td></tr>
-
-EOT;
-		}
 	}
 	$qu = htmlspecialchars($username);
 	print <<<EOT

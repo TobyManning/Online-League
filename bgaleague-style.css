@@ -213,6 +213,11 @@ td.subind {
 	margin-left: 0.5in;
 	font-size: small;
 }
+table.admin {
+	empty-cells: show;
+	border-spacing: 5px;
+	padding: 2px;
+}
 table.clublist {
 	empty-cells: show;
 	border-spacing: 5px;
