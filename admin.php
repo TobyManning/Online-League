@@ -66,7 +66,7 @@ Team captains can assign teams and update results on the matches selection.</p>
 <tr>
 <td></td>
 <td><a href="ilarchive.php" class="memb" title="Archive Individual League at end of season">Archive Ind League</a></td>
-<td></td>
+<td><a href="manualpay.php" class="memb" title="Record cheque payment">Manual payment</a></td>
 <td><a href="adjparam.php" class="memb" title="Adjust system parameters">Adjust parameters</a></td>
 </tr>
 </table>

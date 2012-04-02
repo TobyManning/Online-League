@@ -503,6 +503,7 @@ class Player  {
 	public function setpaid($v = true) {
 		$vv = $v? 1: 0;
 		mysql_query("update player set ilpaid=$vv where {$this->queryof()}");
+		$this->ILpaid = $v;
 	}
 	
 	public function updrank($r) {

@@ -107,6 +107,7 @@ try {
 			include 'php/dataerror.php';
 			exit(0);
 		}
+		$team->updpaid(true);
 	}
 	else  {
 		$pplayer = new Player($first, $last);
@@ -145,6 +146,7 @@ try {
 			include 'php/dataerror.php';
 			exit(0);
 		}
+		$pplayer->setpaid();
 	}
 }
 catch (PlayerException $e) {
