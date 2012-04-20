@@ -181,6 +181,14 @@ p.note {
 	font-size: 8pt;
 	line-height: 1.2;
 }
+p.smallnote {
+	text-align: left;
+	line-height: 1;
+	font-size: 8pt;
+}
+p.alarm {
+	color: #3476E6;
+}
 p.forms {
 	text-indent: 1.5cm;
 	line-height: 1.5cm;
