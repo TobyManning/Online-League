@@ -116,8 +116,11 @@ EOT;
 ?>
 </div>
 <p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost, Games <b>F</b>or and Games <b>A</b>gainst.
-<span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
-</p>
+<span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.</p>
+<p>"Won" means that the team named against the row has won all the matches completed against
+the team named in the column. "Lost" means that the team named against the row has won all the
+matches completed against the team named in the column. "Drawn" means that the score is level. All
+other outcomes show the score.</p>
 <h2>Previous Seasons</h2>
 <a name="prev"></a>
 <?php
