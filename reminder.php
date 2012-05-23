@@ -90,8 +90,8 @@ function mailplayer($play, $opp, $col, $mt, $ot, $m, $g)
 	$mess = <<<EOT
 Dear {$play->display_name(false)}
 
-(Please note that this is an automatically-generated message. Please do not
-reply to the apparent sender - thanks).
+PLEASE NOTE that this is an automatically-generated message. Please DO NOT
+reply to the apparent sender - thank you!
 
 Please can we remind you that your are due to play in the online league match
 playing for {$mt->display_name()} against {$ot->display_name()}.
@@ -131,20 +131,6 @@ EOT;
 		$mess = <<<EOT
 
 Sorry we have no email address for $oppname.
-
-EOT;
-	fwrite($fh, $mess);
-	$onl = $opp->display_online();
-	if ($onl == "-")
-		$mess = <<<EOT
-
-Sorry but we have no online name for $oppname.
-
-EOT;
-	else
-		$mess = <<<EOT
-
-The online name for $oppname is $onl.
 
 EOT;
 	fwrite($fh, $mess);

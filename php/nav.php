@@ -84,7 +84,6 @@ if (!$logged_in)  {
 EOT;
 }
 print <<<EOT
-<p class="alarm">Please note First_Last style login names have been changed to KGS names, no other changes.</p>
 <p class="smallnote">(Please note a cookie will be used to save login name and session id only, no other
 information).</p>
 </div>
