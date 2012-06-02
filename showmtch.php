@@ -139,7 +139,7 @@ EOT;
 <td>{$g->Bplayer->display_rank()}</td>
 <td>{$g->Bplayer->display_online()}</td>
 <td>{$g->Bteam->display_name()}</td>
-<td>{$g->display_result($editok)}</td>
+<td>{$g->display_result($editok || $g->playerin($username))}</td>
 </tr>
 EOT;
 		$board++;

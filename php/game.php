@@ -267,6 +267,16 @@ class Game {
 		return $this->Date->disp_abbrev();
 	}
 	
+	public function playerin($u)  {
+		try {
+			$pp = new Player($u);
+			return $pp->is_same($this->Wplayer) || $pp->is_same($this->Bplayer);
+		}
+		catch (PlayerException $e) {
+			return false;
+		}
+	}
+
 	public function display_result($addunpl = false) {
 		if ($this->Result == 'N')  {
 			if  ($addunpl)
