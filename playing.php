@@ -191,11 +191,22 @@ and potentially a team match could be drawn also).</p>
 Please don't enter any results that may be trouble to unravel.
 Here's what to do.
 </p>
+<h2>Errors setting up the game</h2>
+<p>If you make a mistake setting up the game, such as getting the colours, handicap (if any), time limits or komi wrong and you notice
+the error, you should abandon the game and restart it <b>if less than 6 moves have been made</b>.</p>
+<p>If 6 or more moves have been made, then the settings must stand and the result reported as the server
+announces it.</p>
+<p>You must abandon the game, not have one side resign if the colours are wrong at the start, as if someone just resigns it may
+confuse the algorithm to load the SGF from KGS, and mistakenly load that one rather than the "real" one.</p>
+<p>This is another reason why games should be "free" so that abandoned games don't make the players
+get tagged as "escapers".</p>
+<h2>At the end of the game</h2>
+<p>Please be careful to correctly mark dead groups before pressing "done". If you can't agree about
+which groups are dead, play out the moves to prove it one way or another. This doesn't matter under AGA rules.
+If you get it wrong you <b>cannot</b> change the result from what the server announces.</p>
 <h2>Disputes about playing games</h2>
 <p>A dispute may arise about people not turning up for games or some irregularity during a
-game. Perhaps the komi was wrong and the game was close enough for this to matter. Perhaps the
-rules were wrong.
-</p>
+game.</p>
 <p>If this happens please contact an admin person or BGA council member as soon as possible as
 referee. The person chosen should not have any direct involvement with the match in question
 and should refuse to act as referee if he/she believes that there is any such involvement.
@@ -216,17 +227,14 @@ outcomes shall apply.
 <p>If you think that the decision of the referee was wrong, or that the referee had
 an undeclared interest in the result, then you should appeal to the BGA council for
 a final decision.</p>
-<p>Games decided in this fashion are entered as <b>W+N</b> or <b>B+N</b>
+<p>Games decided in this fashion (unless the referee decides that the result of the game
+should stand as it was) are entered as <b>W+N</b> or <b>B+N</b>
 or <b>Jigo</b> as appropriate and no SGF file should be included.</p>
 <h2>Errors entering results</h2>
-<p>If you realise that the game has been played with the wrong colours or other settings
-incorrect <u>do not enter the result</u>.
-Doing so may create a "news item" on the main BGA website
-or RSS feed which will be wrong.</p>
-<p><b>If at all possible</b>, please replay the game with the correct settings.</p>
-<p>If not possible, please contact a referee as above.</p>
-<p>Whatever you do, please don't change any of the settings of the other games in the match
-to try to "compensate".</p>
+<p>The result must be entered exactly as reported by the server. We now let you correct incorrect
+colours, but please don't make a habit of this.</p>
+<p>If you realise you have made a major error in the reporting of a result, please stop entering anything
+else, but report the matter to an admin person for him/her to correct.</p>
 <h1>Ordering of league tables</h1>
 <p>To clarify how the league tables are ordered, the rules are as follows:</p>
 <h2>Team League</h2>
