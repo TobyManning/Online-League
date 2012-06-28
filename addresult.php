@@ -67,7 +67,7 @@ function loadkgs() {
 	var year = yrel.options[yrel.selectedIndex].value;
 	var resel = fm.result;
 	var resty = fm.resulttype;
-	var reversedcol = fm.reversed.checked? "$rev=y": "";
+	var reversedcol = fm.reversed.checked? "&rev=y": "";
 	if (resel.selectedIndex < 0 || resty.selectedIndex < 0) {
 		alert("No result selected");
 		return false;
@@ -150,8 +150,12 @@ if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
 <h2>Loading game file from KGS</h2>
 <p>If the game was played on KGS using the online names
 {$g->Wplayer->display_online()} and {$g->Bplayer->display_online()},
-get the date played and result correct above and
-click here to download the SGF from the KGS records.
+<ol>
+<li>Get the date played reight</li>
+<li>Get the result correct above</li>
+<li>Check the colours are correct</li>
+</ol>
+then click here to download the SGF from the KGS records.
 <input type="submit" value="Load SGF from KGS" onclick="javascript:return loadkgs();">
 </p>
 <h2>No game record or have SGF file of game</h2>
