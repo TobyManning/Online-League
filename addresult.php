@@ -45,8 +45,19 @@ include 'php/head.php';
 <body>
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
+function checkreverse(fm) {
+	if (!fm.reversed.checked)
+		return true;
+	if (!confirm("Are you sure the colours were reversed?"))
+		return false;
+	if (!confirm("I promise not to make a habit of this"))
+		return false;
+	return  true;
+}
 function loadkgs() {
 	var fm = document.resform;
+	if (!checkreverse(fm))
+		return false;
 	var game = fm.gn.value;
 	var dayel = fm.day;
 	var monel = fm.month;
@@ -56,6 +67,7 @@ function loadkgs() {
 	var year = yrel.options[yrel.selectedIndex].value;
 	var resel = fm.result;
 	var resty = fm.resulttype;
+	var reversedcol = fm.reversed.checked? "$rev=y": "";
 	if (resel.selectedIndex < 0 || resty.selectedIndex < 0) {
 		alert("No result selected");
 		return false;
@@ -66,7 +78,7 @@ function loadkgs() {
 		alert("Result type not set");
 		return false;
 	}
-	document.location = "loadkgs.php?gn=" + game +
+	document.location = "loadkgs.php?gn=" + game + reversedcol +
 							  "&md=" + year + "-" + month + "-" + day + "&r=" +
 							  res + "&rt=" + restype;
 	return false;
@@ -80,7 +92,9 @@ EOT;
 ?>
 function checknokgs() {
 	var fm = document.resform;
-	if (fm.sgffile.value.length != 0)
+	if (!checkreverse(fm))
+		retirm false;
+   if (fm.sgffile.value.length != 0)
 		return true;
 	if (white.length == 0 || black.length == 0)
 		return true;
@@ -108,6 +122,9 @@ $today = new Matchdate();
 $today->dateopt("Game was played on");
 print <<<EOT
 </p>
+<p>Please note that if the game is adjourned or crosses midnight, KGS normally stores the date it was <i>started</i>.</p>
+<p>
+<input type="checkbox" name="reversed" /><b>Sorry, but the player colours were the wrong way round</b></p>
 <p>
 Result was
 <select name="result" size="0">
@@ -127,26 +144,28 @@ for ($v = 0; $v < 50; $v++)
 <option value="H">Over 50</option>
 </select>
 </p>
+<?php
+if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
+	print <<<EOT
+<h2>Loading game file from KGS</h2>
+<p>If the game was played on KGS using the online names
+{$g->Wplayer->display_online()} and {$g->Bplayer->display_online()},
+get the date played and result correct above and
+click here to download the SGF from the KGS records.
+<input type="submit" value="Load SGF from KGS" onclick="javascript:return loadkgs();">
+</p>
+<h2>No game record or have SGF file of game</h2>
+
+EOT;
+}
+?>
 <p>
 If you have the game available on your computer as an SGF file to
 upload browse for it here <input type=file name=sgffile>
 </p>
-<p>If you don't have the file available as an SGF anywhere just leave the above blank.
-</p>
+<p>If you don't have the file available as an SGF anywhere just leave the above blank.</p>
 <p>In either case click here <input type="submit" value="Add result" onclick="javascript:return checknokgs();">
 </p>
-<?php
-if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
-	print <<<EOT
-<p><b>Preferably</b> if the game was played on KGS using the online names
-{$g->Wplayer->display_online()} and
-{$g->Bplayer->display_online()}, get the date played and result correct above and
-click here to download the SGF from the KGS records.
-<input type="submit" value="Load SGF from KGS" onclick="javascript:return loadkgs();">
-</p>
-EOT;
-}
-?>
 </form>
 <p>If you never meant to get to this page
 <a href="javascript:history.back()">click here</a> to go back.</p>
