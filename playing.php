@@ -24,12 +24,12 @@ function phcp($hred, $diff) {
 	if ($diff <= 0)
 		print "the game is an even game.";
 	elseif ($diff == 1)
-		print "the game is played with no komi.";
+		print "the game is played with no komi (strictly 0.5 komi).";
 	elseif ($diff <= 9)
-		print "a handicap of $diff is used.";
+		print "a handicap of $diff is used and 0.5 komi.";
 	else  {
-		$rkomi = ($diff - 9) * 10;
-		print "a handicap of 9 plus $rkomi reverse komi is used.";
+		$rkomi = 0.5 - ($diff - 9) * 10;
+		print "a handicap of 9 plus $rkomi (reverse) komi is used.";
 	}
 }
 
@@ -149,9 +149,10 @@ EOT;
 EOT;
 }
 ?>
+<p>The komi on handicap games should be set to 0.5 except for handicaps beyond 9, as described below.
 <h3>Handicaps beyond 9</h3>
 <p>If the handicap "would be" more than 9, then the white player gives 9 stones plus 10 points
-of reverse komi for each stone beyond 9.</p>
+of reverse komi for each stone beyond 9. This might mean that the komi is -9.5, -19.5 etc.</p>
 <p>So for example if a 1K player plays a 20K player then
 <?php
 phcp($hred, 19);
