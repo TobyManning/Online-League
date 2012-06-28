@@ -93,7 +93,7 @@ EOT;
 function checknokgs() {
 	var fm = document.resform;
 	if (!checkreverse(fm))
-		retirm false;
+		return false;
    if (fm.sgffile.value.length != 0)
 		return true;
 	if (white.length == 0 || black.length == 0)
