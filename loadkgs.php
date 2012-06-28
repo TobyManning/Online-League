@@ -51,6 +51,11 @@ if ($date_played->unequal($g->Date))
 
 $mtch = $g->set_result($_GET["r"], $_GET["rt"]);
 
+// Fix reversed colours
+
+if (isset($_GET["rev"]))
+	$g->reversecolours();
+
 //  Try to load KGS file
 
 try  {

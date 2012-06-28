@@ -277,6 +277,15 @@ class Game {
 		}
 	}
 
+	public function reversecolours() {
+		$tmp = $this->Wteam;
+		$this->Wteam = $this->Bteam;
+		$this->Bteam = $tmp;
+		$tmp = $this->Wplayer;
+		$this->Wplayer = $this->Bplayer;
+		$this->Bplayer = $tmp;
+	}
+
 	public function display_result($addunpl = false) {
 		if ($this->Result == 'N')  {
 			if  ($addunpl)

@@ -37,6 +37,12 @@ catch (GameException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
+
+// Fix reversed colours
+
+if (isset($_POST["reversed"]))
+	$g->reversecolours();
+
 $date_played = new Matchdate();
 $date_played->frompost();
 $sgfdata = "";

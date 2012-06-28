@@ -155,7 +155,7 @@ if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
 <li>Get the result correct above</li>
 <li>Check the colours are correct</li>
 </ol>
-then click here to download the SGF from the KGS records.
+Then click here to download the SGF from the KGS records.
 <input type="submit" value="Load SGF from KGS" onclick="javascript:return loadkgs();">
 </p>
 <h2>No game record or have SGF file of game</h2>
