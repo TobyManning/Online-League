@@ -175,9 +175,9 @@ the result as soon as possible afterwards.</p>
 <p>We suggest a "Free Game" as the KGS handicaps are ignored and in some cases wildly different
 strength players meet with non-standard handicaps
 and we don't think this should confuse KGS rankings.</p>
-<p>If you suddenly realise during the game you've got the game settings wrong you can either
-opt to continue or discount the game and replay it later, unless the colours are wrong
-(this only applies to the team league) when it should always be replayed.
+<p>If you suddenly realise during the game you've got the game settings wrong you must continue
+with it if 6 or more moves have been played. If you have played less than 6 moves you may abandon the
+game and restart it.
 </p>
 <p>If there is an unavoidable interruption such as one player is disconnected or KGS crashes,
 please try to resume it as soon as possible
@@ -206,20 +206,23 @@ get tagged as "escapers".</p>
 which groups are dead, play out the moves to prove it one way or another. This doesn't matter under AGA rules.
 If you get it wrong you <b>cannot</b> change the result from what the server announces.</p>
 <h2>Disputes about playing games</h2>
+<p>If you think that a handicap is wrong, because you are overgraded or your opponent
+undergraded, <b>do not start the game</b> or the outcome will be counted as the result.
+Query the matter immediately with your team captains or an administrator.</p>
 <p>A dispute may arise about people not turning up for games or some irregularity during a
 game.</p>
 <p>If this happens please contact an admin person or BGA council member as soon as possible as
 referee. The person chosen should not have any direct involvement with the match in question
-and should refuse to act as referee if he/she believes that there is any such involvement.
-</p>
-<p>The person may decide:
-</p>
+and should refuse to act as referee if he/she believes that there is any such involvement.</p>
+<p>The person may decide:</p>
 <ul>
 <li>To award the game to one side or the other.</li>
 <li>To declare the game to be a draw (Jigo). Note that this may cause the match itself
 to be drawn.</li>
-<li>To declare the game void and order its replay. The replay should be with the same
-colours, handicap or komi and time controls as the original game should have been.</li>
+<li>To declare the game void and order its replay. The replay should normally be with the same
+colours, handicap or komi
+and time controls as the original game should have been (unless some of those were issues
+in dispute).</li>
 </ul>
 <p>In the last case, the referee may supplement his/her decision
 with a rider that a replay be made within a certain time or one of the other
