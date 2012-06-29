@@ -122,7 +122,7 @@ $today = new Matchdate();
 $today->dateopt("Game was played on");
 print <<<EOT
 </p>
-<p>Please note that if the game is adjourned or crosses midnight, KGS normally stores the date it was <i>started</i>.</p>
+<p>Please note that if the game is adjourned or crosses midnight, KGS normally stores the date it was <i>started</i> so please use that.</p>
 <p>
 <input type="checkbox" name="reversed" /><b>Sorry, but the player colours were the wrong way round</b></p>
 <p>
@@ -151,7 +151,7 @@ if (strlen($g->Wplayer->KGS) != 0 && strlen($g->Bplayer->KGS) != 0) {
 <p>If the game was played on KGS using the online names
 {$g->Wplayer->display_online()} and {$g->Bplayer->display_online()},
 <ol>
-<li>Get the date played reight</li>
+<li>Get the date played right (note comment above about date started)</li>
 <li>Get the result correct above</li>
 <li>Check the colours are correct</li>
 </ol>
