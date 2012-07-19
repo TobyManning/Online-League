@@ -210,10 +210,8 @@ EOT;
 <p>Select the team members and
 <input type="submit" value="Click here"> or <input type="reset" value="Reset form">
 </p>
-<p>
-Colours will be assigned randomly. Note again that teams will be sorted into descending order of rank.
-Click on the link above if you need to adjust these.
-</p>
+<p>Colours will be assigned randomly. Note again that teams will be sorted into descending order of rank unless you select
+the above checkbox. Click on the link above if you need to adjust the ranks.</p>
 </form>
 </div>
 </div>
