@@ -29,6 +29,11 @@ include 'php/teammemb.php';
 include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/game.php';
+include 'php/params.php';
+
+$pars = new Params();
+$pars->fetchvalues();
+
 $mtch = new Match();
 try  {
 	$hora = $_GET["hora"];
@@ -46,6 +51,10 @@ catch (MatchException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
+
+// Is this a "handicappable" division?
+
+$hcapable = $mtch->Division >= $pars->Hdiv;
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -130,10 +139,19 @@ for the division {$mtch->Division} match in
 <b>Please note</b> that once both teams are allocated you cannot change the team.
 </p>
 <p>
-The players will be sorted into descending order of rank, so if you need to
+The players will normally be sorted into descending order of rank, so if you need to
 adjust the team members' ranks
 <a href="updrank.php?{$Myteam->urlof()}">go here first</a>.
+
+EOT;
+if ($hcapable)
+	print <<<EOT
+<b>As handicaps apply in this division, you really should do this first.</b>
+
+EOT;
+print <<<EOT
 </p>
+
 EOT;
 $ce = $Histeam->display_capt_email();
 if (strlen($ce) != 0)
@@ -187,8 +205,9 @@ EOT;
 }
 ?>
 </table>
-<p>
-Select the team members and
+<p><input type="checkbox" name="forceass">
+<b>Check this</b> to force board assignments rather than having them sorted into rank order.</p>
+<p>Select the team members and
 <input type="submit" value="Click here"> or <input type="reset" value="Reset form">
 </p>
 <p>

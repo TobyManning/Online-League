@@ -57,7 +57,7 @@ $colset = false;
 $hadnig = false;
 $hadw = false;
 $hadb = false;
-$forcing = $_POST["forceass"];
+$forcing = isset($_POST["forceass"]);
 
 try {
 	for ($b = 0;  $b < 3;  $b++)  {

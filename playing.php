@@ -158,6 +158,11 @@ of reverse komi for each stone beyond 9. This might mean that the komi is -9.5, 
 phcp($hred, 19);
 ?>
 </p>
+<h3>Handicap display</h3>
+<p>The software calculates the handicap "on the fly" from the currently-set ranks of the players. It is each player's
+responsibility to make sure that his/her rank is set correctly (each player can adjust his/her own rank). The players
+should be prepared to adjust the handicap before the start of the game if they know it is too much or too little to make
+the games as fair as possible.</p>
 <h2>The Individual League</h2>
 <p>Games in the individual league are always played without handicaps regardless of the players'
 strengths. Colours should be accepted according to whatever the server proposes and the game
