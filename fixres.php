@@ -38,9 +38,8 @@ $showadmmenu = true;
 include 'php/nav.php';
 ?>
 <h1>Amend game record</h1>
-<p>
-Use this page to amend game records.
-</p>
+<p>Use this page to amend game records, including uploading a saved SGF file (perhaps one with a review).
+If you want to load a KGS file on a game which doesn't have one, <a href="addsgf.php">go here</a> instead.</p>
 <?php
 $glist = list_played_games();
 if (count($glist) == 0)  {

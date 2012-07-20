@@ -422,7 +422,8 @@ function list_nosgf_games() {
 
 function list_played_games() {
 	$result = array();
-	$ret = mysql_query("select ind from game where result!='N' order by matchdate,wlast,wfirst,blast,bfirst");
+	// Fix this to only do current season games (only used in fixres.php)
+	$ret = mysql_query("select ind from game where result!='N' and seasind=0 order by matchdate,wlast,wfirst,blast,bfirst");
 	if ($ret) {
 		while ($row = mysql_fetch_array($ret)) {
 			$r = new game($row[0]);
