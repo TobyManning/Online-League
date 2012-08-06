@@ -26,14 +26,8 @@ class itrecord {
 		if ($played == 0)
 				return "-";
 		$disp = $this->dispsc($this->Won) . "-" . $this->dispsc($this->Lost);
-		if ($sumwdl)  {
-			if ($this->Won == $played)
-				return "W:" . $disp;
-			if ($this->Lost == $played)
-				return "L:" . $disp;
-			if ($this->Won == $this->Lost)
-				return "D:" . $disp;
-		}
+		if ($sumwdl  &&  $this->Won == $played)
+			$disp = "<b>" . $disp . "</b>";
 		return $disp;
 	}
 }
