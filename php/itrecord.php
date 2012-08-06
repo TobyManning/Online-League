@@ -25,15 +25,16 @@ class itrecord {
 		$played = $this->Won + $this->Drawn + $this->Lost;
 		if ($played == 0)
 				return "-";
+		$disp = $this->dispsc($this->Won) . "-" . $this->dispsc($this->Lost);
 		if ($sumwdl)  {
 			if ($this->Won == $played)
-				return "Won";
+				return "W:" . $disp;
 			if ($this->Lost == $played)
-				return "Lost";
+				return "L:" . $disp;
 			if ($this->Won == $this->Lost)
-				return "Drawn";
+				return "D:" . $disp;
 		}
-		return $this->dispsc($this->Won) . "-" . $this->dispsc($this->Lost);
+		return $disp;
 	}
 }
 
