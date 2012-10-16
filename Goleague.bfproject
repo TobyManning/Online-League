@@ -55,7 +55,7 @@ htmlbar_notebooktab: 1
 last_filefilter: 
 spell_insert_entities: 0
 spell_check_default: 0
-savedir: file:///home/jmc/src/Websites/goleague/php
+savedir: file:///home/jmc/src/Websites/goleague
 files: /home/jmc/src/Websites/goleague/league.php
 files: /home/jmc/src/Websites/goleague/php/itrecord.php
 snr_replacetype: 0

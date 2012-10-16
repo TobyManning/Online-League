@@ -42,15 +42,16 @@ EOT;
 <tr><td class="subind"><a href="pbt.php" title="View players by team">By team</a></td></tr>
 <tr><td><a href="matches.php" title="View team league matches for current season">Team Matches</a></td></tr>
 <tr><td><a href="results.php" title="View results table for team league matches">Team Results</a></td></tr>
-<tr><th colspan="2">Standings</th></tr>
-<tr><td class="subind"><a href="league.php" title="Display league table for team league">Team League</a></td></tr>
-<tr><td class="subind"><a href="ileague.php" class="il" title="View league table for Individual League">Individual League</a></td></tr>
+<tr><th colspan="2">League Table</th></tr>
+<tr><td class="subind"><a href="league.php" title="Display current team league table">Current</a></td></tr>
+<tr><td class="subind"><a href="leaguehist.php" title="Display historical league tables including individual league">Historical</a></td></tr>
+<!-- <tr><td class="subind"><a href="ileague.php" class="il" title="View league table for Individual League">Individual League</a></td></tr> -->
 <?php
 if ($logged_in) {
-	print <<<EOT
-<tr><td><a href="addilresult.php" class="il" title="For player use - add result in Individual League">Add IL Result</a></td></tr>
-
-EOT;
+//	print <<<EOT
+//<tr><td><a href="addilresult.php" class="il" title="For player use - add result in Individual League">Add IL Result</a></td></tr>
+//
+//EOT;
 	if ($admin)  {
 		print <<<EOT
 <tr><td><a href="admin.php" class="memb" title="Administer the leagues">Admin menu</a></td></tr>

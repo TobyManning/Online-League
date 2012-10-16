@@ -24,7 +24,6 @@ include 'php/match.php';
 include 'php/matchdate.php';
 include 'php/itrecord.php';
 include 'php/params.php';
-include 'php/season.php';
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -36,7 +35,7 @@ include 'php/head.php';
 <script language="javascript" src="webfn.js"></script>
 <?php include 'php/nav.php'; ?>
 <h1>Current League Standings</h1>
-<p>Click <a href="#prev">here</a> to view previous seasons.</p>
+<p>Click <a href="leaguehist.php">here</a> to view previous seasons.</p>
 <div align="center">
 <?php
 $pars = new Params();
@@ -119,48 +118,6 @@ EOT;
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.</p>
 <p>The record is highlighted in bold where the team given by the row has won all the matches it has played against the
 team given by the column.</p>
-<h2>Previous Seasons</h2>
-<a name="prev"></a>
-<?php
-$seasons = list_seasons();
-if (count($seasons) == 0) {
-	print <<<EOT
-<p>There are currently no past seasons to display.
-Please come back soon!
-</p>
-<p>Please <a href="javascript:history.back()">click here</a> to go back.
-</p>
-
-EOT;
-}
-else {
-	print <<<EOT
-<table class="teamsb">
-<tr>
-	<th>Season Name</th>
-	<th>Start Date</th>
-	<th>End Date</th>
-	<th>League table</th>
-	<th>Matches</th>
-</tr>
-
-EOT;
-	foreach ($seasons as $seas) {
-		$seas->fetchdets();
-		print <<<EOT
-<tr>
-	<td>{$seas->display_name()}</td>
-	<td>{$seas->display_start()}</td>
-	<td>{$seas->display_end()}</td>
-	<td><a href="seasleague.php?{$seas->urlof()}">Click</a></td>
-	<td><a href="seasmatches.php?{$seas->urlof()}">Click</a></td>
-</tr>
-
-EOT;
-	}
-	print "</table>\n";
-}
-?>
 </div>
 </div>
 </body>
