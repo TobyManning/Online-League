@@ -16,6 +16,7 @@
 
 include 'php/session.php';
 include 'php/opendatabase.php';
+include 'php/matchdate.php';
 include 'php/params.php';
 include 'php/season.php';
 ?>
