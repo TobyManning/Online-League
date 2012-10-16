@@ -50,12 +50,9 @@ include 'php/head.php';
 <?php include 'php/nav.php'; ?>
 <h1>Playing games on the league</h1>
 <p>We'd like to clarify how games should be played on the league to avoid confusion.
-(Please note that this is the current version,
-modified in practice and takes priority over the original
-specification at
+(Please note that this is the current version, modified in practice and takes priority over the original specification at
 <a href="http://league.britgo.org/doc/LeagueDescription.pdf" target="_blank">this document</a>).
 </p>
-<p>Differences for the individual league are noted as they arise.</p>
 <p><b>If something goes wrong</b> please see <a href="#wrong">here</a>.</p>
 <h2>Standard Even Games</h2>
 <p>Games should be played with the following parameters on KGS
@@ -103,26 +100,24 @@ may have to click the button next to his name to get the colours right.</p>
 EOT;
 	if ($hdiv <= $md)
 		print <<<EOT
-<h2>Team League Divisions $hdiv and below</h2>
+<h2>League Divisions $hdiv and below</h2>
 <p>These divisions may have handicap games where the player strengths are sufficiently
 different, otherwise they should be even as described above.
 Please try to stick to the colours as they are assigned WBW or BWB to boards 1 to 3
 regardless of strengths (wherever this is possible). One player
 may have to click the button next to his name to get the colours right.</p>
 </p>
-<p>Games in the Individual League are always played without handicaps.</p>
 EOT;
 }
 else {
 	print <<<EOT
-<p>All divisions in the team league may have handicap games
+<p>All divisions in the league may have handicap games
 where the player strengths are sufficiently
 different, otherwise they should be even as described above.
 Please try to stick to the colours as they are assigned WBW or BWB to boards 1 to 3
 regardless of strengths (wherever this is possible). One player
 may have to click the button next to his name to get the colours right.</p>
 
-<p>All games in the Individual League are played without handicaps, however.</p>
 EOT;
 }
 if ($hdiv <= $md) {
@@ -163,19 +158,6 @@ phcp($hred, 19);
 responsibility to make sure that his/her rank is set correctly (each player can adjust his/her own rank). The players
 should be prepared to adjust the handicap before the start of the game if they know it is too much or too little to make
 the games as fair as possible.</p>
-<h2>The Individual League</h2>
-<p>Games in the individual league are always played without handicaps regardless of the players'
-strengths. Colours should be accepted according to whatever the server proposes and the game
-and result entered later.
-</p>
-<p>Games are "self-pairing". To start a game in the Individual League, post a game in the
-KGS British Room with the rules and time controls as given above with the title
-<b>BGA Individual League Division X</b>, where X is your division. You should accept
-any challenge from someone in your division, but preferring people you have played less
-often if a choice arises. Try not to play the same person more than once a week and
-certainly not more than once a day.</p>
-<p>One of the players, usually the winner, should enter the details of the game and
-the result as soon as possible afterwards.</p>
 <h2>General points</h2>
 <p>We suggest a "Free Game" as the KGS handicaps are ignored and in some cases wildly different
 strength players meet with non-standard handicaps
@@ -246,7 +228,7 @@ colours, but please don't make a habit of this.</p>
 else, but report the matter to an admin person for him/her to correct.</p>
 <h1>Ordering of league tables</h1>
 <p>To clarify how the league tables are ordered, the rules are as follows:</p>
-<h2>Team League</h2>
+<h2>League Table ordering</h2>
 <ul>
 <?php
 print <<<EOT
@@ -276,10 +258,6 @@ some credit to matches actually completed even if they are lost.</p>
 too seriously in the early parts of the season.</p>
 <p>Towards the end of the season, we try to encourage teams to complete matches
 and may mark games as drawn or defaulted by one side as appropriate.</p>
-<h2>Individual League</h2>
-<p>For the individual league, each game is a separate match. We use the parameters for
-matches played, won, drawn or lost shown above for the team league. So players who play
-a reasonable number of games and win a good proportion will do well in the rankings.</p>
 </div>
 </div>
 </body>

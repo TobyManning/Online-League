@@ -101,23 +101,23 @@ foreach ($unpaid_teams as $team)  {
 // Likewise get list of unpaid indiv league players
 
 $unpaid_il = array();
-$ret = mysql_query("select first,last from player where ildiv!=0 and ilpaid=0 order by last,first");
-if ($ret) {
-	while ($row = mysql_fetch_array($ret))  {
-		$f = $row[0];
-		$l = $row[1];
-		if (isset($pend_indiv["$f $l"]))		// Cream out "pending" players
-			continue;
-		$pl = new Player($f, $l);
-		$pl->fetchdets();
-		$pl->ILsubs = 10;
-		if (!$pl->BGAmemb)  {
-			$pl->fetchclub();
-			if (!$pl->Club->Schools)
-				$pl->ILsubs = 15;
-		}
-		array_push($unpaid_il, $pl);
-	}
+//$ret = mysql_query("select first,last from player where ildiv!=0 and ilpaid=0 order by last,first");
+//if ($ret) {
+//	while ($row = mysql_fetch_array($ret))  {
+//		$f = $row[0];
+//		$l = $row[1];
+//		if (isset($pend_indiv["$f $l"]))		// Cream out "pending" players
+//			continue;
+//		$pl = new Player($f, $l);
+//		$pl->fetchdets();
+//		$pl->ILsubs = 10;
+//		if (!$pl->BGAmemb)  {
+//			$pl->fetchclub();
+//			if (!$pl->Club->Schools)
+//				$pl->ILsubs = 15;
+//		}
+//		array_push($unpaid_il, $pl);
+//	}
 }
 
 ?>

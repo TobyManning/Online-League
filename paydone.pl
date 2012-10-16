@@ -45,14 +45,14 @@ while (@row = $sfh->fetchrow_array) {
 	print "$nam\t$cf $cl\t$em\n";
 }
 
-print "\nIndividual league players not paid yet + email\n\n";
+#print "\nIndividual league players not paid yet + email\n\n";
 
-$sfh = $Database->prepare("SELECT first,last FROM player WHERE ildiv>0 AND ilpaid=0 ORDER BY last,first");
-$sfh->execute;
-while (@row = $sfh->fetchrow_array)  {
-	my ($f,$l) = @row;
-	my $em = '(none)';
-	$em = $Emails{"$f $l"} if defined $Emails{"$f $l"};
-	print "$f $l\t$em\n";
-}
+#$sfh = $Database->prepare("SELECT first,last FROM player WHERE ildiv>0 AND ilpaid=0 ORDER BY last,first");
+#$sfh->execute;
+#while (@row = $sfh->fetchrow_array)  {
+#	my ($f,$l) = @row;
+#	my $em = '(none)';
+#	$em = $Emails{"$f $l"} if defined $Emails{"$f $l"};
+#	print "$f $l\t$em\n";
+#}
 select STDOUT;
