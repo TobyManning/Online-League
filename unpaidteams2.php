@@ -46,7 +46,7 @@ foreach ($tar as $t) {
 	$lookup[$t] = 1;
 }
 $teams = array();
-$ret = mysql_query("select name from team where paid=0 order by divnum,name");
+$ret = mysql_query("select name from team where paid=0 and playing!=0 order by divnum,name");
 if (!$ret || mysql_num_rows($ret) == 0)  {
 	$mess = "Trouble fetching teams";
 	include 'php/dataerror.php';
