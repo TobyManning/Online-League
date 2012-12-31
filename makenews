@@ -11,6 +11,8 @@ use XML::LibXML;
 use DBD::mysql;
 use Time::Local;
 
+exit 0 if -e "norssrun";
+
 $Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
 
 $doc = XML::LibXML::Document->createDocument;

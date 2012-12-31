@@ -69,6 +69,12 @@ Team captains can assign teams and update results on the matches selection.</p>
 <td><a href="manualpay.php" class="memb" title="Record cheque payment">Manual payment</a></td>
 <td><a href="adjparam.php" class="memb" title="Adjust system parameters">Adjust parameters</a></td>
 </tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="cronadj.php" class="memb" title="Cron settings">Adjust cron settings</a></td>
+</tr>
 </table>
 </div>
 </div>

@@ -1,5 +1,7 @@
 #! /usr/bin/perl
 
+exit 0 if -e "/var/www/onlineleague/nopayreminder";
+
 use DBD::mysql;
 $Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
 
