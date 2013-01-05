@@ -50,7 +50,7 @@ under <a href="playing.php" title="Read description of rules and instructions fo
 <h2>Joining</h2>
 <p>We are now taking entries for the 2013 league season, which will get under way hopefully at the beginning of March 2013.
 Please hurry to contact us at online-league AT britgo DOT org if you want to join.</p>
-<p>Don't forget we allow teams to consist of players from all of the country, so if you know isolated Go players in some
+<p>Don't forget we allow teams to consist of players from all over the country, so if you know isolated Go players in some
 far-flung regions, you can include them now!</p>
 </div>
 </div>
