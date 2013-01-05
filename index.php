@@ -31,17 +31,15 @@ include 'php/nav.php'; ?>
 <img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
 <p>Congratulations to the <b>Edinburgh</b> team (Manja Marz, Martha McGill, Boris Mitrovic, Yanzhao Zhang and Rob Payne)
 on winning the fourth season championship of the online team league, narrowly defeating the 2011 winners, Central London Go Club A.</p>
-<h1>Winning teams to date</h1>
+<h2>Winning teams to date</h2>
 <p>The following are the winning teams to date:</p>
-<div align="center">
-<table>
+<table cellpadding="2" cellspacing="2">
 <tr><th>Season</th><th>Winner</th></tr>
 <tr><td>October 2009 to February 2010</td><td>Cambridge</td></tr>
 <tr><td>May to December 2010</td><td>Dundee</td></tr>
 <tr><td>All of 2011</td><td>Central London Go Club A</td></tr>
 <tr><td>All of 2012</td><td>Edinburgh</td></tr>
 </table>
-</div>
 <p>You can see the current league standings and historical records using the menu items to the left, together with historical records.
 In the majority of cases you can download and review the actual games.</p>
 <h2>Information</h2>
@@ -52,6 +50,8 @@ under <a href="playing.php" title="Read description of rules and instructions fo
 <h2>Joining</h2>
 <p>We are now taking entries for the 2013 league season, which will get under way hopefully at the beginning of March 2013.
 Please hurry to contact us at online-league AT britgo DOT org if you want to join.</p>
+<p>Don't forget we allow teams to consist of players from all of the country, so if you know isolated Go players in some
+far-flung regions, you can include them now!</p>
 </div>
 </div>
 <div id="Footer">
