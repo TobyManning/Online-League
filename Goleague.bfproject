@@ -51,7 +51,7 @@ searchlist: urlof
 spell_lang: en
 snr_escape_chars: 0
 view_blockstack: 1
-htmlbar_notebooktab: 6
+htmlbar_notebooktab: 3
 last_filefilter: 
 spell_insert_entities: 0
 spell_check_default: 0
@@ -65,18 +65,19 @@ files: /home/jmc/src/Websites/goleague/update.sh
 files: /home/jmc/src/Websites/goleague/admin.php
 files: /home/jmc/src/Websites/goleague/unpaidteams.php
 files: /home/jmc/src/Websites/goleague/unpaidteams2.php
+files: /home/jmc/src/Websites/goleague/index.php
 snr_replacetype: 0
-recent_files: file:///home/jmc/src/Websites/goleague/unpaidteams2.php
-recent_files: file:///home/jmc/src/Websites/goleague/unpaidteams.php
+recent_files: file:///home/jmc/src/Websites/goleague/index.php
 recent_files: file:///home/jmc/src/Websites/goleague/admin.php
+recent_files: file:///home/jmc/src/Websites/goleague/unpaidteams.php
+recent_files: file:///home/jmc/src/Websites/goleague/adjparam.php
 recent_files: file:///home/jmc/src/Websites/goleague/update.sh
+recent_files: file:///home/jmc/src/Websites/goleague/unpaidteams2.php
 recent_files: file:///home/jmc/src/Websites/goleague/paydone.pl
 recent_files: file:///home/jmc/src/Websites/goleague/makenews
-recent_files: file:///home/jmc/src/Websites/goleague/cronadj2.php
 recent_files: file:///home/jmc/src/Websites/goleague/cronadj.php
-recent_files: file:///home/jmc/src/Websites/goleague/adjparam.php
+recent_files: file:///home/jmc/src/Websites/goleague/cronadj2.php
 recent_files: file:///home/jmc/src/Websites/goleague/playing.php
-recent_files: file:///home/jmc/src/Websites/goleague/index.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/listppay.php
 recent_files: file:///home/jmc/src/Websites/goleague/payments.php
 recent_files: file:///home/jmc/src/Websites/goleague/pppayment.php

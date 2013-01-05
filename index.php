@@ -31,50 +31,28 @@ include 'php/nav.php'; ?>
 <img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
 <p>Congratulations to the <b>Edinburgh</b> team (Manja Marz, Martha McGill, Boris Mitrovic, Yanzhao Zhang and Rob Payne)
 on winning the fourth season championship of the online team league, narrowly defeating the 2011 winners, Central London Go Club A.</p>
-<p>The BGA League Tournament is a team tournament, with teams mostly taken from local Go clubs.
-The league runs throughout the calendar year.</p>
-<p>The purpose of the league is to encourage interaction between players in different areas of the country and to
-encourage online play amongst members of the BGA.</p>
-<h2>League format</h2>
-<p>The league is played in annual seasons starting in March and ending in December (with the last two months,
-November and December, being primarily reserved for "tie-break" matches).</p>
-<p>Teams comprise three or more players, with three players participating in any match.
-The teams are assigned to league divisions, with promotion of the top team and relegation
-of the bottom team after each season. Each season, teams play a round robin tournament within their league.</p>
-<p>New entrant teams are assigned to a division containing players of similar strength at the organisers'
-discretion.</p>
-<p>Games are played online, usually on the <a href="http://www.gokgs.com" target="_blank">KGS Go Server</a>
-in the "British Room".</p>
-<p>Most games are recorded and from time to time teachers and experts may provide reviews
-of games to assist player development.</p>
-<h2>Prizes</h2>
-<p>The champions of the top division in the league will win the League Tournament Shield,
-shown above and in addition for the first 5 years will receive three copies of the GoGoD Database
-and Encyclopaedia.</p>
-<p>Originally there was an Individual League, but this was discontinued in October 2012.
-We named the prizes for that the <i>Xinyi Lu Prize</i>, after
-Xinyi Lu, who whilst leading (and ultimately still winning) the division 2 in the first full season
-of the Individual Leauge, was tragically killed whilst on holiday in China in October 2011.</p>
-<p>The BGA Council wishes to express its gratitude to Games of Go on Disk
-for their generous donation of the online league shield and copies of the GoGoD CD.</p>
+<br clear="all" />
+<h1>Winning teams to date</h1>
+<p>The following are the winning teams to date:</p>
+<div align="center">
+<table>
+<tr><th>Season</th><th>Winner</th></tr>
+<tr><td>October 2009 to February 2010</td><td>Cambridge</td></tr>
+<tr><td>May to December 2010></td><td>Dundee</td></tr>
+<tr><td>All of 2011</td><td>Central London Go Club A</td></tr>
+<tr><td>All of 2012</td><td>Edinburgh</td></tr>
+</table>
+</div>
+<p>You can see the current league standings and historical records using the menu items to the left, together with historical records.
+In the majority of cases you can download and review the actual games.</p>
+<h2>Information</h2>
+<p>For more information about the league, please <a href="info.php" title="Give more information">go here</a>.</p>
 <h2>Rules</h2>
 <p>A full description of playing games is to be found
 under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
 <h2>Joining</h2>
 <p>We are now taking entries for the 2013 league season, which will get under way hopefully at the beginning of March 2013.
-If you would like to join it, either as an individual wanting to be assigned to a team, or a new team wanting to join,
-please let us know as soon as possible. Please contact the Online League coordinators at online-league AT britgo DOT org.</p>
-<p>Players wishing to captain a team must be members of the British Go Association,
-which can be joined <a href="http://www.britgo.org/join" target="_blank" title="Join the BGA">here</a>.
-In many cases the teams are attached to clubs, but there is no real restriction especially where there are insufficient players available,</p>
-<p>There are quite a few players in the BGA with no convenient local club to where they live and this can provide an opportunity for them
-to join in a BGA function on a regular basis.</p>
-<h2>Subscriptions</h2>
-<p>We charge &pound;15 per season for each team in the team league, together with
-an extra &pound;5 each non-BGA member in each team.</p>
-<p>You can see the current league standings and historical records using the menu items to the left, together with historical records.
-In the majority of cases you can download and review the actual games. For any further questions, please contact the Online League
-coordinators at online-league AT britgo DOT org.</p>
+Please hurry to contact us at online-league AT britgo DOT org if you want to join.</p>
 </div>
 </div>
 <div id="Footer">

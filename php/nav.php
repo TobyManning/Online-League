@@ -31,6 +31,7 @@ EOT;
 <img src="images/gohead12.gif" width="133" height="47" alt="BGA Logo" border="0" hspace="0" vspace="0"></a>
 <table>
 <tr><td><a href="index.php" title="Go to league home page">League Home</a></td></tr>
+<tr><td><a href="info.php" title="General Information">Information</a></td></tr>
 <tr><td><a href="playing.php" title="How to play in the leagues">Rules</a></td></tr>
 <tr><td><a href="news.php" title="Read about recent results and updates">News</a></td></tr>
 <tr><td><a href="clubs.php" title="View the list of clubs with members in the leagues">Clubs</a></td></tr>
