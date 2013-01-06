@@ -103,27 +103,33 @@ a.il:visited {
 }
 h1 {
 	text-align: center;
-	color: #B38F7D;
+	color: #5F3D2C;
+	font-size: 16pt;
 }
 h2 {
-	color: #B38F7D;
+	color: #5f3d2c;
+	font-size: 14pt;
 }
 h3 {
-	color: #B38F7D;
+	color: #5f2d2c;
+	font-size: 13pt;
 }
+
 body {
-	background-color: #FFFFB3;
+	background-color: #FFFFD3;
 	color: #000000;
 	text-align: justify;
 	font-size: 10pt;
 	line-height: 1.2;
 	height: 100%;
-   max-height: 100%;
-   margin: 0;
-   padding: 0;
-   border: 0;
-   overflow: hidden;
+	max-height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	font: helvetica,sans-serif;
 }
+
 body.il {
 	background-color: #C9F1C9;
 	text-align: justify;
@@ -136,6 +142,7 @@ body.il {
    padding: 0;
    border: 0;
    overflow: hidden;
+   font: helvetica,sans-serif;
 }
 #Nav {
     position: absolute;
