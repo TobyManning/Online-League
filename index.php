@@ -29,6 +29,7 @@ $hasfoot = true;
 include 'php/nav.php'; ?>
 <h1>BGA Online Leagues</h1>
 <img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
+<h2>Congratulations to the 2012 winners!</h2>
 <p>Congratulations to the <b>Edinburgh</b> team (Manja Marz, Martha McGill, Boris Mitrovic, Yanzhao Zhang and Rob Payne)
 on winning the fourth season championship of the online team league, narrowly defeating the 2011 winners, Central London Go Club A.</p>
 <h2>Winning teams to date</h2>
