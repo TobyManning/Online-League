@@ -104,15 +104,15 @@ a.il:visited {
 h1 {
 	text-align: center;
 	color: #5F3D2C;
-	font-size: 16pt;
+	font-size: 18pt;
 }
 h2 {
 	color: #5f3d2c;
-	font-size: 14pt;
+	font-size: 16pt;
 }
 h3 {
 	color: #5f2d2c;
-	font-size: 13pt;
+	font-size: 14pt;
 }
 
 body {
@@ -127,7 +127,7 @@ body {
 	padding: 0;
 	border: 0;
 	overflow: hidden;
-	font: helvetica,sans-serif;
+	font: "Helvetica Black",Arial,sans-serif;
 }
 
 body.il {
@@ -142,7 +142,7 @@ body.il {
    padding: 0;
    border: 0;
    overflow: hidden;
-   font: helvetica,sans-serif;
+   font: "Helvetica Black",Arial,sans-serif;
 }
 #Nav {
     position: absolute;

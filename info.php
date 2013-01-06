@@ -26,6 +26,7 @@ include 'php/head.php';
 <script language="javascript" src="webfn.js"></script>
 <?php include 'php/nav.php'; ?>
 <h1>Information about the league</h1>
+<h2>Organisation</h2>
 <p>The BGA League Tournament is a team tournament, played online over the course of each year, almost entirely on the
 <a href="http://www.gokgs.com" target="_blank">KGS Go Server</a> and in the "British Room".</p>
 <p>The purpose of the league is to encourage interaction between players in different areas of the country and to
@@ -45,13 +46,14 @@ counterpart in the opposing team at a time to suit the players concerned.</p>
 <p>Most games are recorded and from time to time teachers and experts may provide reviews
 of games to assist player development. From time to time reviews of games may appear
 in the <i>British Go Journal</i>.</p>
-<h2>Rules</h2>
-<p>A full description of playing games is to be found
-under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
 <h2>Joining</h2>
 <p>We are now taking entries for the 2013 league season, which will get under way hopefully at the beginning of March 2013.
 If you would like to join it, either as an individual wanting to be assigned to a team, or a new team wanting to join,
 please let us know as soon as possible. Please contact the Online League coordinators at online-league AT britgo DOT org.</p>
+<h2>Rules</h2>
+<p>A full description of playing games is to be found
+under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
+
 <p>Players wishing to captain a team must be members of the British Go Association,
 which can be joined <a href="http://www.britgo.org/join" target="_blank" title="Join the BGA">here</a>.
 <h2>Subscriptions</h2>

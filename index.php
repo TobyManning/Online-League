@@ -44,14 +44,14 @@ on winning the fourth season championship of the online team league, narrowly de
 In the majority of cases you can download and review the actual games.</p>
 <h2>Information</h2>
 <p>For more information about the league, please <a href="info.php" title="Give more information">go here</a>.</p>
-<h2>Rules</h2>
-<p>A full description of playing games is to be found
-under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
 <h2>Joining</h2>
 <p>We are now taking entries for the 2013 league season, which will get under way hopefully at the beginning of March 2013.
 Please hurry to contact us at online-league AT britgo DOT org if you want to join.</p>
 <p>Don't forget we allow teams to consist of players from all over the country, so if you know isolated Go players in some
 far-flung regions, you can include them now!</p>
+<h2>Rules</h2>
+<p>A full description of playing games is to be found
+under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
 </div>
 </div>
 <div id="Footer">
