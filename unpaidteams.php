@@ -48,12 +48,11 @@ if (!$ret || mysql_num_rows($ret) == 0)  {
 	print <<<EOT
 <p>There does not seem to be any team which has not paid.</p>
 <p>Please <a href="javascript:history.back()">click here</a> to go back.</p>
-</body>
-</html>
+
 EOT;
-	exit(0);
 }
-?>
+else  {
+	print <<<EOT
 <form name="mailform" action="unpaidteams2.php" method="post" enctype="application/x-www-form-urlencoded">
 <table class="teamsb">
 <tr>
@@ -62,12 +61,13 @@ EOT;
 	<th>Full Name</th>
 	<th>Captain</th>
 </tr>
-<?php
-$num = 0;
-while ($row = mysql_fetch_array($ret))  {
-	$team = new Team($row[0]);
-	$team->fetchdets();
-	print <<<EOT
+
+EOT;
+	$num = 0;
+	while ($row = mysql_fetch_array($ret))  {
+		$team = new Team($row[0]);
+		$team->fetchdets();
+		print <<<EOT
 <tr>
 <td><input type="checkbox" name="tnum[]" value="$num" checked></td>
 <td>{$team->display_name()}</td>
@@ -75,15 +75,19 @@ while ($row = mysql_fetch_array($ret))  {
 <td>{$team->display_captain()}</td>
 </tr>
 EOT;
-	$num++;
-}
-?>
+		$num++;
+	}
+	print <<<EOT
 </table>
 <p>Reply to:<input type="text" name="emailrep"></p>
 <textarea name="messagetext" rows="10" cols="40"></textarea>
 <br clear="all">
 <input type="submit" name="submit" value="Submit message">
 </form>
+
+EOT;
+}
+?>
 <h2>Set all teams as unpaid</h2>
 <p>At the start of the season, you will want to set all teams as not having paid.
 If you want to do this now, <a href="setunpaid.php">click here</a>.

@@ -51,7 +51,7 @@ searchlist: urlof
 spell_lang: en
 snr_escape_chars: 0
 view_blockstack: 1
-htmlbar_notebooktab: 1
+htmlbar_notebooktab: 8
 last_filefilter: 
 spell_insert_entities: 0
 spell_check_default: 0
@@ -62,9 +62,10 @@ files: /home/jmc/src/Websites/goleague/playing.php
 files: /home/jmc/src/Websites/goleague/php/nav.php
 files: /home/jmc/src/Websites/goleague/index.php
 snr_replacetype: 0
+recent_files: file:///home/jmc/src/Websites/goleague/playing.php
 recent_files: file:///home/jmc/src/Websites/goleague/index.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
-recent_files: file:///home/jmc/src/Websites/goleague/playing.php
+recent_files: file:///home/jmc/src/Websites/goleague/info.php
 recent_files: file:///home/jmc/src/Websites/goleague/bgaleague-style.css
 recent_files: file:///home/jmc/src/Websites/goleague/unpaidteams2.php
 recent_files: file:///home/jmc/src/Websites/goleague/unpaidteams.php
@@ -76,7 +77,6 @@ recent_files: file:///home/jmc/src/Websites/goleague/cronadj2.php
 recent_files: file:///home/jmc/src/Websites/goleague/cronadj.php
 recent_files: file:///home/jmc/src/Websites/goleague/adjparam.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/listppay.php
-recent_files: file:///home/jmc/src/Websites/goleague/payments.php
 charmap_block: 1
 e2c.convert_iso: 0
 enable_syntax_scan: 1
