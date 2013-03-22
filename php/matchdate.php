@@ -148,7 +148,7 @@ class Matchdate {
 		$dat = getdate($this->timestamp);
 		$yrsel = $dat["year"];
 		print "<select name=\"year\">\n";	
-		for ($i = 2009;  $i <= 2012;  $i++) {
+		for ($i = 2009;  $i <= 2030;  $i++) {
 			if ($i == $yrsel)
 				print "<option selected>$i</option>\n";
 			else
