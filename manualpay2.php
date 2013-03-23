@@ -107,7 +107,7 @@ try {
 			include 'php/dataerror.php';
 			exit(0);
 		}
-		$team->updpaid(true);
+		$team->setpaid(true);
 	}
 	else  {
 		$pplayer = new Player($first, $last);
