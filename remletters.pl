@@ -69,7 +69,7 @@ for my $team (sort keys %Teamlist)  {
 	my @nbga = map { "$_->{FIRST} $_->{LAST}"; } @$nonbga;
 	my $Tvars = { CAPTFIRST => $teamdets->{CAPTFIRST}, CAPTLAST => $teamdets->{CAPTLAST}, EMAIL => $teamdets->{EMAIL}, TEAM => $team,
 						NUMNON => $numnon, NONBGA => \@nbga , AMOUNT => $price , YEAR => $YEAR , GAMES => $teamdets->{GAMES}};
-	open(MF, "|sendmail -i -t");
+	open(MF, "|/usr/sbin/sendmail -i -t");
 	$TT->process($tfile, $Tvars, \*MF);
 	close MF;
 }
