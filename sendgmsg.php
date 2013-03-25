@@ -26,49 +26,39 @@ include 'php/player.php';
 try {
         $player = new Player();
         $player->fromid($userid);
+        $recip = new Player();
+		  $recip->fromsel($_POST["recip"]);
+		  $recip->fetchdets();
 }
 catch (PlayerException $e) {
         $mess = $e->getMessage();
         include 'php/wrongentry.php';
         exit(0);
 }
+$subj = $_POST["subject"];
+$msgt = $_POST["mcont"];
+$qfrom = mysql_real_escape_string($player->Userid);
+$qto = mysql_real_escape_string($recip->Userid);
+$qsubj = mysql_real_escape_string($subj);
+$qmsgt = mysql_real_escape_string($msgt);
+mysql_query("insert into message (fromuser,touser,created,subject,contents) values ('$qfrom','$qto',now(),'$qsubj','$qmsgt')");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Qun = htmlspecialchars($username);
 $Sun = mysql_real_escape_string($userid);
-$Title = "Compose a message";
+$Title = "Message Sent";
 include 'php/head.php';
 ?>
 <body>
-<?php include 'php/nav.php'; ?>
-<h1>Compose a message</h1>
-<p>Use this form to generate a message on the internal message board
-visible to a user when he/she next logs in.</p>
-<p>Do not use this form to arrange games for matches, instead use the messages
-page and select the game in question.</p>
-<form action="sendgmsg.php" method="post" enctype="application/x-www-form-urlencoded">
-<p>Send the message to:
-<select name="recip">
-<?php
-$pllist = list_players();
-foreach ($pllist as $pl) {
-	$pl->fetchdets();
-	print <<<EOT
-<option value="{$pl->selof()}">{$pl->display_name(false)}</option>
+<?php include 'php/nav.php';
+print <<<EOT
+<h1>Message Sent</h1>
+<p>I believe your message was sent OK to {$recip->display_name()}.</p>
 
 EOT;
-}
 ?>
-</select></p>
-<p>Subject: <input type="text" name="subject" size="40" /></p>
-<p>Message:</p>
-<br clear="all" />
-<textarea name="mcont" rows="20" cols="60"></textarea>
-<br clear="all" />
-<p>Then <input type="submit" value="Send Message" /> when ready.</p>
-</form>
 </div>
 </div>
 </body>
