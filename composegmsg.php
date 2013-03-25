@@ -65,7 +65,9 @@ EOT;
 <p>Subject: <input type="text" name="subj" size="60" /></p>
 <p>Message:</p>
 <br clear="all" />
+<div align="left">
 <textarea name="mcont" rows="20" cols="60"></textarea>
+</div>
 <br clear="all" />
 <p>Then <input value="Send Message" type="submit" /> when ready.</p>
 </form>
