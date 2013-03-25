@@ -70,7 +70,7 @@ EOT;
 			$pre = "<strong>";
 			$post = "</strong>";			
 		}
-		if  (preg_match($cr, "/(\d+)-(\d+)-(\d+)\s+(\d+):(\d+):(\d+)", $matches))  {
+		if  (preg_match($cr, "/(\d+)-(\d+)-(\d+)\s+(\d+):(\d+):(\d+)/", $matches))  {
 			$dat = $matches[3] . '/' . $matches[2] . '/' . $matches[1];
 			$tim = $matches[4] . ':' . $matches[5] . ':' . $matches[6];
 		}
@@ -79,7 +79,7 @@ EOT;
 		}
 		print <<<EOT
 <tr>
-	<td>$pre{$fu->display_name()}$post</td>
+	<td>$pre{$fp->display_name()}$post</td>
 	<td>$pre$dat$post</td>
 	<td>$pre$tim$post</td>
 	<td><a href="dispmessage.php?mi=$ind">$pre$qsubj$post</a></td>
