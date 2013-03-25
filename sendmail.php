@@ -18,6 +18,7 @@
 
 include 'php/session.php';
 include 'php/checklogged.php';
+include 'php/opendatabase.php';
 include 'php/rank.php';
 include 'php/player.php';
 include 'php/club.php';
