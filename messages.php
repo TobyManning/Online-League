@@ -53,6 +53,7 @@ else  {
 	<th>From</th>
 	<th>Date</th>
 	<th>Time</th>
+	<th>Game</th>
 	<th>Subject</th>
 EOT;
 	while ($row = mysql_fetch_assoc($ret))  {
@@ -77,11 +78,13 @@ EOT;
 		else {
 			$dat = $tim = $cr;
 		}
+		$ag = $gid == 0? "Other": "About game";
 		print <<<EOT
 <tr>
 	<td>$pre{$fp->display_name()}$post</td>
 	<td>$pre$dat$post</td>
 	<td>$pre$tim$post</td>
+	<td>$pre$ag$post</td>
 	<td><a href="dispmessage.php?mi=$ind">$pre$qsubj$post</a></td>
 </tr>
 
