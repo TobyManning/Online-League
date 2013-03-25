@@ -56,7 +56,7 @@ $pllist = list_players();
 foreach ($pllist as $pl) {
 	$pl->fetchdets();
 	print <<<EOT
-<option value="{$pl->selof()}>{$pl->display_name(false)}</option>
+<option value="{$pl->selof()"}>{$pl->display_name(false)}</option>
 
 EOT;
 }
@@ -65,9 +65,7 @@ EOT;
 <p>Subject: <input type="text" name="subject" size="60" /></p>
 <p>Message:</p>
 <br clear="all" />
-<div align="left">
 <textarea name="mcont" rows="20" cols="60"></textarea>
-</div>
 <br clear="all" />
 <p>Then <input type="submit" value="Send Message" /> when ready.</p>
 </form>
