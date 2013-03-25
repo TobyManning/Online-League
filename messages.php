@@ -20,6 +20,10 @@ include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
 include 'php/player.php';
+include 'php/team.php';
+include 'php/match.php';
+include 'php/matchdate.php';
+include 'php/game.php';
 
 try {
         $player = new Player();
@@ -136,10 +140,6 @@ pending games.</p>
 </tr>
 
 EOT;
-	foreach ($osgames as $g) {
-		$hcp = hcp_message($g, $pars);
-		if (!$hcp)
-			$hcp = "None";
 		print <<<EOT
 <tr>
 <td>{$g->Wplayer->display_name()}</td>
