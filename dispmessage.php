@@ -46,7 +46,7 @@ if  (!preg_match('/^\d+$/', $messid))  {
 	exit(0);
 }
 
-$ret = mysql_query("select fromuser,created,gameind,subject,hasread,contents from message where ind=$messid");
+$ret = mysql_query("select fromuser,created,gameind,subject,hasread,content from message where ind=$messid");
 if  (!$ret || mysql_num_rows($ret) == 0)  {
 	$mess = "Could not find message $messid";
 	include 'php/wrongentry.php';
@@ -117,7 +117,7 @@ print <<<EOT
 </tr>
 <tr>
 	<td><strong>Sent:</strong</td>
-	<td>$date at $tim</td>
+	<td>$dat at $tim</td>
 </tr>
 <tr>
 	<td><strong>Subject:</strong</td>
