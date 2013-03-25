@@ -67,7 +67,7 @@ EOT;
 <br clear="all" />
 <textarea name="mcont" rows="20" cols="60"></textarea>
 <br clear="all" />
-<p>Then <button name="sendit" value="Send Message" type="submit"></button> when ready.</p>
+<p>Then <input value="Send Message" type="submit" /> when ready.</p>
 </form>
 </div>
 </div>
