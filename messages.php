@@ -44,10 +44,11 @@ include 'php/head.php';
 print "<h1>Messages for $Qun</h1>\n";
 $ret = mysql_query("select fromuser,created,gameind,subject,hasread,ind from message where touser='$Sun' order by created,subject");
 if (!$ret || mysql_num_rows($ret) == 0)  {
-	print "No pending messages for $Qun\n";
+	print "<p>No received messages for $Qun.</p>\n";
 }
 else  {
 	print <<<EOT
+<p>The following messages have been received for $Qun.</p>
 <table class="resultsb">
 <tr>
 	<th>From</th>
@@ -91,6 +92,69 @@ EOT;
 EOT;
 	}
 	print "</table>\n";
+}
+?>
+<h1>Outstanding games</h1>
+<?php
+
+// Now for user's games
+
+$osgames = array();
+$ret = mysql_query("select ind from game where result='N' and (({$player->queryof('w')}) or ({$player->queryof('b')})) order by matchdate");
+if ($ret && mysql_num_rows($ret) > 0)  {
+	while ($row = mysql_fetch_array($ret))  {
+		try {
+			$g = new Game($row[0]);
+			$g->fetchdets();
+			if (!$g->Wteam || !$g->Bteam)
+				continue;
+			array_push($osgames, $g);
+		}
+		catch (GameException $e) {
+			continue;
+		}
+	}
+}
+if (count($osgames) == 0)
+	print <<<EOT
+<p>You currently do not have any outstanding games to play.</p>
+
+EOT;
+else  {
+	print <<<EOT
+<p>You might want to send a message about one of the following
+pending games.</p>
+<table class="showmatch">
+<tr>
+<th colspan="4" align="center">White</th>
+<th colspan="4" align="center">Black</th></tr>
+<tr>
+<th>Player</th>
+<th>Team</th>
+<th>Player</th>
+<th>Message</th>
+</tr>
+
+EOT;
+	foreach ($osgames as $g) {
+		$hcp = hcp_message($g, $pars);
+		if (!$hcp)
+			$hcp = "None";
+		print <<<EOT
+<tr>
+<td>{$g->Wplayer->display_name()}</td>
+<td>{$g->Wteam->display_name()}</td>
+<td>{$g->Bplayer->display_name()}</td>
+<td>{$g->Bteam->display_name()}</td>
+<td><a href="composemsg.php?{$g->urlof()}Send</a></td>
+</tr>
+
+EOT;
+	}
+	print <<<EOT
+</table>
+
+EOT;
 }
 ?>
 </div>
