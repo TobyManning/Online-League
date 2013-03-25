@@ -101,8 +101,11 @@ class Team  {
 		return $this->Name == $tm->Name;
 	}
 	
-	public function display_name() {
-		return htmlspecialchars($this->Name);
+	public function display_name($displink = false) {
+		$ret = htmlspecialchars($this->Name);
+		if ($displink)
+			return "<a href=\"teamdisp.php?{$this->urlof()}\" class=\"name\" title=\"Show team\">$ret</a>";
+		return $ret;
 	}
 	
 	public function display_description() {

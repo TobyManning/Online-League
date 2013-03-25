@@ -74,6 +74,29 @@ if (strlen($pnotes) != 0)
 
 EOT;
 
+$ret = mysql_query("select teamname from teammemb where {$player->queryof('tm')} order by teamname");
+if  ($ret && mysql_num_rows($ret) > 0)  {
+	print <<<EOT
+<h2>Team Membership</h2>
+
+<p>$Name is in the following:</p>
+<table class="resultsb">
+
+EOT;
+	while ($row = mysql_fetch_array($ret))  {
+		$team = new Team($row[0]);
+		$team->fetchdets();
+		print "<tr><td>{$team->display_name(true)}</td></tr>\n";
+	}
+	print <<<EOT
+</table>
+
+EOT;
+}
+else {
+	print "<p>$Name is not in any teams.</p>\n";
+}
+
 $total_games = $player->played_games();
 $current_games = $player->played_games(true);
 if ($total_games == 0)  {
