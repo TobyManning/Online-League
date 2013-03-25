@@ -70,7 +70,7 @@ EOT;
 			$pre = "<strong>";
 			$post = "</strong>";			
 		}
-		if  (preg_match($cr, "/(\d+)-(\d+)-(\d+)\s+(\d+):(\d+):(\d+)/", $matches))  {
+		if  (preg_match("/(\d+)-(\d+)-(\d+)\s+(\d+):(\d+):(\d+)/", $cr, $matches))  {
 			$dat = $matches[3] . '/' . $matches[2] . '/' . $matches[1];
 			$tim = $matches[4] . ':' . $matches[5] . ':' . $matches[6];
 		}
