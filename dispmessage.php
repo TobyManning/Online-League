@@ -46,7 +46,7 @@ if  (!preg_match('/^\d+$/', $messid))  {
 	exit(0);
 }
 
-$ret = mysql_query("select fromuser,created,gameind,subject,hasread,content from message where ind=$messid");
+$ret = mysql_query("select fromuser,created,gameind,subject,hasread,contents from message where ind=$messid");
 if  (!$ret || mysql_num_rows($ret) == 0)  {
 	$mess = "Could not find message $messid";
 	include 'php/wrongentry.php';
@@ -59,7 +59,7 @@ $gid = $row["gameind"];
 $subj = $row["subject"];
 $hsubj = htmlspecialchars($subj);
 $hasr = $row["hasread"];
-$cont = $row["content"];
+$cont = $row["contents"];
 try {
 	$fp = new Player();
 	$fp->fromid($fu);
