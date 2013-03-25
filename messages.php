@@ -140,6 +140,7 @@ pending games.</p>
 </tr>
 
 EOT;
+	foreach ($osgames as $g) {
 		print <<<EOT
 <tr>
 <td>{$g->Wplayer->display_name()}</td>
@@ -151,7 +152,7 @@ EOT;
 
 EOT;
 	}
-	print <<<EOT
+print <<<EOT
 </table>
 
 EOT;
