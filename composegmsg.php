@@ -50,7 +50,7 @@ visible to a user when he/she next logs in.</p>
 page and select the game in question.</p>
 <form action="sendgmsg.php" method="post" enctype="application/x-www-form-urlencoded">
 <p>Send the message to:
-<select name="recip" size="1">
+<select name="recip">
 <?php
 $pllist = list_players();
 foreach ($pllist as $pl) {
@@ -62,14 +62,14 @@ EOT;
 }
 ?>
 </select></p>
-<p>Subject: <input type="text" name="subj" size="60" /></p>
+<p>Subject: <input type="text" name="subject" size="60" /></p>
 <p>Message:</p>
 <br clear="all" />
 <div align="left">
 <textarea name="mcont" rows="20" cols="60"></textarea>
 </div>
 <br clear="all" />
-<p>Then <input value="Send Message" type="submit" /> when ready.</p>
+<p>Then <input type="submit" value="Send Message" /> when ready.</p>
 </form>
 </div>
 </div>
