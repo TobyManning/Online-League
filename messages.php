@@ -147,7 +147,7 @@ EOT;
 <td>{$g->Wteam->display_name()}</td>
 <td>{$g->Bplayer->display_name()}</td>
 <td>{$g->Bteam->display_name()}</td>
-<td><a href="composemsg.php?{$g->urlof()}Send</a></td>
+<td><a href="composemsg.php?{$g->urlof()}">Send</a></td>
 </tr>
 
 EOT;
@@ -158,6 +158,9 @@ print <<<EOT
 EOT;
 }
 ?>
+<h1>General message</h1>
+<p>If you want to send someone a new message about any subject,
+<a href="composegmsg.php">Click Here</a>.</p>
 </div>
 </div>
 </body>
