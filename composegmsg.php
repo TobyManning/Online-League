@@ -56,7 +56,7 @@ $pllist = list_players();
 foreach ($pllist as $pl) {
 	$pl->fetchdets();
 	print <<<EOT
-<option value="{$pl->selof()"}>{$pl->display_name(false)}</option>
+<option value="{$pl->selof()}">{$pl->display_name(false)}</option>
 
 EOT;
 }
