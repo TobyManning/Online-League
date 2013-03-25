@@ -7,6 +7,15 @@ a.memb:link {
 a.memb:visited {
 	color: #D53B3B;
 }
+a.message:active {
+	color: #3333FF;
+}
+a.message:link {
+	color: #3333FF;
+}
+a.message:visited {
+	color: #3333FF;
+}
 a.news:active {
 	font-weight: bolder;
 	color: #F01EBE;

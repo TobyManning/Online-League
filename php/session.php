@@ -35,4 +35,16 @@ else {
 	$admin = false;
 	$logged_in = false;
 }
+
+function num_unread_msgs() {
+	global $userid;
+	if (strlen($userid) == 0)
+		return 0;
+	$quser = mysql_real_escape_string($userid);
+	$ret = mysql_query("select count(*) from message where touser='$quser' and hasread=0");
+	if (!$ret || mysql_num_rows($ret) == 0)
+		return 0;
+	$row = mysql_fetch_array($ret);
+	return $row[0] + 0;
+}
 ?>

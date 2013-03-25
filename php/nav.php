@@ -60,6 +60,25 @@ if ($logged_in) {
 EOT;
 	}
 	$qu = htmlspecialchars($username);
+	$nummsgs = num_unread_msgs();
+	if ($nummsgs == 0)  {
+		print <<<EOT
+<tr><td><a href="messages.php" title="Send and receive messages to/from opponents">Messages</a></td></tr>
+
+EOT;
+	}
+	elseif($nummsgs == 1) {
+		print <<<EOT
+<tr><td><a href="messages.php" class="message" title="Send and receive messages to/from opponents">1 Message</a></td></tr>
+
+EOT;
+	}
+	else  {
+		print <<<EOT
+<tr><td><a href="messages.php" class="message" title="Send and receive messages to/from opponents">$nummsgs Messages</a></td></tr>
+
+EOT;
+	}
 	print <<<EOT
 <tr><td><a href="osmatches.php" title="Display your outstanding games in team league">Outstanding</a></td></tr>
 <tr><td><a href="ownupd.php" title="Update your own account - rank etc">Update account</a></td></tr>
