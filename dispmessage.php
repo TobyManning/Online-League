@@ -185,6 +185,7 @@ if (!$sent)  {
 	$hsubj = htmlspecialchars($subj);
 	print <<<EOT
 <form action="sendreply.php" method="post" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="msgi" value="$messid" />
 <input type="hidden" name="mi" value="$mid" />
 <input type="hidden" name="gn" value="$gid" />
 <p>Subject: <input type="text" name="subject" value="$hsubj" size="40" /></p>
