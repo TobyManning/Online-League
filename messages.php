@@ -155,6 +155,7 @@ EOT;
 
 EOT;
 	}
+	print "</table>\n";
 }
 ?>
 <h1>Outstanding games</h1>
