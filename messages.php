@@ -90,7 +90,7 @@ EOT;
 	<td>$pre$tim$post</td>
 	<td>$pre$am$post</td>
 	<td>$pre$ag$post</td>
-	<td><a href="dispmessage.php?mi=$ind$fl">$pre$qsubj$post</a></td>
+	<td><a href="dispmessage.php?msgi=$ind$fl">$pre$qsubj$post</a></td>
 </tr>
 
 EOT;
@@ -157,9 +157,10 @@ include 'php/head.php';
 <body>
 <?php include 'php/nav.php';
 
-// List received messages
+// List received messages and sent messages.
 
 listmessages($userid, false);
+listmessages($userid, true);
 
 // List O/S matches for team captain if this player is such
 
@@ -260,7 +261,7 @@ EOT;
 <h1>General message</h1>
 <p>If you want to send someone a new message about any subject,
 <a href="composegmsg.php">Click Here</a>.</p>
-<?php listmessages($userid, true); ?>
+
 </div>
 </div>
 </body>

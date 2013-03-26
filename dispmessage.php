@@ -51,14 +51,15 @@ catch (PlayerException $e) {
 
 // Get message
 
-$messid = $_GET['mi'];
+$messid = $_GET['msgi'];
+$sent = isset($_GET['sent']);
 if  (!preg_match('/^\d+$/', $messid))  {
 	$mess = "Inappropriate message id $messid";
 	include 'php/wrongentry.php';
 	exit(0);
 }
 
-$ret = mysql_query("select fromuser,created,matchind,gameind,subject,hasread,contents from message where ind=$messid");
+$ret = mysql_query("select fromuser,touser,created,matchind,gameind,subject,hasread,contents from message where ind=$messid");
 if  (!$ret || mysql_num_rows($ret) == 0)  {
 	$mess = "Could not find message $messid";
 	include 'php/wrongentry.php';
@@ -66,6 +67,7 @@ if  (!$ret || mysql_num_rows($ret) == 0)  {
 }
 $row = mysql_fetch_assoc($ret);
 $fu = $row["fromuser"];
+$tu = $row["touser"];
 $cr = $row["created"];
 $mid = $row["matchind"];
 $gid = $row["gameind"];
@@ -76,12 +78,22 @@ $cont = $row["contents"];
 try {
 	$fp = new Player();
 	$fp->fromid($fu);
-	$okfrom = true;
 }
 catch (PlayerException $e) {
-	$okfrom = false;
+	$mess = "Unknown sender id $fu";
+	include 'php/wrongentry.php';
+	exit(0);
 }
-if (!$hasr)
+try {
+	$tp = new Player();
+	$tp->fromid($tu);
+}
+catch (PlayerException $e) {
+	$mess = "Unknown recipient id $tu";
+	include 'php/wrongentry.php';
+	exit(0);
+}
+if (!$hasr && !$sent)
 	mysql_query("update message set hasread=1 where ind=$messid");
 
 if  (preg_match("/(\d+)-(\d+)-(\d+)\s+(\d+):(\d+):(\d+)/", $cr, $matches))  {
@@ -136,7 +148,7 @@ print <<<EOT
 </tr>
 <tr>
 	<td><strong>To:</strong></td>
-	<td>{$player->display_name()}<td>
+	<td>{$tp->display_name()}<td>
 </tr>
 <tr>
 	<td><strong>Sent:</strong</td>
@@ -159,7 +171,30 @@ print <<<EOT
 </table>
 <p>$hcont</p>
 
+<h2>Delete message</h2>
+<p><a href="delmessage.php?msgi=$messid">Click here</a>If you want to delete this message.</p>
+
 EOT;
+
+// If it's a received message, offer the chance to reply  
+
+if (!$sent)  {
+	$subj = preg_replace("/^Re:\s*/i", "", $subj);
+	$subj = "Re: $subj";
+	$hsubj = htmlspecialchars($subj);
+	print <<<EOT
+<form action="sendreply.php" method="post" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="mi" value="$mid" />
+<input type="hidden" name="gn" value="$gid" />
+<p>Subject: <input type="text" name="subject" value="$hsubj" size="40" /></p>
+<p>Message:</p>
+<br clear="all" />
+<textarea name="mcont" rows="20" cols="60"></textarea>
+<br clear="all" />
+<p>Then <input type="submit" value="Send Reply" /> when ready.</p>
+</form>
+EOT;
+}
 ?>
 </div>
 </div>
