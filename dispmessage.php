@@ -137,7 +137,8 @@ if ($gid)  {
 EOT;
 }
 $hcont = htmlspecialchars($cont);
-$hcont = preg_replace("/\n\n+/", "</p>\n<p>", $hcont);
+$hcont = preg_replace("/(\r\n)+$/", "", $hcont);
+$hcont = preg_replace("/(\r?\n){2,}/", "</p>\n<p>", $hcont);
 print <<<EOT
 </table>
 <p>$hcont</p>
