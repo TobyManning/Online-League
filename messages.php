@@ -159,7 +159,7 @@ include 'php/head.php';
 
 // List received messages
 
-listmessages($userid, 'false');
+listmessages($userid, false);
 
 // List O/S matches for team captain if this player is such
 
