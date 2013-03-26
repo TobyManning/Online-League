@@ -294,6 +294,7 @@ function list_teams_captof($player) {
 			array_push($result, $team);
 		}
 	}
+	return $result;
 }
 
 function list_teams($div = 0, $order = "name", $pl = 1) {
