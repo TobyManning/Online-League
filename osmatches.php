@@ -47,17 +47,9 @@ catch (PlayerException $e) {
 }
 
 // Get the teams this player is captain of
-
-$captain_of = array();
-$ret = mysql_query("select name from team where {$player->queryof('capt')} order by name");
-try {
-	if ($ret and mysql_num_rows($ret) > 0)  {
-		while ($row = mysql_fetch_array($ret))  {
-			$team = new Team($row[0]);
-			$team->fetchdets();
-			array_push($captain_of, $team);
-		}
-	}
+	
+try {	
+	$captain_of = list_teams_captof($player);
 }
 catch (TeamException $e) {
 	$mess = $e->getMessage();

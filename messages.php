@@ -34,6 +34,43 @@ catch (PlayerException $e) {
         include 'php/wrongentry.php';
         exit(0);
 }
+
+// Get the teams this player is captain of
+	
+try {	
+	$captain_of = list_teams_captof($player);
+}
+catch (TeamException $e) {
+	$mess = $e->getMessage();
+	include 'php/wrongentry.php';
+	exit(0);
+}
+
+// Get matches we might want to send messages about.
+
+$capt_matches = array();
+if  (count($captain_of) != 0)  {
+
+	// Do each team in turn it's easier to code
+
+	foreach ($captain_of as $team) {
+		$ret = mysql_query("select ind from lgmatch where (result='N' or result='P') and ({$team->queryof('hteam')} or {$team->queryof('ateam')}) order by matchdate");
+		if ($ret && mysql_num_rows($ret) > 0)  {
+			while ($row = mysql_fetch_array($ret))  {
+				try {
+					$mtch = new Match($row[0]);
+					$mtch->fetchdets();
+					$mtch->fetchteams();
+					$mtch->fetchgames();
+					array_push($capt_matches, $mtch);
+				}
+				catch (MatchException $e) {
+					continue;
+				}
+			}
+		}
+	}	 
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -97,6 +134,28 @@ EOT;
 	}
 	print "</table>\n";
 }
+if  (count($capt_matches) != 0)  {
+	print <<<EOT
+<h1>Outstanding matches</h1>
+<p>You might want to send the opposing team captain a message about
+one of the following outstanding matches.</p>
+<table class="showmatch">
+<tr><th>Team A</th><th>Capt</th><th>Team B</th><th>Capt</th><th>Send</th></tr>
+
+EOT;
+	foreach ($capt_matches as $mtch) {
+		print <<<EOT
+<tr>
+	<td>{$mtch->Hteam->display_name(true)}</td>
+	<td>{$mtch->Hteam->display_captain(true)}</td>
+	<td>{$mtch->Ateam->display_name(true)}</td>
+	<td>{$mtch->Ateam->display_captain(true)}</td>
+	<td><a href="composemsg.php?{$mtch->urlof()}">Message</a></td>
+</tr>
+
+EOT;
+	}
+}
 ?>
 <h1>Outstanding games</h1>
 <?php
@@ -130,12 +189,15 @@ else  {
 pending games.</p>
 <table class="showmatch">
 <tr>
-<th colspan="4" align="center">White</th>
-<th colspan="4" align="center">Black</th></tr>
+<th colspan="3" align="center">White</th>
+<th colspan="3" align="center">Black</th></tr>
 <tr>
 <th>Player</th>
+<th>Online name</th>
 <th>Team</th>
 <th>Player</th>
+<th>Online name</th>
+<th>Team</th>
 <th>Message</th>
 </tr>
 
@@ -144,8 +206,10 @@ EOT;
 		print <<<EOT
 <tr>
 <td>{$g->Wplayer->display_name()}</td>
+<td>{$g->Wplayer->display_online()}</td>
 <td>{$g->Wteam->display_name()}</td>
 <td>{$g->Bplayer->display_name()}</td>
+<td>{$g->Bplayer->display_online()}</td>
 <td>{$g->Bteam->display_name()}</td>
 <td><a href="composemsg.php?{$g->urlof()}">Send</a></td>
 </tr>

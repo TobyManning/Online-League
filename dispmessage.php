@@ -25,6 +25,18 @@ include 'php/matchdate.php';
 include 'php/match.php';
 include 'php/team.php';
 
+function concmatch($id, $mp) {
+	if ($id == 0)
+		return;
+	print <<<EOT
+<tr>
+	<td><strong>Concerning match:</strong</td>
+	<td>{$mp->Hteam->display_name(true)} -v- {$mp->Ateam->display_name(true)}</td>
+</tr>
+
+EOT;
+}
+
 // Get who I am
 
 try {
@@ -46,7 +58,7 @@ if  (!preg_match('/^\d+$/', $messid))  {
 	exit(0);
 }
 
-$ret = mysql_query("select fromuser,created,gameind,subject,hasread,contents from message where ind=$messid");
+$ret = mysql_query("select fromuser,created,matchind,gameind,subject,hasread,contents from message where ind=$messid");
 if  (!$ret || mysql_num_rows($ret) == 0)  {
 	$mess = "Could not find message $messid";
 	include 'php/wrongentry.php';
@@ -55,6 +67,7 @@ if  (!$ret || mysql_num_rows($ret) == 0)  {
 $row = mysql_fetch_assoc($ret);
 $fu = $row["fromuser"];
 $cr = $row["created"];
+$mid = $row["matchind"];
 $gid = $row["gameind"];
 $subj = $row["subject"];
 $hsubj = htmlspecialchars($subj);
@@ -78,13 +91,23 @@ if  (preg_match("/(\d+)-(\d+)-(\d+)\s+(\d+):(\d+):(\d+)/", $cr, $matches))  {
 else {
 	$dat = $tim = $cr;
 }
+if ($mid != 0) {
+	$mtch = new Match($mid);
+	try {
+		$mtch->fetchdets();
+		$mtch->fetchteams();
+	}
+	catch (MatchException $e) {
+		$mid = 0;
+	}
+}
 if ($gid != 0)  {
 	$gam = new Game($gid);
 	try {
 		$gam->fetchdets();
-		$mtch = new Match($gam->Matchind);
-		$mtch->fetchdets();
-		$mtch->fetchteams();
+		$gmtch = new Match($gam->Matchind);
+		$gmtch->fetchdets();
+		$gmtch->fetchteams();
 	}
 	catch (GameException $e) {
 		$gid = 0;
@@ -126,16 +149,9 @@ print <<<EOT
 
 EOT;
 
-if ($gid)  {
-	print <<<EOT
-<tr>
-	<td><strong>Concerning match:</strong</td>
-	<td>$hsubj</td>
-	<td>{$mtch->Hteam->display_name(true)} -v- {$mtch->Ateam->display_name(true)}</td>
-</tr>
+concmatch($mid, $mtch);
+concmatch($gid, $gmtch);
 
-EOT;
-}
 $hcont = htmlspecialchars($cont);
 $hcont = preg_replace("/(\r\n)+$/", "", $hcont);
 $hcont = preg_replace("/(\r?\n){2,}/", "</p>\n<p>", $hcont);

@@ -282,6 +282,20 @@ class Team  {
 	}
 }
 
+// List teams a given player is captain of
+
+function list_teams_captof($player) {
+	$result = array();
+	$ret = mysql_query("select name from team where {$player->queryof('capt')} order by name");
+	if ($ret and mysql_num_rows($ret) > 0)  {
+		while ($row = mysql_fetch_array($ret))  {
+			$team = new Team($row[0]);
+			$team->fetchdets();
+			array_push($result, $team);
+		}
+	}
+}
+
 function list_teams($div = 0, $order = "name", $pl = 1) {
 	$divsel = $div == 0? "": " and divnum=$div";
 	$ret = mysql_query("select name from team where playing=$pl$divsel order by $order");
