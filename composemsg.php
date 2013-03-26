@@ -19,6 +19,7 @@ include 'php/checklogged.php';
 include 'php/opendatabase.php';
 include 'php/club.php';
 include 'php/rank.php';
+include 'php/team.php';
 include 'php/matchdate.php';
 include 'php/match.php';
 include 'php/player.php';
