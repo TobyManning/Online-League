@@ -42,11 +42,12 @@ catch (PlayerException $e) {
 $messid = $_GET['msgi'];
 
 $ret = mysql_query("delete from message where ind=$messid");
-if  (!$ret || mysql_num_rows($ret) == 0)  {
+if  (!$ret || mysql_affected_rows() == 0)  {
 	$mess = "Could not delete message $messid";
 	include 'php/wrongentry.php';
 	exit(0);
 }
-header("Location: http://league.britgo.org/messages.php");
+$s = $_SERVER['SERVER_NAME'];
+header("Location: http://$s/messages.php");
 ?>
 

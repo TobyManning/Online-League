@@ -26,36 +26,46 @@ include 'php/player.php';
 try {
         $player = new Player();
         $player->fromid($userid);
-        $recip = new Player();
-		  $recip->fromsel($_POST["recip"]);
-		  $recip->fetchdets();
 }
 catch (PlayerException $e) {
         $mess = $e->getMessage();
         include 'php/wrongentry.php';
         exit(0);
 }
+$messid = $_POST["msgi"];
+$mid = $_POST["mi"];
+$gid = $_POST["gn"];
 $subj = $_POST["subject"];
 $msgt = $_POST["mcont"];
+$ret = mysql_query("select fromuser from message where ind=$messid");
+if  (!$ret || mysql_num_rows($ret) == 0)  {
+	$mess = "Cannot find mess id $messid";
+	include 'php/wrongentry.php';
+	exit(0);
+}
+$row = mysql_fetch_array($ret);
+$recipid = $row[0];
+$recip = new Player();
+$recip->fromid($recipid);
 $qfrom = mysql_real_escape_string($player->Userid);
-$qto = mysql_real_escape_string($recip->Userid);
+$qto = mysql_real_escape_string($recipid);
 $qsubj = mysql_real_escape_string($subj);
 $qmsgt = mysql_real_escape_string($msgt);
-mysql_query("insert into message (fromuser,touser,created,subject,contents) values ('$qfrom','$qto',now(),'$qsubj','$qmsgt')");
+mysql_query("insert into message (fromuser,touser,created,gameind,matchind,subject,contents) values ('$qfrom','$qto',now(),$gid,$mid,'$qsubj','$qmsgt')");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
 $Qun = htmlspecialchars($username);
 $Sun = mysql_real_escape_string($userid);
-$Title = "Message Sent";
+$Title = "Reply Sent";
 include 'php/head.php';
 ?>
 <body>
 <?php include 'php/nav.php';
 print <<<EOT
-<h1>Message Sent</h1>
-<p>I believe your message was sent OK to {$recip->display_name()}.</p>
+<h1>Reply Sent</h1>
+<p>I believe your reply was sent OK to {$recip->display_name()}.</p>
 <p><a href="messages.php">Click Here</a> to go back to messages.</p>
 
 EOT;
