@@ -131,9 +131,12 @@ foreach ($pllist as $pl) {
 
 EOT;
 }
-?>
+print <<<EOT
 </select></p>
 <p>Subject: <input type="text" name="subject" value="$subj" size="40" /></p>
+
+EOT;
+?>
 <p>Message:</p>
 <br clear="all" />
 <textarea name="mcont" rows="20" cols="60"></textarea>
