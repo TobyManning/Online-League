@@ -172,13 +172,14 @@ print <<<EOT
 <p>$hcont</p>
 
 <h2>Delete message</h2>
-<p><a href="delmessage.php?msgi=$messid">Click here</a>If you want to delete this message.</p>
+<p><a href="delmessage.php?msgi=$messid">Click here</a> if you want to delete this message.</p>
 
 EOT;
 
 // If it's a received message, offer the chance to reply  
 
 if (!$sent)  {
+	print  "<h2>Send reply</h2>\n";
 	$subj = preg_replace("/^Re:\s*/i", "", $subj);
 	$subj = "Re: $subj";
 	$hsubj = htmlspecialchars($subj);
