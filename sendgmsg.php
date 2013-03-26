@@ -37,17 +37,20 @@ catch (PlayerException $e) {
 }
 $subj = $_POST["subject"];
 $msgt = $_POST["mcont"];
+$mid = $gid = 0;
+if (isset($_POST["mi"]))
+	$mid = $_POST["mi"];
+if (isset($_POST["gn"]))
+	$gid = $_POST["gn"];
 $qfrom = mysql_real_escape_string($player->Userid);
 $qto = mysql_real_escape_string($recip->Userid);
 $qsubj = mysql_real_escape_string($subj);
 $qmsgt = mysql_real_escape_string($msgt);
-mysql_query("insert into message (fromuser,touser,created,subject,contents) values ('$qfrom','$qto',now(),'$qsubj','$qmsgt')");
+mysql_query("insert into message (fromuser,touser,created,gameind,matchind,subject,contents) values ('$qfrom','$qto',now(),$gid,$mid,'$qsubj','$qmsgt')");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <?php
-$Qun = htmlspecialchars($username);
-$Sun = mysql_real_escape_string($userid);
 $Title = "Message Sent";
 include 'php/head.php';
 ?>
