@@ -322,20 +322,23 @@ class Game {
 		case 'J':
 			$mtch->Hscore += 0.5 * $mult;
 			$mtch->Ascore += 0.5 * $mult;
-			return;
+			break;
 		case 'W':	
 			if ($this->Wteam->is_same($mtch->Hteam))
 				$mtch->Hscore += $mult;
 			else
 				$mtch->Ascore += $mult;
-			return;
+			break;
 		case 'B':
 			if ($this->Wteam->is_same($mtch->Hteam))
 				$mtch->Ascore += $mult;
 			else
 				$mtch->Hscore += $mult;
-			return;
+			break;
 		}
+		// If we have a result, delete any messages specific to that game
+		if  ($mult > 0)
+			mysql_query("delete from message where {$this->queryof('game')}");
 	}
 	
 	//  Setup Resultdet as W+whatever or B+whatever or Jigo

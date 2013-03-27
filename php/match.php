@@ -260,17 +260,26 @@ class Match {
 	
 	public function updscore() {
 		$tot = $this->Hscore + $this->Ascore;
+		$delmsgs = false;
 		if ($tot <= 0)
 			$this->Result = 'N';
 		else  if ($tot < 3)
 			$this->Result = 'P';
-		else if ($this->Hscore == $this->Ascore)
+		else if ($this->Hscore == $this->Ascore) {
 			$this->Result = 'D';
-		else if ($this->Hscore < $this->Ascore)
+			$delmsgs = true;
+		}
+		else if ($this->Hscore < $this->Ascore) {
 			$this->Result = 'A';
-		else
+			$delmsgs = true;
+		}
+		else  {
 			$this->Result = 'H';
+			$delmsgs = true;
+		}
 		mysql_query("update lgmatch set result='{$this->Result}',hscore={$this->Hscore},ascore={$this->Ascore} where {$this->queryof()}");
+		if ($delmsgs)
+			mysql_query("delete from message where {$this->queryof('match')}");
 	}
 	
 	public function set_defaulted($hora) {
