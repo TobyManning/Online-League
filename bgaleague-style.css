@@ -277,7 +277,7 @@ table.membpick {
 }
 table.plinits {
 	empty-cells: show;
-	border-spacing: 0px;
+	border-spacing: 2px;
 	padding: 2px;
 	border: 0px;
 }
