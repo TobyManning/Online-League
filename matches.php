@@ -65,7 +65,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		if ($mtch->Division != $lastdiv)  {
 			$lastdiv = $mtch->Division;
 			print <<<EOT
-<tr><th colspan="3" rowspan="3" align="center" valign="middle"><a name="div$lastdiv"></a><a href="#topm">Division $lastdiv</a></th></tr>
+<tr rowspan="3" valign="middle"><th colspan="3" align="center"><a name="div$lastdiv"></a><a href="#topm">Division $lastdiv</a></th></tr>
 <tr><th>Date</th><th>Team A</th><th>Team B</th><th>Status</th></tr>
 
 EOT;
