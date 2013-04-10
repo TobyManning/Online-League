@@ -157,7 +157,7 @@ body.il {
     position: absolute;
     top: 0;
     float: left;
-    width: 160px;
+    width: 15%;
     height: 100%;
 }
 #Content {
@@ -165,21 +165,21 @@ body.il {
     top: 0;
     left: 160px;
     height: 100%;
-    width: 600px;
+    width: 80%;
     overflow: auto;
 }
 #Navwf {
 	position: absolute;
    top: 0;
    float: left;
-   width: 150px;
+   width: 15%;
    height: 85%;
 }
 #Contentwf {
    position: fixed;
    top: 0;
    left: 150px;
-   width: 610px;
+   width: 80%;
    height: 85%;
    overflow: auto;
 }
