@@ -157,7 +157,7 @@ body.il {
     position: absolute;
     top: 0;
     float: left;
-    width: 15%;
+    width: 10%;
     height: 100%;
 }
 #Content {
@@ -165,21 +165,21 @@ body.il {
     top: 0;
     left: 15%;
     height: 100%;
-    width: 84%;
+    width: 89%;
     overflow: auto;
 }
 #Navwf {
 	position: absolute;
    top: 0;
    float: left;
-   width: 15%;
+   width: 10%;
    height: 85%;
 }
 #Contentwf {
    position: fixed;
    top: 0;
    left: 15%;
-   width: 84%;
+   width: 89%;
    height: 85%;
    overflow: auto;
 }
@@ -283,7 +283,7 @@ table.plinits {
 table.pllist {
 	empty-cells: show;
 	border-spacing: 5px;
-	padding: 2px;
+	padding: 4px;
 }
 table.plupd {
 	empty-cells: show;
