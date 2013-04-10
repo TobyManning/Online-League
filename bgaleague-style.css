@@ -165,7 +165,7 @@ body.il {
     top: 0;
     left: 160px;
     height: 100%;
-    width: 80%;
+    width: 84%;
     overflow: auto;
 }
 #Navwf {
@@ -179,7 +179,7 @@ body.il {
    position: fixed;
    top: 0;
    left: 150px;
-   width: 80%;
+   width: 84%;
    height: 85%;
    overflow: auto;
 }
