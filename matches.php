@@ -45,7 +45,7 @@ for ($n = 1;  $n <= $maxdiv;  $n++) {
 EOT;
 }
 ?>
-</table>
+</tr></table>
 <table class="matchesd">
 <?php
 $ret = mysql_query("select ind from lgmatch order by divnum,matchdate,hteam,ateam");
