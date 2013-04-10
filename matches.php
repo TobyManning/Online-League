@@ -35,6 +35,17 @@ include 'php/head.php';
 <script language="javascript" src="webfn.js"></script>
 <?php include 'php/nav.php'; ?>
 <h1>Matches</h1>
+<a name="topm"></a>
+<table class="plinits"><tr>
+<?php
+$maxdiv = max_division();
+for ($n = 1;  $n <= $maxdiv;  $n++) {
+	print <<<EOT
+<td><a href="#div$n">Div $n</a></td>
+EOT;
+}
+?>
+</table>
 <table class="matchesd">
 <tr>
 <th>Date</th>
@@ -59,7 +70,10 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 		}
 		if ($mtch->Division != $lastdiv)  {
 			$lastdiv = $mtch->Division;
-			print "<tr><th colspan=\"3\" align=\"center\">Division $lastdiv</th></tr>\n";
+			print <<<EOT
+<tr><th colspan="3" align="center"><a name="#div$lastdiv"></a><a href="#topm">Division $lastdiv</a></th></tr>
+
+EOT;
 		}
 		print <<<EOT
 <tr>
