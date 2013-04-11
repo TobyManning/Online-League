@@ -47,7 +47,7 @@ In the majority of cases you can download and review the actual games.</p>
 <h2>Information</h2>
 <p>For more information about the league, please <a href="info.php" title="Give more information">go here</a>.</p>
 <h2>Joining</h2>
-<p>It is now too late for new teams to join the 2013 league season, which started in of March 2013. Individuals may still be squeezed
+<p>It is now too late for new teams to join the 2013 league season, which started in March 2013. Individuals may still be squeezed
 into teams however.
 Please hurry to contact us at online-league AT britgo DOT org if you want to join.</p>
 <p>Don't forget we allow teams to consist of players from all over the country, so if you know isolated Go players in some
