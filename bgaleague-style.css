@@ -157,13 +157,13 @@ body.il {
     position: absolute;
     top: 0;
     float: left;
-    width: 10%;
+    width: 12%;
     height: 100%;
 }
 #Content {
     position: fixed;
     top: 0;
-    left: 10%;
+    left: 12%;
     height: 100%;
     width: 89%;
     overflow: auto;
@@ -172,13 +172,13 @@ body.il {
 	position: absolute;
    top: 0;
    float: left;
-   width: 10%;
+   width: 12%;
    height: 85%;
 }
 #Contentwf {
    position: fixed;
    top: 0;
-   left: 10%;
+   left: 12%;
    width: 89%;
    height: 85%;
    overflow: auto;

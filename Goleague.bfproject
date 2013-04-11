@@ -30,6 +30,7 @@ filegloblist: *.cgi
 filegloblist: *.c
 fb_focus_follow: 1
 adv_open_recursive: 0
+encoding: UTF-8
 autoindent: 1
 e2c.convert_special: 0
 fb_viewmode: 0
@@ -68,12 +69,12 @@ files: /home/jmc/src/Websites/goleague/players.php
 snr_replacetype: 0
 recent_files: file:///home/jmc/src/Websites/goleague/players.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/head.php
 recent_files: file:///home/jmc/src/Websites/goleague/bgaleague-style.css
-recent_files: file:///home/jmc/src/Websites/goleague/addresult2.php
-recent_files: file:///home/jmc/src/Websites/goleague/loadkgs.php
-recent_files: file:///home/jmc/src/Websites/goleague/addresult.php
 recent_files: file:///home/jmc/src/Websites/goleague/matches.php
+recent_files: file:///home/jmc/src/Websites/goleague/loadkgs.php
+recent_files: file:///home/jmc/src/Websites/goleague/addresult2.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/head.php
+recent_files: file:///home/jmc/src/Websites/goleague/addresult.php
 recent_files: file:///home/jmc/src/Websites/goleague/messages.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
 recent_files: file:///home/jmc/src/Websites/goleague/dispmessage.php
