@@ -291,7 +291,7 @@ EOT;
 <td>{$g->Bplayer->display_online()}</td>
 <td>{$g->Bteam->display_name()}</td>
 <td>$hcp</td>
-<td>{$g->display_result(true)}>/td>
+<td>{$g->display_result(true)}</td>
 </tr>
 
 EOT;
