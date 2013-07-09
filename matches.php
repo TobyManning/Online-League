@@ -95,7 +95,7 @@ EOT;
 				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"noundm\">";
 				$hndref = "</a>";
 			}
-			elseif ($c == 'A' || $c == 'B') {
+			if ($c == 'A' || $c == 'B') {
 				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
 				$andref = "</a>";
 			}
