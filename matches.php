@@ -90,14 +90,16 @@ EOT;
 				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
 				$hndref = $andref = "</a>";
 			}
-			$c = $mtch->is_captain($username);
-			if ($c == 'H' || $c == 'B')  {
-				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"noundm\">";
-				$hndref = "</a>";
-			}
-			if ($c == 'A' || $c == 'B') {
-				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
-				$andref = "</a>";
+			else  {
+				$c = $mtch->is_captain($username);
+				if ($c == 'H' || $c == 'B')  {
+					$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"noundm\">";
+					$hndref = "</a>";
+				}
+				if ($c == 'A' || $c == 'B') {
+					$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
+					$andref = "</a>";
+				}
 			}
 			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";
 		}
