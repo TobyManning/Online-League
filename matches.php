@@ -91,11 +91,11 @@ EOT;
 				$hndref = $andref = "</a>";
 			}
 			$c = $mtch->is_captain($username);
-			if ($c == 'H')  {
+			if ($c == 'H' || $c == 'B')  {
 				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"noundm\">";
 				$hndref = "</a>";
 			}
-			elseif ($c == 'A') {
+			elseif ($c == 'A' || $c == 'B') {
 				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
 				$andref = "</a>";
 			}

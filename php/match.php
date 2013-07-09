@@ -326,8 +326,11 @@ class Match {
 		catch (PlayerException $e) {
 			return 'N';
 		}
-		if ($this->Hteam->Captain->is_same($possp))
+		if ($this->Hteam->Captain->is_same($possp))  {
+			if  ($this->Ateam->Captain->is_same($possp))
+				return  'B';
 			return 'H';
+		}
 		if ($this->Ateam->Captain->is_same($possp))
 			return 'A';
 		return 'N';
