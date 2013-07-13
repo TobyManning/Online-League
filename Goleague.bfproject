@@ -60,12 +60,15 @@ savedir: file:///home/jmc/src/Websites/goleague
 files: /home/jmc/src/Websites/goleague/osmatches.php
 files: /home/jmc/src/Websites/goleague/showmtch.php
 files: /home/jmc/src/Websites/goleague/php/game.php
+files: /home/jmc/src/Websites/goleague/matches.php
+files: /home/jmc/src/Websites/goleague/php/match.php
 snr_replacetype: 0
-recent_files: file:///home/jmc/src/Websites/goleague/php/game.php
-recent_files: file:///home/jmc/src/Websites/goleague/showmtch.php
-recent_files: file:///home/jmc/src/Websites/goleague/osmatches.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/match.php
 recent_files: file:///home/jmc/src/Websites/goleague/matches.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/game.php
+recent_files: file:///home/jmc/src/Websites/goleague/osmatches.php
+recent_files: file:///home/jmc/src/Websites/goleague/showmtch.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
 recent_files: file:///home/jmc/src/Websites/goleague/players.php
 recent_files: file:///home/jmc/src/Websites/goleague/bgaleague-style.css
 recent_files: file:///home/jmc/src/Websites/goleague/messages.php
@@ -75,7 +78,6 @@ recent_files: file:///home/jmc/src/Websites/goleague/addresult2.php
 recent_files: file:///home/jmc/src/Websites/goleague/loadkgs.php
 recent_files: file:///home/jmc/src/Websites/goleague/index.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/player.php
-recent_files: file:///home/jmc/src/Websites/goleague/dispmessage.php
 charmap_block: 1
 e2c.convert_iso: 0
 enable_syntax_scan: 1

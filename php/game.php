@@ -278,12 +278,23 @@ class Game {
 	}
 
 	public function reversecolours() {
+		// For when colours are reversed - assumes everything loaded OK
 		$tmp = $this->Wteam;
 		$this->Wteam = $this->Bteam;
 		$this->Bteam = $tmp;
 		$tmp = $this->Wplayer;
 		$this->Wplayer = $this->Bplayer;
 		$this->Bplayer = $tmp;
+		$qwteam = $this->Wteam->queryname();
+		$qwfirst = $this->Wplayer->queryfirst();
+		$qwlast = $this->Wplayer->querylast();
+		$qwrank = $this->Wplayer->Rank->Rankvalue;
+		$qbteam = $this->Bteam->queryname();
+		$qbfirst = $this->Bplayer->queryfirst();
+		$qblast = $this->Bplayer->querylast();
+		$qbrank = $this->Bplayer->Rank->Rankvalue;
+		if (!mysql_query("update game set wfirst='$qwfirst',wlast='$qwlast',bfirst='$qbfirst',blast='$qblast',wteam='$qwteam',bteam='$qbteam',wrank=$qwrank,brank=$qbrank where {$this->queryof()}"))
+			throw new GameException(mysql_error()); 
 	}
 
 	public function display_result($addunpl = false) {
