@@ -52,7 +52,7 @@ include 'php/head.php';
 print <<<EOT
 <p>Use this page to adjust ranks of members of the team
 {$team->display_name()} ({$team->display_description()})
-in {$team->display_division()}.</p>
+in division {$team->display_division()}.</p>
 <form name="trform" action="updrank2.php" method="post" enctype="application/x-www-form-urlencoded">
 {$team->save_hidden()}
 <table class="teamdisp">
