@@ -51,7 +51,7 @@ Database error message was $mess.
 </p>
 <p>
 Please tell John Collins
-<a href="mailto:jmc@xisl.com">jmc@xisl.com</a> about this ASAP, and advise the context
+<a href="mailto:jmc@toad.me.uk">jmc@toad.me.uk</a> about this ASAP, and advise the context
 wherein it occurred. Thank you.</p>
 <p>Please now go to the top of the site by <a href="index.php">clicking here</a>.</p>
 </body>

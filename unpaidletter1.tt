@@ -1,6 +1,6 @@
 To: [% EMAIL %]
 Subject: Online League Subscription for [% TEAM %] is overdue
-Reply-to: jmc@xisl.com
+Reply-to: jmc@toad.me.uk
 
 Dear [% CAPTFIRST %] [% CAPTLAST %]
 
@@ -35,4 +35,4 @@ We look forward to your prompt attention to this message.
 Thank you
 
 BGA online league management
-(Queries to jmc@xisl.com)
+(Queries to jmc@toad.me.uk)

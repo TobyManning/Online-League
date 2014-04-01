@@ -1,6 +1,6 @@
 To: [% EMAIL %]
 Subject: Online League Subscription for [% TEAM %]
-Reply-to: jmc@xisl.com
+Reply-to: jmc@toad.me.uk
 
 Dear [% CAPTFIRST %] [% CAPTLAST %]
 
@@ -42,4 +42,4 @@ team every success.
 Thank you
 
 BGA online league management
-(Queries to jmc@xisl.com)
+(Queries to jmc@toad.me.uk)

@@ -44,7 +44,7 @@ EOT;
 ?>
 <p>Please restart at the top by <a href="index.php">clicking here</a>.</p>
 <p>If necessary, please tell John Collins
-<a href="mailto:jmc@xisl.com">jmc@xisl.com</a> about this.
+<a href="mailto:jmc@toad.me.uk">jmc@toad.me.uk</a> about this.
 </p>
 </body>
 </html>

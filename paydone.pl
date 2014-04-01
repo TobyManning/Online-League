@@ -5,7 +5,7 @@ exit 0 if -e "/var/www/onlineleague/nopayreminder";
 use DBD::mysql;
 $Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
 
-open(MAILOUT, "|REPLYTO=jmc\@xisl.com mail -s 'Online league payments' treasurer\@britgo.org jmc\@xisl.com") or die "Cannot open Mail";
+open(MAILOUT, "|REPLYTO=jmc\@toad.me.uk mail -s 'Online league payments' treasurer\@britgo.org jmc\@toad.me.uk") or die "Cannot open Mail";
 select MAILOUT;
 
 $sfh = $Database->prepare("SELECT league,descr1,descr2,paywhen,amount,paypal FROM paycompl WHERE paywhen>DATE_SUB(CURRENT_TIMESTAMP(),INTERVAL 1 MONTH) ORDER BY paywhen");
