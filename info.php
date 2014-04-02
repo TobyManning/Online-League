@@ -50,7 +50,7 @@ in the <i>British Go Journal</i>.</p>
 <h2>Joining</h2>
 <p>We are now taking entries for the 2014 league season, which will get under way hopefully at the beginning of March 2014.
 If you would like to join it, either as an individual wanting to be assigned to a team, or a new team wanting to join,
-please let us know as soon as possible. Please contact the Online League coordinators at online-league AT britgo DOT org.</p>
+please let us know as soon as possible. Please contact the Online League coordinators at online-league AT britgo DOT org (without the hyphen).</p>
 <p>Note that we will consider applications from non-UK players to join teams and play in the league, but they must be prepared to
 pay their share of the subscription and also fit in with UK times.</p>
 <h2>Rules</h2>
@@ -77,7 +77,7 @@ in the first full season of the Individual Leauge, was tragically killed whilst 
 <h2>League standings and history</h2>
 <p>You can see the current league standings and historical records using the menu items to the left, together with historical records.
 In the majority of cases you can download and review the actual games. For any further questions, please contact the Online League
-coordinators at online-league AT britgo DOT org.</p>
+coordinators at online-league AT britgo DOT org (without the hyphen).</p>
 </div>
 </div>
 </body>

@@ -78,7 +78,7 @@ function mail_allocated($mtch, $pars, $byadmin = false) {
 		$stm = "Completed";
 	}
 		
-	$fh = popen("mail -s 'Go League match $suam' online-league@britgo.org {$hc->Email} {$ac->Email}", "w");
+	$fh = popen("mail -s 'Go League match $suam' onlineleague@britgo.org {$hc->Email} {$ac->Email}", "w");
 	$mess = <<<EOT
 $stm allocation of players to match in division {$mtch->Division} for {$mtch->Date->display_month()} between
 {$ht->display_name()} ({$ht->display_description()}) and {$at->display_name()} ({$at->display_description()}).
