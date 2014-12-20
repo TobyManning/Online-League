@@ -74,7 +74,6 @@ try  {
 					$setdrawn_games++;
 				}
 			}
-			$mtch->updscore();
 		}
 	}
 	
@@ -104,6 +103,7 @@ $Title = "Closed season";
 include 'php/head.php';
 ?>
 <body>
+<?php include 'php/nav.php'; ?>
 <h1>Close Season Completed</h1>
 <?php
 print <<<EOT
