@@ -52,7 +52,7 @@ function okdel(div) {
 		location = "matchesdel.php?div=" + div;
 }
 
-function endseas() }
+function endseas() {
 	killwind();
 	if (confirm("Sure you want to end the season and draw outstanding games"))
 		location = "closeseason.php";
