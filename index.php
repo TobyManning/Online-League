@@ -30,10 +30,10 @@ $hasfoot = true;
 include 'php/nav.php'; ?>
 <h1>BGA Online Leagues</h1>
 <img src="images/gogod_shield.medium.jpg" width="359" height="400" alt="Shield picture" align="left" border="0" hspace="20" vspace="5">
-<h2>Congratulations to the 2013 winners!</h2>
-<p>Congratulations to the <b>Edinburgh A</b> team (Manja Marz, Martha McGill, Boris Mitrovic, Yanzhao Zhang and Matt Crosby)
-for following up their victory in the fourth season by convincingly winning the fifth season as well.
-In second place were Cambridge A.</p>
+<h2>Congratulations to the 2014 winners!</h2>
+<p>Congratulations to the <b>Central London Go Club A</b> team (Francisco Divers, Michael Webster and Chuck Fisher)
+for convincingly winning the sixth season of the online league.
+In second place were Belfast. Winning division 2 and promotion to division 1 were Cornish Rogues.</p>
 <h2>Winning teams to date</h2>
 <p>The following are the winning teams to date:</p>
 <table cellpadding="2" cellspacing="2">
@@ -43,14 +43,14 @@ In second place were Cambridge A.</p>
 <tr><td>All of 2011</td><td>Central London Go Club A</td></tr>
 <tr><td>All of 2012</td><td>Edinburgh</td></tr>
 <tr><td>All of 2013</td><td>Edinburgh A</td></tr>
+<tr><td>All of 2014</td><td>Central London Go Club A</td></tr>
 </table>
 <p>You can see the current league standings and historical records using the menu items to the left, together with historical records.
 In the majority of cases you can download and review the actual games.</p>
 <h2>Information</h2>
 <p>For more information about the league, please <a href="info.php" title="Give more information">go here</a>.</p>
 <h2>Joining</h2>
-<p>The 2014 league season is now under way. Individuals may still be squeezed
-into teams however. Please hurry to contact us at online-league AT britgo DOT org (please omit the hyphen) if you want to join.</p>
+<p>The 2014 league season is now closed, but please hurry to contact us at online-league AT britgo DOT org (please omit the hyphen) if you want to join the 2015 league.</p>
 <p>Don't forget we allow teams to consist of players from all over the country, so if you know isolated Go players in some
 far-flung regions, you can include them now!</p>
 <h2>Rules</h2>
