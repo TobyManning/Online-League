@@ -32,11 +32,11 @@ include 'php/game.php';
 include 'php/season.php';
 include 'php/news.php';
 
+$unplayed_matches = $setdrawn_games = 0;
+
 try  {
 	
 	//  Select and delete all matches which haven't been played at all
-	
-	$unplayed_matches = $setdrawn_games = 0;
 	
 	$ret = mysql_query("select ind from lgmatch where result='N'");
 	if ($ret)  {
