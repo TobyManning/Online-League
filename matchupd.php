@@ -52,6 +52,12 @@ function okdel(div) {
 		location = "matchesdel.php?div=" + div;
 }
 
+function endseas() }
+	killwind();
+	if (confirm("Sure you want to end the season and draw outstanding games"))
+		location = "closeseason.php";
+}
+
 function archive() {
 	killwind();
 	if (confirm("Sure you want to archive played matches"))
@@ -95,6 +101,9 @@ outside the draw, e.g. for tie-breaks.
 EOT;
 }
 ?>
+<h2>End Season</h2>
+<p>Click <a href="javascript:endseas()">here</a> to delete unplayed matches and mark as drawn
+all outstanding games in partly-played matches.</p>
 <h2>Complete league and assign to history</h2>
 <p>Click <a href="javascript:archive()">here</a> to consign played matches to history,
 promote and relegate teams ready to draw for next season.</p>
