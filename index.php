@@ -50,9 +50,9 @@ In the majority of cases you can download and review the actual games.</p>
 <h2>Information</h2>
 <p>For more information about the league, please <a href="info.php" title="Give more information">go here</a>.</p>
 <h2>Joining</h2>
-<p>The 2014 league season is now closed, but please hurry to contact us at online-league AT britgo DOT org (please omit the hyphen) if you want to join the 2015 league.</p>
-<p>Don't forget we allow teams to consist of players from all over the country, so if you know isolated Go players in some
-far-flung regions, you can include them now!</p>
+<p>The 2015 league is now under way.</p>
+<pWe can easily add extra players to teams, so please let us know if you would like to join in. We normally group players from the same locale into teams,
+but we are happy to accommodate other players as needed.</p>
 <h2>Rules</h2>
 <p>A full description of playing games is to be found
 under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
