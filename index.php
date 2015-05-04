@@ -51,7 +51,7 @@ In the majority of cases you can download and review the actual games.</p>
 <p>For more information about the league, please <a href="info.php" title="Give more information">go here</a>.</p>
 <h2>Joining</h2>
 <p>The 2015 league is now under way.</p>
-<pWe can easily add extra players to teams, so please let us know if you would like to join in. We normally group players from the same locale into teams,
+<p>We can easily add extra players to teams, so please let us know if you would like to join in. We normally group players from the same locale into teams,
 but we are happy to accommodate other players as needed.</p>
 <h2>Rules</h2>
 <p>A full description of playing games is to be found
