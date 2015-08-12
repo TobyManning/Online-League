@@ -1,5 +1,11 @@
 <?php
-//   Copyright 2009 John Collins
+//   Copyright 2009-2015 John Collins
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -45,13 +51,12 @@ include 'php/head.php';
 <body>
 <script language="javascript" src="webfn.js"></script>
 <script language="javascript">
-function checkreverse(fm) {
-	if (!fm.reversed.checked)
-		return true;
+function checkreverse(gm) {
 	if (!confirm("Are you sure the colours were reversed?"))
 		return false;
 	if (!confirm("I promise not to make a habit of this"))
 		return false;
+	document.location = "swapcolours.php&" + gm;
 	return  true;
 }
 function loadkgs() {
@@ -123,8 +128,7 @@ $today->dateopt("Game was played on");
 print <<<EOT
 </p>
 <p>Please note that if the game is adjourned or crosses midnight, KGS normally stores the date it was <i>started</i> so please use that.</p>
-<p>
-<input type="checkbox" name="reversed" /><b>Sorry, but the player colours were the wrong way round</b></p>
+<p><b>If you got the colours the wrong way round, please click <a href="return checkreverse('{$g->urlof()}')'">here</a>.</b></p>
 <p>
 Result was
 <select name="result" size="0">

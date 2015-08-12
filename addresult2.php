@@ -1,5 +1,10 @@
 <?php
-//   Copyright 2011 John Collins
+//   Copyright 2011-2015 John Collins
+
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -37,11 +42,6 @@ catch (GameException $e) {
 	include 'php/wrongentry.php';
 	exit(0);	
 }
-
-// Fix reversed colours
-
-if (isset($_POST["reversed"]))
-	$g->reversecolours();
 
 $date_played = new Matchdate();
 $date_played->frompost();
