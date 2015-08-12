@@ -56,7 +56,7 @@ function checkreverse(gm) {
 		return false;
 	if (!confirm("I promise not to make a habit of this"))
 		return false;
-	document.location = "http://league.britgo.org/swapcolours.php&" + gm;
+	document.location = "http://league.britgo.org/swapcolours.php?" + gm;
 	return  true;
 }
 function loadkgs() {

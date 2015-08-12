@@ -45,5 +45,5 @@ catch (GameException $e) {
 $g->reversecolours();
 
 $comefrom = $_SERVER['HTTP_REFERER'];
-header("Location: $comefrom&{$g->urlof()}");
+header("Location: $comefrom?{$g->urlof()}");
 ?>
