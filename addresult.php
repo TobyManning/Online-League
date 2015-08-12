@@ -128,7 +128,7 @@ $today->dateopt("Game was played on");
 print <<<EOT
 </p>
 <p>Please note that if the game is adjourned or crosses midnight, KGS normally stores the date it was <i>started</i> so please use that.</p>
-<p><b>If you got the colours the wrong way round, please click <a href="javascript:return checkreverse('{$g->urlof()}')'">here</a>.</b></p>
+<p><b>If you got the colours the wrong way round, please click <a href="javascript:return checkreverse('{$g->urlof()}')">here</a>.</b></p>
 <p>
 Result was
 <select name="result" size="0">
