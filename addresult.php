@@ -56,7 +56,7 @@ function checkreverse(gm) {
 		return false;
 	if (!confirm("I promise not to make a habit of this"))
 		return false;
-	document.location = "swapcolours.php&" + gm;
+	document.location = "/league/swapcolours.php&" + gm;
 	return  true;
 }
 function loadkgs() {
