@@ -33,7 +33,7 @@ include 'php/game.php';
 
 $g = new Game();
 try  {
-	$g->frompost();
+	$g->fromget();
 	$g->fetchdets();
 }
 catch (GameException $e) {
