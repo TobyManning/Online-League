@@ -61,8 +61,6 @@ function checkreverse(gm) {
 }
 function loadkgs() {
 	var fm = document.resform;
-	if (!checkreverse(fm))
-		return false;
 	var game = fm.gn.value;
 	var dayel = fm.day;
 	var monel = fm.month;
@@ -97,8 +95,6 @@ EOT;
 ?>
 function checknokgs() {
 	var fm = document.resform;
-	if (!checkreverse(fm))
-		return false;
    if (fm.sgffile.value.length != 0)
 		return true;
 	if (white.length == 0 || black.length == 0)
