@@ -6,7 +6,7 @@ ul.pmen{
 ul.pmen li{
     display: inline-block;
     position: relative;
-    padding: 20px 2px;
+    padding: 10px 2px;
     /* line-height: 21px; */
     text-align: left;
 }
@@ -23,7 +23,7 @@ ul.pmen li a:hover{
 ul.pmen li ul.pdropdown{
     min-width: 125px; /* Set width of the dropdown */
     /* background: #f2f2f2; */
-	 padding: 2px 2px;
+	 /*padding: 2px 2px; */
     display: none;
     position: absolute;
     margin-left: 70px;
@@ -244,7 +244,7 @@ p.smallnote {
 	font-size: 8pt;
 }
 p.smallnotetm {
-	margin-top: 5cm;
+	margin-top: 7cm;
 	text-align: left;
 	line-height: 1;
 	font-size: 8pt;
