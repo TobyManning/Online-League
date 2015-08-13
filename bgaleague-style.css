@@ -18,6 +18,7 @@ ul.pmen li a{
     text-decoration: none;
 }
 ul.pmen li a:hover{
+	padding-top: 2px;
      /*  color: #fff; */
      /* background: #939393; */
 }
@@ -28,7 +29,7 @@ ul.pmen li ul.pdropdown{
 	 padding-top: 2px;
     display: none;
     position: absolute;
-    margin-left: 10px;
+    margin-left: 20px;
     z-index: 999;
     left: 0;
 }
