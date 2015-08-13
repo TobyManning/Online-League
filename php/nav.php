@@ -43,7 +43,7 @@ EOT;
 <li><a href="news.php" title="Read about recent results and update">>League News</a></li>
 <li><a href="clubs.php" title="View the list of clubs with members in the league">>Clubs</a></li>
 <li><a href="teams.php" title="View the teams participating in the league">>Teams</a></li>
-</ul></li>
+</ul></li><br/>
 <li><a href="#">Players &#9662;</a>
 <ul class="pdropdown">
 <li><a href="players.php" title="View players in alphabetical order">Sorted by name</a></li>
@@ -51,12 +51,12 @@ EOT;
 <li><a href="players.php?by=rank" title="View players sorted by rank">Sorted by rank</a></li>
 <li><a href="players.php?by=clubrank" title="View players sorted by club then by rank">Sorted by club/rank</a></li>
 <li><a href="pbt.php" title="View players by team">Sorted by team</a></li>
-</ul></li>
+</ul></li><br/>
 <li><a href="#">Matches &#9662;</a>
 <ul class="pdropdown">
 <li><a href="matches.php" title="View league matches for current season">Match statu</a></li>
 <li><a href="results.php" title="View results table for league matches">Results</a></li>
-</ul></li>
+</ul></li><br/>
 <li><a href="#">League Table &#9662;</a>
 <ul class="pdropdown">
 <li><a href="league.php" title="Display current team league table">Current League table</a></li>
