@@ -35,7 +35,7 @@ EOT;
 <a href="http://www.britgo.org" title="Go to BGA main site">
 <img src="images/gohead12.gif" width="133" height="47" alt="BGA Logo" border="0" hspace="0" vspace="0"></a>
 <ul class="pmen">
-<li><<a href="index.php" title="Go to league home page">League Home</a></li>
+<li><a href="index.php" title="Go to league home page">League Home</a></li>
 <li><a href="#">Information &#9662;</a>
 <ul class="pdropdown">
 <li><a href="info.php" title="General Information about the league">>Information</a></li>
