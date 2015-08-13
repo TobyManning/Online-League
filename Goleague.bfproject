@@ -5,13 +5,9 @@ openfiles: /home/jmc/src/Websites/goleague/admin.php:1088:438:0:
 openfiles: /home/jmc/src/Websites/goleague/php/checklogged.php:0:0:0:
 openfiles: /home/jmc/src/Websites/goleague/addresult2.php:30:2027:0:
 openfiles: /home/jmc/src/Websites/goleague/index.php:0:0:0:
-openfiles: /home/jmc/src/Websites/goleague/swapcolours.php:1375:0:0:
-openfiles: /home/jmc/src/Websites/goleague/php/game.php:0:1888:0:
 openfiles: /home/jmc/src/Websites/goleague/closeseason.php:357:0:0:
-openfiles: /home/jmc/src/Websites/goleague/addresult.php:1743:1191:0:
-openfiles: /home/jmc/src/Websites/goleague/php/nav.php:0:3337:0:
-openfiles: /home/jmc/src/Websites/goleague/bgaleague-style.css:0:2471:0:
-openfiles: /home/jmc/src/Websites/goleague/php/mailalloc.php:296:0:1:
+openfiles: /home/jmc/src/Websites/goleague/php/nav.php:2572:1151:1:
+openfiles: /home/jmc/src/Websites/goleague/bgaleague-style.css:748:0:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
