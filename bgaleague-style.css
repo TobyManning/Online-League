@@ -26,7 +26,7 @@ ul.pmen li ul.pdropdown{
 	 /* padding: 2px 2px; */
     display: none;
     position: absolute;
-    margin-left: 50px;
+    margin-left: 70px;
     z-index: 999;
     left: 0;
 }
@@ -196,13 +196,13 @@ body.il {
     position: absolute;
     top: 0;
     float: left;
-    width: 20%;
+    width: 12%;
     height: 100%;
 }
 #Content {
     position: fixed;
     top: 0;
-    left: 20%;
+    left: 12%;
     height: 100%;
     width: 87%;
     overflow: auto;
@@ -211,14 +211,14 @@ body.il {
 	position: absolute;
    top: 0;
    float: left;
-   width: 20%;
+   width: 12%;
    height: 85%;
 }
 #Contentwf {
    position: fixed;
    top: 0;
-   left: 20%;
-   width: 79%;
+   left: 12%;
+   width: 87%;
    height: 85%;
    overflow: auto;
 }
