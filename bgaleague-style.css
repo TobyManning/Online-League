@@ -6,12 +6,12 @@ ul.pmen{
 ul.pmen li{
     display: inline-block;
     position: relative;
-    line-height: 21px;
+    /* line-height: 21px; */
     text-align: left;
 }
 ul.pmen li a{
     display: block;
-    padding: 8px 10px;
+    /* padding: 8px 10px; */
     /* color: #333; */
     text-decoration: none;
 }
@@ -22,7 +22,7 @@ ul.pmen li a:hover{
 ul.pmen li ul.pdropdown{
     min-width: 125px; /* Set width of the dropdown */
     /* background: #f2f2f2; */
-	 padding: 2px 2px;
+	 /* padding: 2px 2px; */
     display: none;
     position: absolute;
     z-index: 999;
@@ -242,7 +242,7 @@ p.smallnote {
 	font-size: 8pt;
 }
 p.smallnotetm {
-	margin-top: 2cm;
+	margin-top: 5cm;
 	text-align: left;
 	line-height: 1;
 	font-size: 8pt;
