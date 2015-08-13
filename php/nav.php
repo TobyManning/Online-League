@@ -54,7 +54,7 @@ EOT;
 </ul></li><br/>
 <li><a href="#">Matches &#9662;</a>
 <ul class="pdropdown">
-<li><a href="matches.php" title="View league matches for current season">Match statu</a></li>
+<li><a href="matches.php" title="View league matches for current season">Match status</a></li>
 <li><a href="results.php" title="View results table for league matches">Results</a></li>
 </ul></li><br/>
 <li><a href="#">League Table &#9662;</a>
