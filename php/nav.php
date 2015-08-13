@@ -127,7 +127,7 @@ if (!$logged_in)  {
 EOT;
 }
 print <<<EOT
-<p class="smallnote">(Please note a cookie will be used to save login name and session id only, no other
+<p class="smallnotetm">(Please note a cookie will be used to save login name and session id only, no other
 information).</p>
 </div>
 </div>

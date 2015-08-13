@@ -241,6 +241,12 @@ p.smallnote {
 	line-height: 1;
 	font-size: 8pt;
 }
+p.smallnotetm {
+	margin-top: 2cm;
+	text-align: left;
+	line-height: 1;
+	font-size: 8pt;
+}
 p.alarm {
 	color: #3476E6;
 }
