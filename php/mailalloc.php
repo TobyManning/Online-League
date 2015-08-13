@@ -7,7 +7,13 @@ function mail_player($board, $pl, $pt, $pc, $col, $opp, $ot, $hcp)
 	if (!($pl->OKemail || $pl->is_same($pc)))
 		return "{$pl->display_name(false)} does not want email";
 
-	$fhh = popen("mail -s 'Go League match assignment' {$pl->Email}", "w");
+	$oppemail = $opp->Email;
+	if (strlen($oppemail) != 0)
+		$rt = "REPLYTO='$oppemail' ";
+	else
+		$rt = "REPLYTO='DO_NOT_REPLY_TO_THIS_ADDRESS@britgo.org' ";
+	
+	$fhh = popen("{$rt}mail -s 'Go League match assignment' {$pl->Email}", "w");
 	$oppname = $opp->display_name(false);
 	$mess = <<<EOT
 Dear {$pl->display_name(false)}
@@ -38,7 +44,7 @@ EOT;
 
 	if ($hcp)
 		fwrite($fhh, "\nThis game is played with $hcp\n");
-	if (strlen($opp->Email) != 0)
+	if (strlen($oppemail) != 0)
 		fwrite($fhh, "\nThe email address for {$opp->display_name(false)} is {$opp->display_email_nolink()}\n");
 	if (strlen($opp->Phone) != 0)
 		fwrite($fhh, "You can also reach him/her by phone - {$opp->display_phone(true)}.\n");
