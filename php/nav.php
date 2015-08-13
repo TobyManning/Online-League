@@ -71,7 +71,7 @@ if ($logged_in) {
 //EOT;
 	if ($admin)  {
 		print <<<EOT
-<li><a href="admin.php" class="memb" title="Administer the leagues">Admin menu</a></li>
+<li><a href="admin.php" class="memb" title="Administer the leagues">Admin menu</a></li><br/>
 
 EOT;
 	}
