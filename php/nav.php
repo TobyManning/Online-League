@@ -38,11 +38,11 @@ EOT;
 <li><a href="index.php" title="Go to league home page">League Home</a></li><br/>
 <li><a href="#">Information &#9662;</a>
 <ul class="pdropdown">
-<li><a href="info.php" title="General Information about the league">>Information</a></li>
-<li><a href="playing.php" title="How to play in the league">>League Rules</a></li>
-<li><a href="news.php" title="Read about recent results and update">>League News</a></li>
-<li><a href="clubs.php" title="View the list of clubs with members in the league">>Clubs</a></li>
-<li><a href="teams.php" title="View the teams participating in the league">>Teams</a></li>
+<li><a href="info.php" title="General Information about the league">Information</a></li>
+<li><a href="playing.php" title="How to play in the league">League Rules</a></li>
+<li><a href="news.php" title="Read about recent results and update">League News</a></li>
+<li><a href="clubs.php" title="View the list of clubs with members in the league">Clubs</a></li>
+<li><a href="teams.php" title="View the teams participating in the league">Teams</a></li>
 </ul></li><br/>
 <li><a href="#">Players &#9662;</a>
 <ul class="pdropdown">
