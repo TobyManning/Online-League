@@ -44,7 +44,7 @@ EOT;
 <li><a href="clubs.php" title="View the list of clubs with members in the league">Clubs</a></li>
 <li><a href="teams.php" title="View the teams participating in the league">Teams</a></li>
 </ul></li><br/>
-<li><a href="#">Players &#9662;</a>
+<li><a href="#">Player Info &#9662;</a>
 <ul class="pdropdown">
 <li><a href="players.php" title="View players in alphabetical order">Sorted by name</a></li>
 <li><a href="players.php?by=club" title="VIew players sorted by club">Sorted by club</a></li>
