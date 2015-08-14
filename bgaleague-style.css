@@ -19,6 +19,7 @@
 	background: #857B1B;
 	color: #FFFFFF;
 	text-align: center;
+	text-decoration: none;
 }
 
 #sddm li a.admin {
@@ -26,18 +27,21 @@
 	margin-bottom: 20px;
 	padding: 4px 4px;
 	width: 90px;
-	background: #EAEBD8;
-	color: #FFFFFF;
+	background: #D53B3B;
+	color: #000000;
 	text-align: center;
+	text-decoration: none;
 }
 
 #sddm li a:hover {
 	background: #FFC000;
+	text-decoration: none;
 }
 
 #sddm li a.admin:hover {
 	background: #FFFFD3;
 	color: #D53B3B;
+	text-decoration: none;
 }
 
 #sddm div {
