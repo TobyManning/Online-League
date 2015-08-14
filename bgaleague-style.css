@@ -12,9 +12,9 @@
 #sddm li a {
 	display: block;
 	margin-bottom: 20px;
-	padding: 4px 10px;
-	width: 80px;
-	background: #851B1B;
+	padding: 4px 4px;
+	width: 90px;
+	background: #857B1B;
 	color: #FFFFFF;
 	text-align: center;
 }
@@ -22,9 +22,9 @@
 #sddm li a.memb
 {	display: block;
 	margin-top: 20px;
-	padding: 4px 10px;
-	width: 60px;
-	background: #851B1B;
+	padding: 4px 4px;
+	width: 80px;
+	background: #857B1B;
 	color: #FFFFFF;
 	text-align: center;
 	text-decoration: none}
@@ -47,7 +47,7 @@
 	position: relative;
 	display: block;
 	margin: 0;
-	padding: 5px 10px;
+	padding: 5px 5px;
 	width: auto;
 	white-space: nowrap;
 	text-align: left;
@@ -57,8 +57,8 @@
 }
 
 	#sddm div a:hover
-	{   color: #EAEBD8;
-		background: #2875DE; }
+	{   color: #000000;
+		background: #FFFFD3; }
 
 a.memb:active {
 	color: #D53B3B;

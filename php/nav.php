@@ -94,7 +94,7 @@ document.onclick = mclose;
 </div></li><br clear="ALL"/>
 <li><a href="#" onmouseover="mopen('m3')" onmouseout="mclosetime()">Matches</a>
 <div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
-<a href="matches.php" title="View league matches for current season">Matches</a><
+<a href="matches.php" title="View league matches for current season">Matches</a>
 <a href="results.php" title="View results table for team league matches">Results</a>
 </div></li><br clear="ALL"/>
 <li><a href="#" onmouseover="mopen('m4')" onmouseout="mclosetime()">League tables</a>
