@@ -6,8 +6,8 @@ openfiles: /home/jmc/src/Websites/goleague/php/checklogged.php:0:0:0:
 openfiles: /home/jmc/src/Websites/goleague/addresult2.php:30:2027:0:
 openfiles: /home/jmc/src/Websites/goleague/index.php:0:1065:0:
 openfiles: /home/jmc/src/Websites/goleague/closeseason.php:357:0:0:
-openfiles: /home/jmc/src/Websites/goleague/php/nav.php:2026:756:0:
-openfiles: /home/jmc/src/Websites/goleague/bgaleague-style.css:168:0:1:
+openfiles: /home/jmc/src/Websites/goleague/php/nav.php:3108:1563:1:
+openfiles: /home/jmc/src/Websites/goleague/bgaleague-style.css:1365:115:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -17,14 +17,14 @@ targetlist: _top
 show_mbhl: 1
 view_line_numbers: 1
 fb_show_backup_f: 0
-bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3904:
 bmarks: ::/home/jmc/src/Websites/goleague/archive.php:1187:\n<?php:3904:
+bmarks: ::/home/jmc/src/Websites/goleague/archive.php:3355:>Promote {$promo[$nd:3904:
 htmlbar_thumbnailwidth: 300
 view_left_panel: 1
 default_mime_type: text/plain
 e2c.convert_xml: 1
 c2e.convert_iso: 0
-opendir: file:///home/jmc/src/Websites/goleague/php
+opendir: file:///home/jmc/src/Websites/goleague
 wrap_text_default: 0
 bookmarks_filename_mode: 1
 ssearch_text: innertube
@@ -41,6 +41,8 @@ replacelist: HistMatchException
 replacelist: histmatch
 replacelist: $logged_in
 replacelist: $mtch
+replacelist: <li>
+replacelist: </li><br clear="ALL"/>
 fb_show_hidden_f: 0
 editor_tab_width: 3
 template: 
@@ -83,17 +85,17 @@ recent_files: file:///home/jmc/src/Websites/goleague/news.php
 recent_files: file:///home/jmc/src/Websites/goleague/info.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/match.php
 recent_files: file:///home/jmc/src/Websites/goleague/swapcolours.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/checklogged.php
-recent_files: file:///home/jmc/src/Websites/goleague/addresult2.php
-recent_files: file:///home/jmc/src/Websites/goleague/index.php
-recent_files: file:///home/jmc/src/Websites/goleague/delmatch.php
-recent_files: file:///home/jmc/src/Websites/goleague/admin.php
-recent_files: file:///home/jmc/src/Websites/goleague/closeseason.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/game.php
 recent_files: file:///home/jmc/src/Websites/goleague/addresult.php
-recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
-recent_files: file:///home/jmc/src/Websites/goleague/bgaleague-style.css
 recent_files: file:///home/jmc/src/Websites/goleague/php/mailalloc.php
+recent_files: file:///home/jmc/src/Websites/goleague/bgaleague-style.css
+recent_files: file:///home/jmc/src/Websites/goleague/delmatch.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/checklogged.php
+recent_files: file:///home/jmc/src/Websites/goleague/admin.php
+recent_files: file:///home/jmc/src/Websites/goleague/index.php
+recent_files: file:///home/jmc/src/Websites/goleague/addresult2.php
+recent_files: file:///home/jmc/src/Websites/goleague/closeseason.php
+recent_files: file:///home/jmc/src/Websites/goleague/php/nav.php
 snr_replacetype: 0
 savedir: file:///home/jmc/src/Websites/goleague
 spell_check_default: 0
@@ -105,8 +107,6 @@ snr_escape_chars: 0
 c2e.convert_symbol: 0
 spell_lang: en
 ssearch_dotmatchall: 0
-searchlist: ilpaid
-searchlist: rand
 searchlist: $starting_team
 searchlist: $current_period
 searchlist: $q
@@ -120,6 +120,8 @@ searchlist: checkrever
 searchlist: smallnoe
 searchlist: smallnote
 searchlist: innertube
+searchlist: <tr><td>
+searchlist: </td></tr>
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0
