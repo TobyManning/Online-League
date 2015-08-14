@@ -26,7 +26,7 @@
 	margin-bottom: 20px;
 	padding: 4px 4px;
 	width: 90px;
-	background: #857B1B;
+	background: #EAEBD8;
 	color: #FFFFFF;
 	text-align: center;
 }
@@ -43,7 +43,7 @@
 #sddm div {
 	position: absolute;
 	visibility: hidden;
-	margin-left: 30px;
+	margin-left: 60px;
 	padding: 0;
 	background: #EAEBD8;
 	border: 1px solid #000000;
