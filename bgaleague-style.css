@@ -9,28 +9,31 @@
 	list-style: none;
 	float: left}
 
-#sddm li a
-{	display: block;
+#sddm li a {
+	display: block;
 	margin-bottom: 20px;
 	padding: 4px 10px;
-	width: 60px;
-	background: #808000;
-	color: #FFF;
+	width: 80px;
+	background: #851B1B;
+	color: #FFFFFF;
 	text-align: center;
-	text-decoration: none}
+}
 
 #sddm li a.memb
 {	display: block;
-	margin-bottom: 20px;
+	margin-top: 20px;
 	padding: 4px 10px;
 	width: 60px;
-	background: #FFFFFF;
-	color: #D53B3B;
+	background: #851B1B;
+	color: #FFFFFF;
 	text-align: center;
 	text-decoration: none}
 
 #sddm li a:hover
 { background: #FFC000}
+
+#sddm li a.memb:hover
+{ background: #FFFFD3; color: #D53B3B}
 
 #sddm div
 {	position: absolute;
@@ -40,18 +43,18 @@
 	background: #EAEBD8;
 	border: 1px solid #5970B2}
 
-	#sddm div a
-	{	position: relative;
-		display: block;
-		margin: 0;
-		padding: 5px 10px;
-		width: auto;
-		white-space: nowrap;
-		text-align: left;
-		text-decoration: none;
-		background: #EAEBD8;
-		color: #2875DE;
-		font: 11px arial}
+	#sddm div a {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 5px 10px;
+	width: auto;
+	white-space: nowrap;
+	text-align: left;
+	text-decoration: none;
+	background: #EAEBD8;
+	color: #2875DE;
+}
 
 	#sddm div a:hover
 	{   color: #EAEBD8;

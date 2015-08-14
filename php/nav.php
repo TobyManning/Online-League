@@ -124,7 +124,7 @@ EOT;
 EOT;
 	if ($nummsgs == 0)  {
 		print <<<EOT
-<a href="messages.php" title="Send and receive messages to/from opponents">Messages</a></li>
+<a href="messages.php" title="Send and receive messages to/from opponents">Messages</a>
 
 EOT;
 	}
