@@ -34,6 +34,8 @@ include 'php/nav.php'; ?>
 <p>Congratulations to the <b>Cambridge A</b> team (Lou Yuxiang, Paul Smith, Atta Chui and James Wood)
 for winning the seventh season of the online league.
 In second place were Edinburgh 1. Winning division 2 and promotion to division 1 were UK Youth.</p>
+<p>The winning teams received prizes consisting of places in Guo Juan's Group Classes and subscriptions to the Internet Lectures and Training system.
+See the <a href="http://internetgoschool.com/index.vhtml" target="_blank">Internet Go School site</a> for more details.</p> 
 <h2>Winning teams to date</h2>
 <p>The following are the winning teams to date:</p>
 <table cellpadding="2" cellspacing="2">
@@ -57,6 +59,9 @@ but we are happy to accommodate other players as needed.</p>
 <h2>Rules</h2>
 <p>A full description of playing games is to be found
 under <a href="playing.php" title="Read description of rules and instructions for playing">rules</a>.</p>
+<h2>Prizes</h2>
+<p>Prizes for 2016 and subsequent years awarded to the winning team in each division will be vouchers redeemable with
+<a href="http://internetgoschool.com/index.vhtml" target="_blank">Guo Juan's Internet Go School</a>.</p>
 </div>
 </div>
 <div id="Footer">
