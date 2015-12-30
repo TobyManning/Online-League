@@ -48,9 +48,9 @@ counterpart in the opposing team at a time to suit the players concerned.</p>
 of games to assist player development. From time to time reviews of games may appear
 in the <i>British Go Journal</i>.</p>
 <h2>Joining</h2>
-<p>We are now taking entries for the 2015 league season, which will get under way hopefully at the beginning of April 2015.
+<p>We are now taking entries for the 2016 league season, which will get under way hopefully in February 2016.
 If you would like to join it, either as an individual wanting to be assigned to a team, or a new team wanting to join,
-please let us know as soon as possible. Please contact the Online League coordinators at online-league AT britgo DOT org (without the hyphen).</p>
+please let us know as soon as possible. Please contact the Online League coordinators at j-m-c AT toad DOT me DOT uk (without the hyphens).</p>
 <p>Note that we will consider applications from non-UK players to join teams and play in the league, but they must be prepared to
 pay their share of the subscription and also fit in with UK times.</p>
 <h2>Rules</h2>
