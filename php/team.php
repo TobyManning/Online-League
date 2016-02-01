@@ -194,7 +194,7 @@ class Team extends Teambase  {
 	}
 	
 	public function get_scores($p = Null) {
-		$this->Played = $this->get_n_from_matches("result!='N' and result!='P' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
+		$this->Playedm = $this->get_n_from_matches("result!='N' and result!='P' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
 		$this->Wonm = $this->get_n_from_matches("({$this->queryof('hteam')} and result='H') or ({$this->queryof('ateam')} and result='A')");
 		$this->Lostm = $this->get_n_from_matches("({$this->queryof('hteam')} and result='A') or ({$this->queryof('ateam')} and result='H')");
 		$this->Drawnm = $this->get_n_from_matches("result='D' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
@@ -205,7 +205,7 @@ class Team extends Teambase  {
 		$this->Lostg = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(awins)") +
 							$this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hwins)");
 		if ($p)
-			$this->Sortrank = $this->Played * $p->Played +
+			$this->Sortrank = $this->Playedm * $p->Played +
 									$this->Wonm * $p->Won +
 									$this->Drawnm * $p->Drawn +	
 									$this->Lostm * $p->Lost +

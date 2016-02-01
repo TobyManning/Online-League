@@ -115,12 +115,12 @@ EOT;
 <p>(Player record includes all online league games).</p>
 <?php
 $team->get_scores();
-if ($team->Played != 0)  {
+if ($team->Playedm != 0)  {
 	print <<<EOT
 <h2>Match Record</h2>
 <p>
-Match record is Played: {$team->Played} Won: {$team->Won}
-Drawn: {$team->Drawn} Lost: {$team->Lost}.
+Match record is Played: {$team->Playedm} Won: {$team->Wonm}
+Drawn: {$team->Drawnm} Lost: {$team->Lostm}.
 </p>
 <img src="php/piewdl.php?w={$team->Won}&d={$team->Drawn}&l={$team->Lost}">
 <br />
@@ -164,13 +164,13 @@ EOT;
 	}
 	print "</table>\n";
 }
-if ($team->Scoref + $team->Scorea != 0)  {
+if ($team->Wong + $team->Drawng + $team->Lostg != 0)  {
 	print <<<EOT
 <h2>Game Record</h2>
 <p>
-Game record is For: {$team->Scoref} Against: {$team->Scorea}. (Drawn games are 0.5 each).
+Game record is For: {$team->Wong} Against: {$team->Lostg} Drawn: {$team->Drawng}.
 </p>
-<img src="php/piewdl.php?w={$team->Scoref}&d=0&l={$team->Scorea}">
+<img src="php/piewdl.php?w={$team->Wong}&d={$team->Drawng}&l={$team->Lostg}">
 <br />
 
 EOT;

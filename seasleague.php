@@ -118,7 +118,7 @@ EOT;
 			print "<td>{$reca->display()}</td>\n";
 		}
 		print <<<EOT
-<td align="right">{$t->Played}</td>
+<td align="right">{$t->Playedm}</td>
 <td align="right">{$t->Wonm}</td>
 <td align="right">{$t->Drawnm}</td>
 <td align="right">{$t->Lostm}</td>
