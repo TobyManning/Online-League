@@ -79,7 +79,7 @@ EOT;
 	// Historical teams now have sort order saved
 
 	foreach ($tl as $t)  {
-		$tl->fetchdets();
+		$t->fetchdets();
 	}
 	usort($tl, 'hist_score_compare');
 		// Insert column header
