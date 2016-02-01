@@ -103,18 +103,12 @@ EOT;
 			}
 			print "<td>$href$ht$hndref</td><td>$aref$at$andref</td>\n";
 		}
-		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->Result == 'D')  {
-				$d = $mtch->Draws + 0;
-				$h = $mtch->Hwins + $d * 0.5;
-				$a = $mtch->Awins + $d * 0.5;			
-			print "<td>Played ($h-$a)</td>";
+		if ($mtch->Result == 'H' || $mtch->Result == 'A' || $mtch->Result == 'D')  {		
+			print "<td>Played ({$mtch->summ_score()})</td>";
 		}
 		elseif ($mtch->is_allocated())  {
 			if ($mtch->Result == 'P') {
-				$d = $mtch->Draws + 0;
-				$h = $mtch->Hwins + $d * 0.5;
-				$a = $mtch->Awins + $d * 0.5;
-				print "<td>Part played ($h-$a)</td>";
+				print "<td>Part played ({$mtch->summ_score()})</td>";
 			}
 			else
 				print "<td>Not played</td>";

@@ -83,21 +83,15 @@ EOT;
 }
 else {
    if ($mtch->Result=='H' || $mtch->Result=='A' || $mtch->Result=='D') {
-		$d = $mtch->Draws + 0;
-		$h = $mtch->Hwins + $d * 0.5;
-		$a = $mtch->Awins + $d * 0.5;
 		print <<<EOT
-<p>The final score was $h-$a.</p>
+<p>The final score was {$mtch->summ_score()}.</p>
 <p>Player and board assignments were:</p>
 
 EOT;
 	}
 	else {
 		if ($mtch->Result=='P') {
-			$d = $mtch->Draws + 0;
-			$h = $mtch->Hwins + $d * 0.5;
-			$a = $mtch->Awins + $d * 0.5;
-			print "<p>Score to date is $h-$a</p>\n";
+			print "<p>Score to date is {$mtch->summ_score()}</p>\n";
 		}
 		print <<<EOT
 <p>Player and board assignments are as follows:</p>

@@ -128,6 +128,16 @@ class MatchBase {
 		$row = mysql_fetch_array($ret);
 		return $row[0] != 0;
 	}
+	
+	public function convhalf($sc) {
+		if ($sc == 0.5)
+			return '&frac12;';
+		return  preg_replace('/\.5/', '&frac12;', $sc);
+	}
+	
+	public function summ_score() {
+		$d = $this->Draws * 0.5;
+		return  $this->convhalf($this->Hwins+$d) . "-" . $this->convhalf($this->Awins+$d);
+	}
 }
-
 ?>

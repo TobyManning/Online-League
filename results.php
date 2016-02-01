@@ -71,10 +71,7 @@ EOT;
 		else  {
 			print "<td>$ht</td><td>$at</td>\n";
 		}
-		$d = $mtch->Draws + 0;
-		$h = $mtch->Hwins + $d * 0.5;
-		$a = $mtch->Awins + $d * 0.5;
-		print "<td>$h-$a</td></tr>\n";
+		print "<td>{$mtch->summ_score()}</td></tr>\n";
 	}
 }
 else {

@@ -7,18 +7,19 @@ openfiles: /home/jmc/src/Websites/goleague/leaguehist.php:0:1804:0:
 openfiles: /home/jmc/src/Websites/goleague/seasleague.php:2058:1485:0:
 openfiles: /home/jmc/src/Websites/goleague/php/histteam.php:2310:4053:0:
 openfiles: /home/jmc/src/Websites/goleague/php/teambase.php:1428:203:0:
-openfiles: /home/jmc/src/Websites/goleague/seasmatches.php:2685:1890:0:
+openfiles: /home/jmc/src/Websites/goleague/seasmatches.php:2094:1890:0:
 openfiles: /home/jmc/src/Websites/goleague/php/jumpto.php:0:0:0:
-openfiles: /home/jmc/src/Websites/goleague/php/itrecord.php:718:0:0:
-openfiles: /home/jmc/src/Websites/goleague/php/team.php:358:0:0:
+openfiles: /home/jmc/src/Websites/goleague/php/itrecord.php:370:0:0:
+openfiles: /home/jmc/src/Websites/goleague/php/team.php:1319:0:0:
 openfiles: /home/jmc/src/Websites/goleague/league.php:2608:0:0:
-openfiles: /home/jmc/src/Websites/goleague/php/match.php:5152:4893:0:
-openfiles: /home/jmc/src/Websites/goleague/php/histmatch.php:3979:3358:0:
+openfiles: /home/jmc/src/Websites/goleague/php/match.php:3976:5916:0:
+openfiles: /home/jmc/src/Websites/goleague/php/histmatch.php:4269:2949:0:
 openfiles: /home/jmc/src/Websites/goleague/teamdisp.php:3898:0:0:
 openfiles: /home/jmc/src/Websites/goleague/dohistscores.pl:1919:0:0:
 openfiles: /home/jmc/src/Websites/goleague/redohistmatch.pl:1355:0:0:
-openfiles: /home/jmc/src/Websites/goleague/archive2.php:0:0:0:
-openfiles: /home/jmc/src/Websites/goleague/php/matchbase.php:4077:3464:1:
+openfiles: /home/jmc/src/Websites/goleague/archive2.php:4428:3762:0:
+openfiles: /home/jmc/src/Websites/goleague/php/matchbase.php:3935:2884:1:
+openfiles: /home/jmc/src/Websites/goleague/histshowmtch.php:1169:0:0:
 snr_recursion_level: 0
 convertcolumn_horizontally: 0
 adv_open_matchname: 0
@@ -38,7 +39,7 @@ c2e.convert_iso: 0
 opendir: file:///home/jmc/src/Websites/goleague
 wrap_text_default: 0
 bookmarks_filename_mode: 1
-ssearch_text: Scoref
+ssearch_text: histmatche
 snr_casesens: 0
 view_blocks: 1
 name: Go League
@@ -97,7 +98,6 @@ recent_files: file:///home/jmc/src/Websites/goleague/php/params.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/match.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/game.php
 recent_files: file:///home/jmc/src/Websites/goleague/php/histmatch.php
-recent_files: file:///home/jmc/src/Websites/goleague/histshowmtch.php
 recent_files: file:///home/jmc/src/Websites/goleague/showmtch.php
 recent_files: file:///home/jmc/src/Websites/goleague/matches.php
 recent_files: file:///home/jmc/src/Websites/goleague/osmatches.php
@@ -110,8 +110,9 @@ recent_files: file:///home/jmc/src/Websites/goleague/teamdisp.php
 recent_files: file:///home/jmc/src/Websites/goleague/dohistscores.pl
 recent_files: file:///home/jmc/src/Websites/goleague/redohistmatch.pl
 recent_files: file:///home/jmc/src/Websites/goleague/archive2.php
+recent_files: file:///home/jmc/src/Websites/goleague/histshowmtch.php
 snr_replacetype: 0
-savedir: file:///home/jmc/src/Websites/goleague/php
+savedir: file:///home/jmc/src/Websites/goleague
 spell_check_default: 0
 spell_insert_entities: 0
 last_filefilter: 
@@ -121,7 +122,6 @@ snr_escape_chars: 0
 c2e.convert_symbol: 0
 spell_lang: en
 ssearch_dotmatchall: 0
-searchlist: delmatch
 searchlist: checkrever
 searchlist: smallnoe
 searchlist: smallnote
@@ -136,6 +136,7 @@ searchlist: hsco
 searchlist: histteam
 searchlist: Played
 searchlist: Scoref
+searchlist: histmatche
 autocomplete: 1
 outputb_show_all_output: 0
 bookmarks_show_mode: 0

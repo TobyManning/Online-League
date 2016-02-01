@@ -62,9 +62,6 @@ for
 </p>
 
 EOT;
-$d = $mtch->Draws + 0;
-$h = $mtch->Hwins + $d * 0.5;
-$a = $mtch->Awins + $d * 0.5;
 
 if ($mtch->Defaulted)  {
 	$wdef = $mtch->Result == 'A'? $mtch->Ateam: $mtch->Hteam;
@@ -75,7 +72,7 @@ EOT;
 }
 else {
 	print <<<EOT
-<p>The final score was $h-$a.</p>
+<p>The final score was {$mtch->summ_score()}</p>
 <p>Player and board assignments were as follows:</p>
 <table class="showmatch">
 <tr><th colspan="3" align="center">White</th><th colspan="2" align="center">Black</th><th>Result</th></tr>
