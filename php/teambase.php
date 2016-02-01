@@ -41,6 +41,13 @@ class TeamBase {
 			$this->Name = $n;
 		$this->Division = 1;
 		$this->Sortrank = 0;
+		$this->Playedm = 0;
+		$this->Wonm = 0;
+		$this->Drawnm = 0;
+		$this->Lostm = 0;
+		$this->Wong = 0;
+		$this->Drawng = 0;
+		$this->Lostg = 0;
 		$this->Playing = true;
 	}
 	

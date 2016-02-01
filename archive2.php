@@ -87,7 +87,14 @@ foreach ($Full_teams as $team) {
 	$hteam->Description = $team->Description;
 	$hteam->Division = $team->Division;
 	$hteam->Playing = $team->Playing;
-	$hteam->Sortrank = $team->get_scores($Pars);
+	$hteam->Sortrank = $team->get_scores($Pars);		// Also sets Wonm etc
+	$hteam->Playedm = $team->Playedm;
+	$hteam->Wonm = $team->Wonm;
+	$hteam->Drawnm = $team->Drawnm;
+	$hteam->Lostm = $team->Lostm;
+	$hteam->Wong = $team->Wong;
+	$hteam->Drawng = $team->Drawng;
+	$hteam->Lostg = $team->Lostg;
 	$hteam->create();
 	// Create the members
 	$membs = $team->list_members();

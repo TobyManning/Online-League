@@ -46,7 +46,7 @@ class Histteam extends Teambase {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select description,divnum,playing,sortrank from histteam where $q");
+		$ret = mysql_query("select description,divnum,playing,sortrank,playedm,wonm,drawnm,lostm,wong,drawng,lostg from histteam where $q");
 		if (!$ret)
 			throw new TeamException("Cannot read database for histteam {$this->Name}");
 		if (mysql_num_rows($ret) == 0)
@@ -56,8 +56,14 @@ class Histteam extends Teambase {
 		$this->Division = $row["divnum"];
 		$this->Playing = $row["playing"];
 		$this->Sortrank = $row["sortrank"];
+		$this->Playedm = $row["playedm"];
+		$this->Wonm = $row["wonm"];
+		$this->Drawnm = $row["drawnm"];
+		$this->Lostm = $row["lostm"];
+		$this->Wong = $row["wong"];
+		$this->Drawng = $row["drawng"];
+		$this->Lostg = $row["lostg"];
 	}
-
 	public function create() {
 		$qname = mysql_real_escape_string($this->Name);
 		$qdescr = mysql_real_escape_string($this->Description);
@@ -65,9 +71,16 @@ class Histteam extends Teambase {
 		$qseas = $this->Seas->Ind;
 		$qplaying = $this->Playing? 1: 0;
 		$qsortrank = $this->Sortrank;
+		$qplayedm = $this->Playedm;
+		$qwonm = $this->Wonm;
+		$qdrawnm = $this->Drawnm;
+		$qlostm = $this->Lostm;
+		$qwong = $this->Wong;
+		$qdrawng = $this->Drawng;
+		$qlostg = $this->Lostg;
 		// Delete any team with the same name for the season
 		mysql_query("delete from histteam where {$this->Seas->queryof()} and name='$qname'");
-		if (!mysql_query("insert into histteam (name,description,divnum,seasind,playing,sortrank) values ('$qname','$qdescr',$qdiv,$qseas,$qplaying,$qsortrank)"))
+		if (!mysql_query("insert into histteam (name,description,divnum,seasind,playing,sortrank,playedm,wonm,drawnm,lostm,wong,drawng,lostg) values ('$qname','$qdescr',$qdiv,$qseas,$qplaying,$qsortrank,$qplayedm,$qwonm,$qdrawnm,$qlostm,$qwong,$qdrawng,$qlostg)"))
 			throw new TeamException(mysql_error());
 	}
 	
