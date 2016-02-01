@@ -77,7 +77,7 @@ if ($ret && mysql_num_rows($ret) > 0)  {
 			$mtch->fetchteams();
 			$mtch->fetchgames();
 		}
-		catch (HistMatchException $e) {
+		catch (MatchException $e) {
 			continue;
 		}
 		if ($mtch->Division != $lastdiv)  {

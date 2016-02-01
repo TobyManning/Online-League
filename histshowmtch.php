@@ -34,7 +34,7 @@ try  {
 	$mtch->fetchteams();
 	$mtch->fetchgames();
 }
-catch (HistMatchException $e) {
+catch (MatchException $e) {
 	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);	

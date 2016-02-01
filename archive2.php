@@ -158,11 +158,6 @@ catch (MatchException $e) {
 	include 'php/dataerror.php';
 	exit(0);
 }
-catch (HistMatchException $e) {
-	$mess = $e->getMessage();
-	include 'php/dataerror.php';
-	exit(0);
-}
 
 //  Now delete all unplayed games
 //  Delete all matches
