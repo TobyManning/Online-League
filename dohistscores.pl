@@ -2,50 +2,40 @@
 
 use DBD::mysql;
 
-%Params = (p => 0.01, w => 100, d => 50, l => 0, f => 1, a => 0, j => 0.5, hd => 2, hr => 1, fz => 2);
-
 $Database = DBI->connect("DBI:mysql:bgaleague;host=britgo.org", "jmc", "jmc\'s mysql p\@ssw0rd") or die "Cannot open DB";
-
-# Reset params
-
-$sfh = $Database->prepare("SELECT sc,val FROM params");
-$sfh->execute;
-while (my @row = $sfh->fetchrow_array)  {
-	$Params{$row[0]} = $row[1] + 0;
-}
 
 # Build up table of matches by ind
 
-$sfh = $Database->prepare("SELECT seasind,hteam,ateam,hscore,ascore,result FROM histmatch");
+$sfh = $Database->prepare("SELECT seasind,hteam,ateam,hwins,awins,draws,result FROM histmatch");
 $sfh->execute;
 
-$playedsc = $Params{p};
-$wonsc = $Params{w};
-$drawsc = $Params{d};
-$lostsc = $Params{l};
-$forsc = $Params{f};
-$agsc = $Params{a};
-
 while (my @row = $sfh->fetchrow_array)  {
-	my ($seasind,$hteam,$ateam,$hscore,$ascore,$result) = @row;
+	my ($seasind,$hteam,$ateam,$hwins,$awins,$draws,$result) = @row;
 	$seasind += 0;
-	$hscore += 0.0;
-	$ascore += 0.0;
+	$totals{$hteam}->{$seasind}->{WONG} += $hwins;
+	$totals{$hteam}->{$seasind}->{DRAWNG} += $draws;
+	$totals{$hteam}->{$seasind}->{LOSTG} += $awins;
+	$totals{$ateam}->{$seasind}->{WONG} += $awins;
+	$totals{$ateam}->{$seasind}->{DRAWNG} += $draws;
+	$totals{$ateam}->{$seasind}->{LOSTG} += $hwins;
+
 	if ($result eq 'H')  {
-		$totals{$hteam}->{$seasind} += $playedsc + $wonsc + $forsc * $hscore + $agsc * $ascore;
-		$totals{$ateam}->{$seasind} += $playedsc + $lostsc + $forsc * $ascore + $agsc * $hscore;
+		$totals{$hteam}->{$seasind}->{PLAYED}++;
+		$totals{$hteam}->{$seasind}->{WONM}++;
+		$totals{$ateam}->{$seasind}->{PLAYED}++;
+		$totals{$ateam}->{$seasind}->{LOSTM}++;
 	}
 	elsif ($result eq 'A')  {
-		$totals{$ateam}->{$seasind} += $playedsc + $wonsc + $forsc * $hscore + $agsc * $ascore;
-		$totals{$hteam}->{$seasind} += $playedsc + $lostsc + $forsc * $ascore + $agsc * $hscore;
+		$totals{$hteam}->{$seasind}->{PLAYED}++;
+		$totals{$ateam}->{$seasind}->{WONM}++;
+		$totals{$ateam}->{$seasind}->{PLAYED}++;
+		$totals{$hteam}->{$seasind}->{LOSTM}++;
 	}
 	elsif ($result eq 'D') {
-		$totals{$hteam}->{$seasind} += $playedsc + $drawsc + $forsc * $hscore + $agsc * $ascore;
-		$totals{$ateam}->{$seasind} += $playedsc + $drawsc + $forsc * $ascore + $agsc * $hscore;
-	}
-	else {
-		$totals{$hteam}->{$seasind} += $forsc * $hscore + $agsc * $ascore;
-		$totals{$ateam}->{$seasind} += $forsc * $ascore + $agsc * $hscore;
+		$totals{$hteam}->{$seasind}->{PLAYED}++;
+		$totals{$ateam}->{$seasind}->{PLAYED}++;
+		$totals{$hteam}->{$seasind}->{DRAWNM}++;
+		$totals{$ateam}->{$seasind}->{DRAWNM}++;
 	}
 }
 
@@ -53,8 +43,15 @@ for my $team (keys %totals)  {
 	my $qteam = $Database->quote($team);
 	my $tres = $totals{$team};
 	for my $season (keys %$tres) {
-		my $sc = $tres->{$season};
-		my $sfh = $Database->prepare("UPDATE histteam SET sortrank=$sc WHERE name=$qteam AND seasind=$season");
+		my $si = $tres->{$season};
+		my $played = $si->{PLAYED} + 0;
+		my $wonm = $si->{WONM} + 0;
+		my $drawnm = $si->{DRAWNM} + 0;
+		my $lostm = $si->{LOSTM} + 0;
+		my $wong = $si->{WONG} + 0;
+		my $drawng = $si->{DRAWNG} + 0;
+		my $lostg = $si->{LOSTG} + 0;
+		my $sfh = $Database->prepare("UPDATE histteam SET playedm=$played,wonm=$wonm,drawnm=$drawnm,lostm=$lostm,wong=$wong,drawng=$drawng,lostg=$lostg WHERE name=$qteam AND seasind=$season");
 		$sfh->execute;
 	} 
 }
