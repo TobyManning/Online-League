@@ -200,8 +200,8 @@ class Team extends Teambase  {
 		$this->Drawnm = $this->get_n_from_matches("result='D' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
 		$this->Wong = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(hwins)") +
 						  $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(awins)");
-		$this->Drawng = $this->get_n_from_matches(("{$this->queryof('hteam')}", "sum(draws)") +
-							 $this->get_n_from_matches(("{$this->queryof('ateam')}", "sum(draws)");
+		$this->Drawng = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(draws)") +
+							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(draws)");
 		$this->Lostg = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(awins)") +
 							$this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hwins)");
 		if ($p)
