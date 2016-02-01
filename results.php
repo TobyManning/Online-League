@@ -71,8 +71,9 @@ EOT;
 		else  {
 			print "<td>$ht</td><td>$at</td>\n";
 		}
-		$h = $mtch->Hscore + 0;
-		$a = $mtch->Ascore + 0;
+		$d = $mtch->Draws + 0;
+		$h = $mtch->Hwins + $d * 0.5;
+		$a = $mtch->Awins + $d * 0.5;
 		print "<td>$h-$a</td></tr>\n";
 	}
 }

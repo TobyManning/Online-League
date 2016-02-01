@@ -38,6 +38,7 @@ function checkform()
 		 !re.exec(form.d.value) ||
 		 !re.exec(form.l.value) ||
 		 !re.exec(form.f.value) ||
+		 !re.exec(form.j.value) ||
 		 !re.exec(form.a.value))  {
 		 alert("Please enter numeric values for fields");
 		 return  false;
@@ -68,13 +69,13 @@ print <<<EOT
 <tr><td>Match Won</td><td><input type="text" name="w" value="{$pars->Won}" size="20"></td></tr>
 <tr><td>Match Drawn</td><td><input type="text" name="d" value="{$pars->Drawn}" size="20"></td></tr>
 <tr><td>Match Lost</td><td><input type="text" name="l" value="{$pars->Lost}" size="20"></td></tr>
-<tr><td>Game Won</td><td><input type="text" name="f" value="{$pars->For}" size="20"></td></tr>
-<tr><td>Game Lost</td><td><input type="text" name="a" value="{$pars->Against}" size="20"></td></tr>
+<tr><td>Game Won</td><td><input type="text" name="f" value="{$pars->Forg}" size="20"></td></tr>
+<tr><td>Game Drawn</td><td><input type="text" name="j" value="{$pars->Drawng}" size="20"></td></tr>
+<tr><td>Game Lost</td><td><input type="text" name="a" value="{$pars->Againstg}" size="20"></td></tr>
 EOT;
 ?>
 </table>
-<p>If a game is drawn (Jigo) then half the "Game Won" value plus half the "Game Lost" value
-is added.</p>
+<p>Note we now have a separate figure for drawn games.</p>
 <h2>Divisions with handicaps</h2>
 <p>Some lower division matches may be played with handicaps.
 Set the highest division to which handicaps apply to be:

@@ -75,9 +75,9 @@ for ($d = 1; $d <= $ml; $d++) {
 <th>Team</th>
 
 EOT;
-	foreach ($tl as $t) {
-		$t->get_scores($pars);
-	}
+	
+	// Historical teams now have sort order saved
+
 	usort($tl, 'hist_score_compare');
 		// Insert column header
 	
@@ -91,6 +91,7 @@ EOT;
 <th>D</th>
 <th>L</th>
 <th>F</th>
+<th>J</th>
 <th>A</th>
 </tr>
 
@@ -118,11 +119,12 @@ EOT;
 		}
 		print <<<EOT
 <td align="right">{$t->Played}</td>
-<td align="right">{$t->Won}</td>
-<td align="right">{$t->Drawn}</td>
-<td align="right">{$t->Lost}</td>
-<td align="right">{$t->Scoref}</td>
-<td align="right">{$t->Scorea}</td>
+<td align="right">{$t->Wonm}</td>
+<td align="right">{$t->Drawnm}</td>
+<td align="right">{$t->Lostm}</td>
+<td align="right">{$t->Wong}</td>
+<td align="right">{$t->Drawng}</td>
+<td align="right">{$t->Lostg}</td>
 </tr>
 
 EOT;
@@ -133,7 +135,7 @@ EOT;
 }
 ?>
 </div>
-<p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost, Games <b>F</b>or and Games <b>A</b>gainst.
+<p>Key to above: Matches <b>P</b>layed, <b>W</b>on, <b>D</b>rawn, <b>L</b>ost, Games <b>F</b>or, <b>J</b>igo and Games <b>A</b>gainst.
 <span class="prom">Promotion Zone</span> and <span class="releg">Relegation Zone</span>.
 </p>
 <h2>Other Seasons</h2>

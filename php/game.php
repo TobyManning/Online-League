@@ -331,20 +331,19 @@ class Game {
 		default:
 			return;
 		case 'J':
-			$mtch->Hscore += 0.5 * $mult;
-			$mtch->Ascore += 0.5 * $mult;
+			$mtch->Draws += $mult;
 			break;
 		case 'W':	
 			if ($this->Wteam->is_same($mtch->Hteam))
-				$mtch->Hscore += $mult;
+				$mtch->Hwins += $mult;
 			else
-				$mtch->Ascore += $mult;
+				$mtch->Awins += $mult;
 			break;
 		case 'B':
 			if ($this->Wteam->is_same($mtch->Hteam))
-				$mtch->Ascore += $mult;
+				$mtch->Awins += $mult;
 			else
-				$mtch->Hscore += $mult;
+				$mtch->Hwins += $mult;
 			break;
 		}
 		// If we have a result, delete any messages specific to that game

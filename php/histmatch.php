@@ -26,8 +26,9 @@ class HistMatch {
 	public  $Hteam;		// "Home" team (class object)
 	public  $Ateam;		// "Away" team (class object)
 	public  $Date;			// Matchdate class object
-	public  $Hscore;		// "Home" Score
-	public  $Ascore;		// "Away" Score
+	public  $Hwins;		// "Home" wins
+	public  $Awins;		// "Away" wins
+	public  $Draws;		// Draws
 	public  $Result;		// N (not played) P (part played) D Draw H Home Win A Away win
 	public  $Games;		// Array of game objects
 	public  $Defaulted;	// Match defaulted
@@ -39,8 +40,9 @@ class HistMatch {
 		$this->Hteam = new Histteam($s);
 		$this->Ateam = new Histteam($s);
 		$this->Date = new Matchdate();
-		$this->Hscore = 0;
-		$this->Ascore = 0;
+		$this->Hwins = 0;
+		$this->Awins = 0;
+		$this->Draws = 0;
 		$this->Result = 'N';
 		$this->Games = array();
 		$this->Defaulted = false;
@@ -99,7 +101,7 @@ class HistMatch {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hscore,ascore,result,defaulted from histmatch where $q");
+		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hwins,awins,draws,result,defaulted from histmatch where $q");
 		if (!$ret)
 			throw new HistMatchException("Cannot read database for match $q");
 		if (mysql_num_rows($ret) == 0)
@@ -109,8 +111,9 @@ class HistMatch {
 		$this->Hteam = new Histteam($this->Seas, $row["hteam"]);
 		$this->Ateam = new Histteam($this->Seas, $row["ateam"]);
 		$this->Date->fromtabrow($row);
-		$this->Hscore = $row["hscore"];
-		$this->Ascore = $row["ascore"];
+		$this->Hwins = $row["hwins"];
+		$this->Awins = $row["awins"];
+		$this->Draws = $row["draws"];
 		$this->Result = $row["result"];
 		$this->Defaulted = $row["defaulted"];
 	}
@@ -122,7 +125,7 @@ class HistMatch {
 			$this->Hteam->fetchdets();
 			$this->Ateam->fetchdets();
 		}
-		catch (HistteamException $e) {
+		catch (TeamException $e) {
 			throw new HistMatchException($e->getMessage());
 		}
 	}
@@ -187,7 +190,7 @@ class HistMatch {
 		$qdate = $this->Date->queryof();
 		$qres = mysql_real_escape_string($this->Result);
 		$qdef = $this->Defaulted? 1: 0;
-		$ret = mysql_query("insert into histmatch (ind,divnum,hteam,ateam,matchdate,hscore,ascore,result,seasind,defaulted) values ({$this->Ind},{$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres',{$this->Seas->Ind},$qdef)");
+		$ret = mysql_query("insert into histmatch (ind,divnum,hteam,ateam,matchdate,hwins,awins,draws,result,seasind,defaulted) values ({$this->Ind},{$this->Division},'$qhome','$qaway','$qdate',{$this->Hwins},{$this->Awins},{$this->Draws},'$qres',{$this->Seas->Ind},$qdef)");
 		if (!$ret)
 			throw new HistMatchException(mysql_error());
 	}

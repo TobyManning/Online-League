@@ -35,8 +35,9 @@ class Match {
 	public  $Ateam;		// "Away" team (class object)
 	public  $Date;			// Matchdate class object
 	public  $Slackdays;	// Days to arrange match
-	public  $Hscore;		// "Home" Score
-	public  $Ascore;		// "Away" Score
+	public  $Hwins;		// "Home" Score
+	public  $Awubs;		// "Away" Score
+	public  $Draws;		// Draw score
 	public  $Result;		// N (not played) P (part played) D Draw H Home Win A Away win
 	public  $Games;		// Array of game objects
 	public  $Defaulted;	// Boolean if whole match defaulted
@@ -48,8 +49,9 @@ class Match {
 		$this->Ateam = new Team();
 		$this->Date = new Matchdate();
 		$this->Slackdays = 2;
-		$this->Hscore = 0;
-		$this->Ascore = 0;
+		$this->Hwins = 0;
+		$this->Awins = 0;
+		$this->Draws = 0;
 		$this->Result = 'N';
 		$this->Games = array();
 		$this->Defaulted = false;
@@ -117,7 +119,7 @@ class Match {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays,defaulted from lgmatch where $q");
+		$ret = mysql_query("select divnum,hteam,ateam,matchdate,hwins,awins,draws,result,slackdays,defaulted from lgmatch where $q");
 		if (!$ret)
 			throw new MatchException("Cannot read database for match $q");
 		if (mysql_num_rows($ret) == 0)  {
@@ -132,8 +134,9 @@ class Match {
 		$this->Ateam = new Team($row["ateam"]);
 		$this->Date->fromtabrow($row);
 		$this->Slackdays = $row["slackdays"];
-		$this->Hscore = $row["hscore"];
-		$this->Ascore = $row["ascore"];
+		$this->Hwins = $row["hwins"];
+		$this->Awins = $row["awins"];
+		$this->Draws = $row["draws"];
 		$this->Result = $row["result"];
 		$this->Defaulted = $row["defaulted"];
 	}
@@ -225,7 +228,7 @@ class Match {
 		$qaway = $this->Ateam->queryname();
 		$qdate = $this->Date->queryof();
 		$qres = mysql_real_escape_string($this->Result);
-		$ret = mysql_query("insert into lgmatch (divnum,hteam,ateam,matchdate,hscore,ascore,result,slackdays) values ({$this->Division},'$qhome','$qaway','$qdate',{$this->Hscore},{$this->Ascore},'$qres',{$this->Slackdays})");
+		$ret = mysql_query("insert into lgmatch (divnum,hteam,ateam,matchdate,hwins,awins,draws,result,slackdays) values ({$this->Division},'$qhome','$qaway','$qdate',{$this->Hwins},{$this->Awins},{$this->Draws},'$qres',{$this->Slackdays})");
 		if (!$ret)
 			throw new MatchException(mysql_error());
 		$ret = mysql_query("select last_insert_id()");
@@ -259,17 +262,17 @@ class Match {
 	// Adjust result of match for incoming score
 	
 	public function updscore() {
-		$tot = $this->Hscore + $this->Ascore;
+		$tot = $this->Hwins + $this->Awins + $this->Draws;
 		$delmsgs = false;
 		if ($tot <= 0)
 			$this->Result = 'N';
 		else  if ($tot < 3)
 			$this->Result = 'P';
-		else if ($this->Hscore == $this->Ascore) {
+		else if ($this->Hwins == $this->Awins) {
 			$this->Result = 'D';
 			$delmsgs = true;
 		}
-		else if ($this->Hscore < $this->Ascore) {
+		else if ($this->Hwins < $this->Awins) {
 			$this->Result = 'A';
 			$delmsgs = true;
 		}
@@ -277,7 +280,7 @@ class Match {
 			$this->Result = 'H';
 			$delmsgs = true;
 		}
-		mysql_query("update lgmatch set result='{$this->Result}',hscore={$this->Hscore},ascore={$this->Ascore} where {$this->queryof()}");
+		mysql_query("update lgmatch set result='{$this->Result}',hwins={$this->Hwins},awins={$this->Awins},draws={$this->Draws} where {$this->queryof()}");
 		if ($delmsgs)
 			mysql_query("delete from message where {$this->queryof('match')}");
 	}
@@ -288,17 +291,19 @@ class Match {
 			return;
 		case  'H':
 			$this->Result= 'A';
-			$this->Hscore = 0;
-			$this->Ascore = 3;
+			$this->Hwins = 0;
+			$this->Draws = 0;
+			$this->Awins = 3;
 			break;
 		case  'A':
 			$this->Result = 'H';
-			$this->Hscore = 3;
-			$this->Ascore = 0;
+			$this->Hwins = 3;
+			$this->Draws = 0;
+			$this->Awins = 0;
 			break;
 		}
 		$this->Defaulted = true;
-		mysql_query("update lgmatch set defaulted=1,result='{$this->Result}',hscore={$this->Hscore},ascore={$this->Ascore} where {$this->queryof()}");
+		mysql_query("update lgmatch set defaulted=1,result='{$this->Result}',hwins={$this->Hwins},awins={$this->Awins},draws={$this->Draws} where {$this->queryof()}");
 		mysql_query("delete from game where {$this->queryof('match')}");
 	}	
 

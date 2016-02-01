@@ -62,8 +62,10 @@ for
 </p>
 
 EOT;
-$h = $mtch->Hscore + 0;
-$a = $mtch->Ascore + 0;
+$d = $mtch->Draws + 0;
+$h = $mtch->Hwins + $d * 0.5;
+$a = $mtch->Awins + $d * 0.5;
+
 if ($mtch->Defaulted)  {
 	$wdef = $mtch->Result == 'A'? $mtch->Ateam: $mtch->Hteam;
 	print <<<EOT

@@ -2,6 +2,11 @@
 
 //   Copyright 2010 John Collins
 
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
 //   the Free Software Foundation, either version 3 of the License, or
@@ -15,49 +20,23 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-class HistteamException extends Exception {}
+include 'teambase.php';
 
-class Histteam  {
-	public $Name;			// Team short name
-	public $Description;	// Team full name
-	public $Division;		// League division for season
+class Histteam extends Teambase {
 	public $Seas;			// Season object
-	public $Played;		// Played matches
-	public $Won;			// Won matches
-	public $Drawn;			// Drawn matches
-	public $Lost;			// Lost matches
-	public $Scoref;		// Scores for
-	public $Scorea;		// Scores against
-	public $Sortrank;		// Ranking for league sort
-	public $Playing;		// Playing in the season
 	
 	public function __construct($s, $n = "") {
-		$this->Name = $n;
+		parent::__construct($n);
 		$this->Seas = $s;
-		$this->Division = 1;
-		$this->Sortrank = 0;
-		$this->Playing = true;
 	}
 	
 	public function fromget() {
-		$this->Name = $_GET["htn"];
-		if (strlen($this->Name) == 0)
-			throw new HistteamException("Null name field"); 
+		parent::fromget("htn");
 	}
 
 	public function queryof($colname = "name") {
 		$qn = mysql_real_escape_string($this->Name);
 		return "$colname='$qn' and seasind={$this->Seas->Ind}";
-	}
-	
-	public function queryname() {
-		return mysql_real_escape_string($this->Name);
-	}
-	
-	public function noquote() {
-		$p = array('/"/', "/'/");
-		$r = array("", "");
-		return preg_replace($p, $r, $this->Name);
 	}
 	
 	public function urlof() {
@@ -67,76 +46,29 @@ class Histteam  {
 	
 	public function fetchdets() {
 		$q = $this->queryof();
-		$ret = mysql_query("select description,divnum,playing from histteam where $q");
+		$ret = mysql_query("select description,divnum,playing,sortrank from histteam where $q");
 		if (!$ret)
-			throw new HistteamException("Cannot read database for histteam {$this->Name}");
+			throw new TeamException("Cannot read database for histteam {$this->Name}");
 		if (mysql_num_rows($ret) == 0)
-			throw new HistteamException("Cannot find histteam {$this->Name}");
+			throw new TeamException("Cannot find histteam {$this->Name}");
 		$row = mysql_fetch_assoc($ret);
 		$this->Description = $row["description"];
 		$this->Division = $row["divnum"];
 		$this->Playing = $row["playing"];
+		$this->Sortrank = $row["sortrank"];
 	}
-	
-	public function display_name() {
-		return htmlspecialchars($this->Name);
-	}
-	
-	public function display_description() {
-		return htmlspecialchars($this->Description);
-	}
-	
-	// Trivial but room for expansion
-	
-	public function display_division() {
-		return $this->Division;
-	}
-	
+
 	public function create() {
 		$qname = mysql_real_escape_string($this->Name);
 		$qdescr = mysql_real_escape_string($this->Description);
 		$qdiv = $this->Division;
 		$qseas = $this->Seas->Ind;
 		$qplaying = $this->Playing? 1: 0;
+		$qsortrank = $this->Sortrank;
 		// Delete any team with the same name for the season
 		mysql_query("delete from histteam where {$this->Seas->queryof()} and name='$qname'");
-		if (!mysql_query("insert into histteam (name,description,divnum,seasind,playing) values ('$qname','$qdescr',$qdiv,$qseas,$qplaying)"))
-			throw new HistteamException(mysql_error());
-	}
-	
-	public function get_n_from_matches($crit, $wot="count(*)") {
-		$ret = mysql_query("select $wot from histmatch where {$this->Seas->queryof()} and $crit");
-		if (!$ret)
-			throw new HistteamException(mysql_error());
-		if (mysql_num_rows($ret) == 0)
-			return 0;
-		$row = mysql_fetch_array($ret);
-		return $row[0];
-	}
-	
-	public function get_scores($p = Null) {
-		$tn = $this->queryname();
-		$ht = "hteam='$tn'";
-		$at = "ateam='$tn'";
-		$this->Played = $this->get_n_from_matches("result!='N' and result!='P' and ($ht or $at)");
-		$this->Won = $this->get_n_from_matches("(($ht and result='H') or ($at and result='A'))");
-		$this->Lost = $this->get_n_from_matches("(($ht and result='A') or ($at and result='H'))");
-		$this->Drawn = $this->get_n_from_matches("result='D' and ($ht or $at)");
-		$this->Scoref = $this->get_n_from_matches($ht, "sum(hscore)") +
-							 $this->get_n_from_matches($at, "sum(ascore)");
-		$this->Scorea = $this->get_n_from_matches($ht, "sum(ascore)") +
-							 $this->get_n_from_matches($at, "sum(hscore)");
-		if ($p)
-			$this->Sortrank = $this->Played * $p->Played +
-									$this->Won * $p->Won +
-									$this->Drawn * $p->Drawn +	
-									$this->Lost * $p->Lost +
-									$this->Scoref * $p->For +
-									$this->Scorea * $p->Against;
-	}
-	
-	public function is_same($tm) {
-		return $this->Name == $tm->Name;
+		if (!mysql_query("insert into histteam (name,description,divnum,seasind,playing,sortrank) values ('$qname','$qdescr',$qdiv,$qseas,$qplaying,$qsortrank)"))
+			throw new TeamException(mysql_error());
 	}
 	
 	public function count_members() {

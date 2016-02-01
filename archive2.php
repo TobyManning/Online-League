@@ -87,6 +87,7 @@ foreach ($Full_teams as $team) {
 	$hteam->Description = $team->Description;
 	$hteam->Division = $team->Division;
 	$hteam->Playing = $team->Playing;
+	$hteam->Sortrank = $team->get_scores($Pars);
 	$hteam->create();
 	// Create the members
 	$membs = $team->list_members();
@@ -136,8 +137,9 @@ try {
 			$hmtch->Hteam = $mtch->Hteam;
 			$hmtch->Ateam = $mtch->Ateam;
 			$hmtch->Date = $mtch->Date;
-			$hmtch->Hscore = $mtch->Hscore;
-			$hmtch->Ascore = $mtch->Ascore;
+			$hmtch->Hwins = $mtch->Hwins;
+			$hmtch->Awins = $mtch->Awins;
+			$hmtch->Draws = $mtch->Draws;
 			$hmtch->Result = $mtch->Result;
 			$hmtch->Defaulted = $mtch->Defaulted;
 			$hmtch->create();

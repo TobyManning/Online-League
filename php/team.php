@@ -2,6 +2,11 @@
 
 //   Copyright 2009 John Collins
 
+// *****************************************************************************
+// PLEASE BE CAREFUL ABOUT EDITING THIS FILE, IT IS SOURCE-CONTROLLED BY GIT!!!!
+// Your changes may be lost or break things if you don't do it correctly!
+// *****************************************************************************
+
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
 //   the Free Software Foundation, either version 3 of the License, or
@@ -15,39 +20,23 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-class TeamException extends Exception {}
+include 'teambase.php';
 
-class Team  {
+class Team extends Teambase  {
 	public $Captain;		// A player object
-	public $Name;			// Team short name
-	public $Description;	// Team full name
-	public $Division;		// League division
-	public $Played;		// Played matches
-	public $Won;			// Won matches
-	public $Drawn;			// Drawn matches
-	public $Lost;			// Lost matches
-	public $Scoref;		// Scores for
-	public $Scorea;		// Scores against
 	public $Paid;			// Paid
 	public $Nonbga;		// Number of non-BGA members
 	public $Subs;			// Subscription
 	public $Playing;		// Playing
-	public $Sortrank;		// Ranking for league sort
 	
 	public function __construct($n = "") {
-		if (strlen($n) != 0)
-			$this->Name = $n;
-		$this->Division = 1;
-		$this->Sortrank = 0;
-		$this->Playing = true;
+		parent::__construct($n);
 		$this->Subs = 0;
 		$this->Nonbga = 0;
 	}
 	
 	public function fromget() {
-		$this->Name = $_GET["tn"];
-		if (strlen($this->Name) == 0)
-			throw new TeamException("Null name field"); 
+		parent::fromget("tn");
 	}
 
 	public function frompost($prefix = "") {
@@ -59,16 +48,6 @@ class Team  {
 	public function queryof($colname = "name") {
 		$qn = mysql_real_escape_string($this->Name);
 		return "$colname='$qn'";
-	}
-	
-	public function queryname() {
-		return mysql_real_escape_string($this->Name);
-	}
-	
-	public function noquote() {
-		$p = array('/"/', "/'/");
-		$r = array("", "");
-		return preg_replace($p, $r, $this->Name);
 	}
 	
 	public function urlof($id = "tn") {
@@ -97,19 +76,13 @@ class Team  {
 		}
 	}
 	
-	public function is_same($tm) {
-		return $this->Name == $tm->Name;
-	}
+	// Overrides teambase version
 	
 	public function display_name($displink = false) {
 		$ret = htmlspecialchars($this->Name);
 		if ($displink)
 			return "<a href=\"teamdisp.php?{$this->urlof()}\" class=\"name\" title=\"Show team\">$ret</a>";
 		return $ret;
-	}
-	
-	public function display_description() {
-		return htmlspecialchars($this->Description);
 	}
 	
 	// Trivial but room for expansion
@@ -222,20 +195,23 @@ class Team  {
 	
 	public function get_scores($p = Null) {
 		$this->Played = $this->get_n_from_matches("result!='N' and result!='P' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
-		$this->Won = $this->get_n_from_matches("({$this->queryof('hteam')} and result='H') or ({$this->queryof('ateam')} and result='A')");
-		$this->Lost = $this->get_n_from_matches("({$this->queryof('hteam')} and result='A') or ({$this->queryof('ateam')} and result='H')");
-		$this->Drawn = $this->get_n_from_matches("result='D' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
-		$this->Scoref = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(hscore)") +
-							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(ascore)");
-		$this->Scorea = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(ascore)") +
-							 $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hscore)");
+		$this->Wonm = $this->get_n_from_matches("({$this->queryof('hteam')} and result='H') or ({$this->queryof('ateam')} and result='A')");
+		$this->Lostm = $this->get_n_from_matches("({$this->queryof('hteam')} and result='A') or ({$this->queryof('ateam')} and result='H')");
+		$this->Drawnm = $this->get_n_from_matches("result='D' and ({$this->queryof('hteam')} or {$this->queryof('ateam')})");
+		$this->Wong = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(hwins)") +
+						  $this->get_n_from_matches("{$this->queryof('ateam')}", "sum(awins)");
+		$this->Drawng = $this->get_n_from_matches(("{$this->queryof('hteam')}", "sum(draws)") +
+							 $this->get_n_from_matches(("{$this->queryof('ateam')}", "sum(draws)");
+		$this->Lostg = $this->get_n_from_matches("{$this->queryof('hteam')}", "sum(awins)") +
+							$this->get_n_from_matches("{$this->queryof('ateam')}", "sum(hwins)");
 		if ($p)
 			$this->Sortrank = $this->Played * $p->Played +
-									$this->Won * $p->Won +
-									$this->Drawn * $p->Drawn +	
-									$this->Lost * $p->Lost +
-									$this->Scoref * $p->For +
-									$this->Scorea * $p->Against;
+									$this->Wonm * $p->Won +
+									$this->Drawnm * $p->Drawn +	
+									$this->Lostm * $p->Lost +
+									$this->Wong * $p->Forg +
+									$this->Drawbg * $p->Drawng +
+									$this->Lostg * $p->Againstg;
 	}
 	
 	public function count_members() {
@@ -264,6 +240,8 @@ class Team  {
 		$row = mysql_fetch_array($ret);
 		return $row[0];
 	}
+	
+	// Get record for this team this season against opponent
 	
 	public function record_against($opp) {
 		$res = new itrecord();
@@ -334,5 +312,5 @@ function score_compare($teama, $teamb) {
 	if ($teama->Sortrank != $teamb->Sortrank)
 		return $teama->Sortrank > $teamb->Sortrank? -1: 1;
 	return strcasecmp($teama->Name, $teamb->Name);
-}	
+}
 ?>

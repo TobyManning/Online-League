@@ -39,7 +39,7 @@ try {
 	$team->fromget();
 	$team->fetchdets();
 }
-catch (HistteamException $e) {
+catch (TeamException $e) {
 	$mess = $e->getMessage();
 	include 'php/wrongentry.php';
 	exit(0);

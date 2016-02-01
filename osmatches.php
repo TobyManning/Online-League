@@ -210,8 +210,9 @@ EOT;
 				$at = "<b>$at</b>";
 			$ref = "<a href=\"showmtch.php?{$mtch->urlof()}\" class=\"noundd\">";
 			if ($mtch->Result == 'P') {
-				$h = $mtch->Hscore + 0;
-				$a = $mtch->Ascore + 0;
+				$d = $mtch->Draws + 0;
+				$h = $mtch->Hwins + $d * 0.5;
+				$a = $mtch->Awins + $d * 0.5;
 				$res = "Part played ($h-$a)";
 			}
 			else

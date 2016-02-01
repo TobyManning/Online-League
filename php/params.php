@@ -22,8 +22,9 @@ class Params  {
 	public $Won;
 	public $Drawn;
 	public $Lost;
-	public $For;
-	public $Against;
+	public $Forg;
+	public $Againstg;
+	public $Drawng;
 	public $Hdiv;
 	public $Hreduct;
 	public $Rankfuzz;
@@ -33,8 +34,9 @@ class Params  {
 		$this->Won = 100;
 		$this->Drawn = 50;
 		$this->Lost = 0;
-		$this->For = 1;
-		$this->Against = 0;
+		$this->Forg = 1;
+		$this->Againstg = 0;
+		$this->Drawng = 0.5;
 		$this->Hdiv = 1000;
 		$this->Hreduct = 0;
 		$this->Rankfuzz = 0;
@@ -60,10 +62,13 @@ class Params  {
 				$this->Lost = $v;
 				break;
 			case 'f':
-				$this->For = $v;
+				$this->Forg = $v;
 				break;
 			case 'a':
-				$this->Against = $v;
+				$this->Againstg = $v;
+				break;
+			case 'j':
+				$this->Drawng = $v;
 				break;
 			case 'hd':
 				$this->Hdiv = $v;
@@ -85,8 +90,9 @@ class Params  {
 		mysql_query("insert into params (sc,val) values ('w', $this->Won)");
 		mysql_query("insert into params (sc,val) values ('d', $this->Drawn)");
 		mysql_query("insert into params (sc,val) values ('l', $this->Lost)");
-		mysql_query("insert into params (sc,val) values ('f', $this->For)");
-		mysql_query("insert into params (sc,val) values ('a', $this->Against)");
+		mysql_query("insert into params (sc,val) values ('f', $this->Forg)");
+		mysql_query("insert into params (sc,val) values ('a', $this->Againstg)");
+		mysql_query("insert into params (sc,val) values ('j', $this->Drawng)");
 		mysql_query("insert into params (sc,val) values ('hd', $this->Hdiv)");
 		mysql_query("insert into params (sc,val) values ('hr', $this->Hreduct)");
 		mysql_query("insert into params (sc,val) values ('fz', $this->Rankfuzz)");
