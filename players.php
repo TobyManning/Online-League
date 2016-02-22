@@ -85,7 +85,6 @@ EOT;
 	print "</tr></table>\n";
 }
 // $ref = "<a href=\"players.php?by=$next\">";
-$ref="";
 print <<<EOT
 <table class="pllist">
 <tr>
@@ -95,22 +94,22 @@ print <<<EOT
 <th colspan="4" align="center">Total</th>
 </tr>
 <tr>
-<th>${ref}Name</a></th>
-<th>${ref}Rank</a></th>
-<th>${ref}Online</a></th>
-<th>${ref}P</a></th>
-<th>${ref}W</a></th>
-<th>${ref}D</a></th>
-<th>${ref}L</a></th>
+<th>Name</th>
+<th>Rank</th>
+<th>Online</th>
+<th>P</th>
+<th>W</th>
+<th>D</th>
+<th>L</th>
 <td>&nbsp;</td>
-<th>${ref}P</a></th>
-<th>${ref}W</a></th>
-<th>${ref}D</a></th>
-<th>${ref}L</a></th>
+<th>P</th>
+<th>W</th>
+<th>D</th>
+<th>L</th>
 
 EOT;
 if ($pclub)
-	print "<th>${ref}Club</a></th>\n";
+	print "<th>Club</th>\n";
 print <<<EOT
 </tr>
 
