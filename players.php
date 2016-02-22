@@ -35,28 +35,28 @@ switch ($_GET["by"])  {
 default:
 	$pclub = 1;
 	$order = "last,first,rank desc";
-	$next = "club";
+	//$next = "club";
 	$initials = list_player_initials();
 	$byrank = 0;
 	break;
 case  "club":
 	$pclub = 0;
 	$order = "club.name,last,first,rank desc";
-	$next = "rank";
+	//$next = "rank";
 	$initials = list_club_initials();
 	$byrank = 0;
 	break;
 case  "rank":
 	$pclub = 1;
 	$order = "rank desc,last,first,rank desc";
-	$next = "clubrank";
+	//$next = "clubrank";
 	$initials = list_player_ranks();
 	$byrank = 1;
 	break;
 case  "clubrank":
 	$pclub = 0;
 	$order = "club.name,rank desc,last,first";
-	$next = "name";
+	//$next = "name";
 	$initials = list_club_initials();
 	$byrank = 0;	// Did mean that
 	break;
@@ -84,7 +84,8 @@ EOT;
 	}
 	print "</tr></table>\n";
 }
-$ref = "<a href=\"players.php?by=$next\">";
+// $ref = "<a href=\"players.php?by=$next\">";
+$ref="";
 print <<<EOT
 <table class="pllist">
 <tr>
