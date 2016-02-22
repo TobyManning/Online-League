@@ -98,7 +98,6 @@ EOT;
 <p>(Player record includes all online league games not just the one for the season, click
 on player name for more details).</p>
 <?php
-$team->get_scores();
 if ($team->Playedm != 0)  {
 	print <<<EOT
 <h2>Match Record</h2>
