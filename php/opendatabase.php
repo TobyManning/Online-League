@@ -30,8 +30,8 @@
 // $servername = rtrim($servername);
 
 $dbserver = "localhost";
-$dbuser = "www-data";
-$dbpassw = "BGA league access";
+$dbuser = "bgaleague";
+$dbpassw = "bgaleague_3007";
 $dbname = "bgaleague";
 
 if  (!mysql_connect($dbserver, $dbuser, $dbpassw)  ||  !mysql_select_db($dbname)) {
