@@ -37,7 +37,7 @@ if  ($paid != 0)  {
 }
 
 use DBD::mysql;
-$Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
+$Database = DBI->connect("DBI:mysql:bgaleague", "bgaleague", "bgaleague_3007") or die "Cannot open DB";
 $sfh = $Database->prepare("SELECT player.email FROM player,team WHERE " . join(' AND ', @Conds));
 $sfh->execute;
 

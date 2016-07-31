@@ -3,7 +3,7 @@
 exit 0 if -e "/var/www/onlineleague/nopayreminder";
 
 use DBD::mysql;
-$Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
+$Database = DBI->connect("DBI:mysql:bgaleague", "bgaleague", "bgaleague_3007") or die "Cannot open DB";
 
 open(MAILOUT, "|REPLYTO=jmc\@toad.me.uk mail -s 'Online league payments' treasurer\@britgo.org jmc\@toad.me.uk") or die "Cannot open Mail";
 select MAILOUT;

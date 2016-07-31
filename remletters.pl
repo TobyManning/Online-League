@@ -14,7 +14,7 @@ $Where = join('/', @W);
 
 # Must remember to change this
 
-$Database = DBI->connect("DBI:mysql:bgaleague", "www-data", "BGA league access") or die "Cannot open DB";
+$Database = DBI->connect("DBI:mysql:bgaleague", "bgaleague", "bgaleague_3007") or die "Cannot open DB";
 
 # Get first matchdate
 
