@@ -238,15 +238,9 @@ we give {$pars->Drawn} points.</li>
 <li>For each match lost, we give {$pars->Lost} points.</li>
 <li>For each match played and completed, whatever the outcome,
 we give {$pars->Played} points.</li>
-<li>For each individual game, we give {$pars->For} point(s) for each won game and
-{$pars->Against} for each lost game. Drawn games are given halfway in between,
-or
-
-EOT;
-print ($pars->For + $pars->Against) / 2.0;
-print <<<EOT
-
-point(s).</li>
+<li>For each individual game, we give {$pars->Forg} point(s) for each won game and
+{$pars->Againstg} for each lost game. Drawn games are given {$pars->Drawng} point(s),
+</li>
 
 EOT;
 ?>
