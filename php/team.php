@@ -210,7 +210,7 @@ class Team extends Teambase  {
 									$this->Drawnm * $p->Drawn +	
 									$this->Lostm * $p->Lost +
 									$this->Wong * $p->Forg +
-									$this->Drawbg * $p->Drawng +
+									$this->Drawng * $p->Drawng +
 									$this->Lostg * $p->Againstg;
 	}
 	
