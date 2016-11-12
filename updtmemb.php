@@ -95,7 +95,7 @@ function set_changes() {
 
 function addmembs() {
 	killwind();
-	createwind = window.open("membpick.html", "Select Team Member", "width=450,height=400");
+	createwind = window.open("membpick.html", "Select Team Member", "scrollbars=yes,width=450,height=400");
 }
 
 function insertmemb(pl) {
