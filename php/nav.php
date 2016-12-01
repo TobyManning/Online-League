@@ -74,6 +74,11 @@ document.onclick = mclose;
 <div class="innertube">
 <a href="http://www.britgo.org" title="Go to BGA main site">
 <img src="images/gohead12.gif" width="133" height="47" alt="BGA Logo" border="0" hspace="0" vspace="0"></a>
+if (!isset($_SERVER['HTTPS']) || strlen($_SERVER['HTTPS']) == 0)
+        print <<<EOF
+<p><span class="alarm">Use HTTPS!!</span></p>
+
+EOF;
 <p style="margin-top: 20px; ">&nbsp;</p>
 <ul id="sddm">
 <li><a href="index.php" title="Go to league home page">League Home</a></li><br clear="ALL"/>
