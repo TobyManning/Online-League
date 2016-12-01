@@ -361,9 +361,10 @@ table.pllist {
 table.plupd {
 	empty-cells: show;
 	border-spacing: 2px;
-	padding: 1px;
+	padding: 3px;
 	border: 0px;
 }
+
 table.resultsb {
 	empty-cells: show;
 	border-spacing: 3px;
