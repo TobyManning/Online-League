@@ -35,28 +35,42 @@ include 'php/nav.php';
 <h1>Update Players</h1>
 <p>Please select the player to be updated from the following list.</p>
 <p>To add a new player either select the "new player" menu entry.</p>
-<table class="plupd">
 <?php
 $playerlist = list_players();
 $countplayers = count($playerlist);
-$rows = floor(($countplayers + 3) / 4);
-for ($row = 0; $row < $rows; $row++) {
-	print "<tr>\n";
-	for ($col = 0; $col < 4;  $col++)  {
-		$ind = $row + $col * $rows;
-		print "<td>";
-		if ($ind >= $countplayers)
-			print "&nbsp;";
-		else {
-			$pl = $playerlist[$ind];
-			print "<a href=\"updindplayer.php?{$pl->urlof()}\">{$pl->display_name(false)}</a>";		
+$startseq = 0;
+while  ($startseq < $countplayers)  {
+	$cinit = $playerlist[$startseq]->get_initial();
+	$endseq = $startseq + 1;
+	while  ($endseq < $countplayers  &&  $playerlist[$endseq]->get_initial() == $cinit)
+		$endseq++;
+	$nump = $endseq - $startseq;
+	$cols = min(4, ceil($nump/10));
+	$rows = ceil($nump/$cols);
+	print <<<EOT
+<table class="plupd">
+<tr><th colspan="$cols">$cinit</th></tr>
+
+EOT;
+	for ($row = 0; $row < $rows; $row++) {
+		print "<tr>\n";
+		for ($col = 0; $col < 4;  $col++)  {
+			$ind = $startseq + $row + $col * $rows;
+			print "<td>";
+			if ($ind >= $endseq)
+				print "&nbsp;";
+			else {
+				$pl = $playerlist[$ind];
+				print "<a href=\"updindplayer.php?{$pl->urlof()}\">{$pl->display_name(false)}</a>";		
+			}
+			print "</td>";
 		}
-		print "</td>";
+		print "</tr>\n";
 	}
-	print "</tr>\n";
+	print "</table>\n";
+	$startseq = $endseq;
 }
 ?>
-</table>
 </div>
 </div>
 </body>

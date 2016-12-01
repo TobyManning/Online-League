@@ -1,8 +1,10 @@
 To: [% EMAIL %]
 Subject: Online League Subscription for [% TEAM %] is overdue
-Reply-to: jmc@toad.me.uk
+Reply-to: online-league@britgo.org
 
 Dear [% CAPTFIRST %] [% CAPTLAST %]
+
+(Please could you note that this is an automatically-generated email).
 
 Despite two reminders, we have not received any payment for the outstanding
 online league subscription of £[% AMOUNT %] for team [% TEAM %].
