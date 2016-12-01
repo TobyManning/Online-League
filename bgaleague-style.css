@@ -288,6 +288,10 @@ p.forms2 {
 	line-height: .5cm;
 	text-indent: 1.5cm;
 }
+span.alarm {
+   color: #FF0000;
+   font-size: 16pt;
+}
 span.drawn {
 	color: #0000FF;
 }
