@@ -49,7 +49,7 @@ EOT;
 	exit(0);
 }
 
-if  (!mysql_connect("localhost", $cred->Username, $cred->Password)  ||  !mysql_select_db($cred->Databasename)) {
+if  (!mysql_connect("localhost", $dbcred->Username, $dbcred->Password)  ||  !mysql_select_db($dbcred->Databasename)) {
 
 	$mess = mysql_error();
 
