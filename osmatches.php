@@ -1,5 +1,5 @@
 <?php
-//   Copyright 2011 John Collins
+//   Copyright 2011-7 John Collins
 
 //   This program is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -128,11 +128,11 @@ EOT;
 			$href = $aref = $hndref = $andref = '';
 			$ht = $mtch->Hteam->display_name();
 			$at = $mtch->Ateam->display_name();
-			if ($c == 'H')  {
+			if ($c == 'H' ||  $c == 'B')  {
 				$href = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=H\" class=\"noundm\">";
 				$hndref = "</a>";
 			}
-			else {
+			if ($c == 'A' ||  $c == 'B')  {
 				$aref = "<a href=\"tcupdmatch.php?{$mtch->urlof()}&hora=A\" class=\"noundm\">";
 				$andref = "</a>";
 			}
