@@ -1,18 +1,21 @@
 #! /usr/bin/perl
 
+use Config::INI::Reader;
 use DBD::mysql;
 
-$Database = DBI->connect("DBI:mysql:bgaleague", "bgaleague", "bgaleague_3007") or die "Cannot open DB";
+$inicont = Config::INI::Reader->read_file('/etc/webdb-credentials');
+$ldbc = $inicont->{league};
+$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{username}, $ldbc->{password}) or die "Cannot open DB";
 
 die "Cannot open git" unless open(LG, "git log --no-color -n 1|");
 
 while (<LG>)  {
-    chop;
-    $lastline = $_;
-    if (/^Author:\s*.*<(.*)@.*>/) {
-	$auth = $1;
-	next;
-    }
+	chop;
+   $lastline = $_;
+   if (/^Author:\s*.*<(.*)@.*>/) {
+		$auth = $1;
+		next;
+   }
 }
 
 $lastline =~ s/^\s*(.*)\s*$/$1/;
@@ -24,5 +27,3 @@ $quser = $Database->quote($auth);
 $sfh = $Database->prepare("insert into news (ndate,user,item,trivial) values (current_date,$quser,$qlog,1)");
 $sfh->execute();
 exit 0;
-
-

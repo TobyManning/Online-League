@@ -1,8 +1,11 @@
 #! /usr/bin/perl
 
+use Config::INI::Reader;
 use DBD::mysql;
 
-$Database = DBI->connect("DBI:mysql:bgaleague;host=britgo.org", "jmc", "jmc\'s mysql p\@ssw0rd") or die "Cannot open DB";
+$inicont = Config::INI::Reader->read_file('/etc/webdb-credentials');
+$ldbc = $inicont->{league};
+$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{username}, $ldbc->{password}) or die "Cannot open DB";
 
 # Build up table of matches by ind
 

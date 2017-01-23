@@ -2,6 +2,7 @@
 
 exit 0 if -e "/var/www/onlineleague/nopayreminder";
 
+use Config::INI::Reader;
 use DBD::mysql;
 use Time::Local;
 use Template;
@@ -14,7 +15,9 @@ $Where = join('/', @W);
 
 # Must remember to change this
 
-$Database = DBI->connect("DBI:mysql:bgaleague", "bgaleague", "bgaleague_3007") or die "Cannot open DB";
+$inicont = Config::INI::Reader->read_file('/etc/webdb-credentials');
+$ldbc = $inicont->{league};
+$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{username}, $ldbc->{password}) or die "Cannot open DB";
 
 # Get first matchdate
 

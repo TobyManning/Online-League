@@ -1,10 +1,13 @@
 #! /usr/bin/perl
 
+use Config::INI::Reader;
 use DBD::mysql;
 
 %Params = (p => 0.01, w => 100, d => 50, l => 0, f => 1, a => 0, j => 0.5, hd => 2, hr => 1, fz => 2);
 
-$Database = DBI->connect("DBI:mysql:bgaleague;host=britgo.org", "jmc", "jmc\'s mysql p\@ssw0rd") or die "Cannot open DB";
+$inicont = Config::INI::Reader->read_file('/etc/webdb-credentials');
+$ldbc = $inicont->{league};
+$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{username}, $ldbc->{password}) or die "Cannot open DB";
 
 # Reset params
 
