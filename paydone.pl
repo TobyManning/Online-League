@@ -6,7 +6,7 @@ use Config::INI::Reader;
 use DBD::mysql;
 $inicont = Config::INI::Reader->read_file('/etc/webdb-credentials');
 $ldbc = $inicont->{league};
-$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{username}, $ldbc->{password}) or die "Cannot open DB";
+$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{user}, $ldbc->{password}) or die "Cannot open DB";
 
 open(MAILOUT, "|REPLYTO=jmc\@toad.me.uk mail -s 'Online league payments' treasurer\@britgo.org jmc\@toad.me.uk") or die "Cannot open Mail";
 select MAILOUT;

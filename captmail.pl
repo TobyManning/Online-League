@@ -40,7 +40,7 @@ use Config::INI::Reader;
 $inicont = Config::INI::Reader->read_file('/etc/webdb-credentials');
 $ldbc = $inicont->{league};
 use DBD::mysql;
-$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{username}, $ldbc->{password}) or die "Cannot open DB";
+$Database = DBI->connect("DBI:mysql:$ldbc->{database}", $ldbc->{user}, $ldbc->{password}) or die "Cannot open DB";
 $sfh = $Database->prepare("SELECT player.email FROM player,team WHERE " . join(' AND ', @Conds));
 $sfh->execute;
 
